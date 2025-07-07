@@ -1,0 +1,17 @@
+[
+    {
+      "name": "React",
+      "level": 90,
+      "description": "Proficient in building dynamic UIs with React."
+    },
+    {
+      "name": "Tailwind CSS",
+      "level": 85,
+      "description": "Expert in utility-first CSS for rapid styling."
+    },
+    {
+      "name": "JavaScript",
+      "level": 80,
+      "description": "Strong knowledge of ES6+ and modern JavaScript."
+    }
+  ]
