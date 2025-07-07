@@ -1,1 +1,23 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --card-bg: #f9fafb;
+}
+
+[data-theme="dark"] {
+  --background: #1f2937;
+  --foreground: #f9fafb;
+  --card-bg: #374151;
+}
+
+body {
+  @apply bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300;
+}
+
+.section {
+  @apply py-16 px-4 md:px-0;
+}
