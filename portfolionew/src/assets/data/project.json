@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "title": "E-Commerce Platform",
+      "summary": "A full-stack e-commerce site",
+      "description": "Built a scalable e-commerce platform with React and Node.js.",
+      "image": "/assets/images/project1.jpg",
+      "category": "fullstack",
+      "tech": ["React", "Node.js", "MongoDB"],
+      "link": "https://example.com"
+    },
+    {
+      "id": 2,
+      "title": "Portfolio Website",
+      "summary": "A personal portfolio",
+      "description": "A dynamic portfolio built with React, Tailwind, and Shadcn UI.",
+      "image": "/assets/images/project2.jpg",
+      "category": "frontend",
+      "tech": ["React", "Tailwind CSS", "Shadcn UI"],
+      "link": "https://example.com"
+    }
+  ]
