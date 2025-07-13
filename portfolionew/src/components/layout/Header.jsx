@@ -6,7 +6,7 @@ import { Home, User, Briefcase, Mail, Menu, Sun, Moon, Code, ScrollText} from "l
 import { NAV_LINKS } from "@/lib/constants";
 import { motion } from "framer-motion";
 
-// Icon mapping for navigation links
+
 const iconMap = {
   home: <Home className="h-6 w-6 cursor-pointer" aria-hidden="true" />,
   about: <User className="h-6 w-6 cursor-pointer" aria-hidden="true" />,
@@ -18,12 +18,12 @@ const iconMap = {
 
 };
 
-// Navigation bar with Liquid Glass styling, bottom-centered, and sliding glass bubble
+
 export default function Header() {
   const { toggleTheme, theme } = useContext(ThemeContext);
   const [hoveredLink, setHoveredLink] = useState(null);
 
-  // Animation variants for the glass bubble
+  
   const bubbleVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
