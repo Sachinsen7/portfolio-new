@@ -4,20 +4,45 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1f2937;
+  --foreground: #171717;
   --card-bg: #f9fafb;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] {
-  --background: #1f2937;
-  --foreground: #f9fafb;
-  --card-bg: #374151;
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card-bg: #1f2937;
+  --glass-bg: rgba(0, 0, 0, 0.2);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
 }
 
-body {
-  @apply bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300;
+.glass {
+  @apply bg-glass-gradient backdrop-blur-lg border border-glass rounded-xl shadow-glass transition-all duration-300;
+  -webkit-backdrop-filter: blur(12px); /* Safari fix */
+  backdrop-filter: blur(12px);
 }
 
-.section {
-  @apply py-16 px-4 md:px-0;
+.glass:hover {
+  @apply bg-glass-gradient shadow-glass-hover;
+}
+
+[data-theme="dark"] .glass {
+  @apply bg-glass-dark;
+}
+
+[data-theme="dark"] .glass:hover {
+  @apply bg-glass-dark-gradient;
+}
+
+/* Optional shimmer animation */
+@keyframes glass-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.glass-shimmer {
+  background: linear-gradient(90deg, var(--glass-bg), var(--glass-dark), var(--glass-bg));
+  background-size: 200% 100%;
+  animation: glass-shimmer 5s linear infinite;
 }
