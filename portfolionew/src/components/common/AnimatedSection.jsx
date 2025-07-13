@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { useIntersection } from '@/hooks/useIntersections'
 import { fadeIn } from '@/lib/animations'
 
-export default function AnimatedSection({children, className}) {
+function AnimatedSection({children, className}) {
     const ref = useRef(null)
     const isVisible = useIntersection(ref)
 
@@ -21,4 +21,6 @@ export default function AnimatedSection({children, className}) {
     );
   
 }
+
+export default AnimatedSection
 
