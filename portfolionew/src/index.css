@@ -19,22 +19,20 @@
 }
 
 .glass {
-  @apply bg-glass-gradient backdrop-blur-lg border border-glass rounded-xl shadow-glass transition-all duration-300;
-  -webkit-backdrop-filter: blur(12px); /* Safari fix */
+  @apply bg-glass-gradient backdrop-blur-lg shadow-glass transition-all duration-300;
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
 
-.glass:hover {
+/* .glass:hover {
   @apply bg-glass-gradient shadow-glass-hover;
-}
+} */
 
 [data-theme="dark"] .glass {
-  @apply bg-glass-dark;
+  @apply  bg-glass-dark-gradient;
 }
 
-[data-theme="dark"] .glass:hover {
-  @apply bg-glass-dark-gradient;
-}
+
 
 /* Glitch Effect */
 .glitch {
