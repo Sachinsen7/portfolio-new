@@ -36,7 +36,18 @@
   @apply bg-glass-dark-gradient;
 }
 
-/* Optional shimmer animation */
+/* Glitch Effect */
+.glitch {
+  position: relative;
+  animation: glitch 1s linear infinite;
+}
+@keyframes glitch {
+  2%, 64% { transform: translate(2px, 0) skew(0deg); }
+  4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+  62% { transform: translate(0, 0) skew(5deg); }
+}
+
+/* Shimmer Effect */
 @keyframes glass-shimmer {
   0% { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
@@ -45,4 +56,10 @@
   background: linear-gradient(90deg, var(--glass-bg), var(--glass-dark), var(--glass-bg));
   background-size: 200% 100%;
   animation: glass-shimmer 5s linear infinite;
+}
+
+/* Placeholder for Particles */
+.particles {
+  background: url("/assets/particles.png") repeat; /* Add your particle image or use canvas */
+  opacity: 0.2;
 }
