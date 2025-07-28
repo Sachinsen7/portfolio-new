@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { Button } from "@/components/ui/Button";
 import { ThemeContext } from "@/context/ThemeContext";
-import { Home, User, Briefcase, Mail, Menu, Sun, Moon, Code, ScrollText} from "lucide-react";
+import { Home, User, Briefcase, Mail, Menu, Sun, Moon, Code, ScrollText, Newspaper} from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { motion } from "framer-motion";
 
@@ -12,10 +12,7 @@ const iconMap = {
   about: <User className="h-6 w-6 cursor-pointer" aria-hidden="true" />,
   projects: <Briefcase className="h-6 w-6 cursor-pointer" aria-hidden="true" />, 
   skills: <Code className="h-6 w-6 cursor-pointer" aria-hidden="true"/>,
-  blogs: <ScrollText className="h-6 w-6 cursor-pointer" aria-hidden="true"/>,
   contact: <Mail className="h-6 w-6 cursor-pointer" aria-hidden="true" />,
-  
-
 };
 
 
@@ -39,7 +36,7 @@ export default function Header() {
       aria-label="Main navigation"
     >
       <nav className="flex items-center gap-2">
-        {/* Desktop Navigation with Sliding Bubble */}
+
         <div className="relative hidden md:flex items-center gap-2">
           {NAV_LINKS.map((link, index) => (
             <motion.div
@@ -50,14 +47,14 @@ export default function Header() {
             >
               <a
                 href={link.href}
-                className="flex items-center justify-center w-12 h-12 text-foreground hover:text-primary transition-colors duration-300 cursor-pointer"
+                className="flex items-center justify-center w-12 h-12 text-foreground hover:text-primary transition-colors duration-300 "
                 aria-label={link.label}
               >
                 {iconMap[link.label.toLowerCase()]}
               </a>
               {hoveredLink === index && (
                 <motion.div
-                  className="absolute inset-0 glass backdrop-blur rounded-full"
+                  className="absolute inset-0 glass backdrop-blur rounded-full cursor-pointer"
                   variants={bubbleVariants}
                   initial="hidden"
                   animate="visible"
@@ -68,7 +65,7 @@ export default function Header() {
           ))}
         </div>
 
-        {/* Theme Toggle Button */}
+
         <Button
           variant="ghost"
           className="glass backdrop-blur rounded-full w-12 h-12"
@@ -82,7 +79,7 @@ export default function Header() {
           )}
         </Button>
 
-        {/* Mobile Navigation */}
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild className="md:hidden">
             <Button
