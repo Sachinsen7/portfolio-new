@@ -1,34 +1,25 @@
 import { Button } from "@/components/ui/button";
-import { Sparkles, DownloadIcon } from "lucide-react";
-
-// Use absolute path for Vite's public assets
+import { Sparkles, Download, TwitterIcon, LinkedinIcon, GithubIcon, MailIcon } from "lucide-react";
 import profileImage from "/assets/images/me_and_bill.png";
 
 export default function LiquidHero() {
   const skills = ["React", "Tailwind CSS", "JavaScript", "Node.js", "Web3"];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
-      {/* Glass Background */}
-      <div className="absolute inset-0 glass backdrop-blur-lg" aria-hidden="true" />
-
-      {/* Content */}
-      <div className="relative z-10 p-6 container mx-auto flex flex-col md:flex-row items-center gap-16">
+    <section className="container mx-auto py-16 flex items-center justify-center min-h-screen">
+      <div className="flex flex-col md:flex-row items-center gap-16">
         {/* Profile Image */}
         <div className="flex-shrink-0">
           <img
             src={profileImage}
             alt="Sachin, a full-stack developer"
-            className="h-32 w-32 md:h-48 md:w-48 rounded-full border border-glass object-cover"
+            className="h-32 w-32 md:h-48 md:w-48 rounded-full object-cover"
           />
         </div>
 
         {/* Text and Buttons */}
         <div className="flex-1 text-center md:text-left max-w-2xl">
-          <h1
-            id="hero-heading"
-            className="text-4xl md:text-3xl font-bold text-foreground mb-4"
-          >
+          <h1 id="hero-heading" className="text-4xl md:text-6xl font-bold text-foreground mb-4">
             Hi, I'm Sachin
           </h1>
           <p className="text-xl text-muted-foreground mb-4">
@@ -41,7 +32,7 @@ export default function LiquidHero() {
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="glass backdrop-blur px-3 py-1 rounded-full text-sm text-foreground border border-glass hover:bg-glass-gradient"
+                className="bg-glass backdrop-blur px-3 py-1 rounded-full text-sm text-foreground"
                 aria-label={`Skill: ${skill}`}
               >
                 {skill}
@@ -54,7 +45,7 @@ export default function LiquidHero() {
             <Button
               variant="default"
               size="lg"
-              className="glass backdrop-blur rounded-full hover:bg-primary/30"
+              className="glass backdrop-blur rounded-full"
               asChild
             >
               <a href="#projects">
@@ -64,7 +55,7 @@ export default function LiquidHero() {
             <Button
               variant="outline"
               size="lg"
-              className="glass backdrop-blur rounded-full hover:bg-glass-gradient"
+              className="glass backdrop-blur rounded-full"
               asChild
             >
               <a
@@ -73,10 +64,15 @@ export default function LiquidHero() {
                 rel="noopener noreferrer"
                 aria-label="View Sachin's resume"
               >
-                <DownloadIcon className="h-5 w-5 mr-2" aria-hidden="true" />
-                Resume
+                <Download className="h-5 w-5 mr-2" aria-hidden="true" /> Resume
               </a>
             </Button>
+          </div>
+          <div className="flex mt-6 gap-4">
+            <GithubIcon to="https://github.com/Sachinsen7"  className="cursor-pointer"/>
+            <LinkedinIcon className="cursor-pointer"/>
+            <TwitterIcon className="cursor-pointer"/>
+            <MailIcon className="cursor-pointer"/>
           </div>
         </div>
       </div>
