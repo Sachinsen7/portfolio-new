@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Home, User, Briefcase, Mail, Menu, Sun, Moon, Code, ScrollText, Newspaper} from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
