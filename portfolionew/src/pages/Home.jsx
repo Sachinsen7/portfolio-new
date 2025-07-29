@@ -23,7 +23,7 @@ export default function Home() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="container mx-auto py-16" aria-labelledby="about-heading">
+        <section id="about" className="container mx-auto" aria-labelledby="about-heading">
           <About />
         </section>
 
