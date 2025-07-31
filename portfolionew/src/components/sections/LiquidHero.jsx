@@ -6,7 +6,7 @@ export default function LiquidHero() {
   const skills = ["React", "Tailwind CSS", "JavaScript", "Node.js", "Web3"];
 
   return (
-    <section className="container mx-auto py-16 flex items-center justify-center min-h-screen">
+    <section className="container mx-auto flex items-center justify-center min-h-screen">
       <div className="flex flex-col md:flex-row items-center gap-16">
         {/* Profile Image */}
         <div className="flex-shrink-0">
