@@ -1,7 +1,13 @@
-import { Award, Heart, Briefcase } from "lucide-react";
+import { Award, Heart, Pointer } from "lucide-react";
 import LazyImage from "@/components/common/LazyImage";
+import { Briefcase, Globe, GithubIcon, } from "lucide-react";
+import logo from "/assets/images/logo.png";
+import {IconBrandReact, IconBrandJavascript, IconBrandTailwind, IconBrandNodejs, IconBrandVercel, IconBrandMongodb, } from "@tabler/icons-react";
 
 
+
+
+// Updated experiences with tech stack and image placeholders
 const achievements = [
   { id: 1, title: "Built Netflix Clone", description: "Developed a full-stack streaming platform with React and Node.js" },
   { id: 2, title: "React Certification", description: "Earned a professional certification in React from Coursera" },
@@ -17,6 +23,8 @@ const experiences = [
     company: "Tech Startup",
     period: "2023 - Present",
     description: "Led UI development for a SaaS platform using React and Tailwind CSS.",
+    image: "/assets/images/tech-startup.jpg", // Placeholder image
+    tech: ["React", "Tailwind CSS", "Node.js"],
   },
   {
     id: 2,
@@ -24,78 +32,88 @@ const experiences = [
     company: "Digital Agency",
     period: "2022 - 2023",
     description: "Built responsive websites with JavaScript and integrated APIs.",
+    image: "/assets/images/digital-agency.jpg", 
+    tech: ["JavaScript", "HTML", "CSS"],
   },
 ];
 
 export default function About() {
   return (
-    <section className="container mx-auto py-16" aria-labelledby="about-heading">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-4xl" aria-labelledby="about-heading">
       {/* About Me */}
-      <div className="text-center mb-12">
-        <h2 id="about-heading" className="text-4xl font-bold text-foreground mb-8">
-          About Me
+      <div className="flex flex-col items-start gap-4">
+        <h2 id="about-heading" className="text-xl text-start">
+          Featured
         </h2>
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <LazyImage
-            src="/assets/images/profile.jpg"
-            alt="Sachin, a full-stack developer"
-            className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover mx-auto md:mx-0"
-          />
-          <p className="text-lg text-muted-foreground max-w-2xl">
-            I'm a passionate full-stack developer with expertise in React, Tailwind CSS, Node.js, and Web3. I love crafting
-            user-friendly, accessible, and visually appealing web applications that solve real-world problems.
-          </p>
-        </div>
-      </div>
-
-      {/* Achievements */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-semibold text-foreground mb-6 flex items-center justify-center">
-          <Award className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> Achievements
+        <h3 className="text-2xl font-semibold text-foreground flex items-center justify-center">
+          <Briefcase className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> Experience
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {achievements.map((achievement) => (
-            <div key={achievement.id} className="glass backdrop-blur rounded-2xl p-4">
-              <h4 className="text-lg font-medium text-foreground">{achievement.title}</h4>
-              <p className="text-muted-foreground">{achievement.description}</p>
+       <div className="flex items-start gap-4">
+          <img src={logo} alt="ADRS logo" className="h-8" />
+
+          <div className="flex flex-col">
+            {/* Header Row: Name + Icons */}
+            <div className="flex items-center gap-2">
+              <h2 className="font-bold text-base">ADRS Technosoft</h2>
+              <Globe className="h-4 w-4 cursor-pointer" />
+              <GithubIcon className="h-4 w-4 cursor-pointer" />
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* Interests */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-semibold text-foreground mb-6 flex items-center justify-center">
-          <Heart className="h-6 w-6 mr-2 text-secondary" aria-hidden="true" /> Interests
-        </h3>
-        <div className="flex flex-wrap justify-center gap-3">
-          {interests.map((interest) => (
-            <span
-              key={interest}
-              className="glass backdrop-blur px-3 py-1 rounded-full text-sm text-foreground"
-              aria-label={`Interest: ${interest}`}
-            >
-              {interest}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Experiences */}
-      <div>
-        <h3 className="text-2xl font-semibold text-foreground mb-6 flex items-center justify-center">
-          <Briefcase className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> Experiences
-        </h3>
-        <div className="space-y-6">
-          {experiences.map((experience) => (
-            <div key={experience.id} className="glass backdrop-blur rounded-2xl p-4">
-              <h4 className="text-lg font-medium text-foreground">{experience.role}</h4>
-              <p className="text-muted-foreground">{experience.company} • {experience.period}</p>
-              <p className="text-muted-foreground mt-2">{experience.description}</p>
+            {/* Dates & Role */}
+            <div className="text-sm text-gray-600">
+              <p>May 2025 - Present</p>
+              <p>Internship</p>
             </div>
-          ))}
+
+            <h2 className="text-sm mt-1">Front End Developer</h2>
+          </div>
         </div>
+
+        <div>
+          <h2 className="font-bold">Technologies</h2>
+          <div className="flex flex-wrap gap-2 mt-4 ">
+            <div className="bg-glass backdrop-blur flex px-2 py-1 rounded-md text-sm text-foreground">
+              <IconBrandReact className="h-4"/>
+              React
+            </div>
+             <div className="bg-glass backdrop-blur px-2 flex py-1 rounded-md  text-sm text-foreground">
+              <IconBrandJavascript className="h-4"/>
+              Javascript
+            </div>
+            <div className="bg-glass backdrop-blur px-2 py-1 flex rounded-md text-sm text-foreground">
+              <IconBrandNodejs className="h-4"/>
+              Node JS
+            </div>
+             <div className="bg-glass backdrop-blur px-2 py-1 flex rounded-md  text-sm text-foreground">
+              <IconBrandTailwind className="h-4"/>
+              Tailwind CSS
+            </div>
+            <div className="bg-glass backdrop-blur px-2 py-1 flex rounded-md  text-sm text-foreground">
+              <IconBrandMongodb className="h-4"/>
+              Mongo DB
+            </div>
+            <div className="bg-glass backdrop-blur px-2 py-1 flex rounded-md  text-sm text-foreground">  
+              <IconBrandVercel className="h-4"/>
+              Vercel
+            </div>
+          </div>
+
+          <div className="mt-4">
+            <p className="text-gray-600"> ‣ Independently designed and implemented a Front End bus management platform, integrating dynamic ticket booking, cab booking, hotel booking, and Integrated WhatsApp Api leading to a 90% boost in operational efficiency and user satisfaction.
+
+            </p>
+            <br />
+            <p className="text-gray-600"> ‣ Architected scalable management software system with real-time analytics, user role-based access, and automated workflow management, reducing manual overhead by 85% in business operations.
+            </p>
+            <br />
+            <p className="text-gray-600"> ‣Developed a full-stack web application for jewelry business management, featuring inventory, sales, rates, and customer modules with real-time dashboards and barcode generation.</p>
+          </div>
+        </div>
+
+        </div>
+
+       <div>
       </div>
-    </section>
+     </section>
   );
 }
