@@ -1,114 +1,11 @@
 import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from "lucide-react";
 import { Link } from "react-router-dom";
 import LazyImage from "@/components/common/LazyImage";
-import {
-  IconBrandReact,
-  IconBrandJavascript,
-  IconBrandTailwind,
-  IconBrandNodejs,
-  IconBrandMongodb,
-} from "@tabler/icons-react";
 import Header from "@/components/layout/Header";
+import { projectsData } from "@/lib/projectsData";
+import { getTechIcon } from "@/lib/techIcons";
 
-// Import project images
-import ecommerce from "../../public/assets/images/ecommerce.png";
-import gem_control from "../../public/assets/images/gem_control.png";
-import yadav_bus from "../../public/assets/images/yadav_bus.png";
-import recipe_finder from "../../public/assets/images/recipefinder.png";
-import netflix from "../../public/assets/images/netflix.png";
-import music_player from "../../public/assets/images/music_player.png";
-import learnsphere from "../../public/assets/images/learnsphere.png";
 
-const projectsData = [
-  {
-    id: 1,
-    title: "Yadav Bus Service Platform",
-    image: yadav_bus,
-    description: "Bus platform with ticket, cab, and hotel booking + WhatsApp API integration",
-    tech: ["React", "Node.js", "MongoDB"],
-    category: "Full Stack",
-    year: "2024",
-    liveLink: "https://yadav-bus-demo.vercel.app",
-    githubLink: "https://github.com/username/yadav-bus-service"
-  },
-  {
-    id: 2,
-    title: "Management Software",
-    image: ecommerce,
-    description: "Role-based management software with automated workflows",
-    tech: ["React", "Node.js", "MongoDB"],
-    category: "Enterprise",
-    year: "2024",
-    liveLink: "https://management-software-demo.vercel.app",
-    githubLink: "https://github.com/username/management-software"
-  },
-  {
-    id: 3,
-    title: "ADRS Gem Control",
-    image: gem_control,
-    description: "Jewellery business management with inventory and barcode generation",
-    tech: ["React", "Node.js", "MongoDB"],
-    category: "E-commerce",
-    year: "2023",
-    liveLink: "https://gem-control-demo.vercel.app",
-    githubLink: "https://github.com/username/gem-control"
-  },
-  {
-    id: 4,
-    title: "Course Selling App",
-    image: learnsphere,
-    description: "Online learning platform with course management and progress tracking",
-    tech: ["React", "Node.js", "MongoDB"],
-    category: "Education",
-    year: "2024",
-    liveLink: "https://learnsphere-demo.vercel.app",
-    githubLink: "https://github.com/username/learnsphere"
-  },
-  {
-    id: 5,
-    title: "Dish Discovery App",
-    image: recipe_finder,
-    description: "Recipe finder with nutritional information and cooking instructions",
-    tech: ["React", "Tailwind CSS"],
-    category: "Lifestyle",
-    year: "2024",
-    liveLink: "https://dish-discovery-demo.vercel.app",
-    githubLink: "https://github.com/username/dish-discovery"
-  },
-  {
-    id: 6,
-    title: "Melody Heaven",
-    image: music_player,
-    description: "Music streaming platform with playlist management",
-    tech: ["React", "Node.js", "MongoDB"],
-    category: "Entertainment",
-    year: "2024",
-    liveLink: "https://melody-heaven-demo.vercel.app",
-    githubLink: "https://github.com/username/melody-heaven"
-  },
-  {
-    id: 7,
-    title: "Netflix Clone",
-    image: netflix,
-    description: "Streaming platform clone with user authentication and video playback",
-    tech: ["React", "Node.js", "MongoDB"],
-    category: "Entertainment",
-    year: "2024",
-    liveLink: "https://netflix-clone-demo.vercel.app",
-    githubLink: "https://github.com/username/netflix-clone"
-  },
-];
-
-const getTechIcon = (tech) => {
-  const iconMap = {
-    "React": <IconBrandReact className="h-4 w-4" />,
-    "JavaScript": <IconBrandJavascript className="h-4 w-4" />,
-    "Tailwind CSS": <IconBrandTailwind className="h-4 w-4" />,
-    "Node.js": <IconBrandNodejs className="h-4 w-4" />,
-    "MongoDB": <IconBrandMongodb className="h-4 w-4" />,
-  };
-  return iconMap[tech] || null;
-};
 
 export default function AllProjects() {
   return (
