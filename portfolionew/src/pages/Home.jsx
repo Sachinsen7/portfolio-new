@@ -1,6 +1,6 @@
 import LiquidHero from "@/components/sections/LiquidHero";
 import Projects from "@/components/sections/Projects";
-import About from "@/components/sections/about";
+import About from "@/components/sections/About";
 import Me from "@/components/sections/me";
 import Contact from "@/components/sections/Contact";
 import Header from "@/components/layout/Header";
@@ -20,7 +20,7 @@ export default function Home() {
 
       <main className="relative z-10">
         {/* Hero Section */}
-        <section aria-labelledby="hero-heading">
+        <section id="hero" aria-labelledby="hero-heading">
           <LiquidHero />
         </section>
 
