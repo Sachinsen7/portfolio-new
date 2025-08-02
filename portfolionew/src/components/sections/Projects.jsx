@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import LazyImage from "@/components/common/LazyImage";
 import ecommerce from "../../../public/assets/images/ecommerce.png";
 import gem_control from "../../../public/assets/images/gem_control.png";
@@ -12,135 +11,186 @@ import {
   IconBrandJavascript,
   IconBrandTailwind,
   IconBrandNodejs,
-  IconBrandVercel,
   IconBrandMongodb,
 } from "@tabler/icons-react";
-import { GithubIcon, Globe } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Grid3X3 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const projectsData = [
   {
     id: 1,
     title: "Yadav Bus Service Platform",
     image: yadav_bus,
-    summary: "A full-stack bus management system with ticket booking.",
-    description: "Built a bus platform with ticket, cab, and hotel booking + WhatsApp API, boosting efficiency by 90%.",
-    tech: ["React", "Tailwind CSS", "Node.js"],
-    link: "#",
+    description: "Bus platform with ticket, cab, and hotel booking + WhatsApp API integration",
+    tech: ["React", "Node.js", "MongoDB"],
+    category: "Full Stack",
+    year: "2024"
   },
   {
     id: 2,
     title: "Management Software",
     image: ecommerce,
-    summary: "A scalable management tool with real-time analytics.",
-    description: "Created role-based management software with automated workflows, cutting manual work by 85%.",
-    tech: ["JavaScript", "React", "MongoDB"],
-    link: "#",
+    description: "Role-based management software with automated workflows",
+    tech: ["React", "Node.js", "MongoDB"],
+    category: "Enterprise",
+    year: "2024"
   },
   {
     id: 3,
     title: "ADRS Gem Control",
     image: gem_control,
-    summary: "A jewellery management app with e-commerce features.",
-    description: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
-    tech: ["React", "Redux", "Material UI", "Node.js", "MongoDB"],
-    link: "#",
+    description: "Jewellery business management with inventory and barcode generation",
+    tech: ["React", "Node.js", "MongoDB"],
+    category: "E-commerce",
+    year: "2023"
   },
   {
     id: 4,
     title: "Course Selling App",
     image: learnsphere,
-    summary: "Online learning plateform.",
-    description: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
-    tech: ["React", "Framer Motion", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
-    link: "#",
+    description: "Online learning platform with course management and progress tracking",
+    tech: ["React", "Node.js", "MongoDB"],
+    category: "Education",
+    year: "2024"
   },
   {
     id: 5,
-    title: "Dish Descovery App",
+    title: "Dish Discovery App",
     image: recipe_finder,
-    summary: "Recipe Finder App",
-    description: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
-    tech: ["React", "Tailwind CSS", "Spooncular API"],
-    link: "#",
+    description: "Recipe finder with nutritional information and cooking instructions",
+    tech: ["React", "Tailwind CSS"],
+    category: "Lifestyle",
+    year: "2024"
   },
   {
     id: 6,
-    title: "Melody Heven",
+    title: "Melody Heaven",
     image: music_player,
-    summary: "Music Player",
-    description: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
-    tech: ["React", "Framer Motion", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
-    link: "#",
+    description: "Music streaming platform with playlist management",
+    tech: ["React", "Node.js", "MongoDB"],
+    category: "Entertainment",
+    year: "2024"
   },
   {
-    id: 6,
+    id: 7,
     title: "Netflix Clone",
     image: netflix,
-    summary: "Netflix",
-    description: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
-    tech: ["React", "Framer Motion", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
-    link: "#",
+    description: "Streaming platform clone with user authentication and video playback",
+    tech: ["React", "Node.js", "MongoDB"],
+    category: "Entertainment",
+    year: "2024"
   },
 ];
 
+const getTechIcon = (tech) => {
+  const iconMap = {
+    "React": <IconBrandReact className="h-4 w-4" />,
+    "JavaScript": <IconBrandJavascript className="h-4 w-4" />,
+    "Tailwind CSS": <IconBrandTailwind className="h-4 w-4" />,
+    "Node.js": <IconBrandNodejs className="h-4 w-4" />,
+    "MongoDB": <IconBrandMongodb className="h-4 w-4" />,
+  };
+  return iconMap[tech] || null;
+};
+
 export default function Projects() {
   return (
-    <section id="projects" className="container mx-auto py-8 max-w-4xl" aria-labelledby="projects-heading">
-      <h2 id="projects-heading" className="text-2xl text-start mb-8 font-bold">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-        {projectsData.map((project) => (
-          <Card key={project.id} className="glass backdrop-blur rounded-2xl p-1 md:p-4">
-            <CardHeader>
-              <LazyImage
-                src={project.image}
-                alt={`${project.title} thumbnail`}
-                className="rounded-md object-cover mx-auto mb-4"
-              />
-              <CardTitle className="text-xl text-start flex items-center justify-between">
-                {project.title}
-                <div className="flex items-center gap-2">
-                  <Globe className="h-4 w-4 cursor-pointer" />
-                  <GithubIcon className="h-4 w-4 cursor-pointer" />
+    <section id="projects" className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-4xl" aria-labelledby="projects-heading">
+      <div className="flex flex-col items-start gap-4 mb-8">
+        <h2 id="projects-heading" className="text-xl text-start">
+          Featured
+        </h2>
+        <h3 className="text-2xl font-semibold text-foreground">
+          Projects
+        </h3>
+      </div>
+
+      <div className="space-y-6">
+        {projectsData.map((project, index) => (
+          <div key={project.id} className="group">
+            <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg hover:bg-glass hover:backdrop-blur transition-all duration-300">
+              {/* Project Image */}
+              <div className="flex-shrink-0">
+                <LazyImage
+                  src={project.image}
+                  alt={`${project.title} thumbnail`}
+                  className="w-full sm:w-16 h-32 sm:h-16 rounded-md object-cover"
+                />
+              </div>
+
+              {/* Project Info */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between mb-2">
+                  <div>
+                    <h3 className="font-semibold text-base text-foreground group-hover:text-accent transition-colors">
+                      {project.title}
+                    </h3>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-xs text-gray-600 bg-glass backdrop-blur px-2 py-1 rounded">
+                        {project.category}
+                      </span>
+                      <span className="text-xs text-gray-600">
+                        {project.year}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ExternalLink className="h-4 w-4 text-gray-500 hover:text-accent cursor-pointer" />
+                    <Github className="h-4 w-4 text-gray-500 hover:text-accent cursor-pointer" />
+                  </div>
                 </div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <p className="text-base text-start text-gray-500 mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 flex-col justify-center">
-                <h2 className="font-bold text-start">Technologies</h2>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="bg-glass backdrop-blur flex px-2 py-1 rounded-md text-sm text-foreground">
-                      {tech === "React" ? (
-                        <IconBrandReact className="h-4 w-4 mr-1" />
-                      ) : tech === "JavaScript" ? (
-                        <IconBrandJavascript className="h-4 w-4 mr-1" />
-                      ) : tech === "Tailwind CSS" ? (
-                        <IconBrandTailwind className="h-4 w-4 mr-1" />
-                      ) : tech === "Node.js" ? (
-                        <IconBrandNodejs className="h-4 w-4 mr-1" />
-                      ) : tech === "Vercel" ? (
-                        <IconBrandVercel className="h-4 w-4 mr-1" />
-                      ) : tech === "MongoDB" ? (
-                        <IconBrandMongodb className="h-4 w-4 mr-1" />
-                      ) : null}
-                      {tech}
-                    </span>
-                  ))}
+
+                <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                  {project.description}
+                </p>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap gap-1">
+                    {project.tech.slice(0, 3).map((tech) => (
+                      <div key={tech} className="flex items-center gap-1 bg-glass backdrop-blur px-2 py-1 rounded text-xs text-foreground">
+                        {getTechIcon(tech)}
+                        <span>{tech}</span>
+                      </div>
+                    ))}
+                    {project.tech.length > 3 && (
+                      <span className="text-xs text-gray-500 px-2 py-1">
+                        +{project.tech.length - 3} more
+                      </span>
+                    )}
+                  </div>
+
+                  <Link
+                    to={`/project/${project.id}`}
+                    className="flex items-center gap-1 text-sm text-accent hover:gap-2 transition-all duration-200"
+                    aria-label={`View ${project.title} project details`}
+                  >
+                    View
+                    <ArrowRight className="h-3 w-3" />
+                  </Link>
                 </div>
               </div>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block text-accent hover:underline"
-                aria-label={`View ${project.title} project`}
-              >
-                View Project
-              </a>
-            </CardContent>
-          </Card>
+            </div>
+
+            {/* Separator line */}
+            {index < projectsData.length - 1 && (
+              <div className="h-px bg-gray-200 dark:bg-gray-700 my-4 opacity-50" />
+            )}
+          </div>
         ))}
+      </div>
+
+      {/* Show All Projects Button */}
+      <div className="flex justify-center mt-8">
+        <Link
+          to="/projects"
+          className="flex items-center gap-2 bg-glass backdrop-blur px-6 py-3 rounded-lg text-foreground hover:bg-white/10 transition-all duration-200 border border-white/20"
+        >
+          <Grid3X3 className="h-4 w-4" />
+          <span>Show All Projects</span>
+          <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
     </section>
   );
