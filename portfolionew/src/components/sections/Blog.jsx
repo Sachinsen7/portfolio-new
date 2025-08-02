@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AnimatedSection } from "@/components/common/AnimatedSection";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import  AnimatedSection  from "@/components/common/AnimatedSection";
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
