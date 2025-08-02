@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/TextArea";
 import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
-import { AnimatedSection } from "@/components/common/AnimatedSection";
+import AnimatedSection  from "@/components/common/AnimatedSection";
 
 export default function Contact() {
   const handleSubmit = (e) => {
