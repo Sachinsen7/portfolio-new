@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
-import { AnimatedSection } from "@/components/common/AnimatedSection";
+import AnimatedSection  from "@/components/common/AnimatedSection";
 import skillsData from "@/assets/data/skills.json";
 
 export default function Skills() {
