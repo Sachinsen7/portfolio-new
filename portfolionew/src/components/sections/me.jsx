@@ -1,22 +1,8 @@
 import profileImage from "/assets/images/me_and_bill.png";
-import {
-  IconBrandReact,
-  IconBrandJavascript,
-  IconBrandTailwind,
-  IconBrandNodejs,
-  IconBrandMongodb,
-  IconBrandVercel,
-} from "@tabler/icons-react";
+import { detailedSkills } from "@/lib/skillsData";
 
 export default function Me() {
-  const skills = [
-    { name: "React", icon: IconBrandReact },
-    { name: "JavaScript", icon: IconBrandJavascript },
-    { name: "Node.js", icon: IconBrandNodejs },
-    { name: "Tailwind CSS", icon: IconBrandTailwind },
-    { name: "MongoDB", icon: IconBrandMongodb },
-    { name: "Vercel", icon: IconBrandVercel },
-  ];
+  const skills = detailedSkills;
 
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-4xl" aria-labelledby="me-heading">

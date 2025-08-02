@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles, Download, TwitterIcon, LinkedinIcon, GithubIcon, MailIcon } from "lucide-react";
 import profileImage from "/assets/images/me_and_bill.png";
+import { basicSkills } from "@/lib/skillsData";
 
 export default function LiquidHero() {
-  const skills = ["React", "Tailwind CSS", "JavaScript", "Node.js", "Web3"];
+  const skills = basicSkills;
 
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 max-w-4xl min-h-[70vh] sm:min-h-[80vh] flex items-center">
