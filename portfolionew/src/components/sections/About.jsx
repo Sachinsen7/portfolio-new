@@ -39,7 +39,7 @@ const experiences = [
 
 export default function About() {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-4xl" aria-labelledby="about-heading">
+    <section className="container mx-auto py-8 max-w-4xl" aria-labelledby="about-heading">
       {/* About Me */}
       <div className="flex flex-col items-start gap-4">
         <h2 id="about-heading" className="text-xl text-start">
