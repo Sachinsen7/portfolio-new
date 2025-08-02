@@ -1,113 +1,126 @@
 import { useContext, useState } from "react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ThemeContext } from "@/context/ThemeContext";
-import { Home, User, Briefcase, Mail, Menu, Sun, Moon, Code, ScrollText, Newspaper} from "lucide-react";
-import { NAV_LINKS } from "@/lib/constants";
+import { Briefcase, Sun, Moon, FileText, Menu } from "lucide-react";
 import { motion } from "framer-motion";
+import AllProjects from "@/pages/AllProjects";
 
-
-const iconMap = {
-  home: <Home className="h-6 w-6 cursor-pointer" aria-hidden="true" />,
-  about: <User className="h-6 w-6 cursor-pointer" aria-hidden="true" />,
-  projects: <Briefcase className="h-6 w-6 cursor-pointer" aria-hidden="true" />, 
-  skills: <Code className="h-6 w-6 cursor-pointer" aria-hidden="true"/>,
-  contact: <Mail className="h-6 w-6 cursor-pointer" aria-hidden="true" />,
-};
+const navItems = [
+  { href: "/projects", label: "Work", icon: Briefcase },
+  { href: "#blog", label: "Blog", icon: FileText },
+];
 
 
 export default function Header() {
   const { toggleTheme, theme } = useContext(ThemeContext);
-  const [hoveredLink, setHoveredLink] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState(null);
 
-  
-  const bubbleVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+  const containerVariants = {
+    normal: {
+      scaleX: 1,
+      transition: { duration: 0.3, ease: "easeOut" }
+    },
+    stretched: {
+      scaleX: 1.1,
+      transition: { duration: 0.3, ease: "easeOut" }
+    }
+  };
+
+  const itemVariants = {
+    normal: {
+      scale: 1,
+      y: 0,
+      transition: { duration: 0.2, ease: "easeOut" }
+    },
+    hovered: {
+      scale: 1.1,
+      y: -2,
+      transition: { duration: 0.2, ease: "easeOut" }
+    }
   };
 
   return (
     <motion.header
-      className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 glass backdrop-blur-lg rounded-full px-4 py-2 shadow-glass transition-all duration-300"
-      initial={{ y: 100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2"
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       role="navigation"
       aria-label="Main navigation"
     >
-      <nav className="flex items-center gap-2">
-
-        <div className="relative hidden md:flex items-center gap-2">
-          {NAV_LINKS.map((link, index) => (
-            <motion.div
-              key={link.href}
-              className="relative"
-              onHoverStart={() => setHoveredLink(index)}
-              onHoverEnd={() => setHoveredLink(null)}
-            >
-              <a
-                href={link.href}
-                className="flex items-center justify-center w-12 h-12 text-foreground hover:text-primary transition-colors duration-300 "
-                aria-label={link.label}
-              >
-                {iconMap[link.label.toLowerCase()]}
-              </a>
-              {hoveredLink === index && (
-                <motion.div
-                  className="absolute inset-0 glass backdrop-blur rounded-full cursor-pointer"
-                  variants={bubbleVariants}
-                  initial="hidden"
-                  animate="visible"
-                  layoutId="bubble"
-                />
-              )}
-            </motion.div>
-          ))}
-        </div>
-
-
-        <Button
-          variant="ghost"
-          className="glass backdrop-blur rounded-full w-12 h-12"
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-        >
-          {theme === "light" ? (
-            <Moon className="h-6 w-6" aria-hidden="true" />
-          ) : (
-            <Sun className="h-6 w-6" aria-hidden="true" />
-          )}
-        </Button>
-
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild className="md:hidden">
-            <Button
-              variant="ghost"
-              className="glass backdrop-blur rounded-full w-12 h-12"
-              aria-label="Open menu"
-            >
-              <Menu className="h-6 w-6 text-foreground" aria-hidden="true" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="glass backdrop-blur-lg border border-glass p-2 rounded-xl shadow-glass mt-2">
-            {NAV_LINKS.map((link) => (
-              <DropdownMenuItem
-                key={link.href}
-                className="hover:bg-glass-gradient focus:bg-glass-gradient rounded-lg"
+      <motion.nav
+        className="flex items-center gap-1 bg-[var(--glass-bg)] backdrop-blur-xl border border-white/20 rounded-2xl px-2 sm:px-3 py-2 shadow-lg"
+        variants={containerVariants}
+        animate={isHovered ? "stretched" : "normal"}
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+      >
+        {/* Navigation Items */}
+        <div className="flex items-center gap-1">
+          {navItems.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <motion.div
+                key={item.href}
+                variants={itemVariants}
+                animate={hoveredItem === index ? "hovered" : "normal"}
+                onHoverStart={() => setHoveredItem(index)}
+                onHoverEnd={() => setHoveredItem(null)}
               >
                 <a
-                  href={link.href}
-                  className="flex items-center gap-2 px-4 py-2 text-foreground hover:text-primary transition-colors"
+                  href={item.href}
+                  className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-[var(--foreground)] hover:text-accent hover:bg-white/10 transition-all duration-200"
+                  aria-label={item.label}
                 >
-                  {iconMap[link.label.toLowerCase()]}
-                  <span>{link.label}</span>
+                  <IconComponent className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
                 </a>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </nav>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Separator */}
+        <div className="w-px h-6 bg-white/20 mx-1" />
+
+        {/* Theme Toggle */}
+        <motion.div
+          variants={itemVariants}
+          animate={hoveredItem === 'theme' ? "hovered" : "normal"}
+          onHoverStart={() => setHoveredItem('theme')}
+          onHoverEnd={() => setHoveredItem(null)}
+        >
+          <Button
+            variant="ghost"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl hover:bg-white/10 transition-all duration-200"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          >
+            {theme === "light" ? (
+              <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-[var(--foreground)]" aria-hidden="true" />
+            ) : (
+              <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-[var(--foreground)]" aria-hidden="true" />
+            )}
+          </Button>
+        </motion.div>
+
+        {/* Mobile Menu - Hidden for now since we only have 3 items */}
+        <motion.div
+          className="md:hidden"
+          variants={itemVariants}
+          animate={hoveredItem === 'menu' ? "hovered" : "normal"}
+          onHoverStart={() => setHoveredItem('menu')}
+          onHoverEnd={() => setHoveredItem(null)}
+        >
+          <Button
+            variant="ghost"
+            className="w-10 h-10 rounded-xl hover:bg-white/10 transition-all duration-200"
+            aria-label="Open menu"
+          >
+            <Menu className="h-5 w-5 text-[var(--foreground)]" aria-hidden="true" />
+          </Button>
+        </motion.div>
+      </motion.nav>
     </motion.header>
   );
 }
