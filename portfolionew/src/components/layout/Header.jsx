@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeContext } from "@/context/ThemeContext";
-import { Briefcase, Sun, Moon, FileText, Menu } from "lucide-react";
+import { Briefcase, Sun, Moon, FileText, Menu, Home, User, FolderOpen } from "lucide-react";
 import { motion } from "framer-motion";
-import AllProjects from "@/pages/AllProjects";
 
 const navItems = [
   { href: "/projects", label: "Work", icon: Briefcase },
