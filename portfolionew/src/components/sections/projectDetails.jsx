@@ -1,7 +1,7 @@
 
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Github, Tag, Code, ChevronLeft, ChevronRight, Calendar, Users, User, CheckCircle } from 'lucide-react';
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import LazyImage from "@/components/common/LazyImage";
 import { useTheme } from "@/hooks/useTheme";
 import {
