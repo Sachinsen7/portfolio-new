@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, Github, Tag, Code, ChevronLeft, ChevronRight, 
 import { Button } from "@/components/ui/button";
 import LazyImage from "@/components/common/LazyImage";
 import { useTheme } from "@/hooks/useTheme";
+import { SlideTransition } from "@/components/common/PageTransition";
 import {
   IconBrandReact,
   IconBrandJavascript,
@@ -11,7 +12,7 @@ import {
   IconBrandNodejs,
   IconBrandMongodb,
 } from "@tabler/icons-react";
-
+import Header from '../layout/Header';
 const projectsData = [
   {
     id: 1,
@@ -294,7 +295,8 @@ export default function ProjectDetails() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+    <SlideTransition>
+      <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-4xl" aria-labelledby="project-heading">
         {/* Navigation */}
         <div className="flex justify-between items-center mb-6">
@@ -499,6 +501,7 @@ export default function ProjectDetails() {
 
       </section>
       <Header/>
-    </div>
+      </div>
+    </SlideTransition>
   );
 }
