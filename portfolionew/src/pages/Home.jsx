@@ -4,11 +4,14 @@ import About from "@/components/sections/About";
 import Me from "@/components/sections/me";
 import Contact from "@/components/sections/Contact";
 import Header from "@/components/layout/Header";
+import ChatBot from "@/components/common/ChatBot";
+import PageTransition from "@/components/common/PageTransition";
 // import AccessibilityToggle from "@/components/common/AccessibilityToggle";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+    <PageTransition>
+      <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       {/* Unified Glass Background */}
       <div
         className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 glass backdrop-blur-lg"
@@ -39,6 +42,10 @@ export default function Home() {
           <Me />
         </section>
       </main>
-    </div>
+
+      {/* Floating Chat Bot */}
+      <ChatBot />
+      </div>
+    </PageTransition>
   );
 }
