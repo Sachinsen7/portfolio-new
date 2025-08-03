@@ -64,8 +64,4 @@
   animation: glass-shimmer 5s linear infinite;
 }
 
-/* Placeholder for Particles */
-.particles {
-  background: url("/assets/particles.png") repeat; /* Add your particle image or use canvas */
-  opacity: 0.2;
-}
+
