@@ -5,38 +5,6 @@ import logo from "/assets/images/logo.png";
 import {IconBrandReact, IconBrandJavascript, IconBrandTailwind, IconBrandNodejs, IconBrandVercel, IconBrandMongodb, } from "@tabler/icons-react";
 
 
-
-
-// Updated experiences with tech stack and image placeholders
-const achievements = [
-  { id: 1, title: "Built Netflix Clone", description: "Developed a full-stack streaming platform with React and Node.js" },
-  { id: 2, title: "React Certification", description: "Earned a professional certification in React from Coursera" },
-  { id: 3, title: "Hackathon Winner", description: "Secured 1st place in a regional Web3 hackathon" },
-];
-
-const interests = ["Web3", "UI/UX Design", "Open Source", "Performance Optimization", "AI Integration"];
-
-const experiences = [
-  {
-    id: 1,
-    role: "Frontend Developer",
-    company: "Tech Startup",
-    period: "2023 - Present",
-    description: "Led UI development for a SaaS platform using React and Tailwind CSS.",
-    image: "/assets/images/tech-startup.jpg", // Placeholder image
-    tech: ["React", "Tailwind CSS", "Node.js"],
-  },
-  {
-    id: 2,
-    role: "Web Developer Intern",
-    company: "Digital Agency",
-    period: "2022 - 2023",
-    description: "Built responsive websites with JavaScript and integrated APIs.",
-    image: "/assets/images/digital-agency.jpg", 
-    tech: ["JavaScript", "HTML", "CSS"],
-  },
-];
-
 export default function About() {
   return (
     <section className="container mx-auto py-8 max-w-4xl" aria-labelledby="about-heading">
@@ -55,8 +23,15 @@ export default function About() {
             {/* Header Row: Name + Icons */}
             <div className="flex items-center gap-2">
               <h2 className="font-bold text-base">ADRS Technosoft</h2>
-              <Globe className="h-4 w-4 cursor-pointer" />
-              <GithubIcon className="h-4 w-4 cursor-pointer" />
+              <a
+                href="https://www.adrstechno.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+              >
+                <Globe className="h-4 w-4 cursor-pointer" />
+              </a>
+              <GithubIcon className="h-4 w-4 text-gray-400" />
             </div>
 
             {/* Dates & Role */}
