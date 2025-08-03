@@ -4,12 +4,15 @@ import LazyImage from "@/components/common/LazyImage";
 import Header from "@/components/layout/Header";
 import { projectsData } from "@/lib/projectsData";
 import { getTechIcon } from "@/lib/techIcons";
+import PageTransition from "@/components/common/PageTransition";
+import { motion } from "framer-motion";
 
 
 
 export default function AllProjects() {
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+    <PageTransition>
+      <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-6xl">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -28,10 +31,14 @@ export default function AllProjects() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {projectsData.map((project) => (
-            <div
+          {projectsData.map((project, index) => (
+            <motion.div
               key={project.id}
               className="bg-[var(--glass-bg)] backdrop-blur-lg border border-white/10 dark:border-white/5 rounded-xl overflow-hidden hover:bg-white/5 transition-all duration-300 group"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, delay: index * 0.05 }}
+              whileHover={{ y: -3, scale: 1.01 }}
             >
               {/* Project Image */}
               <div className="relative overflow-hidden">
@@ -106,11 +113,12 @@ export default function AllProjects() {
                   View Details →
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-          <Header />
-    </div>
+      <Header />
+      </div>
+    </PageTransition>
   );
 }
