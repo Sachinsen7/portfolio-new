@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Briefcase, Sun, Moon, FileText, Menu, Home, User, FolderOpen } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const navItems = [
   { href: "/projects", label: "Work", icon: Briefcase },
@@ -67,13 +68,13 @@ export default function Header() {
                 onHoverStart={() => setHoveredItem(index)}
                 onHoverEnd={() => setHoveredItem(null)}
               >
-                <a
-                  href={item.href}
+                <Link
+                  to={item.href}
                   className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-[var(--foreground)] hover:text-accent hover:bg-white/10 transition-all duration-200"
                   aria-label={item.label}
                 >
                   <IconComponent className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-                </a>
+                </Link>
               </motion.div>
             );
           })}
