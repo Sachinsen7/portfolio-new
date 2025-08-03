@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles, Download, TwitterIcon, LinkedinIcon, GithubIcon, MailIcon } from "lucide-react";
-import profileImage from "/assets/images/new.png";
+import profileImage from "/assets/images/me_and_bill.png";
 import { basicSkills } from "@/lib/skillsData";
 
 export default function LiquidHero() {
