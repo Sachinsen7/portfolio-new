@@ -6,8 +6,8 @@ export default function Footer() {
         <div className="container mx-auto text-center">
           <p>&copy; {new Date().getFullYear()} Sachin. All rights reserved.</p>
           <div className="flex justify-center space-x-4 mt-4">
-            <a href="https://github.com" className="text-primary hover:underline">GitHub</a>
-            <a href="https://linkedin.com" className="text-primary hover:underline">LinkedIn</a>
+            <a href="https://github/Sachinsen7.com" className="text-primary hover:underline">GitHub</a>
+            <a href="https://linkedin/sachinsen1.com" className="text-primary hover:underline">LinkedIn</a>
           </div>
         </div>
       </footer>
