@@ -18,12 +18,24 @@
   --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Prevent white flash during page transitions */
+html, body, #root {
+  background-color: var(--background);
+  transition: background-color 0.1s ease;
+}
+
 [data-theme="dark"] {
   --background: #0a0a0a;
   --foreground: #ffffff;
   --card-bg: #1f2937;
   --glass-bg: rgba(0, 0, 0, 0.2);
   --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+[data-theme="dark"] #root {
+  background-color: var(--background);
 }
 
 .glass {
@@ -62,6 +74,15 @@
   background: linear-gradient(90deg, var(--glass-bg), var(--glass-dark), var(--glass-bg));
   background-size: 200% 100%;
   animation: glass-shimmer 5s linear infinite;
+}
+
+/* Hide Scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
 }
 
 
