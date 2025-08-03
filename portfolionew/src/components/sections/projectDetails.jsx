@@ -12,21 +12,11 @@ import {
   IconBrandMongodb,
 } from "@tabler/icons-react";
 
-// Import project images
-import ecommerce from "../../../public/assets/images/ecommerce.png";
-import gem_control from "../../../public/assets/images/gem_control.png";
-import yadav_bus from "../../../public/assets/images/yadav_bus.png";
-import recipe_finder from "../../../public/assets/images/recipefinder.png";
-import netflix from "../../../public/assets/images/netflix.png";
-import music_player from "../../../public/assets/images/music_player.png";
-import learnsphere from "../../../public/assets/images/learnsphere.png";
-import Header from '../layout/Header';
-
 const projectsData = [
   {
     id: 1,
     title: "Yadav Bus Service Platform",
-    image: yadav_bus,
+    image: "/assets/images/yadav_bus.png",
     summary: "A comprehensive bus management system with multi-service booking capabilities",
     description: "Built a comprehensive bus platform with ticket, cab, and hotel booking capabilities integrated with WhatsApp API, boosting operational efficiency by 90%. The platform features real-time seat availability, automated booking confirmations, and integrated payment processing.",
     fullDescription: "This full-stack application revolutionizes bus service management by providing a complete ecosystem for transportation booking. The platform includes advanced features like dynamic pricing, route optimization, real-time GPS tracking, and comprehensive admin dashboards. The WhatsApp API integration enables seamless customer communication and booking confirmations, making it a one-stop solution for all transportation needs.",
@@ -66,7 +56,7 @@ const projectsData = [
   {
     id: 2,
     title: "Management Software",
-    image: ecommerce,
+    image: "/assets/images/ecommerce.png",
     summary: "Enterprise-grade management tool with automated workflows",
     description: "Created role-based management software with automated workflows, cutting manual work by 85%. Features comprehensive workflow management, real-time analytics, and customizable dashboards.",
     fullDescription: "Enterprise-grade management software designed to streamline business operations through intelligent automation and role-based access control. The system features comprehensive workflow management, real-time analytics, and customizable dashboards tailored to different user roles. Built with scalability in mind to handle large organizations with complex hierarchies.",
@@ -106,7 +96,7 @@ const projectsData = [
   {
     id: 3,
     title: "ADRS Gem Control",
-    image: gem_control,
+    image: "/assets/images/gem_control.png",
     summary: "Comprehensive jewellery business management with e-commerce integration",
     description: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
     fullDescription: "Comprehensive jewellery business management system that combines inventory control, sales tracking, and customer management. Features advanced barcode generation for product tracking, real-time inventory updates, and integrated e-commerce capabilities for online sales. The system handles complex jewellery specifications including weight, purity, and certification details.",
@@ -147,7 +137,7 @@ const projectsData = [
   {
     id: 4,
     title: "Course Selling App",
-    image: learnsphere,
+    image: "/assets/images/learnsphere.png",
     summary: "Online learning platform.",
     description: "Modern e-learning platform with course management, student progress tracking, and interactive learning features.",
     fullDescription: "LearnSphere is a comprehensive online learning platform that enables educators to create, manage, and sell courses while providing students with an engaging learning experience. Features include video streaming, progress tracking, quizzes, and certification systems.",
@@ -177,7 +167,7 @@ const projectsData = [
   {
     id: 5,
     title: "Dish Discovery App",
-    image: recipe_finder,
+    image: "/assets/images/recipefinder.png",
     summary: "Recipe Finder App",
     description: "Discover and explore recipes from around the world with this intuitive recipe finder application.",
     fullDescription: "A feature-rich recipe discovery platform that helps users find, save, and share recipes. Integrated with the Spoonacular API to provide access to thousands of recipes with detailed nutritional information, cooking instructions, and ingredient lists.",
@@ -206,7 +196,7 @@ const projectsData = [
   {
     id: 6,
     title: "Melody Heaven",
-    image: music_player,
+    image: "/assets/images/music_player.png",
     summary: "Music Player",
     description: "A modern music streaming application with playlist management and social features.",
     fullDescription: "Melody Heaven is a sophisticated music streaming platform that combines beautiful design with powerful functionality. Features include playlist creation, social sharing, music discovery, and high-quality audio streaming with a focus on user experience.",
@@ -236,7 +226,7 @@ const projectsData = [
   {
     id: 7,
     title: "Netflix Clone",
-    image: netflix,
+    image: "/assets/images/netflix.png",
     summary: "Netflix Clone",
     description: "A pixel-perfect Netflix clone with streaming capabilities and user authentication.",
     fullDescription: "A comprehensive Netflix clone that replicates the core functionality and design of the popular streaming platform. Features include user authentication, content browsing, video streaming, and personalized recommendations with a responsive design.",
