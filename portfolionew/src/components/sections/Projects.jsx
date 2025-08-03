@@ -3,6 +3,7 @@ import { ExternalLink, Github, ArrowRight, Grid3X3 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projectsData } from "@/lib/projectsData";
 import { getTechIcon } from "@/lib/techIcons";
+import { motion } from "framer-motion";
 
 
 
@@ -20,7 +21,14 @@ export default function Projects() {
 
       <div className="space-y-6">
         {projectsData.map((project, index) => (
-          <div key={project.id} className="group">
+          <motion.div
+            key={project.id}
+            className="group"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: index * 0.05 }}
+            whileHover={{ scale: 1.01 }}
+          >
             <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg hover:bg-glass hover:backdrop-blur transition-all duration-300">
               {/* Project Image */}
               <div className="flex-shrink-0">
@@ -89,7 +97,7 @@ export default function Projects() {
             {index < projectsData.length - 1 && (
               <div className="h-px bg-gray-200 dark:bg-gray-700 my-4 opacity-50" />
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
 
