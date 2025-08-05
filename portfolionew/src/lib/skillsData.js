@@ -11,10 +11,9 @@ import {
   IconBrandVscode,
 } from "@tabler/icons-react";
 
-// Basic skills array for simple displays (like LiquidHero)
+
 export const basicSkills = ["React", "Tailwind CSS", "JavaScript", "Node.js", "Web3"];
 
-// Detailed skills with icons for more comprehensive displays
 export const detailedSkills = [
   { name: "React", icon: IconBrandReact, category: "Frontend" },
   { name: "JavaScript", icon: IconBrandJavascript, category: "Language" },
@@ -28,7 +27,7 @@ export const detailedSkills = [
   { name: "VS Code", icon: IconBrandVscode, category: "Tools" },
 ];
 
-// Skills organized by category
+
 export const skillsByCategory = {
   "Frontend": [
     { name: "React", icon: IconBrandReact },
@@ -62,7 +61,7 @@ export const skillsByCategory = {
   ]
 };
 
-// Tech stack for About/Experience section
+
 export const techStack = [
   { name: "React", icon: IconBrandReact },
   { name: "JavaScript", icon: IconBrandJavascript },
@@ -72,7 +71,7 @@ export const techStack = [
   { name: "Vercel", icon: IconBrandVercel },
 ];
 
-// Function to get tech icon (used in multiple components)
+
 export const getTechIcon = (tech) => {
   const iconMap = {
     "React": IconBrandReact,
