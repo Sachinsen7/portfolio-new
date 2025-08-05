@@ -94,14 +94,14 @@ export default function LiquidHero() {
               <GithubIcon className="h-4 w-4"/>
             </a>
             <a
-              href="#"
+              href="https://linkedin.com/in/sachinsen1"
               className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
               aria-label="LinkedIn Profile"
             >
               <LinkedinIcon className="h-4 w-4"/>
             </a>
             <a
-              href="#"
+              href="https://twitter.com/sen_sachiin"
               className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
               aria-label="Twitter Profile"
             >
