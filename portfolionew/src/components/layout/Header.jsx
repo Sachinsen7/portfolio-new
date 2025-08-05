@@ -70,7 +70,7 @@ export default function Header() {
               >
                 <Link
                   to={item.href}
-                  className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-[var(--foreground)] hover:text-accent hover:bg-white/10 transition-all duration-200"
+                  className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-foreground hover:text-accent hover:bg-button-hover transition-all duration-200"
                   aria-label={item.label}
                 >
                   <IconComponent className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
@@ -81,7 +81,7 @@ export default function Header() {
         </div>
 
         {/* Separator */}
-        <div className="w-px h-6 bg-white/20 mx-1" />
+        <div className="w-px h-6 bg-glass-border mx-1" />
 
         {/* Theme Toggle */}
         <motion.div
@@ -92,14 +92,14 @@ export default function Header() {
         >
           <Button
             variant="ghost"
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl hover:bg-white/10 transition-all duration-200"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl hover:bg-button-hover transition-all duration-200"
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
           >
             {theme === "light" ? (
-              <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-[var(--foreground)]" aria-hidden="true" />
+              <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-foreground" aria-hidden="true" />
             ) : (
-              <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-[var(--foreground)]" aria-hidden="true" />
+              <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-foreground" aria-hidden="true" />
             )}
           </Button>
         </motion.div>
