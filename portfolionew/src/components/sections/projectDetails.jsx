@@ -39,19 +39,19 @@ const projectsData = [
       "Creating an intuitive admin dashboard for operations management"
     ],
     liveLink: "https://yadav-bus-demo.vercel.app",
-    githubLink: "https://github.com/username/yadav-bus-service",
-    category: "Full Stack",
-    duration: "3 months",
-    year: "2024",
+    githubLink: "https://github.com/Sachinsen7/yadavBusServiceFullStack.git",
+    category: "Front End",
+    duration: "1 month",
+    year: "2025",
     timeline: [
       { phase: "Planning & Design", duration: "2 weeks", status: "completed" },
-      { phase: "Backend Development", duration: "4 weeks", status: "completed" },
+      { phase: "Backend Development", duration: "1 week", status: "completed" },
       { phase: "Frontend Development", duration: "3 weeks", status: "completed" },
-      { phase: "API Integration", duration: "2 weeks", status: "completed" },
-      { phase: "Testing & Deployment", duration: "1 week", status: "completed" }
+      { phase: "API Integration", duration: "2 weeks", status: "incomplete" },
+      { phase: "Testing & Deployment", duration: "1 week", status: "incomplete" }
     ],
     team: "Solo Project",
-    role: "Full Stack Developer",
+    role: "Front End Developer",
     status: "Live & Maintained"
   },
   {
@@ -61,7 +61,7 @@ const projectsData = [
     summary: "Enterprise-grade management tool with automated workflows",
     description: "Created role-based management software with automated workflows, cutting manual work by 85%. Features comprehensive workflow management, real-time analytics, and customizable dashboards.",
     fullDescription: "Enterprise-grade management software designed to streamline business operations through intelligent automation and role-based access control. The system features comprehensive workflow management, real-time analytics, and customizable dashboards tailored to different user roles. Built with scalability in mind to handle large organizations with complex hierarchies.",
-    tech: ["React", "Node.js", "MongoDB", "Express", "Chart.js"],
+    tech: ["React", "Node.js", "Express"],
     features: [
       "Role-based access control with granular permissions",
       "Automated workflow engine with custom triggers",
@@ -79,20 +79,20 @@ const projectsData = [
       "Creating responsive dashboards with complex data visualization"
     ],
     liveLink: "https://management-software-demo.vercel.app",
-    githubLink: "https://github.com/username/management-software",
+    githubLink: "https://github.com/Sachinsen7/managementSoftware.git",
     category: "Enterprise",
-    duration: "4 months",
-    year: "2024",
+    duration: "2 months",
+    year: "2025",
     timeline: [
       { phase: "Requirements Analysis", duration: "1 week", status: "completed" },
       { phase: "System Architecture", duration: "2 weeks", status: "completed" },
-      { phase: "Core Development", duration: "8 weeks", status: "completed" },
-      { phase: "Workflow Engine", duration: "3 weeks", status: "completed" },
-      { phase: "Testing & Optimization", duration: "2 weeks", status: "completed" }
+      { phase: "Core Development", duration: "3 weeks", status: "completed" },
+      { phase: "Workflow Engine", duration: "3 weeks", status: "incomplete" },
+      { phase: "Testing & Optimization", duration: "2 weeks", status: "incomplete" }
     ],
     team: "Solo Project",
     role: "Full Stack Developer & System Architect",
-    status: "Production Ready"
+    status: "-"
   },
   {
     id: 3,
@@ -119,19 +119,19 @@ const projectsData = [
       "Creating intuitive UI for non-technical users"
     ],
     liveLink: "https://gem-control-demo.vercel.app",
-    githubLink: "https://github.com/username/gem-control",
-    category: "E-commerce",
-    duration: "5 months",
-    year: "2023",
+    githubLink: "https://github.com/Sachinsen7/Gem-Control.git",
+    category: "Management Software",
+    duration: "3 months",
+    year: "2025",
     timeline: [
       { phase: "Business Analysis", duration: "2 weeks", status: "completed" },
       { phase: "Database Design", duration: "1 week", status: "completed" },
-      { phase: "Backend Development", duration: "6 weeks", status: "completed" },
-      { phase: "Frontend Development", duration: "8 weeks", status: "completed" },
+      { phase: "Backend Development", duration: "4 weeks", status: "completed" },
+      { phase: "Frontend Development", duration: "4 weeks", status: "completed" },
       { phase: "Barcode Integration", duration: "2 weeks", status: "completed" },
       { phase: "Testing & Deployment", duration: "1 week", status: "completed" }
     ],
-    team: "Solo Project",
+    team: "Team Project",
     role: "Full Stack Developer",
     status: "Client Delivered"
   },
@@ -152,14 +152,14 @@ const projectsData = [
       "Payment processing for course sales"
     ],
     liveLink: "https://learnsphere-demo.vercel.app",
-    githubLink: "https://github.com/username/learnsphere",
+    githubLink: "https://github.com/Sachinsen7/course-selling-app.git",
     category: "Education",
     timeline: [
       { phase: "UI/UX Design", duration: "1 week", status: "completed" },
       { phase: "Frontend Development", duration: "3 weeks", status: "completed" },
       { phase: "Backend API", duration: "2 weeks", status: "completed" },
       { phase: "Video Integration", duration: "1 week", status: "completed" },
-      { phase: "Testing & Launch", duration: "1 week", status: "completed" }
+      { phase: "Testing & Launch", duration: "1 week", status: "incomplete" }
     ],
     team: "Solo Project",
     role: "Full Stack Developer",
@@ -181,8 +181,8 @@ const projectsData = [
       "Cooking timer and instructions",
       "Dietary restriction filters"
     ],
-    liveLink: "https://dish-discovery-demo.vercel.app",
-    githubLink: "https://github.com/username/dish-discovery",
+    liveLink: "https://dishdishcovery.vercel.app/",
+    githubLink: "https://github.com/Sachinsen7/recipefinder.git",
     category: "Lifestyle",
     timeline: [
       { phase: "API Research", duration: "3 days", status: "completed" },
@@ -210,8 +210,8 @@ const projectsData = [
       "Offline listening capability",
       "Artist and album information"
     ],
-    liveLink: "https://melody-heaven-demo.vercel.app",
-    githubLink: "https://github.com/username/melody-heaven",
+    liveLink: "https://melodyheaven.vercel.app/",
+    githubLink: "https://github.com/Sachinsen7/melodyheaven.git",
     category: "Entertainment",
     timeline: [
       { phase: "Design & Prototyping", duration: "1 week", status: "completed" },
@@ -231,7 +231,7 @@ const projectsData = [
     summary: "Netflix Clone",
     description: "A pixel-perfect Netflix clone with streaming capabilities and user authentication.",
     fullDescription: "A comprehensive Netflix clone that replicates the core functionality and design of the popular streaming platform. Features include user authentication, content browsing, video streaming, and personalized recommendations with a responsive design.",
-    tech: ["React", "Framer Motion", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
+    tech: ["React", "Tailwind CSS"],
     features: [
       "User authentication and profiles",
       "Video streaming and playback",
@@ -240,13 +240,13 @@ const projectsData = [
       "Responsive design",
       "Recommendation system"
     ],
-    liveLink: "https://netflix-clone-demo.vercel.app",
-    githubLink: "https://github.com/username/netflix-clone",
+    liveLink: "https://netflix-clone-topaz-sigma.vercel.app/",
+    githubLink: "https://github.com/Sachinsen7/netflix-clone.git",
     category: "Entertainment",
     timeline: [
       { phase: "UI Replication", duration: "2 weeks", status: "completed" },
       { phase: "Authentication System", duration: "1 week", status: "completed" },
-      { phase: "Video Integration", duration: "2 weeks", status: "completed" },
+      { phase: "Video Integration", duration: "2 weeks", status: "incomplete" },
       { phase: "Responsive Design", duration: "1 week", status: "completed" },
       { phase: "Final Polish", duration: "1 week", status: "completed" }
     ],
