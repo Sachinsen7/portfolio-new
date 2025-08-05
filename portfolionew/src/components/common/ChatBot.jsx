@@ -31,7 +31,7 @@ const TypingIndicator = () => (
     exit={{ opacity: 0, y: -10 }}
     className="flex justify-start"
   >
-    <div className="max-w-[80%] p-3 rounded-lg bg-glass backdrop-blur border border-white/10">
+    <div className="max-w-[80%] p-2 sm:p-3 rounded-lg bg-glass backdrop-blur border border-glass-border">
       <div className="flex items-start gap-2">
         <Bot className="h-4 w-4 mt-0.5 text-accent" />
         <div className="flex space-x-1">
@@ -168,7 +168,7 @@ export default function ChatBot() {
     <>
       {/* Floating Chat Button */}
       <motion.div
-        className="fixed bottom-6 right-6 z-50"
+        className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40"
         initial={{ scale: 0, y: 100 }}
         animate={{ scale: 1, y: 0 }}
         transition={{
@@ -255,7 +255,7 @@ export default function ChatBot() {
               }}
             >
             {/* Header - Fixed */}
-            <DialogHeader className="flex-shrink-0 p-4 border-b border-white/10">
+            <DialogHeader className="flex-shrink-0 p-4 border-b border-glass-border">
               <DialogTitle className="flex items-center gap-2">
                 <Bot className="h-5 w-5 text-accent" />
                 Chat with Sachin
@@ -281,7 +281,7 @@ export default function ChatBot() {
                     className={`max-w-[80%] p-3 rounded-lg ${
                       message.sender === "user"
                         ? "bg-accent text-white"
-                        : "bg-glass backdrop-blur border border-white/10"
+                        : "bg-glass backdrop-blur border border-glass-border"
                     }`}
                   >
                     <div className="flex items-start gap-2">
@@ -301,10 +301,10 @@ export default function ChatBot() {
             </div>
 
             {/* Bottom Section - Fixed */}
-            <div className="flex-shrink-0 border-t border-white/10">
+            <div className="flex-shrink-0 border-t border-glass-border">
               {/* Quick Questions */}
               <div className="p-3">
-                <p className="text-xs text-gray-500 mb-2">Quick questions:</p>
+                <p className="text-xs text-foreground-muted mb-2">Quick questions:</p>
                 <div className="flex flex-wrap gap-1 mb-3">
                   {quickQuestions.slice(0, 4).map((question, index) => (
                     <Button
@@ -320,14 +320,14 @@ export default function ChatBot() {
               </div>
 
               {/* Input Area */}
-              <div className="p-3 border-t border-white/5">
+              <div className="p-3 border-t border-glass-border/50">
               <div className="flex gap-2">
                 <Input
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Type your message..."
-                  className="flex-1 bg-white/5 backdrop-blur border-white/10 text-gray-300 placeholder:text-gray-500"
+                  className="flex-1 bg-glass backdrop-blur border-glass-border text-foreground placeholder:text-foreground-muted"
                 />
                 <Button
                   onClick={handleSendMessage}
