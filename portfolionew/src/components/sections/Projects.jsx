@@ -1,5 +1,5 @@
 import LazyImage from "@/components/common/LazyImage";
-import { ExternalLink, Github, ArrowRight, Grid3X3 } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Grid3X3, Folder} from "lucide-react";
 import { Link } from "react-router-dom";
 import { projectsData } from "@/lib/projectsData";
 import { getTechIcon } from "@/lib/techIcons";
@@ -9,13 +9,13 @@ import { motion } from "framer-motion";
 
 export default function Projects() {
   return (
-    <section id="projects" className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-4xl" aria-labelledby="projects-heading">
+    <section id="projects" className="container mx-auto py-8 max-w-4xl" aria-labelledby="projects-heading">
       <div className="flex flex-col items-start gap-4 mb-8">
         <h2 id="projects-heading" className="text-xl text-start">
           Featured
         </h2>
-        <h3 className="text-2xl font-semibold text-foreground">
-          Projects
+        <h3 className="text-2xl font-semibold text-foreground flex items-center justify-center">
+         <Folder className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> Projects
         </h3>
       </div>
 
@@ -47,35 +47,35 @@ export default function Projects() {
                       {project.title}
                     </h3>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-xs text-gray-600 bg-glass backdrop-blur px-2 py-1 rounded">
+                      <span className="text-xs text-foreground-muted bg-glass backdrop-blur px-2 py-1 rounded border border-glass-border">
                         {project.category}
                       </span>
-                      <span className="text-xs text-gray-600">
+                      <span className="text-xs text-foreground-muted">
                         {project.year}
                       </span>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ExternalLink className="h-4 w-4 text-gray-500 hover:text-accent cursor-pointer" />
-                    <Github className="h-4 w-4 text-gray-500 hover:text-accent cursor-pointer" />
+                    <ExternalLink className="h-4 w-4 text-foreground-muted hover:text-accent cursor-pointer" />
+                    <Github className="h-4 w-4 text-foreground-muted hover:text-accent cursor-pointer" />
                   </div>
                 </div>
 
-                <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                <p className="text-sm text-foreground-muted mb-3 line-clamp-2">
                   {project.description}
                 </p>
 
                 <div className="flex items-center justify-between">
                   <div className="flex flex-wrap gap-1">
                     {project.tech.slice(0, 3).map((tech) => (
-                      <div key={tech} className="flex items-center gap-1 bg-glass backdrop-blur px-2 py-1 rounded text-xs text-foreground">
+                      <div key={tech} className="flex items-center gap-1 bg-glass backdrop-blur px-2 py-1 rounded text-xs text-foreground border border-glass-border">
                         {getTechIcon(tech)}
                         <span>{tech}</span>
                       </div>
                     ))}
                     {project.tech.length > 3 && (
-                      <span className="text-xs text-gray-500 px-2 py-1">
+                      <span className="text-xs text-foreground-muted px-2 py-1">
                         +{project.tech.length - 3} more
                       </span>
                     )}
@@ -105,7 +105,7 @@ export default function Projects() {
       <div className="flex justify-center mt-8">
         <Link
           to="/projects"
-          className="flex items-center gap-2 bg-glass backdrop-blur px-6 py-3 rounded-lg text-foreground hover:bg-white/10 transition-all duration-200 border border-white/20"
+          className="flex items-center gap-2 bg-glass backdrop-blur px-6 py-3 rounded-lg text-foreground hover:bg-button-hover transition-all duration-200 border border-glass-border"
         >
           <Grid3X3 className="h-4 w-4" />
           <span>Show All Projects</span>
