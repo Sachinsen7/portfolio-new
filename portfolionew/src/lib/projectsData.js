@@ -15,7 +15,7 @@ export const projectsData = [
     description: "Bus platform with ticket, cab, and hotel booking + WhatsApp API integration",
     tech: ["React", "Framer Motion", "Whatsapp API"],
     category: "Full Stack",
-    year: "2024",
+    year: "2025",
     summary: "A comprehensive bus management system with multi-service booking capabilities",
     fullDescription: "Built a comprehensive bus platform with ticket, cab, and hotel booking capabilities integrated with WhatsApp API, boosting operational efficiency by 90%. The platform features real-time seat availability, automated booking confirmations, and integrated payment processing.",
     features: [
@@ -46,7 +46,7 @@ export const projectsData = [
     team: "Solo Project",
     role: "Full Stack Developer",
     status: "Live & Maintained",
-    duration: "3 months"
+    duration: "2 months"
   },
   {
     id: 2,
@@ -55,7 +55,7 @@ export const projectsData = [
     description: "Role-based management software with automated workflows",
     tech: ["React", "Node.js", "Express"],
     category: "Enterprise",
-    year: "2024",
+    year: "2025",
     summary: "Enterprise-grade management tool with automated workflows",
     fullDescription: "Created role-based management software with automated workflows, cutting manual work by 85%. Features comprehensive workflow management, real-time analytics, and customizable dashboards.",
     features: [
@@ -86,7 +86,7 @@ export const projectsData = [
     team: "Solo Project",
     role: "Full Stack Developer & System Architect",
     status: "Production Ready",
-    duration: "4 months"
+    duration: "2 months"
   },
   {
     id: 3,
@@ -95,7 +95,7 @@ export const projectsData = [
     description: "Jewellery business management with inventory and barcode generation",
     tech: ["React", "Node.js", "MongoDB", "Express", "Material UI", "Redux"],
     category: "E-commerce",
-    year: "2023",
+    year: "2025",
     summary: "Comprehensive jewellery business management with e-commerce integration",
     fullDescription: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
     features: [
@@ -127,7 +127,7 @@ export const projectsData = [
     team: "Solo Project",
     role: "Full Stack Developer",
     status: "Client Delivered",
-    duration: "5 months"
+    duration: "3 months"
   },
   {
     id: 4,
@@ -136,7 +136,7 @@ export const projectsData = [
     description: "Online learning platform with course management and progress tracking",
     tech: ["React", "Framer Motion", "Express", "Redux", "Node.js", "MongoDB"],
     category: "Education",
-    year: "2024",
+    year: "2025",
     summary: "Online learning platform",
     fullDescription: "LearnSphere is a comprehensive online learning platform that enables educators to create, manage, and sell courses while providing students with an engaging learning experience. Features include video streaming, progress tracking, quizzes, and certification systems.",
     features: [
@@ -174,7 +174,7 @@ export const projectsData = [
     description: "Recipe finder with nutritional information and cooking instructions",
     tech: ["React", "Tailwind CSS"],
     category: "Lifestyle",
-    year: "2024",
+    year: "2025",
     summary: "Recipe Finder App",
     fullDescription: "A feature-rich recipe discovery platform that helps users find, save, and share recipes. Integrated with the Spoonacular API to provide access to thousands of recipes with detailed nutritional information, cooking instructions, and ingredient lists.",
     features: [
@@ -249,7 +249,7 @@ export const projectsData = [
     description: "Streaming platform clone with user authentication and video playback",
     tech: ["React", "Tailwind CSS"],
     category: "Entertainment",
-    year: "2024",
+    year: "2025",
     summary: "Netflix Clone",
     fullDescription: "A comprehensive Netflix clone that replicates the core functionality and design of the popular streaming platform. Features include user authentication, content browsing, video streaming, and personalized recommendations with a responsive design.",
     features: [
