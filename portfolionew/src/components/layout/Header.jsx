@@ -1,7 +1,16 @@
 import { useContext, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeContext } from "@/context/ThemeContext";
-import { Briefcase, Sun, Moon, FileText, Menu, Home, User, FolderOpen } from "lucide-react";
+import {
+  Briefcase,
+  Sun,
+  Moon,
+  FileText,
+  Menu,
+  Home,
+  User,
+  FolderOpen,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -9,7 +18,6 @@ const navItems = [
   { href: "/projects", label: "Work", icon: Briefcase },
   { href: "#blog", label: "Blog", icon: FileText },
 ];
-
 
 export default function Header() {
   const { toggleTheme, theme } = useContext(ThemeContext);
@@ -19,25 +27,25 @@ export default function Header() {
   const containerVariants = {
     normal: {
       scaleX: 1,
-      transition: { duration: 0.3, ease: "easeOut" }
+      transition: { duration: 0.3, ease: "easeOut" },
     },
     stretched: {
       scaleX: 1.1,
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
   };
 
   const itemVariants = {
     normal: {
       scale: 1,
       y: 0,
-      transition: { duration: 0.2, ease: "easeOut" }
+      transition: { duration: 0.2, ease: "easeOut" },
     },
     hovered: {
       scale: 1.1,
       y: -2,
-      transition: { duration: 0.2, ease: "easeOut" }
-    }
+      transition: { duration: 0.2, ease: "easeOut" },
+    },
   };
 
   return (
@@ -73,7 +81,10 @@ export default function Header() {
                   className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-foreground hover:text-accent hover:bg-button-hover transition-all duration-200"
                   aria-label={item.label}
                 >
-                  <IconComponent className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+                  <IconComponent
+                    className="h-4 w-4 sm:h-5 sm:w-5"
+                    aria-hidden="true"
+                  />
                 </Link>
               </motion.div>
             );
@@ -86,20 +97,19 @@ export default function Header() {
         {/* Theme Toggle */}
         <motion.div
           variants={itemVariants}
-          animate={hoveredItem === 'theme' ? "hovered" : "normal"}
-          onHoverStart={() => setHoveredItem('theme')}
+          animate={hoveredItem === "theme" ? "hovered" : "normal"}
+          onHoverStart={() => setHoveredItem("theme")}
           onHoverEnd={() => setHoveredItem(null)}
         >
           <Button
             variant="ghost"
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl hover:bg-button-hover transition-all duration-200"
+            className="w-10 h-10 rounded-xl flex items-center justify-center"
             onClick={toggleTheme}
-            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
           >
             {theme === "light" ? (
-              <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-foreground" aria-hidden="true" />
+              <Moon className="h-6 w-6 text-white" />
             ) : (
-              <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-foreground" aria-hidden="true" />
+              <Sun className="h-6 w-6 text-yellow-400" />
             )}
           </Button>
         </motion.div>
@@ -108,8 +118,8 @@ export default function Header() {
         <motion.div
           className="md:hidden"
           variants={itemVariants}
-          animate={hoveredItem === 'menu' ? "hovered" : "normal"}
-          onHoverStart={() => setHoveredItem('menu')}
+          animate={hoveredItem === "menu" ? "hovered" : "normal"}
+          onHoverStart={() => setHoveredItem("menu")}
           onHoverEnd={() => setHoveredItem(null)}
         >
           <Button
@@ -117,7 +127,10 @@ export default function Header() {
             className="w-10 h-10 rounded-xl hover:bg-white/10 transition-all duration-200"
             aria-label="Open menu"
           >
-            <Menu className="h-5 w-5 text-[var(--foreground)]" aria-hidden="true" />
+            <Menu
+              className="h-5 w-5 text-[var(--foreground)]"
+              aria-hidden="true"
+            />
           </Button>
         </motion.div>
       </motion.nav>
