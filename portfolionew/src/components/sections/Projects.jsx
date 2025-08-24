@@ -1,21 +1,30 @@
 import LazyImage from "@/components/common/LazyImage";
-import { ExternalLink, Github, ArrowRight, Grid3X3, Folder} from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  ArrowRight,
+  Grid3X3,
+  Folder,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { projectsData } from "@/lib/projectsData";
 import { getTechIcon } from "@/lib/techIcons";
 import { motion } from "framer-motion";
 
-
-
 export default function Projects() {
   return (
-    <section id="projects" className="container mx-auto py-8 max-w-4xl" aria-labelledby="projects-heading">
+    <section
+      id="projects"
+      className="container mx-auto py-8 max-w-4xl"
+      aria-labelledby="projects-heading"
+    >
       <div className="flex flex-col items-start gap-4 mb-8">
         <h2 id="projects-heading" className="text-xl text-start">
           Featured
         </h2>
         <h3 className="text-2xl font-semibold text-foreground flex items-center justify-center">
-         <Folder className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> Projects
+          <Folder className="h-6 w-6 mr-2 text-accent" aria-hidden="true" />{" "}
+          Projects
         </h3>
       </div>
 
@@ -69,7 +78,10 @@ export default function Projects() {
                 <div className="flex items-center justify-between">
                   <div className="flex flex-wrap gap-1">
                     {project.tech.slice(0, 3).map((tech) => (
-                      <div key={tech} className="flex items-center gap-1 bg-glass backdrop-blur px-2 py-1 rounded text-xs text-foreground border border-glass-border">
+                      <div
+                        key={tech}
+                        className="flex items-center gap-1 bg-glass backdrop-blur px-2 py-1 rounded text-xs text-foreground border border-glass-border"
+                      >
                         {getTechIcon(tech)}
                         <span>{tech}</span>
                       </div>
