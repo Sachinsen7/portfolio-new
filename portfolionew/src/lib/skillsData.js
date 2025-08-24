@@ -11,8 +11,7 @@ import {
   IconBrandVscode,
 } from "@tabler/icons-react";
 
-
-export const basicSkills = ["React", "Tailwind CSS", "JavaScript", "Node.js", "Web3"];
+export const basicSkills = ["TypeScript", "React", "NextJS", "NodeJS", "Web3"];
 
 export const detailedSkills = [
   { name: "React", icon: IconBrandReact, category: "Frontend" },
@@ -27,22 +26,21 @@ export const detailedSkills = [
   { name: "VS Code", icon: IconBrandVscode, category: "Tools" },
 ];
 
-
 export const skillsByCategory = {
-  "Frontend": [
+  Frontend: [
     { name: "React", icon: IconBrandReact },
     { name: "JavaScript", icon: IconBrandJavascript },
     { name: "Tailwind CSS", icon: IconBrandTailwind },
     { name: "HTML5", icon: null },
     { name: "CSS3", icon: null },
   ],
-  "Backend": [
+  Backend: [
     { name: "Node.js", icon: IconBrandNodejs },
     { name: "Express.js", icon: null },
     { name: "REST APIs", icon: null },
     { name: "Authentication", icon: null },
   ],
-  "Database": [
+  Database: [
     { name: "MongoDB", icon: IconBrandMongodb },
     { name: "Mongoose", icon: null },
     { name: "Database Design", icon: null },
@@ -58,9 +56,8 @@ export const skillsByCategory = {
     { name: "Web3", icon: null },
     { name: "Blockchain", icon: null },
     { name: "Smart Contracts", icon: null },
-  ]
+  ],
 };
-
 
 export const techStack = [
   { name: "React", icon: IconBrandReact },
@@ -71,21 +68,20 @@ export const techStack = [
   { name: "Vercel", icon: IconBrandVercel },
 ];
 
-
 export const getTechIcon = (tech) => {
   const iconMap = {
-    "React": IconBrandReact,
-    "JavaScript": IconBrandJavascript,
+    React: IconBrandReact,
+    JavaScript: IconBrandJavascript,
     "Tailwind CSS": IconBrandTailwind,
     "Node.js": IconBrandNodejs,
-    "MongoDB": IconBrandMongodb,
-    "Vercel": IconBrandVercel,
-    "Git": IconBrandGit,
-    "GitHub": IconBrandGithub,
-    "Figma": IconBrandFigma,
+    MongoDB: IconBrandMongodb,
+    Vercel: IconBrandVercel,
+    Git: IconBrandGit,
+    GitHub: IconBrandGithub,
+    Figma: IconBrandFigma,
     "VS Code": IconBrandVscode,
   };
-  
+
   const IconComponent = iconMap[tech];
   return IconComponent ? IconComponent : null;
 };
