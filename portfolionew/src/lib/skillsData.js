@@ -9,13 +9,30 @@ import {
   IconBrandGithub,
   IconBrandFigma,
   IconBrandVscode,
+  IconBrandTypescript,
+  IconBrandTypescript,
+  IconBrandPython,
+  iconBrandDjango,
 } from "@tabler/icons-react";
 
-export const basicSkills = ["TypeScript", "React", "NextJS", "NodeJS", "Web3"];
+export const basicSkills = [
+  "TypeScript",
+  "Django",
+  "Python",
+  "JavaScript",
+  "React",
+  "NextJS",
+  "NodeJS",
+  "Web3",
+];
 
 export const detailedSkills = [
   { name: "React", icon: IconBrandReact, category: "Frontend" },
   { name: "JavaScript", icon: IconBrandJavascript, category: "Language" },
+  { name: "TypeScript", icon: IconBrandTypescript, category: "Language" },
+  { name: "Next.js", icon: IconBrandNextjs, category: "Framework" },
+  { name: "Python", icon: IconBrandPython, category: "Language" },
+  { name: "Django", icon: iconBrandDjango, category: "Framework" },
   { name: "Node.js", icon: IconBrandNodejs, category: "Backend" },
   { name: "Tailwind CSS", icon: IconBrandTailwind, category: "Styling" },
   { name: "MongoDB", icon: IconBrandMongodb, category: "Database" },
