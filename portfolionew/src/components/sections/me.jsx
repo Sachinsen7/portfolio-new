@@ -1,5 +1,7 @@
 import profileImage from "/assets/images/me_and_bill.png";
 import {
+  IconBrandNextjs,
+  IconBrandTypescript,
   IconBrandReact,
   IconBrandJavascript,
   IconBrandTailwind,
@@ -12,6 +14,8 @@ import { User } from "lucide-react";
 
 export default function Me() {
   const skills = [
+    { name: "Next.js", icon: IconBrandNextjs },
+    { name: "TypeScript", icon: IconBrandTypescript },
     { name: "React", icon: IconBrandReact },
     { name: "JavaScript", icon: IconBrandJavascript },
     { name: "Node.js", icon: IconBrandNodejs },
@@ -21,7 +25,10 @@ export default function Me() {
   ];
 
   return (
-    <section className="container mx-auto py-8 max-w-4xl" aria-labelledby="me-heading">
+    <section
+      className="container mx-auto py-8 max-w-4xl"
+      aria-labelledby="me-heading"
+    >
       <div className="flex flex-col items-start gap-6">
         {/* Section Header */}
         <div className="flex flex-col items-start gap-2">
@@ -29,7 +36,7 @@ export default function Me() {
             About
           </h2>
           <h3 className="text-2xl font-semibold text-foreground flex justify-center items-center">
-           <User className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> Me
+            <User className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> Me
           </h3>
         </div>
 
@@ -46,10 +53,13 @@ export default function Me() {
 
           {/* Info */}
           <div className="flex-1 min-w-0">
-            <h4 className="font-bold text-lg text-foreground mb-2">Sachin Sen</h4>
+            <h4 className="font-bold text-lg text-foreground mb-2">
+              Sachin Sen
+            </h4>
             <p className="text-sm text-foreground-muted leading-relaxed mb-4">
-              A passionate full-stack developer crafting modern web experiences with React and Web3.
-              I specialize in building scalable applications that solve real-world problems and deliver
+              A passionate full-stack developer crafting modern web experiences
+              with React and Web3. I specialize in building scalable
+              applications that solve real-world problems and deliver
               exceptional user experiences.
             </p>
           </div>
