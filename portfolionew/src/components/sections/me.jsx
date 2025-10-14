@@ -8,20 +8,35 @@ import {
   IconBrandNodejs,
   IconBrandMongodb,
   IconBrandVercel,
+  IconBrandDocker,
+  IconBrandRedux,
+  IconBrandDjango,
+  // ,
+  IconApi,
+  IconDatabase,
 } from "@tabler/icons-react";
 
 import { User } from "lucide-react";
 
 export default function Me() {
   const skills = [
-    { name: "Next.js", icon: IconBrandNextjs },
-    { name: "TypeScript", icon: IconBrandTypescript },
-    { name: "React", icon: IconBrandReact },
-    { name: "JavaScript", icon: IconBrandJavascript },
-    { name: "Node.js", icon: IconBrandNodejs },
-    { name: "Tailwind CSS", icon: IconBrandTailwind },
-    { name: "MongoDB", icon: IconBrandMongodb },
-    { name: "Vercel", icon: IconBrandVercel },
+    { name: "Next.js", icon: IconBrandNextjs, color: "bg-slate-100 text-slate-700 border-slate-200" },
+    { name: "TypeScript", icon: IconBrandTypescript, color: "bg-blue-100 text-blue-700 border-blue-200" },
+    { name: "React", icon: IconBrandReact, color: "bg-cyan-100 text-cyan-700 border-cyan-200" },
+    { name: "JavaScript", icon: IconBrandJavascript, color: "bg-yellow-100 text-yellow-700 border-yellow-200" },
+    { name: "Node.js", icon: IconBrandNodejs, color: "bg-green-100 text-green-700 border-green-200" },
+    { name: "Docker", icon: IconBrandDocker, color: "bg-sky-100 text-sky-700 border-sky-200" },
+    { name: "Material UI", icon: IconBrandReact, color: "bg-indigo-100 text-indigo-700 border-indigo-200" },
+    { name: "Prisma", icon: IconDatabase, color: "bg-purple-100 text-purple-700 border-purple-200" },
+    { name: "Postman", icon: IconApi, color: "bg-orange-100 text-orange-700 border-orange-200" },
+    { name: "Redux", icon: IconBrandRedux, color: "bg-violet-100 text-violet-700 border-violet-200" },
+    { name: "Express", icon: IconBrandNodejs, color: "bg-emerald-100 text-emerald-700 border-emerald-200" },
+    { name: "Fastify", icon: IconBrandNodejs, color: "bg-teal-100 text-teal-700 border-teal-200" },
+    { name: "DaisyUI", icon: IconBrandTailwind, color: "bg-pink-100 text-pink-700 border-pink-200" },
+    { name: "Django", icon: IconBrandDjango, color: "bg-lime-100 text-lime-700 border-lime-200" },
+    { name: "Tailwind CSS", icon: IconBrandTailwind, color: "bg-cyan-100 text-cyan-700 border-cyan-200" },
+    { name: "MongoDB", icon: IconBrandMongodb, color: "bg-green-100 text-green-700 border-green-200" },
+    { name: "Vercel", icon: IconBrandVercel, color: "bg-gray-100 text-gray-700 border-gray-200" },
   ];
 
   return (
@@ -36,7 +51,8 @@ export default function Me() {
             About
           </h2>
           <h3 className="text-2xl font-semibold text-foreground flex justify-center items-center">
-            <User className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> Me
+            {/* <User className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> */}
+            Me
           </h3>
         </div>
 
@@ -74,7 +90,7 @@ export default function Me() {
               return (
                 <div
                   key={skill.name}
-                  className="bg-glass backdrop-blur flex items-center gap-1 px-2 py-1 rounded-md text-sm text-foreground border border-glass-border"
+                  className={`flex items-center gap-1 px-2 py-1 rounded-md text-sm border ${skill.color}`}
                 >
                   <IconComponent className="h-4 w-4" />
                   <span>{skill.name}</span>
