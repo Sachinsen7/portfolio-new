@@ -24,345 +24,7 @@ import {
   IconBrandMongodb,
 } from "@tabler/icons-react";
 import Header from "../layout/Header";
-const projectsData = [
-  {
-    id: 1,
-    title: "Yadav Bus Service Platform",
-    image: "/assets/images/yadav_bus.png",
-    summary:
-      "A comprehensive bus management system with multi-service booking capabilities",
-    description:
-      "Built a comprehensive bus platform with ticket, cab, and hotel booking capabilities integrated with WhatsApp API, boosting operational efficiency by 90%. The platform features real-time seat availability, automated booking confirmations, and integrated payment processing.",
-    fullDescription:
-      "This full-stack application revolutionizes bus service management by providing a complete ecosystem for transportation booking. The platform includes advanced features like dynamic pricing, route optimization, real-time GPS tracking, and comprehensive admin dashboards. The WhatsApp API integration enables seamless customer communication and booking confirmations, making it a one-stop solution for all transportation needs.",
-    tech: ["React", "Node.js", "MongoDB", "WhatsApp API", "Tailwind CSS"],
-    features: [
-      "Real-time seat booking system with live availability",
-      "WhatsApp API integration for instant notifications",
-      "Multi-service booking (Bus, Cab, Hotel)",
-      "Admin dashboard with comprehensive analytics",
-      "Secure payment gateway integration",
-      "Route management and optimization system",
-      "Customer management and booking history",
-      "Dynamic pricing based on demand and season",
-    ],
-    challenges: [
-      "Implementing real-time seat availability across multiple buses",
-      "Integrating WhatsApp API for seamless customer communication",
-      "Building a scalable booking system handling concurrent users",
-      "Creating an intuitive admin dashboard for operations management",
-    ],
-    liveLink: "https://yadav-bus-demo.vercel.app",
-    githubLink: "https://github.com/Sachinsen7/yadavBusServiceFullStack.git",
-    category: "Front End",
-    duration: "1 month",
-    year: "2025",
-    timeline: [
-      { phase: "Planning & Design", duration: "2 weeks", status: "completed" },
-      { phase: "Backend Development", duration: "1 week", status: "completed" },
-      {
-        phase: "Frontend Development",
-        duration: "3 weeks",
-        status: "completed",
-      },
-      { phase: "API Integration", duration: "2 weeks", status: "incomplete" },
-      {
-        phase: "Testing & Deployment",
-        duration: "1 week",
-        status: "incomplete",
-      },
-    ],
-    team: "Solo Project",
-    role: "Front End Developer",
-    status: "Live & Maintained",
-  },
-  {
-    id: 2,
-    title: "Video Crew Website",
-    image: "/assets/images/videocrew.png",
-    summary:
-      "A pixel-perfect, dark-themed portfolio website with CMS for a video production company",
-    description:
-      "Built a modern, responsive, dark-themed portfolio website for a video production company based on Figma designs. Delivered frontend and backend with TypeScript, React, Node.js, and MongoDB/PostgreSQL, along with an admin panel for portfolio management, contact inquiries, and media uploads.",
-    fullDescription:
-      "Developed as a 7-day test project, this full-stack application implements six Figma-designed pages (Home, About, Process, Portfolio, Differentiation, Contact) with pixel-perfect accuracy. Features include video playback in the portfolio, responsive animations, dynamic content loading, and a secure admin panel for managing portfolio items, contact submissions, and media assets. The backend exposes a RESTful API with authentication, CRUD functionality, and file uploads, while the frontend is optimized for performance with lazy loading, code splitting, and responsive design.",
-    tech: [
-      "React 18",
-      "TypeScript",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "MongoDB/PostgreSQL",
-      "REST API",
-      "Vercel",
-      "Heroku",
-    ],
-    features: [
-      "Pixel-perfect implementation of all six pages from Figma",
-      "Admin panel with authentication and portfolio CRUD operations",
-      "Dynamic portfolio grid with integrated video player",
-      "Contact form handling with inquiry dashboard",
-      "File upload system for images and videos",
-      "Smooth animations, hover effects, and scroll transitions",
-      "Fully responsive across mobile, tablet, and desktop",
-      "Optimized performance with lazy loading and code splitting",
-    ],
-    challenges: [
-      "Matching complex layouts exactly as per Figma design",
-      "Implementing secure and scalable file uploads for videos",
-      "Designing a backend API to handle CMS features efficiently",
-      "Ensuring high performance scores and responsive behavior",
-    ],
-    liveLink: "https://videocrew-demo.vercel.app",
-    githubLink: "https://github.com/Sachinsen7/videocrew-website.git",
-    category: "Full Stack",
-    duration: "7 days",
-    year: "2025",
-    timeline: [
-      { phase: "Planning & Design", duration: "1 day", status: "completed" },
-      { phase: "Backend Development", duration: "2 days", status: "completed" },
-      {
-        phase: "Frontend Development",
-        duration: "3 days",
-        status: "completed",
-      },
-      {
-        phase: "Admin Panel & CMS Integration",
-        duration: "3 day",
-        status: "completed",
-      },
-    ],
-    team: "Team Project",
-    role: "Full-Stack Developer",
-    status: "Live & Maintained",
-  },
-
-  {
-    id: 3,
-    title: "ADRS Gem Control",
-    image: "/assets/images/gem_control.png",
-    summary:
-      "Comprehensive jewellery business management with e-commerce integration",
-    description:
-      "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
-    fullDescription:
-      "Comprehensive jewellery business management system that combines inventory control, sales tracking, and customer management. Features advanced barcode generation for product tracking, real-time inventory updates, and integrated e-commerce capabilities for online sales. The system handles complex jewellery specifications including weight, purity, and certification details.",
-    tech: ["React", "Redux", "Material UI", "Node.js", "MongoDB"],
-    features: [
-      "Advanced inventory management with barcode generation",
-      "Sales tracking and comprehensive analytics",
-      "Customer relationship management system",
-      "E-commerce integration with online catalog",
-      "Real-time dashboard with business insights",
-      "Product catalog with detailed specifications",
-      "Invoice generation and billing system",
-      "Multi-location inventory tracking",
-    ],
-    challenges: [
-      "Handling complex jewellery product specifications",
-      "Implementing barcode generation and scanning system",
-      "Building real-time inventory synchronization",
-      "Creating intuitive UI for non-technical users",
-    ],
-    liveLink: "https://gem-control-demo.vercel.app",
-    githubLink: "https://github.com/Sachinsen7/Gem-Control.git",
-    category: "Management Software",
-    duration: "3 months",
-    year: "2025",
-    timeline: [
-      { phase: "Business Analysis", duration: "2 weeks", status: "completed" },
-      { phase: "Database Design", duration: "1 week", status: "completed" },
-      {
-        phase: "Backend Development",
-        duration: "4 weeks",
-        status: "completed",
-      },
-      {
-        phase: "Frontend Development",
-        duration: "4 weeks",
-        status: "completed",
-      },
-      {
-        phase: "Barcode Integration",
-        duration: "2 weeks",
-        status: "completed",
-      },
-      {
-        phase: "Testing & Deployment",
-        duration: "1 week",
-        status: "completed",
-      },
-    ],
-    team: "Team Project",
-    role: "Full Stack Developer",
-    status: "Client Delivered",
-  },
-  {
-    id: 4,
-    title: "Course Selling App",
-    image: "/assets/images/learnsphere.png",
-    summary: "Online learning platform.",
-    description:
-      "Modern e-learning platform with course management, student progress tracking, and interactive learning features.",
-    fullDescription:
-      "LearnSphere is a comprehensive online learning platform that enables educators to create, manage, and sell courses while providing students with an engaging learning experience. Features include video streaming, progress tracking, quizzes, and certification systems.",
-    tech: [
-      "React",
-      "Framer Motion",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "MongoDB",
-    ],
-    features: [
-      "Course creation and management",
-      "Video streaming and playback",
-      "Student progress tracking",
-      "Interactive quizzes and assessments",
-      "Certificate generation",
-      "Payment processing for course sales",
-    ],
-    liveLink: "https://learnsphere-demo.vercel.app",
-    githubLink: "https://github.com/Sachinsen7/course-selling-app.git",
-    category: "Education",
-    timeline: [
-      { phase: "UI/UX Design", duration: "1 week", status: "completed" },
-      {
-        phase: "Frontend Development",
-        duration: "3 weeks",
-        status: "completed",
-      },
-      { phase: "Backend API", duration: "2 weeks", status: "completed" },
-      { phase: "Video Integration", duration: "1 week", status: "completed" },
-      { phase: "Testing & Launch", duration: "1 week", status: "incomplete" },
-    ],
-    team: "Solo Project",
-    role: "Full Stack Developer",
-    status: "Portfolio Project",
-  },
-  {
-    id: 5,
-    title: "Dish Discovery App",
-    image: "/assets/images/recipefinder.png",
-    summary: "Recipe Finder App",
-    description:
-      "Discover and explore recipes from around the world with this intuitive recipe finder application.",
-    fullDescription:
-      "A feature-rich recipe discovery platform that helps users find, save, and share recipes. Integrated with the Spoonacular API to provide access to thousands of recipes with detailed nutritional information, cooking instructions, and ingredient lists.",
-    tech: ["React", "Tailwind CSS", "Spoonacular API"],
-    features: [
-      "Recipe search and filtering",
-      "Nutritional information display",
-      "Ingredient-based recipe suggestions",
-      "Favorite recipes collection",
-      "Cooking timer and instructions",
-      "Dietary restriction filters",
-    ],
-    liveLink: "https://dishdishcovery.vercel.app/",
-    githubLink: "https://github.com/Sachinsen7/recipefinder.git",
-    category: "Lifestyle",
-    timeline: [
-      { phase: "API Research", duration: "3 days", status: "completed" },
-      {
-        phase: "Frontend Development",
-        duration: "2 weeks",
-        status: "completed",
-      },
-      { phase: "API Integration", duration: "1 week", status: "completed" },
-      { phase: "UI Polish", duration: "3 days", status: "completed" },
-    ],
-    team: "Solo Project",
-    role: "Frontend Developer",
-    status: "Portfolio Project",
-  },
-  {
-    id: 6,
-    title: "Melody Heaven",
-    image: "/assets/images/music_player.png",
-    summary: "Music Player",
-    description:
-      "A modern music streaming application with playlist management and social features.",
-    fullDescription:
-      "Melody Heaven is a sophisticated music streaming platform that combines beautiful design with powerful functionality. Features include playlist creation, social sharing, music discovery, and high-quality audio streaming with a focus on user experience.",
-    tech: [
-      "React",
-      "Framer Motion",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "MongoDB",
-    ],
-    features: [
-      "High-quality music streaming",
-      "Playlist creation and management",
-      "Music discovery algorithms",
-      "Social sharing features",
-      "Offline listening capability",
-      "Artist and album information",
-    ],
-    liveLink: "https://melodyheaven.vercel.app/",
-    githubLink: "https://github.com/Sachinsen7/melodyheaven.git",
-    category: "Entertainment",
-    timeline: [
-      {
-        phase: "Design & Prototyping",
-        duration: "1 week",
-        status: "completed",
-      },
-      { phase: "Audio System Setup", duration: "2 weeks", status: "completed" },
-      {
-        phase: "Frontend Development",
-        duration: "3 weeks",
-        status: "completed",
-      },
-      { phase: "Backend & Database", duration: "2 weeks", status: "completed" },
-      {
-        phase: "Testing & Optimization",
-        duration: "1 week",
-        status: "completed",
-      },
-    ],
-    team: "Solo Project",
-    role: "Full Stack Developer",
-    status: "Portfolio Project",
-  },
-  {
-    id: 7,
-    title: "Netflix Clone",
-    image: "/assets/images/netflix.png",
-    summary: "Netflix Clone",
-    description:
-      "A pixel-perfect Netflix clone with streaming capabilities and user authentication.",
-    fullDescription:
-      "A comprehensive Netflix clone that replicates the core functionality and design of the popular streaming platform. Features include user authentication, content browsing, video streaming, and personalized recommendations with a responsive design.",
-    tech: ["React", "Tailwind CSS"],
-    features: [
-      "User authentication and profiles",
-      "Video streaming and playback",
-      "Content categorization and browsing",
-      "Search functionality",
-      "Responsive design",
-      "Recommendation system",
-    ],
-    liveLink: "https://netflix-clone-topaz-sigma.vercel.app/",
-    githubLink: "https://github.com/Sachinsen7/netflix-clone.git",
-    category: "Entertainment",
-    timeline: [
-      { phase: "UI Replication", duration: "2 weeks", status: "completed" },
-      {
-        phase: "Authentication System",
-        duration: "1 week",
-        status: "completed",
-      },
-      { phase: "Video Integration", duration: "2 weeks", status: "incomplete" },
-      { phase: "Responsive Design", duration: "1 week", status: "completed" },
-      { phase: "Final Polish", duration: "1 week", status: "completed" },
-    ],
-    team: "Solo Project",
-    role: "Frontend Developer",
-    status: "Portfolio Project",
-  },
-];
+import { projectsData } from "@/lib/projectsData";
 
 const getTechIcon = (tech) => {
   const iconMap = {
@@ -508,7 +170,7 @@ export default function ProjectDetails() {
                 </p>
               </div>
 
-              <p className="text-sm text-gray-600 mb-4">{project.summary}</p>
+              <p className="text-sm text-gray-800 dark:text-gray-800 mb-4">{project.summary}</p>
             </div>
           </div>
 
@@ -531,10 +193,10 @@ export default function ProjectDetails() {
           {/* Description */}
           <div className="mb-6">
             <h2 className="font-bold mb-3">Overview</h2>
-            <p className="text-gray-600 text-sm leading-relaxed mb-3">
+            <p className="text-gray-800 dark:text-gray-300 text-sm leading-relaxed mb-3">
               {project.description}
             </p>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-800 dark:text-gray-300 text-sm leading-relaxed">
               {project.fullDescription}
             </p>
           </div>
@@ -544,7 +206,7 @@ export default function ProjectDetails() {
             <h2 className="font-bold mb-3">Key Features</h2>
             <div className="space-y-2">
               {project.features.slice(0, 6).map((feature, index) => (
-                <p key={index} className="text-gray-600 text-sm">
+                <p key={index} className="text-gray-800 dark:text-gray-300 text-sm">
                   ‣ {feature}
                 </p>
               ))}
@@ -557,7 +219,7 @@ export default function ProjectDetails() {
               <h2 className="font-bold mb-3">Technical Challenges</h2>
               <div className="space-y-2">
                 {project.challenges.map((challenge, index) => (
-                  <p key={index} className="text-gray-600 text-sm">
+                  <p key={index} className="text-gray-800 dark:text-gray-300 text-sm">
                     ‣ {challenge}
                   </p>
                 ))}
@@ -577,11 +239,10 @@ export default function ProjectDetails() {
                   >
                     <div className="flex items-center gap-3">
                       <div
-                        className={`w-3 h-3 rounded-full ${
-                          phase.status === "completed"
-                            ? "bg-green-500"
-                            : "bg-gray-400"
-                        }`}
+                        className={`w-3 h-3 rounded-full ${phase.status === "completed"
+                          ? "bg-green-500"
+                          : "bg-gray-400"
+                          }`}
                       ></div>
                       <span className="text-sm font-medium">{phase.phase}</span>
                     </div>
