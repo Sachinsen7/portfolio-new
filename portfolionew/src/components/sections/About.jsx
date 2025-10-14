@@ -1,6 +1,6 @@
 import { Briefcase, Globe } from "lucide-react";
 import logo from "/assets/images/logo.png";
-import {IconBrandReact, IconBrandJavascript, IconBrandTailwind, IconBrandNodejs, IconBrandVercel, IconBrandMongodb, } from "@tabler/icons-react";
+import { IconBrandReact, IconBrandJavascript, IconBrandTailwind, IconBrandNodejs, IconBrandVercel, IconBrandMongodb, } from "@tabler/icons-react";
 
 
 export default function About() {
@@ -12,7 +12,8 @@ export default function About() {
           Featured
         </h2>
         <h3 className="text-2xl font-semibold text-foreground flex items-center justify-center">
-          <Briefcase className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> Experience
+          {/* <Briefcase className="h-6 w-6 mr-2 text-accent" aria-hidden="true" /> */}
+          Experience
         </h3>
       </div>
 
@@ -31,7 +32,7 @@ export default function About() {
               <div className="flex items-start justify-between mb-2">
                 <div>
                   <h4 className="font-semibold text-base text-foreground">ADRS Technosoft</h4>
-                  <p className="text-sm text-gray-600">Front End Developer</p>
+                  <p className="text-sm text-gray-600">Full Stack Developer</p>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-xs text-foreground-muted bg-glass backdrop-blur px-2 py-1 rounded border border-glass-border">
                       May 2025 - Present
@@ -59,27 +60,27 @@ export default function About() {
                 <h5 className="font-semibold text-sm text-foreground mb-2">Technologies</h5>
                 <div className="flex flex-wrap gap-2">
                   <div className="bg-glass backdrop-blur flex items-center gap-1 px-2 py-1 rounded-md text-sm text-foreground border border-glass-border">
-                    <IconBrandReact className="h-4 w-4"/>
+                    <IconBrandReact className="h-4 w-4" />
                     React
                   </div>
                   <div className="bg-glass backdrop-blur flex items-center gap-1 px-2 py-1 rounded-md text-sm text-foreground border border-glass-border">
-                    <IconBrandJavascript className="h-4 w-4"/>
+                    <IconBrandJavascript className="h-4 w-4" />
                     JavaScript
                   </div>
                   <div className="bg-glass backdrop-blur flex items-center gap-1 px-2 py-1 rounded-md text-sm text-foreground border border-glass-border">
-                    <IconBrandNodejs className="h-4 w-4"/>
+                    <IconBrandNodejs className="h-4 w-4" />
                     Node.js
                   </div>
                   <div className="bg-glass backdrop-blur flex items-center gap-1 px-2 py-1 rounded-md text-sm text-foreground border border-glass-border">
-                    <IconBrandTailwind className="h-4 w-4"/>
+                    <IconBrandTailwind className="h-4 w-4" />
                     Tailwind CSS
                   </div>
                   <div className="bg-glass backdrop-blur flex items-center gap-1 px-2 py-1 rounded-md text-sm text-foreground border border-glass-border">
-                    <IconBrandMongodb className="h-4 w-4"/>
+                    <IconBrandMongodb className="h-4 w-4" />
                     MongoDB
                   </div>
                   <div className="bg-glass backdrop-blur flex items-center gap-1 px-2 py-1 rounded-md text-sm text-foreground border border-glass-border">
-                    <IconBrandVercel className="h-4 w-4"/>
+                    <IconBrandVercel className="h-4 w-4" />
                     Vercel
                   </div>
                 </div>
