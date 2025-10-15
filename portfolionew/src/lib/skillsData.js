@@ -10,9 +10,9 @@ import {
   IconBrandFigma,
   IconBrandVscode,
   IconBrandTypescript,
-  IconBrandTypescript,
   IconBrandPython,
-  iconBrandDjango,
+  IconBrandNextjs,
+  IconBrandDjango,
 } from "@tabler/icons-react";
 
 export const basicSkills = [
@@ -32,7 +32,7 @@ export const detailedSkills = [
   { name: "TypeScript", icon: IconBrandTypescript, category: "Language" },
   { name: "Next.js", icon: IconBrandNextjs, category: "Framework" },
   { name: "Python", icon: IconBrandPython, category: "Language" },
-  { name: "Django", icon: iconBrandDjango, category: "Framework" },
+  { name: "Django", icon: IconBrandDjango, category: "Framework" },
   { name: "Node.js", icon: IconBrandNodejs, category: "Backend" },
   { name: "Tailwind CSS", icon: IconBrandTailwind, category: "Styling" },
   { name: "MongoDB", icon: IconBrandMongodb, category: "Database" },
