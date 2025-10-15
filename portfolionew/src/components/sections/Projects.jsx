@@ -23,7 +23,7 @@ export default function Projects() {
           Featured
         </h2>
         <h3 className="text-2xl font-semibold text-foreground flex items-center justify-center">
-          <Folder className="h-6 w-6 mr-2 text-accent" aria-hidden="true" />{" "}
+          {/* <Folder className="h-6 w-6 mr-2 text-accent" aria-hidden="true" />{" "} */}
           Projects
         </h3>
       </div>
