@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import CompactMusicPlayer from "@/components/common/CompactMusicPlayer";
 
 const navItems = [
   { href: "/projects", label: "Work", icon: Briefcase },
@@ -90,6 +91,12 @@ export default function Header() {
             );
           })}
         </div>
+
+        {/* Separator */}
+        <div className="w-px h-6 bg-glass-border mx-1" />
+
+        {/* Music Player */}
+        <CompactMusicPlayer />
 
         {/* Separator */}
         <div className="w-px h-6 bg-glass-border mx-1" />
