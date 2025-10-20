@@ -16,7 +16,7 @@ import {
   IconDatabase,
 } from "@tabler/icons-react";
 
-import { User } from "lucide-react";
+
 
 export default function Me() {
   const skills = [
