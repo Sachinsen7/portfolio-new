@@ -5,9 +5,30 @@ import { Github, Activity } from "lucide-react";
 export default function GitHubContributions() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [contributionData, setContributionData] = useState(null);
+    const [colorScheme, setColorScheme] = useState('light');
 
     // Your GitHub username - replace with your actual username
     const githubUsername = "Sachinsen7";
+
+    // Detect theme changes
+    useEffect(() => {
+        const updateColorScheme = () => {
+            setColorScheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        };
+
+        // Initial check
+        updateColorScheme();
+
+        // Listen for theme changes
+        const observer = new MutationObserver(updateColorScheme);
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     // Custom theme to match your website colors
     const customTheme = {
@@ -27,12 +48,15 @@ export default function GitHubContributions() {
         ]
     };
 
-    const handleLoad = () => {
+    const handleLoad = (data) => {
+        console.log('GitHub data loaded:', data);
+        setContributionData(data);
         setLoading(false);
         setError(false);
     };
 
-    const handleError = () => {
+    const handleError = (err) => {
+        console.error('GitHub data error:', err);
         setLoading(false);
         setError(true);
     };
@@ -101,7 +125,7 @@ export default function GitHubContributions() {
                     <div className="overflow-x-auto">
                         <GitHubCalendar
                             username={githubUsername}
-                            colorScheme="light"
+                            colorScheme={colorScheme}
                             fontSize={12}
                             blockSize={12}
                             blockMargin={3}
@@ -110,12 +134,29 @@ export default function GitHubContributions() {
                             hideTotalCount={false}
                             loading={loading}
                             errorMessage="Unable to load contributions"
+                            onLoad={handleLoad}
+                            onError={handleError}
+                            theme={customTheme}
                             style={{
                                 color: 'var(--foreground)',
                                 fontSize: '12px'
                             }}
                         />
                     </div>
+
+                    {/* Display contribution stats if data is available */}
+                    {contributionData && (
+                        <div className="mt-4 p-4 bg-glass/50 rounded-lg border border-glass-border">
+                            <div className="flex items-center justify-between text-sm">
+                                <span className="text-foreground-muted">
+                                    Total contributions in the last year:
+                                </span>
+                                <span className="font-semibold text-accent">
+                                    {contributionData.total?.lastYear || 0}
+                                </span>
+                            </div>
+                        </div>
+                    )}
 
                     <div className="mt-4 flex items-center justify-between text-xs text-foreground-muted">
                         <span>Less</span>
