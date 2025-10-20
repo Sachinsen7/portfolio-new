@@ -38,7 +38,7 @@ export default function Projects() {
             transition={{ duration: 0.2, delay: index * 0.05 }}
             whileHover={{ scale: 1.01 }}
           >
-            <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 p-4 sm:p-6 rounded-xl bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl hover:bg-white/90 dark:hover:bg-gray-800/70 transition-all duration-300">
+            <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 p-4 sm:p-6 rounded-xl bg-white/95 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300/60 dark:border-gray-700 shadow-lg hover:shadow-xl hover:bg-white dark:hover:bg-gray-800/70 transition-all duration-300">
               {/* Project Image */}
               <div className="flex-shrink-0">
                 <LazyImage
@@ -56,10 +56,10 @@ export default function Projects() {
                       {project.title}
                     </h3>
                     <div className="flex items-center gap-2 mt-2">
-                      <span className="text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600">
+                      <span className="text-xs font-medium text-gray-800 dark:text-gray-300 bg-gray-200/80 dark:bg-gray-700 px-3 py-1 rounded-full border border-gray-400/50 dark:border-gray-600 shadow-sm">
                         {project.category}
                       </span>
-                      <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                      <span className="text-xs font-medium text-gray-700 dark:text-gray-400 bg-gray-100/60 dark:bg-transparent px-2 py-1 rounded">
                         {project.year}
                       </span>
                     </div>
@@ -71,7 +71,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <p className="text-sm text-gray-700 dark:text-gray-300 mb-3 line-clamp-2">
+                <p className="text-sm text-gray-800 dark:text-gray-300 mb-3 line-clamp-2 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -80,14 +80,14 @@ export default function Projects() {
                     {project.tech.slice(0, 3).map((tech) => (
                       <div
                         key={tech}
-                        className="flex items-center gap-1 bg-glass backdrop-blur px-2 py-1 rounded text-xs text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600"
+                        className="flex items-center gap-1 bg-gray-100/80 dark:bg-glass backdrop-blur px-2 py-1 rounded text-xs text-gray-800 dark:text-gray-200 border border-gray-400/40 dark:border-gray-600 shadow-sm"
                       >
                         {getTechIcon(tech)}
                         <span>{tech}</span>
                       </div>
                     ))}
                     {project.tech.length > 3 && (
-                      <span className="text-xs text-gray-600 dark:text-gray-400 px-2 py-1">
+                      <span className="text-xs text-gray-700 dark:text-gray-400 px-2 py-1 bg-gray-50 dark:bg-transparent rounded border border-gray-300/30 dark:border-transparent">
                         +{project.tech.length - 3} more
                       </span>
                     )}
@@ -107,7 +107,7 @@ export default function Projects() {
 
             {/* Separator line */}
             {index < projectsData.length - 1 && (
-              <div className="h-px bg-gray-200 dark:bg-gray-700 my-4 opacity-50" />
+              <div className="h-px bg-gray-300/60 dark:bg-gray-700 my-4 opacity-70" />
             )}
           </motion.div>
         ))}
@@ -117,7 +117,7 @@ export default function Projects() {
       <div className="flex justify-center mt-8">
         <Link
           to="/projects"
-          className="flex items-center gap-2 bg-glass backdrop-blur px-6 py-3 rounded-lg text-foreground hover:bg-button-hover transition-all duration-200 border border-glass-border"
+          className="flex items-center gap-2 bg-white/90 dark:bg-glass backdrop-blur px-6 py-3 rounded-lg text-gray-900 dark:text-foreground hover:bg-gray-100 dark:hover:bg-button-hover transition-all duration-200 border border-gray-300/60 dark:border-glass-border shadow-md hover:shadow-lg"
         >
           <Grid3X3 className="h-4 w-4" />
           <span>Show All Projects</span>
