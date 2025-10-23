@@ -26,16 +26,14 @@ import {
   IconCode,
 } from "@tabler/icons-react";
 
-// Comprehensive tech icon mapping with enhanced coverage
 export const techIconMap = {
-  // Frontend Frameworks & Libraries
   React: IconBrandReact,
   "Next.js": IconBrandNextjs,
   "Next.js 15": IconBrandNextjs,
   "React 19": IconBrandReact,
   Redux: IconBrandRedux,
   "Material UI": IconBrandReact,
-  "DaisyUI": IconBrandTailwind,
+  DaisyUI: IconBrandTailwind,
 
   // Languages
   JavaScript: IconBrandJavascript,
@@ -96,21 +94,17 @@ export const techIconMap = {
   Aspose: IconCode,
 };
 
-// Function to get tech icon component
 export const getTechIcon = (tech, className = "h-4 w-4") => {
   const IconComponent = techIconMap[tech];
   if (!IconComponent) return null;
 
-  // Return the component function, not JSX
   return IconComponent;
 };
 
-// Function to check if tech has an icon
 export const hasTechIcon = (tech) => {
   return techIconMap[tech] !== null && techIconMap[tech] !== undefined;
 };
 
-// Get all available tech names
 export const getAvailableTech = () => {
   return Object.keys(techIconMap);
 };
