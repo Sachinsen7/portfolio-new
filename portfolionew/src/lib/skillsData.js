@@ -13,66 +13,106 @@ import {
   IconBrandPython,
   IconBrandNextjs,
   IconBrandDjango,
+  IconBrandRedux,
+  IconBrandDocker,
+  IconBrandAws,
+  IconBrandCloudflare,
+  IconApi,
+  IconDatabase,
+  IconCloud,
+  IconCode,
+  IconBrain,
 } from "@tabler/icons-react";
 
 export const basicSkills = [
+  "Next.js",
   "TypeScript",
-  "Django",
-  "Python",
-  "JavaScript",
   "React",
-  "NextJS",
-  "NodeJS",
-  "Web3",
+  "Node.js",
+  "JavaScript",
+  "Python",
+  "AWS",
+  "Docker",
+  "MongoDB",
+  "Prisma",
+  "Tailwind CSS",
+  "Redux",
 ];
 
 export const detailedSkills = [
-  { name: "React", icon: IconBrandReact, category: "Frontend" },
-  { name: "JavaScript", icon: IconBrandJavascript, category: "Language" },
-  { name: "TypeScript", icon: IconBrandTypescript, category: "Language" },
-  { name: "Next.js", icon: IconBrandNextjs, category: "Framework" },
-  { name: "Python", icon: IconBrandPython, category: "Language" },
-  { name: "Django", icon: IconBrandDjango, category: "Framework" },
-  { name: "Node.js", icon: IconBrandNodejs, category: "Backend" },
-  { name: "Tailwind CSS", icon: IconBrandTailwind, category: "Styling" },
-  { name: "MongoDB", icon: IconBrandMongodb, category: "Database" },
-  { name: "Vercel", icon: IconBrandVercel, category: "Deployment" },
-  { name: "Git", icon: IconBrandGit, category: "Tools" },
-  { name: "GitHub", icon: IconBrandGithub, category: "Tools" },
-  { name: "Figma", icon: IconBrandFigma, category: "Design" },
-  { name: "VS Code", icon: IconBrandVscode, category: "Tools" },
+  // Core Technologies
+  { name: "Next.js", icon: IconBrandNextjs, category: "Framework", level: "Expert", color: "slate" },
+  { name: "TypeScript", icon: IconBrandTypescript, category: "Language", level: "Expert", color: "blue" },
+  { name: "React", icon: IconBrandReact, category: "Frontend", level: "Expert", color: "cyan" },
+  { name: "Node.js", icon: IconBrandNodejs, category: "Backend", level: "Expert", color: "green" },
+  { name: "JavaScript", icon: IconBrandJavascript, category: "Language", level: "Expert", color: "yellow" },
+
+  // Advanced Technologies
+  { name: "Python", icon: IconBrandPython, category: "Language", level: "Advanced", color: "blue" },
+  { name: "AWS", icon: IconBrandAws, category: "Cloud", level: "Advanced", color: "orange" },
+  { name: "Docker", icon: IconBrandDocker, category: "DevOps", level: "Advanced", color: "sky" },
+  { name: "MongoDB", icon: IconBrandMongodb, category: "Database", level: "Advanced", color: "emerald" },
+  { name: "Prisma", icon: IconDatabase, category: "ORM", level: "Advanced", color: "purple" },
+
+  // Frontend & Styling
+  { name: "Tailwind CSS", icon: IconBrandTailwind, category: "Styling", level: "Expert", color: "cyan" },
+  { name: "Redux", icon: IconBrandRedux, category: "State Management", level: "Advanced", color: "violet" },
+
+  // Backend Frameworks
+  { name: "Express", icon: IconBrandNodejs, category: "Backend", level: "Advanced", color: "emerald" },
+  { name: "Django", icon: IconBrandDjango, category: "Framework", level: "Advanced", color: "lime" },
+
+  // Tools & Services
+  { name: "Git", icon: IconBrandGit, category: "Version Control", level: "Expert", color: "red" },
+  { name: "GitHub", icon: IconBrandGithub, category: "Platform", level: "Expert", color: "gray" },
+  { name: "Vercel", icon: IconBrandVercel, category: "Deployment", level: "Advanced", color: "gray" },
+  { name: "Cloudflare", icon: IconBrandCloudflare, category: "CDN", level: "Advanced", color: "orange" },
+  { name: "VS Code", icon: IconBrandVscode, category: "IDE", level: "Expert", color: "blue" },
+  { name: "Figma", icon: IconBrandFigma, category: "Design", level: "Advanced", color: "pink" },
+
+  // APIs & Integration
+  { name: "REST APIs", icon: IconApi, category: "API", level: "Expert", color: "indigo" },
+  { name: "Cloudinary", icon: IconCloud, category: "Media", level: "Advanced", color: "blue" },
 ];
 
 export const skillsByCategory = {
-  Frontend: [
-    { name: "React", icon: IconBrandReact },
-    { name: "JavaScript", icon: IconBrandJavascript },
-    { name: "Tailwind CSS", icon: IconBrandTailwind },
-    { name: "HTML5", icon: null },
-    { name: "CSS3", icon: null },
+  "Core Technologies": [
+    { name: "Next.js", icon: IconBrandNextjs, level: "Expert" },
+    { name: "TypeScript", icon: IconBrandTypescript, level: "Expert" },
+    { name: "React", icon: IconBrandReact, level: "Expert" },
+    { name: "Node.js", icon: IconBrandNodejs, level: "Expert" },
+    { name: "JavaScript", icon: IconBrandJavascript, level: "Expert" },
   ],
-  Backend: [
-    { name: "Node.js", icon: IconBrandNodejs },
-    { name: "Express.js", icon: null },
-    { name: "REST APIs", icon: null },
-    { name: "Authentication", icon: null },
+  "Cloud & DevOps": [
+    { name: "AWS", icon: IconBrandAws, level: "Advanced" },
+    { name: "Docker", icon: IconBrandDocker, level: "Advanced" },
+    { name: "Vercel", icon: IconBrandVercel, level: "Advanced" },
+    { name: "Cloudflare", icon: IconBrandCloudflare, level: "Advanced" },
   ],
-  Database: [
-    { name: "MongoDB", icon: IconBrandMongodb },
-    { name: "Mongoose", icon: null },
-    { name: "Database Design", icon: null },
+  "Database & Backend": [
+    { name: "MongoDB", icon: IconBrandMongodb, level: "Advanced" },
+    { name: "Prisma", icon: IconDatabase, level: "Advanced" },
+    { name: "Express", icon: IconBrandNodejs, level: "Advanced" },
+    { name: "Django", icon: IconBrandDjango, level: "Advanced" },
+    { name: "REST APIs", icon: IconApi, level: "Expert" },
   ],
-  "Tools & Deployment": [
-    { name: "Git", icon: IconBrandGit },
-    { name: "GitHub", icon: IconBrandGithub },
-    { name: "Vercel", icon: IconBrandVercel },
-    { name: "VS Code", icon: IconBrandVscode },
-    { name: "Figma", icon: IconBrandFigma },
+  "Frontend & UI": [
+    { name: "Tailwind CSS", icon: IconBrandTailwind, level: "Expert" },
+    { name: "Redux", icon: IconBrandRedux, level: "Advanced" },
+    { name: "Framer Motion", icon: IconCode, level: "Advanced" },
+    { name: "Material UI", icon: IconBrandReact, level: "Advanced" },
   ],
-  "Emerging Tech": [
-    { name: "Web3", icon: null },
-    { name: "Blockchain", icon: null },
-    { name: "Smart Contracts", icon: null },
+  "Development Tools": [
+    { name: "Git", icon: IconBrandGit, level: "Expert" },
+    { name: "GitHub", icon: IconBrandGithub, level: "Expert" },
+    { name: "VS Code", icon: IconBrandVscode, level: "Expert" },
+    { name: "Figma", icon: IconBrandFigma, level: "Advanced" },
+  ],
+  "AI & Integration": [
+    { name: "Cloudinary", icon: IconCloud, level: "Advanced" },
+    { name: "Azure AI", icon: IconBrain, level: "Advanced" },
+    { name: "OpenAI API", icon: IconBrain, level: "Intermediate" },
+    { name: "Webhook Integration", icon: IconApi, level: "Advanced" },
   ],
 };
 
