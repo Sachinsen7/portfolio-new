@@ -73,7 +73,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2"
+      className="fixed top-20 right-28 z-50 -translate-x-1/2"
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
