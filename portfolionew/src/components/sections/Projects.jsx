@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projectsData } from "@/lib/projectsData";
-import { getTechIcon } from "@/lib/techIcons";
+import { getTechIcon } from "@/lib/techIcons.jsx";
 import { motion } from "framer-motion";
 
 export default function Projects() {
