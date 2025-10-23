@@ -73,7 +73,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="fixed top-20 right-28 z-50 -translate-x-1/2"
+      className="sm:relative fixed sm:w-[270px] left-[85px] bottom-7 sm:top-20 sm:left-[400px] z-50 -translate-x-1/2"
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -158,7 +158,7 @@ export default function Header() {
         </motion.div>
 
         {/* Mobile Menu - Hidden for now since we only have 3 items */}
-        <motion.div
+        {/* <motion.div
           className="md:hidden"
           variants={itemVariants}
           animate={hoveredItem === "menu" ? "hovered" : "normal"}
@@ -175,7 +175,7 @@ export default function Header() {
               aria-hidden="true"
             />
           </Button>
-        </motion.div>
+        </motion.div> */}
       </motion.nav>
     </motion.header>
   );
