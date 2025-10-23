@@ -44,22 +44,38 @@ export default function Home() {
           </section>
 
           {/* About Section */}
-          <section id="about" className="container mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="about-heading">
+          <section
+            id="about"
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+            aria-labelledby="about-heading"
+          >
             <About />
           </section>
 
           {/* Projects Section */}
-          <section id="projects" className="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8" aria-labelledby="projects-heading">
+          <section
+            id="projects"
+            className="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8"
+            aria-labelledby="projects-heading"
+          >
             <Projects />
           </section>
 
           {/* Me Section */}
-          <section id="me" className="container mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="me-heading">
+          <section
+            id="me"
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+            aria-labelledby="me-heading"
+          >
             <Me />
           </section>
 
           {/* GitHub Contributions Section */}
-          <section id="github" className="container mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="github-heading">
+          <section
+            id="github"
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+            aria-labelledby="github-heading"
+          >
             <GitHubContributions />
           </section>
         </main>
@@ -68,7 +84,7 @@ export default function Home() {
         <ChatBot />
 
         {/* Visitor Counter */}
-        <VisitorCounter />
+        {/* <VisitorCounter /> */}
 
         {/* Scroll to Top Button */}
         <ScrollToTop />
