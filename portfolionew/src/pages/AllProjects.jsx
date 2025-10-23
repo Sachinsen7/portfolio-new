@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LazyImage from "@/components/common/LazyImage";
 import Header from "@/components/layout/Header";
 import { projectsData } from "@/lib/projectsData";
-import { getTechIcon } from "@/lib/techIcons";
+import { getTechIcon } from "@/lib/techIcons.jsx";
 import PageTransition from "@/components/common/PageTransition";
 import { motion } from "framer-motion";
 
