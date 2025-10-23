@@ -12,18 +12,40 @@ import {
   FolderOpen,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CompactMusicPlayer from "@/components/common/CompactMusicPlayer";
+import { smoothScrollTo } from "@/utils/smoothScroll";
 
 const navItems = [
-  { href: "/projects", label: "Work", icon: Briefcase },
-  { href: "#blog", label: "Blog", icon: FileText },
+  { href: "/projects", label: "Work", icon: Briefcase, type: "link" },
+  { href: "#blog", label: "Blog", icon: FileText, type: "link" },
+];
+
+// Home page sections for smooth scrolling
+const homeNavItems = [
+  { href: "about", label: "About", icon: User, type: "scroll" },
+  { href: "projects", label: "Projects", icon: FolderOpen, type: "scroll" },
+  { href: "github", label: "GitHub", icon: Briefcase, type: "scroll" },
 ];
 
 export default function Header() {
   const { toggleTheme, theme } = useContext(ThemeContext);
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const location = useLocation();
+
+  // Check if we're on the home page
+  const isHomePage = location.pathname === "/";
+
+  // Use appropriate nav items based on current page
+  const currentNavItems = isHomePage ? homeNavItems : navItems;
+
+  const handleNavClick = (item, e) => {
+    if (item.type === "scroll" && isHomePage) {
+      e.preventDefault();
+      smoothScrollTo(item.href);
+    }
+  };
 
   const containerVariants = {
     normal: {
@@ -67,7 +89,7 @@ export default function Header() {
       >
         {/* Navigation Items */}
         <div className="flex items-center gap-1">
-          {navItems.map((item, index) => {
+          {currentNavItems.map((item, index) => {
             const IconComponent = item.icon;
             return (
               <motion.div
@@ -77,16 +99,30 @@ export default function Header() {
                 onHoverStart={() => setHoveredItem(index)}
                 onHoverEnd={() => setHoveredItem(null)}
               >
-                <Link
-                  to={item.href}
-                  className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-foreground hover:text-accent hover:bg-button-hover transition-all duration-200"
-                  aria-label={item.label}
-                >
-                  <IconComponent
-                    className="h-4 w-4 sm:h-5 sm:w-5"
-                    aria-hidden="true"
-                  />
-                </Link>
+                {item.type === "scroll" && isHomePage ? (
+                  <button
+                    onClick={(e) => handleNavClick(item, e)}
+                    className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-foreground hover:text-accent hover:bg-button-hover transition-all duration-200"
+                    aria-label={item.label}
+                  >
+                    <IconComponent
+                      className="h-4 w-4 sm:h-5 sm:w-5"
+                      aria-hidden="true"
+                    />
+                  </button>
+                ) : (
+                  <Link
+                    to={item.href}
+                    onClick={(e) => handleNavClick(item, e)}
+                    className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-foreground hover:text-accent hover:bg-button-hover transition-all duration-200"
+                    aria-label={item.label}
+                  >
+                    <IconComponent
+                      className="h-4 w-4 sm:h-5 sm:w-5"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                )}
               </motion.div>
             );
           })}
