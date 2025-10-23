@@ -15,79 +15,97 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="container mx-auto py-8 max-w-4xl"
+      className="container mx-auto py-12 max-w-4xl"
       aria-labelledby="projects-heading"
     >
-      <div className="flex flex-col items-start gap-4 mb-8">
-        <h2 id="projects-heading" className="text-xl text-start">
+      {/* Section Header */}
+      <div className="flex flex-col items-start gap-2 mb-10">
+        <h2
+          id="projects-heading"
+          className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400"
+        >
           Featured
         </h2>
-        <h3 className="text-2xl font-semibold text-foreground flex items-center justify-center">
-          {/* <Folder className="h-6 w-6 mr-2 text-accent" aria-hidden="true" />{" "} */}
-          Projects
-        </h3>
+        <h3 className="text-3xl font-semibold text-foreground">Projects</h3>
       </div>
 
-      <div className="space-y-6">
+      {/* Project Cards */}
+      <div className="space-y-8">
         {projectsData.map((project, index) => (
           <motion.div
             key={project.id}
             className="group"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: index * 0.05 }}
-            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.3, delay: index * 0.05 }}
           >
-            <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 p-4 sm:p-6 rounded-xl bg-white/95 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300/60 dark:border-gray-700 shadow-lg hover:shadow-xl hover:bg-white dark:hover:bg-gray-800/70 transition-all duration-300">
-              {/* Project Image */}
-              <div className="flex-shrink-0">
+            <div className="flex flex-col sm:flex-row items-start gap-4 p-5 rounded-xl bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg hover:border-accent/40 transition-all duration-300">
+              {/* Thumbnail */}
+              <div className="flex-shrink-0 w-full sm:w-36 h-36 sm:h-24 overflow-hidden rounded-md border border-gray-200 dark:border-gray-700">
                 <LazyImage
                   src={project.image}
                   alt={`${project.title} thumbnail`}
-                  className="w-full sm:w-16 h-32 sm:h-16 rounded-md object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
 
-              {/* Project Info */}
+              {/* Content */}
               <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between mb-2">
+                {/* Title & Links */}
+                <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 group-hover:text-accent transition-colors">
+                    <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 group-hover:text-accent transition-colors">
                       {project.title}
                     </h3>
                     <div className="flex items-center gap-2 mt-2">
-                      <span className="text-xs font-medium text-gray-800 dark:text-gray-300 bg-gray-200/80 dark:bg-gray-700 px-3 py-1 rounded-full border border-gray-400/50 dark:border-gray-600 shadow-sm">
+                      <span className="text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800/60 px-2.5 py-1 rounded-full border border-gray-300/60 dark:border-gray-700">
                         {project.category}
                       </span>
-                      <span className="text-xs font-medium text-gray-700 dark:text-gray-400 bg-gray-100/60 dark:bg-transparent px-2 py-1 rounded">
+                      <span className="text-xs text-gray-600 dark:text-gray-400">
                         {project.year}
                       </span>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ExternalLink className="h-4 w-4 text-gray-600 dark:text-gray-400 hover:text-accent cursor-pointer" />
-                    <Github className="h-4 w-4 text-gray-600 dark:text-gray-400 hover:text-accent cursor-pointer" />
+                  <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${project.title} live demo`}
+                    >
+                      <ExternalLink className="h-4 w-4 text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" />
+                    </a>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${project.title} GitHub repository`}
+                    >
+                      <Github className="h-4 w-4 text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" />
+                    </a>
                   </div>
                 </div>
 
-                <p className="text-sm text-gray-800 dark:text-gray-300 mb-3 line-clamp-2 leading-relaxed">
+                {/* Description */}
+                <p className="text-sm text-gray-700 dark:text-gray-300 mb-4 line-clamp-2 leading-relaxed">
                   {project.description}
                 </p>
 
+                {/* Tech Stack & View Link */}
                 <div className="flex items-center justify-between">
-                  <div className="flex flex-wrap gap-1">
+                  <div className="flex flex-wrap gap-1.5">
                     {project.tech.slice(0, 3).map((tech) => (
                       <div
                         key={tech}
-                        className="flex items-center gap-1 bg-gray-100/80 dark:bg-glass backdrop-blur px-2 py-1 rounded text-xs text-gray-800 dark:text-gray-200 border border-gray-400/40 dark:border-gray-600 shadow-sm"
+                        className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/60 backdrop-blur px-2 py-1 rounded text-xs text-gray-800 dark:text-gray-200 border border-gray-300/60 dark:border-gray-700"
                       >
                         {getTechIcon(tech)}
                         <span>{tech}</span>
                       </div>
                     ))}
                     {project.tech.length > 3 && (
-                      <span className="text-xs text-gray-700 dark:text-gray-400 px-2 py-1 bg-gray-50 dark:bg-transparent rounded border border-gray-300/30 dark:border-transparent">
+                      <span className="text-xs text-gray-600 dark:text-gray-400 px-2 py-1 rounded border border-gray-200 dark:border-gray-700">
                         +{project.tech.length - 3} more
                       </span>
                     )}
@@ -105,19 +123,18 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Separator line */}
             {index < projectsData.length - 1 && (
-              <div className="h-px bg-gray-300/60 dark:bg-gray-700 my-4 opacity-70" />
+              <div className="h-px bg-gray-200 dark:bg-gray-800 my-6" />
             )}
           </motion.div>
         ))}
       </div>
 
-      {/* Show All Projects Button */}
-      <div className="flex justify-center mt-8">
+      {/* Show All Projects */}
+      <div className="flex justify-center mt-12">
         <Link
           to="/projects"
-          className="flex items-center gap-2 bg-white/90 dark:bg-glass backdrop-blur px-6 py-3 rounded-lg text-gray-900 dark:text-foreground hover:bg-gray-100 dark:hover:bg-button-hover transition-all duration-200 border border-gray-300/60 dark:border-glass-border shadow-md hover:shadow-lg"
+          className="flex items-center gap-2 bg-gray-50 dark:bg-gray-900/60 backdrop-blur px-6 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:text-accent border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-200"
         >
           <Grid3X3 className="h-4 w-4" />
           <span>Show All Projects</span>
