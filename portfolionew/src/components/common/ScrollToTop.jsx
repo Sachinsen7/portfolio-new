@@ -1,35 +1,39 @@
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/Button"
-import { ArrowUp } from "lucide-react"
+import { useState, useEffect } from 'react';
+import { ChevronUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { scrollToTop } from '@/utils/smoothScroll';
 
-function ScrollToTop() {
+export default function ScrollToTop() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const toggleVisibillity = () => {
-            setIsVisible(window.pageYOffset > 300)
-        }
+        const toggleVisibility = () => {
+            if (window.pageYOffset > 300) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        };
 
-        window.addEventListener("scroll,", toggleVisibillity)
-        return () => window.removeEventListener("scroll", toggleVisibillity)
-    }, [])
-
-    const scrollToTop = () => {
-        window.scrollTo({top: 0, behavior: "smooth"})
-    }
-
+        window.addEventListener('scroll', toggleVisibility);
+        return () => window.removeEventListener('scroll', toggleVisibility);
+    }, []);
 
     return (
-        isVisible && (
-            <Button
-                variant="default"
-                className="fixed bottom-4 right-4"
-                onClick={scrollToTop}
-            >
-                <ArrowUp/>
-            </Button>
-        )
-    )
+        <AnimatePresence>
+            {isVisible && (
+                <motion.button
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    onClick={scrollToTop}
+                    className="fixed bottom-24 right-7 z-40 p-3 bg-accent/90 hover:bg-accent text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 backdrop-blur-sm border border-white/20"
+                    aria-label="Scroll to top"
+                >
+                    <ChevronUp className="h-5 w-5" />
+                </motion.button>
+            )}
+        </AnimatePresence>
+    );
 }
-
-export default ScrollToTop
