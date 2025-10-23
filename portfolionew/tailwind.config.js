@@ -1,13 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 export const content = ["./src/**/*.{js,jsx}", "./components/**/*.{js,jsx}"];
+export const darkMode = "class";
 export const theme = {
   extend: {
     colors: {
       primary: "#fff",
       secondary: "#9333ea",
-      accent: "#f59e0b",
+      accent: "var(--accent)",
+      "accent-foreground": "var(--accent-foreground)",
       foreground: "var(--foreground)",
       "foreground-muted": "var(--foreground-muted)",
+      background: "var(--background)",
+      muted: "var(--muted)",
+      "muted-foreground": "var(--muted-foreground)",
+      border: "var(--border)",
+      input: "var(--input)",
+      ring: "var(--ring)",
       glass: "var(--glass-bg)",
       "glass-border": "var(--glass-border)",
       "button-hover": "var(--button-hover)",
