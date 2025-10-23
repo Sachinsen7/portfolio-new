@@ -11,12 +11,16 @@ import CursorEffects from "@/components/common/CursorEffects";
 import CursorTrail from "@/components/common/CursorTrail";
 import FloatingParticles from "@/components/common/FloatingParticles";
 import VisitorCounter from "@/components/common/VisitorCounter";
+import ScrollToTop from "@/components/common/ScrollToTop";
+import ScrollProgress from "@/components/common/ScrollProgress";
 // import AccessibilityToggle from "@/components/common/AccessibilityToggle";
 
 export default function Home() {
   return (
     <PageTransition>
       <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+        {/* Scroll Progress Indicator */}
+        <ScrollProgress />
         {/* Unified Glass Background */}
         <div
           className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 glass backdrop-blur-lg"
@@ -65,6 +69,9 @@ export default function Home() {
 
         {/* Visitor Counter */}
         <VisitorCounter />
+
+        {/* Scroll to Top Button */}
+        <ScrollToTop />
       </div>
     </PageTransition>
   );
