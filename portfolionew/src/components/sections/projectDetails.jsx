@@ -147,13 +147,13 @@ export default function ProjectDetails() {
               </div>
 
               {/* Duration & Year */}
-              <div className="text-sm text-gray-600 mb-2">
+              <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                 <p>
                   {project.duration} • {project.year}
                 </p>
               </div>
 
-              <p className="text-sm text-gray-800 dark:text-gray-800 mb-4">{project.summary}</p>
+              <p className="text-sm text-gray-800 dark:text-gray-300 mb-4">{project.summary}</p>
             </div>
           </div>
 
