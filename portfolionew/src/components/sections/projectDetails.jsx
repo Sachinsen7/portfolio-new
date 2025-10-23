@@ -14,33 +14,16 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LazyImage from "@/components/common/LazyImage";
-import { useTheme } from "@/hooks/useTheme";
+
 import { SlideTransition } from "@/components/common/PageTransition";
-import {
-  IconBrandReact,
-  IconBrandJavascript,
-  IconBrandTailwind,
-  IconBrandNodejs,
-  IconBrandMongodb,
-} from "@tabler/icons-react";
 import Header from "../layout/Header";
 import { projectsData } from "@/lib/projectsData";
-
-const getTechIcon = (tech) => {
-  const iconMap = {
-    React: <IconBrandReact className="h-5 w-5" />,
-    JavaScript: <IconBrandJavascript className="h-5 w-5" />,
-    "Tailwind CSS": <IconBrandTailwind className="h-5 w-5" />,
-    "Node.js": <IconBrandNodejs className="h-5 w-5" />,
-    MongoDB: <IconBrandMongodb className="h-5 w-5" />,
-  };
-  return iconMap[tech] || <Code className="h-5 w-5" />;
-};
+import { getTechIcon } from "@/lib/techIcons.jsx";
 
 export default function ProjectDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { theme } = useTheme();
+
 
   const project = projectsData.find((p) => p.id === parseInt(id));
   const currentIndex = projectsData.findIndex((p) => p.id === parseInt(id));
@@ -176,18 +159,62 @@ export default function ProjectDetails() {
 
           {/* Technologies */}
           <div className="mb-6">
-            <h2 className="font-bold mb-3">Technologies</h2>
-            <div className="flex flex-wrap gap-2">
-              {project.tech.map((tech) => (
-                <div
-                  key={tech}
-                  className="bg-glass backdrop-blur flex px-2 py-1 rounded-md text-sm text-foreground"
-                >
-                  {getTechIcon(tech)}
-                  <span className="ml-1">{tech}</span>
-                </div>
-              ))}
+            <h2 className="font-bold mb-4 flex items-center gap-2 text-lg">
+              <Code className="h-5 w-5 text-accent" />
+              Technologies & Tools
+            </h2>
+
+            {/* Core Technologies */}
+            <div className="mb-4">
+              <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 bg-accent rounded-full"></span>
+                Core Stack
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {project.tech.slice(0, 6).map((tech, index) => {
+                  const colors = [
+                    "from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 text-blue-900 dark:text-blue-100 border-blue-200 dark:border-blue-700",
+                    "from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 text-green-900 dark:text-green-100 border-green-200 dark:border-green-700",
+                    "from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 text-purple-900 dark:text-purple-100 border-purple-200 dark:border-purple-700",
+                    "from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 text-orange-900 dark:text-orange-100 border-orange-200 dark:border-orange-700",
+                    "from-cyan-50 to-cyan-100 dark:from-cyan-900/30 dark:to-cyan-800/30 text-cyan-900 dark:text-cyan-100 border-cyan-200 dark:border-cyan-700",
+                    "from-pink-50 to-pink-100 dark:from-pink-900/30 dark:to-pink-800/30 text-pink-900 dark:text-pink-100 border-pink-200 dark:border-pink-700"
+                  ];
+                  return (
+                    <div
+                      key={tech}
+                      className={`bg-gradient-to-r ${colors[index % colors.length]} backdrop-blur-sm flex items-center gap-3 px-4 py-3 rounded-xl text-sm border shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 group`}
+                    >
+                      <div className="group-hover:scale-110 transition-transform duration-300">
+                        {getTechIcon(tech, "h-5 w-5")}
+                      </div>
+                      <span className="font-semibold">{tech}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
+
+            {/* Additional Technologies */}
+            {project.tech.length > 6 && (
+              <div>
+                <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                  <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
+                  Additional Tools
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.slice(6).map((tech) => (
+                    <div
+                      key={tech}
+                      className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/40 dark:to-gray-700/40 backdrop-blur-sm flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-800 dark:text-gray-200 border border-gray-200/60 dark:border-gray-600/40 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105"
+                    >
+                      {getTechIcon(tech, "h-3.5 w-3.5")}
+                      <span className="font-medium">{tech}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Description */}
@@ -203,12 +230,18 @@ export default function ProjectDetails() {
 
           {/* Key Features */}
           <div className="mb-6">
-            <h2 className="font-bold mb-3">Key Features</h2>
-            <div className="space-y-2">
-              {project.features.slice(0, 6).map((feature, index) => (
-                <p key={index} className="text-gray-800 dark:text-gray-300 text-sm">
-                  ‣ {feature}
-                </p>
+            <h2 className="font-bold mb-4 text-lg flex items-center gap-2">
+              <CheckCircle className="h-5 w-5 text-green-500" />
+              Key Features
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {project.features.slice(0, 8).map((feature, index) => (
+                <div key={index} className="bg-gradient-to-r from-green-50/50 to-emerald-50/50 dark:from-green-900/10 dark:to-emerald-900/10 p-3 rounded-lg border border-green-200/30 dark:border-green-700/20">
+                  <div className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-sm text-gray-800 dark:text-gray-200 leading-relaxed">{feature}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
