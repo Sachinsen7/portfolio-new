@@ -6,10 +6,59 @@ import recipe_finder from "../../public/assets/images/recipefinder.png";
 import netflix from "../../public/assets/images/netflix.png";
 import music_player from "../../public/assets/images/music_player.png";
 import learnsphere from "../../public/assets/images/learnsphere.png";
+// Using ecommerce image as placeholder for Cloud SaaS - you can replace with actual image later
 
 export const projectsData = [
   {
     id: 1,
+    title: "Cloud SaaS Media Platform",
+    image: ecommerce, // Replace with actual image when available
+    description: "A comprehensive Next.js-based SaaS platform with advanced media processing, AI-powered image analysis, and document conversion capabilities",
+    tech: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Cloudinary", "Azure AI", "Clerk"],
+    category: "SaaS Platform",
+    year: "2025",
+    summary: "Enterprise-grade media processing SaaS platform with AI capabilities",
+    fullDescription: "A comprehensive Next.js-based SaaS platform that provides advanced media processing, AI-powered image analysis, and document conversion capabilities. Built with modern web technologies and integrated with Cloudinary's powerful media management services. This platform combines video processing, AI-powered image analysis, document conversion, and social media content creation into a unified SaaS solution.",
+    features: [
+      "Video upload, processing, and compression with analytics",
+      "AI-powered background removal with fine-edge options",
+      "OCR text extraction from images and documents",
+      "Smart auto-tagging and image enhancement using VIESUS technology",
+      "Advanced facial analysis with Azure AI Services (up to 64 faces)",
+      "Office document conversion (Word, Excel, PowerPoint to PDF)",
+      "Social media content creator with format transformation",
+      "AI vision analysis with custom tagging and content moderation",
+      "Watermark detection and quality assessment",
+      "Real-time conversion progress monitoring",
+      "Secure media delivery with signed URLs"
+    ],
+    challenges: [
+      "Integrating multiple AI services (Cloudinary, Azure AI, VIESUS, Aspose)",
+      "Building scalable media processing pipeline",
+      "Implementing real-time progress tracking for document conversion",
+      "Managing complex authentication and authorization with Clerk",
+      "Optimizing performance for large media file processing",
+      "Creating responsive UI for diverse media management workflows"
+    ],
+    liveLink: "https://cloud-saas-media-demo.vercel.app",
+    githubLink: "https://github.com/username/cloud-saas-media-platform",
+    timeline: [
+      { phase: "Architecture & Planning", duration: "2 weeks", status: "completed" },
+      { phase: "Authentication & Database Setup", duration: "1 week", status: "completed" },
+      { phase: "Core Media Processing", duration: "4 weeks", status: "completed" },
+      { phase: "AI Integration (Cloudinary, Azure)", duration: "3 weeks", status: "completed" },
+      { phase: "Document Conversion System", duration: "2 weeks", status: "completed" },
+      { phase: "Frontend UI/UX Development", duration: "3 weeks", status: "completed" },
+      { phase: "Testing & Optimization", duration: "2 weeks", status: "completed" },
+      { phase: "Deployment & Launch", duration: "1 week", status: "completed" }
+    ],
+    team: "Solo Project",
+    role: "Full Stack Developer & Solution Architect",
+    status: "Live & Maintained",
+    duration: "4 months"
+  },
+  {
+    id: 2,
     title: "EndPointHub",
     image: ecommerce,
     description: "API testing and documentation platform",
@@ -46,7 +95,7 @@ export const projectsData = [
     duration: "2 months"
   },
   {
-    id: 2,
+    id: 3,
     title: "VidTube",
     image: netflix,
     description: "Video sharing platform with upload and streaming capabilities",
@@ -83,7 +132,7 @@ export const projectsData = [
     duration: "2 months"
   },
   {
-    id: 3,
+    id: 4,
     title: "Code Editor",
     image: ecommerce,
     description: "Web-based code editor with syntax highlighting and collaboration",
@@ -121,7 +170,7 @@ export const projectsData = [
   },
 
   {
-    id: 4,
+    id: 5,
     title: "Kia Project",
     image: ecommerce,
     description: "Modern automotive showcase platform with interactive features",
@@ -161,7 +210,7 @@ export const projectsData = [
     duration: "3 months"
   },
   {
-    id: 5,
+    id: 6,
     title: "Class Crew",
     image: learnsphere,
     description: "Student collaboration platform with assignment tracking and group management",
@@ -202,7 +251,7 @@ export const projectsData = [
     duration: "3 months"
   },
   {
-    id: 6,
+    id: 7,
     title: "ADRS Gem Control",
     image: gem_control,
     description: "Jewellery business management with inventory and barcode generation",
@@ -243,7 +292,7 @@ export const projectsData = [
     duration: "3 months"
   },
   {
-    id: 7,
+    id: 8,
     title: "Techora",
     image: learnsphere,
     description: "Online learning platform with course management and progress tracking",
@@ -281,7 +330,7 @@ export const projectsData = [
     duration: "2 months"
   },
   {
-    id: 8,
+    id: 9,
     title: "Dish Discovery App",
     image: recipe_finder,
     description: "Recipe finder with nutritional information and cooking instructions",
@@ -318,7 +367,7 @@ export const projectsData = [
     duration: "1 month"
   },
   {
-    id: 9,
+    id: 10,
     title: "Melody Heaven",
     image: music_player,
     description: "Music streaming platform with playlist management",
@@ -356,7 +405,7 @@ export const projectsData = [
     duration: "2 months"
   },
   {
-    id: 10,
+    id: 11,
     title: "Netflix Clone",
     image: netflix,
     description: "Streaming platform clone with user authentication and video playback",
@@ -394,7 +443,7 @@ export const projectsData = [
     duration: "2 months"
   },
   {
-    id: 11,
+    id: 12,
     title: "Yadav Bus Service Platform",
     image: yadav_bus,
     description: "Bus platform with ticket, cab, and hotel booking + WhatsApp API integration",
