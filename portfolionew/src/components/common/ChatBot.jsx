@@ -16,7 +16,7 @@ const quickQuestions = [
 
 const responses = {
   "What technologies do you use?": "I'm a Senior Full Stack Developer specializing in Next.js 15, React 19, TypeScript, Node.js, AWS, Docker, MongoDB, Prisma, and modern cloud technologies. I build enterprise-grade SaaS platforms with AI integration and scalable architecture.",
-  "Tell me about your experience": "I'm a Senior Full Stack Developer at ADRS Technosoft with 4+ years of experience. I've delivered 15+ projects including enterprise SaaS platforms, AI-powered media processing systems, and complex business management solutions. I've achieved 90% operational efficiency improvements and reduced manual overhead by 85% in enterprise systems.",
+  "Tell me about your experience": "I'm a Full Stack Developer at ADRS Technosoft with 1 years of experience. I've delivered 15+ projects including enterprise SaaS platforms, AI-powered media processing systems, and complex business management solutions. I've achieved 90% operational efficiency improvements and reduced manual overhead by 85% in enterprise systems.",
   "What projects have you worked on?": "My portfolio includes: Cloud SaaS Media Platform (AI-powered with Cloudinary & Azure AI), Yadav Bus Service Platform (multi-service booking with WhatsApp API), ADRS Gem Control (jewelry business management), Class Crew (student collaboration platform), EndPointHub (API testing platform), and many more innovative solutions!",
   "How can I contact you?": "For professional inquiries, reach me at sachinsen1920@gmail.com or connect on LinkedIn/GitHub @Sachinsen7. I'm always excited to discuss enterprise projects, SaaS development, and innovative web solutions!",
   "What services do you offer?": "I provide enterprise SaaS development, AI integration (Cloudinary, Azure AI, OpenAI), cloud architecture (AWS, Docker), full-stack applications (Next.js, React, Node.js), API development, database design (MongoDB, Prisma, PostgreSQL), and modern web solutions with TypeScript.",
@@ -60,7 +60,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm Sachin's AI assistant. I'm a Senior Full Stack Developer with 4+ years of experience in enterprise SaaS development. How can I help you today?",
+      text: "Hi! I'm Sachin's AI assistant. I'm a Full Stack Developer with 1 year of experience in enterprise SaaS development. How can I help you today?",
       sender: "bot",
       timestamp: new Date(),
     },
