@@ -1,4 +1,4 @@
-import { ArrowLeft, ExternalLink, Github, Calendar, Tag, Star, Clock } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Calendar, Tag, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import LazyImage from "@/components/common/LazyImage";
 import Header from "@/components/layout/Header";
