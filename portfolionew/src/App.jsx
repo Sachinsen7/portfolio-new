@@ -6,9 +6,9 @@ import AllProjects from '@/pages/AllProjects'
 import BlogPost from '@/pages/BlogPost'
 import NotFound from '@/pages/NotFound'
 import { ThemeProvider } from '@/context/ThemeContext'
+import { MusicProvider } from '@/context/MusicContext'
 import ProjectDetails from '@/components/sections/projectDetails'
 
-// Main app component with routing and theme provider
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -16,11 +16,11 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/projects' element={<AllProjects/>}/>
-        <Route path='/project/:id' element={<ProjectDetails/>}/>
-        <Route path='/blog/:id' element={<BlogPost/>}/>
-        <Route path='*' element={<NotFound/>}/>
+        <Route path='/' element={<Home />} />
+        <Route path='/projects' element={<AllProjects />} />
+        <Route path='/project/:id' element={<ProjectDetails />} />
+        <Route path='/blog/:id' element={<BlogPost />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );
@@ -29,9 +29,11 @@ function AnimatedRoutes() {
 function App() {
   return (
     <ThemeProvider>
-      <Router>
-        <AnimatedRoutes />
-      </Router>
+      <MusicProvider>
+        <Router>
+          <AnimatedRoutes />
+        </Router>
+      </MusicProvider>
     </ThemeProvider>
   )
 }
