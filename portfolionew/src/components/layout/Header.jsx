@@ -6,8 +6,6 @@ import {
   Sun,
   Moon,
   FileText,
-  Menu,
-  Home,
   User,
   FolderOpen,
 } from "lucide-react";
@@ -143,16 +141,18 @@ export default function Header() {
           animate={hoveredItem === "theme" ? "hovered" : "normal"}
           onHoverStart={() => setHoveredItem("theme")}
           onHoverEnd={() => setHoveredItem(null)}
+          className="p-1"
         >
           <Button
             variant="ghost"
-            className="w-10 h-10 rounded-xl flex items-center justify-center"
+            className="w-full h-full rounded-xl flex items-center justify-center hover:bg-button-hover transition-all duration-200"
             onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
           >
             {theme === "light" ? (
-              <Moon className="h-6 w-6 text-white" />
+              <Moon className="h-4 w-4 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" />
             ) : (
-              <Sun className="h-6 w-6 text-yellow-400" />
+              <Sun className="h-4 w-4 text-yellow-500 hover:text-yellow-400 transition-colors" />
             )}
           </Button>
         </motion.div>
