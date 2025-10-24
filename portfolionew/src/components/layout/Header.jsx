@@ -157,25 +157,6 @@ export default function Header() {
           </Button>
         </motion.div>
 
-        {/* Mobile Menu - Hidden for now since we only have 3 items */}
-        {/* <motion.div
-          className="md:hidden"
-          variants={itemVariants}
-          animate={hoveredItem === "menu" ? "hovered" : "normal"}
-          onHoverStart={() => setHoveredItem("menu")}
-          onHoverEnd={() => setHoveredItem(null)}
-        >
-          <Button
-            variant="ghost"
-            className="w-10 h-10 rounded-xl hover:bg-white/10 transition-all duration-200"
-            aria-label="Open menu"
-          >
-            <Menu
-              className="h-5 w-5 text-[var(--foreground)]"
-              aria-hidden="true"
-            />
-          </Button>
-        </motion.div> */}
       </motion.nav>
     </motion.header>
   );
