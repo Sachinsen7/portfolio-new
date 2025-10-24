@@ -1,10 +1,9 @@
 import { Play, Pause } from "lucide-react";
 import { motion } from "framer-motion";
-import music from "../../assets/music/music.mp3";
-import { useAutoplayMusic } from "../../hooks/useAutoplayMusic";
+import { useMusic } from "../../context/MusicContext";
 
 export default function CompactMusicPlayer() {
-  const { audioRef, isPlaying, togglePlay, canAutoplay } = useAutoplayMusic(music);
+  const { isPlaying, togglePlay } = useMusic();
 
   return (
     <motion.div
@@ -29,13 +28,7 @@ export default function CompactMusicPlayer() {
         )}
       </button>
 
-      {/* Hidden Audio Element */}
-      <audio
-        ref={audioRef}
-        src={music}
-        loop
-        preload="auto"
-      />
+      {/* Audio is managed globally by MusicContext */}
     </motion.div>
   );
 }
