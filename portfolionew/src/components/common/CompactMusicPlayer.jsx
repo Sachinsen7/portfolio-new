@@ -1,36 +1,10 @@
-import { useState, useRef, useEffect } from "react";
-import { Play, Pause, Music } from "lucide-react";
+import { Play, Pause } from "lucide-react";
 import { motion } from "framer-motion";
 import music from "../../assets/music/music.mp3";
+import { useAutoplayMusic } from "../../hooks/useAutoplayMusic";
 
 export default function CompactMusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
-
-  const audioSrc = music;
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    audio.addEventListener("ended", () => setIsPlaying(false));
-
-    return () => {
-      audio.removeEventListener("ended", () => setIsPlaying(false));
-    };
-  }, []);
-
-  const togglePlay = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.play().catch(console.error);
-    }
-    setIsPlaying(!isPlaying);
-  };
+  const { audioRef, isPlaying, togglePlay, canAutoplay } = useAutoplayMusic(music);
 
   return (
     <motion.div
@@ -56,7 +30,12 @@ export default function CompactMusicPlayer() {
       </button>
 
       {/* Hidden Audio Element */}
-      <audio ref={audioRef} src={audioSrc} loop preload="metadata" />
+      <audio
+        ref={audioRef}
+        src={music}
+        loop
+        preload="auto"
+      />
     </motion.div>
   );
 }
