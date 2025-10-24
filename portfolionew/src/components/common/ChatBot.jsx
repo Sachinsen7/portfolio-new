@@ -15,15 +15,14 @@ const quickQuestions = [
 ];
 
 const responses = {
-  "What technologies do you use?": "I specialize in React, JavaScript, Node.js, Tailwind CSS, MongoDB, and Vercel. I'm passionate about crafting modern, scalable web applications with exceptional user experiences.",
-  "Tell me about your experience": "I'm currently working as a Front End Developer intern at ADRS Technosoft since May 2025, where I've architected innovative bus management platforms and sophisticated jewelry business management systems.",
-  "What projects have you worked on?": "I've crafted diverse projects including an E-commerce platform, Recipe Finder app, Netflix clone, Music Player, and LearnSphere educational platform. Each project showcases my commitment to excellence and innovation!",
-  "How can I contact you?": "For work inquiries, you can reach me at sachinsen1920@gmail.com, or connect on X or LinkedIn. I'm always excited to discuss new opportunities and collaborate on amazing projects!",
-  "What services do you offer?": "I deliver premium front-end development, full-stack web applications, responsive design, seamless API integration, and cutting-edge web solutions using React and Node.js.",
-  "Are you available for freelance work?": "Absolutely! I'm enthusiastic about freelance opportunities and exciting projects. Let's connect at sachinsen1920@gmail.com to discuss how we can bring your vision to life!",
+  "What technologies do you use?": "I'm a Senior Full Stack Developer specializing in Next.js 15, React 19, TypeScript, Node.js, AWS, Docker, MongoDB, Prisma, and modern cloud technologies. I build enterprise-grade SaaS platforms with AI integration and scalable architecture.",
+  "Tell me about your experience": "I'm a Senior Full Stack Developer at ADRS Technosoft with 4+ years of experience. I've delivered 15+ projects including enterprise SaaS platforms, AI-powered media processing systems, and complex business management solutions. I've achieved 90% operational efficiency improvements and reduced manual overhead by 85% in enterprise systems.",
+  "What projects have you worked on?": "My portfolio includes: Cloud SaaS Media Platform (AI-powered with Cloudinary & Azure AI), Yadav Bus Service Platform (multi-service booking with WhatsApp API), ADRS Gem Control (jewelry business management), Class Crew (student collaboration platform), EndPointHub (API testing platform), and many more innovative solutions!",
+  "How can I contact you?": "For professional inquiries, reach me at sachinsen1920@gmail.com or connect on LinkedIn/GitHub @Sachinsen7. I'm always excited to discuss enterprise projects, SaaS development, and innovative web solutions!",
+  "What services do you offer?": "I provide enterprise SaaS development, AI integration (Cloudinary, Azure AI, OpenAI), cloud architecture (AWS, Docker), full-stack applications (Next.js, React, Node.js), API development, database design (MongoDB, Prisma, PostgreSQL), and modern web solutions with TypeScript.",
+  "Are you available for freelance work?": "Yes! I'm available for enterprise projects, SaaS development, and complex web applications. With 4+ years of experience and expertise in modern tech stack, I can help bring your vision to life. Contact me at sachinsen1920@gmail.com!",
 };
 
-// Typing indicator component
 const TypingIndicator = () => (
   <motion.div
     initial={{ opacity: 0, y: 10 }}
@@ -61,7 +60,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm Sachin's assistant. How can I help you today?",
+      text: "Hi! I'm Sachin's AI assistant. I'm a Senior Full Stack Developer with 4+ years of experience in enterprise SaaS development. How can I help you today?",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -86,13 +85,10 @@ export default function ChatBot() {
       timestamp: new Date(),
     };
 
-    // Add user message immediately
     setMessages(prev => [...prev, userMessage]);
 
-    // Show typing indicator
     setIsTyping(true);
 
-    // Simulate typing delay
     setTimeout(() => {
       const botResponse = {
         id: Date.now() + 1,
@@ -116,33 +112,33 @@ export default function ChatBot() {
       timestamp: new Date(),
     };
 
-    // Add user message immediately
     setMessages(prev => [...prev, userMessage]);
 
-    // Clear input and show typing
     const currentInput = inputValue;
     setInputValue("");
     setIsTyping(true);
 
-    // Simple keyword-based responses
-    let botResponseText = "Thanks for your message! For detailed inquiries, reach me at sachinsen1920@gmail.com or connect on X/LinkedIn.";
+    let botResponseText = "Thanks for your message! For detailed inquiries about enterprise projects or SaaS development, reach me at sachinsen1920@gmail.com or connect on LinkedIn/GitHub.";
 
     const lowerInput = currentInput.toLowerCase();
-    if (lowerInput.includes("technology") || lowerInput.includes("tech") || lowerInput.includes("stack")) {
+    if (lowerInput.includes("technology") || lowerInput.includes("tech") || lowerInput.includes("stack") || lowerInput.includes("skills")) {
       botResponseText = responses["What technologies do you use?"];
-    } else if (lowerInput.includes("experience") || lowerInput.includes("work")) {
+    } else if (lowerInput.includes("experience") || lowerInput.includes("work") || lowerInput.includes("background") || lowerInput.includes("career")) {
       botResponseText = responses["Tell me about your experience"];
-    } else if (lowerInput.includes("project")) {
+    } else if (lowerInput.includes("project") || lowerInput.includes("portfolio") || lowerInput.includes("work")) {
       botResponseText = responses["What projects have you worked on?"];
-    } else if (lowerInput.includes("contact") || lowerInput.includes("reach") || lowerInput.includes("email")) {
+    } else if (lowerInput.includes("contact") || lowerInput.includes("reach") || lowerInput.includes("email") || lowerInput.includes("hire")) {
       botResponseText = responses["How can I contact you?"];
-    } else if (lowerInput.includes("service")) {
+    } else if (lowerInput.includes("service") || lowerInput.includes("offer") || lowerInput.includes("development")) {
       botResponseText = responses["What services do you offer?"];
-    } else if (lowerInput.includes("freelance") || lowerInput.includes("available")) {
+    } else if (lowerInput.includes("freelance") || lowerInput.includes("available") || lowerInput.includes("hire") || lowerInput.includes("contract")) {
       botResponseText = responses["Are you available for freelance work?"];
+    } else if (lowerInput.includes("saas") || lowerInput.includes("enterprise") || lowerInput.includes("ai")) {
+      botResponseText = "I specialize in enterprise SaaS platforms with AI integration! I've built cloud-native solutions using Next.js, TypeScript, AWS, and AI services like Cloudinary and Azure AI. My recent Cloud SaaS Media Platform handles advanced media processing, facial analysis, and document conversion. Let's discuss your enterprise needs!";
+    } else if (lowerInput.includes("next") || lowerInput.includes("react") || lowerInput.includes("typescript")) {
+      botResponseText = "I'm an expert in Next.js 15, React 19, and TypeScript! I build scalable, type-safe applications with modern architecture. My tech stack includes Node.js, AWS, Docker, Prisma, and MongoDB for full-stack enterprise solutions.";
     }
 
-    // Simulate typing delay
     setTimeout(() => {
       const botResponse = {
         id: Date.now() + 1,
@@ -153,7 +149,7 @@ export default function ChatBot() {
 
       setIsTyping(false);
       setMessages(prev => [...prev, botResponse]);
-    }, 1500 + Math.random() * 1000); // 1.5-2.5 seconds delay
+    }, 1500 + Math.random() * 1000);
   };
 
   const handleKeyPress = (e) => {
@@ -166,7 +162,6 @@ export default function ChatBot() {
 
   return (
     <>
-      {/* Floating Chat Button */}
       <motion.div
         className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40"
         initial={{ scale: 0, y: 100 }}
@@ -191,29 +186,29 @@ export default function ChatBot() {
                 size="lg"
                 className="h-14 w-14 rounded-full bg-accent hover:bg-accent/90 shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
-              <AnimatePresence mode="wait">
-                {isOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className="h-6 w-6 text-white" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="chat"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <MessageCircle className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                <AnimatePresence mode="wait">
+                  {isOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <X className="h-6 w-6 text-white" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="chat"
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <MessageCircle className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </Button>
             </motion.div>
           </DialogTrigger>
@@ -254,91 +249,83 @@ export default function ChatBot() {
                 perspective: "1000px"
               }}
             >
-            {/* Header - Fixed */}
-            <DialogHeader className="flex-shrink-0 p-4 border-b border-glass-border">
-              <DialogTitle className="flex items-center gap-2">
-                <Bot className="h-5 w-5 text-accent" />
-                Chat with Sachin
-              </DialogTitle>
-            </DialogHeader>
+              <DialogHeader className="flex-shrink-0 p-4 border-b border-glass-border">
+                <DialogTitle className="flex items-center gap-2">
+                  <Bot className="h-5 w-5 text-accent" />
+                  Chat with Sachin
+                </DialogTitle>
+              </DialogHeader>
 
-            {/* Chat Messages - Scrollable */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide min-h-0">
-              {messages.map((message) => (
-                <motion.div
-                  key={message.id}
-                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 500,
-                    damping: 30,
-                    duration: 0.3
-                  }}
-                  className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
-                >
-                  <div
-                    className={`max-w-[80%] p-3 rounded-lg ${
-                      message.sender === "user"
+              <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide min-h-0">
+                {messages.map((message) => (
+                  <motion.div
+                    key={message.id}
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                      damping: 30,
+                      duration: 0.3
+                    }}
+                    className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+                  >
+                    <div
+                      className={`max-w-[80%] p-3 rounded-lg ${message.sender === "user"
                         ? "bg-accent text-white"
                         : "bg-glass backdrop-blur border border-glass-border"
-                    }`}
-                  >
-                    <div className="flex items-start gap-2">
-                      {message.sender === "bot" && <Bot className="h-4 w-4 mt-0.5 text-accent" />}
-                      {message.sender === "user" && <User className="h-4 w-4 mt-0.5" />}
-                      <p className="text-sm">{message.text}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-
-              {/* Typing Indicator */}
-              {isTyping && <TypingIndicator />}
-
-              {/* Scroll anchor */}
-              <div ref={messagesEndRef} />
-            </div>
-
-            {/* Bottom Section - Fixed */}
-            <div className="flex-shrink-0 border-t border-glass-border">
-              {/* Quick Questions */}
-              <div className="p-3">
-                <p className="text-xs text-foreground-muted mb-2">Quick questions:</p>
-                <div className="flex flex-wrap gap-1 mb-3">
-                  {quickQuestions.slice(0, 4).map((question, index) => (
-                    <Button
-                      key={index}
-                      size="sm"
-                      className="text-xs h-6 px-2 bg-accent/10 hover:bg-accent/20 text-foreground border-none"
-                      onClick={() => handleQuickQuestion(question)}
+                        }`}
                     >
-                      {question}
+                      <div className="flex items-start gap-2">
+                        {message.sender === "bot" && <Bot className="h-4 w-4 mt-0.5 text-accent" />}
+                        {message.sender === "user" && <User className="h-4 w-4 mt-0.5" />}
+                        <p className="text-sm">{message.text}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+
+                {isTyping && <TypingIndicator />}
+
+                <div ref={messagesEndRef} />
+              </div>
+
+              <div className="flex-shrink-0 border-t border-glass-border">
+                <div className="p-3">
+                  <p className="text-xs text-foreground-muted mb-2">Quick questions:</p>
+                  <div className="flex flex-wrap gap-1 mb-3">
+                    {quickQuestions.slice(0, 4).map((question, index) => (
+                      <Button
+                        key={index}
+                        size="sm"
+                        className="text-xs h-6 px-2 bg-accent/10 hover:bg-accent/20 text-foreground border-none"
+                        onClick={() => handleQuickQuestion(question)}
+                      >
+                        {question}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-3 border-t border-glass-border/50">
+                  <div className="flex gap-2">
+                    <Input
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Type your message..."
+                      className="flex-1 bg-glass backdrop-blur border-glass-border text-foreground placeholder:text-foreground-muted"
+                    />
+                    <Button
+                      onClick={handleSendMessage}
+                      size="sm"
+                      className="bg-accent hover:bg-accent/90"
+                    >
+                      <Send className="h-4 w-4" />
                     </Button>
-                  ))}
+                  </div>
                 </div>
               </div>
-
-              {/* Input Area */}
-              <div className="p-3 border-t border-glass-border/50">
-              <div className="flex gap-2">
-                <Input
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Type your message..."
-                  className="flex-1 bg-glass backdrop-blur border-glass-border text-foreground placeholder:text-foreground-muted"
-                />
-                <Button
-                  onClick={handleSendMessage}
-                  size="sm"
-                  className="bg-accent hover:bg-accent/90"
-                >
-                  <Send className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-            </div>
             </motion.div>
           </DialogContent>
         </Dialog>
