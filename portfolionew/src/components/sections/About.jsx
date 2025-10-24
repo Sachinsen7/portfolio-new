@@ -61,7 +61,7 @@ export default function About() {
                       May 2025 - Present
                     </span>
                     <span className="text-xs text-gray-800 dark:text-gray-300 bg-gray-100 dark:bg-glass backdrop-blur px-2 py-1 rounded border border-gray-300 dark:border-glass-border">
-                      Internship
+                      Full Time
                     </span>
                   </div>
                 </div>
