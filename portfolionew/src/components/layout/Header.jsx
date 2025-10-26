@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeContext } from "@/context/ThemeContext";
 import {
@@ -9,7 +9,7 @@ import {
   User,
   FolderOpen,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import CompactMusicPlayer from "@/components/common/CompactMusicPlayer";
 import { smoothScrollTo } from "@/utils/smoothScroll";
@@ -30,10 +30,29 @@ export default function Header() {
   const { toggleTheme, theme } = useContext(ThemeContext);
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
 
-  // Check if we're on the home page
+  // Check if we're on the home page or project detail page
   const isHomePage = location.pathname === "/";
+  const isProjectDetailPage = location.pathname.startsWith("/project/");
+  const isAllProjectsPage = location.pathname === "/projects";
+
+  // Hide header on project detail pages and AllProjects page on desktop
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  const shouldShowHeader = !isProjectDetailPage && !(isAllProjectsPage && isDesktop);
 
   // Use appropriate nav items based on current page
   const currentNavItems = isHomePage ? homeNavItems : navItems;
@@ -44,6 +63,39 @@ export default function Header() {
       smoothScrollTo(item.href);
     }
   };
+
+  // Auto-hide header on mobile when scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const isMobile = window.innerWidth < 640; // sm breakpoint
+
+      if (isMobile) {
+        if (currentScrollY < 50) {
+          // Always show when near top
+          setIsVisible(true);
+        } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Hide when scrolling down
+          setIsVisible(false);
+        } else if (currentScrollY < lastScrollY) {
+          // Show when scrolling up
+          setIsVisible(true);
+        }
+      } else {
+        // Always visible on desktop
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
+  if (!shouldShowHeader) {
+    return null;
+  }
 
   const containerVariants = {
     normal: {
@@ -70,94 +122,99 @@ export default function Header() {
   };
 
   return (
-    <motion.header
-      className="sm:relative fixed sm:w-[270px] left-[85px] bottom-7 sm:top-20 sm:left-[400px] z-50 -translate-x-1/2"
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <motion.nav
-        className="flex items-center gap-1 bg-[var(--glass-bg)] backdrop-blur-xl border border-white/20 rounded-2xl px-2 sm:px-3 py-2 shadow-lg"
-        variants={containerVariants}
-        animate={isHovered ? "stretched" : "normal"}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
-      >
-        {/* Navigation Items */}
-        <div className="flex items-center gap-1">
-          {currentNavItems.map((item, index) => {
-            const IconComponent = item.icon;
-            return (
-              <motion.div
-                key={item.href}
-                variants={itemVariants}
-                animate={hoveredItem === index ? "hovered" : "normal"}
-                onHoverStart={() => setHoveredItem(index)}
-                onHoverEnd={() => setHoveredItem(null)}
-              >
-                {item.type === "scroll" && isHomePage ? (
-                  <button
-                    onClick={(e) => handleNavClick(item, e)}
-                    className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-foreground hover:text-accent hover:bg-button-hover transition-all duration-200"
-                    aria-label={item.label}
-                  >
-                    <IconComponent
-                      className="h-4 w-4 sm:h-5 sm:w-5"
-                      aria-hidden="true"
-                    />
-                  </button>
-                ) : (
-                  <Link
-                    to={item.href}
-                    onClick={(e) => handleNavClick(item, e)}
-                    className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-foreground hover:text-accent hover:bg-button-hover transition-all duration-200"
-                    aria-label={item.label}
-                  >
-                    <IconComponent
-                      className="h-4 w-4 sm:h-5 sm:w-5"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                )}
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Separator */}
-        <div className="w-px h-6 bg-glass-border mx-1" />
-
-        {/* Music Player */}
-        <CompactMusicPlayer />
-
-        {/* Separator */}
-        <div className="w-px h-6 bg-glass-border mx-1" />
-
-        {/* Theme Toggle */}
-        <motion.div
-          variants={itemVariants}
-          animate={hoveredItem === "theme" ? "hovered" : "normal"}
-          onHoverStart={() => setHoveredItem("theme")}
-          onHoverEnd={() => setHoveredItem(null)}
-          className="p-1"
+    <AnimatePresence>
+      {isVisible && (
+        <motion.header
+          className="fixed bottom-4 sm:fixed left-20 sm:bottom-6 sm:left-[40%] z-50 -translate-x-1/2"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 100, opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          role="navigation"
+          aria-label="Main navigation"
         >
-          <Button
-            variant="ghost"
-            className="w-full h-full rounded-xl flex items-center justify-center hover:bg-button-hover transition-all duration-200"
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          <motion.nav
+            className="flex items-center gap-1 bg-[var(--glass-bg)] backdrop-blur-xl border border-white/20 rounded-2xl px-2 sm:px-3 py-2 shadow-lg"
+            variants={containerVariants}
+            animate={isHovered ? "stretched" : "normal"}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
           >
-            {theme === "light" ? (
-              <Moon className="h-4 w-4 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors" />
-            ) : (
-              <Sun className="h-4 w-4 text-yellow-500 hover:text-yellow-400 transition-colors" />
-            )}
-          </Button>
-        </motion.div>
+            {/* Navigation Items */}
+            <div className="flex items-center gap-1">
+              {currentNavItems.map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <motion.div
+                    key={item.href}
+                    variants={itemVariants}
+                    animate={hoveredItem === index ? "hovered" : "normal"}
+                    onHoverStart={() => setHoveredItem(index)}
+                    onHoverEnd={() => setHoveredItem(null)}
+                  >
+                    {item.type === "scroll" && isHomePage ? (
+                      <button
+                        onClick={(e) => handleNavClick(item, e)}
+                        className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-foreground hover:text-accent hover:bg-button-hover transition-all duration-200"
+                        aria-label={item.label}
+                      >
+                        <IconComponent
+                          className="h-4 w-4 sm:h-5 sm:w-5"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    ) : (
+                      <Link
+                        to={item.href}
+                        onClick={(e) => handleNavClick(item, e)}
+                        className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-foreground hover:text-accent hover:bg-button-hover transition-all duration-200"
+                        aria-label={item.label}
+                      >
+                        <IconComponent
+                          className="h-4 w-4 sm:h-5 sm:w-5"
+                          aria-hidden="true"
+                        />
+                      </Link>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
 
-      </motion.nav>
-    </motion.header>
+            {/* Separator */}
+            <div className="w-px h-6 bg-glass-border mx-1" />
+
+            {/* Music Player */}
+            <CompactMusicPlayer />
+
+            {/* Separator */}
+            <div className="w-px h-6 bg-glass-border mx-1" />
+
+            {/* Theme Toggle */}
+            <motion.div
+              variants={itemVariants}
+              animate={hoveredItem === "theme" ? "hovered" : "normal"}
+              onHoverStart={() => setHoveredItem("theme")}
+              onHoverEnd={() => setHoveredItem(null)}
+              className="p-1"
+            >
+              <Button
+                variant="ghost"
+                className="w-full h-full rounded-xl flex items-center justify-center hover:bg-button-hover transition-all duration-200"
+                onClick={toggleTheme}
+                aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+              >
+                {theme === "light" ? (
+                  <Moon className="h-4 w-4 transition-colors" />
+                ) : (
+                  <Sun className="h-4 w-4 text-accent transition-colors" />
+                )}
+              </Button>
+            </motion.div>
+
+          </motion.nav>
+        </motion.header>
+      )}
+    </AnimatePresence>
   );
 }
