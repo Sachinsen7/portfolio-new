@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Sparkles, Download, TwitterIcon, LinkedinIcon, GithubIcon, MailIcon } from "lucide-react";
+import {
+  Sparkles,
+  Download,
+  TwitterIcon,
+  LinkedinIcon,
+  GithubIcon,
+  MailIcon,
+} from "lucide-react";
 import profileImage from "/assets/images/me_and_bill.png";
 import { basicSkills } from "@/lib/skillsData";
 
@@ -7,7 +14,7 @@ export default function LiquidHero() {
   const skills = basicSkills;
 
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 max-w-4xl min-h-[70vh] sm:min-h-[80vh] flex items-center">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 max-w-4xl min-h-[70vh] flex items-center">
       <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8 w-full">
         {/* Profile Image */}
         <div className="flex-shrink-0">
@@ -25,7 +32,10 @@ export default function LiquidHero() {
 
         {/* Text and Buttons */}
         <div className="flex-1 text-left">
-          <h1 id="hero-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
+          <h1
+            id="hero-heading"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3"
+          >
             Hi, I'm <span className="text-accent">Sachin</span>
           </h1>
 
@@ -91,28 +101,28 @@ export default function LiquidHero() {
               className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
               aria-label="GitHub Profile"
             >
-              <GithubIcon className="h-4 w-4"/>
+              <GithubIcon className="h-4 w-4" />
             </a>
             <a
               href="https://linkedin.com/in/sachinsen1"
               className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
               aria-label="LinkedIn Profile"
             >
-              <LinkedinIcon className="h-4 w-4"/>
+              <LinkedinIcon className="h-4 w-4" />
             </a>
             <a
               href="https://twitter.com/sen_sachiin"
               className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
               aria-label="Twitter Profile"
             >
-              <TwitterIcon className="h-4 w-4"/>
+              <TwitterIcon className="h-4 w-4" />
             </a>
             <a
               href="mailto:sachinsen1920@gmail.com"
               className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
               aria-label="Email Contact"
             >
-              <MailIcon className="h-4 w-4"/>
+              <MailIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
