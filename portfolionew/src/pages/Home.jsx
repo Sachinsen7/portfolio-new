@@ -43,6 +43,23 @@ export default function Home() {
             <LiquidHero />
           </section>
 
+          {/* GitHub Contributions Section */}
+          <section
+            id="github"
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+            aria-labelledby="github-heading"
+          >
+            <GitHubContributions />
+          </section>
+
+          <section
+            id="me"
+            className="container mx-auto px-4 sm:px-6 lg:px-8"
+            aria-labelledby="me-heading"
+          >
+            <Me />
+          </section>
+
           {/* About Section */}
           <section
             id="about"
@@ -62,31 +79,10 @@ export default function Home() {
           </section>
 
           {/* Me Section */}
-          <section
-            id="me"
-            className="container mx-auto px-4 sm:px-6 lg:px-8"
-            aria-labelledby="me-heading"
-          >
-            <Me />
-          </section>
-
-          {/* GitHub Contributions Section */}
-          <section
-            id="github"
-            className="container mx-auto px-4 sm:px-6 lg:px-8"
-            aria-labelledby="github-heading"
-          >
-            <GitHubContributions />
-          </section>
         </main>
 
-        {/* Floating Chat Bot */}
         <ChatBot />
 
-        {/* Visitor Counter */}
-        {/* <VisitorCounter /> */}
-
-        {/* Scroll to Top Button */}
         <ScrollToTop />
       </div>
     </PageTransition>
