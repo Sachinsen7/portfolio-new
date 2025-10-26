@@ -27,7 +27,7 @@ const homeNavItems = [
 ];
 
 export default function Header() {
-  const { toggleTheme, theme } = useContext(ThemeContext);
+  const { toggleTheme, theme, isTransitioning } = useContext(ThemeContext);
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [isVisible, setIsVisible] = useState(true);
@@ -196,20 +196,41 @@ export default function Header() {
               animate={hoveredItem === "theme" ? "hovered" : "normal"}
               onHoverStart={() => setHoveredItem("theme")}
               onHoverEnd={() => setHoveredItem(null)}
-              className="p-1"
+              className="relative"
             >
-              <Button
-                variant="ghost"
-                className="w-full h-full rounded-xl flex items-center justify-center hover:bg-button-hover transition-all duration-200"
+              <motion.button
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center hover:bg-button-hover transition-all duration-200 relative overflow-hidden"
                 onClick={toggleTheme}
                 aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+                whileTap={{ scale: 0.9 }}
+                animate={isTransitioning ? { rotate: 180 } : { rotate: 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
               >
-                {theme === "light" ? (
-                  <Moon className="h-4 w-4 transition-colors" />
-                ) : (
-                  <Sun className="h-4 w-4 text-accent transition-colors" />
+                {/* Background ripple effect */}
+                {isTransitioning && (
+                  <motion.div
+                    className="absolute inset-0 bg-accent/20 rounded-xl"
+                    initial={{ scale: 0, opacity: 0.8 }}
+                    animate={{ scale: 2, opacity: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  />
                 )}
-              </Button>
+
+                {/* Icon with smooth transition */}
+                <motion.div
+                  key={theme}
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  exit={{ scale: 0, rotate: 180 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  {theme === "light" ? (
+                    <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-foreground" />
+                  ) : (
+                    <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
+                  )}
+                </motion.div>
+              </motion.button>
             </motion.div>
 
           </motion.nav>
