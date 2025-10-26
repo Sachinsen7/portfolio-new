@@ -30,6 +30,7 @@ export const theme = {
     backgroundImage: {
       "glass-gradient": "linear-gradient(135deg, var(--glass-bg), var(--glass-bg))",
       "glass-dark-gradient": "linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))",
+      "gradient-radial": "radial-gradient(ellipse at center, var(--tw-gradient-stops))",
     },
   },
 };

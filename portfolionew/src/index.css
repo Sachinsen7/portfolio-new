@@ -58,12 +58,75 @@ body,
 #root {
   background-color: var(--background);
   color: var(--foreground);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Ensure all text elements transition smoothly */
+/* Fast and smooth transitions for all elements */
 * {
-  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
+}
+
+/* Smooth theme transition overlay effect */
+.theme-transitioning::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+  z-index: 9999;
+  animation: themeRipple 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes themeRipple {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(1.5) rotate(180deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(3) rotate(360deg);
+  }
+}
+
+/* Additional theme transition animations */
+@keyframes colorWave {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  50% {
+    opacity: 0.2;
+    transform: translateX(0%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Prevent flash during theme transition */
+.theme-transitioning {
+  overflow: hidden;
+}
+
+/* Smooth gradient transitions */
+.bg-gradient-radial {
+  background: radial-gradient(circle at center, var(--tw-gradient-stops));
 }
 
 [data-theme="dark"] {
