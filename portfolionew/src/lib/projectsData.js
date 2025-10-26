@@ -6,19 +6,33 @@ import recipe_finder from "../../public/assets/images/recipefinder.png";
 import netflix from "../../public/assets/images/netflix.png";
 import music_player from "../../public/assets/images/music_player.png";
 import learnsphere from "../../public/assets/images/learnsphere.png";
+import cloud_saas from "../../public/assets/images/cloud_saas.png";
 // Using ecommerce image as placeholder for Cloud SaaS - you can replace with actual image later
 
 export const projectsData = [
   {
     id: 1,
     title: "Cloud SaaS Media Platform",
-    image: ecommerce, // Replace with actual image when available
-    description: "A comprehensive Next.js-based SaaS platform with advanced media processing, AI-powered image analysis, and document conversion capabilities",
-    tech: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Cloudinary", "Azure AI", "Clerk"],
+    image: cloud_saas, // Replace with actual image when available
+    description:
+      "A comprehensive Next.js-based SaaS platform with advanced media processing, AI-powered image analysis, and document conversion capabilities",
+    tech: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "PostgreSQL",
+      "Cloudinary",
+      "Azure AI",
+      "Clerk",
+    ],
     category: "SaaS Platform",
     year: "2025",
-    summary: "Enterprise-grade media processing SaaS platform with AI capabilities",
-    fullDescription: "A comprehensive Next.js-based SaaS platform that provides advanced media processing, AI-powered image analysis, and document conversion capabilities. Built with modern web technologies and integrated with Cloudinary's powerful media management services. This platform combines video processing, AI-powered image analysis, document conversion, and social media content creation into a unified SaaS solution.",
+    summary:
+      "Enterprise-grade media processing SaaS platform with AI capabilities",
+    fullDescription:
+      "A comprehensive Next.js-based SaaS platform that provides advanced media processing, AI-powered image analysis, and document conversion capabilities. Built with modern web technologies and integrated with Cloudinary's powerful media management services. This platform combines video processing, AI-powered image analysis, document conversion, and social media content creation into a unified SaaS solution.",
     features: [
       "Video upload, processing, and compression with analytics",
       "AI-powered background removal with fine-edge options",
@@ -30,7 +44,7 @@ export const projectsData = [
       "AI vision analysis with custom tagging and content moderation",
       "Watermark detection and quality assessment",
       "Real-time conversion progress monitoring",
-      "Secure media delivery with signed URLs"
+      "Secure media delivery with signed URLs",
     ],
     challenges: [
       "Integrating multiple AI services (Cloudinary, Azure AI, VIESUS, Aspose)",
@@ -38,24 +52,52 @@ export const projectsData = [
       "Implementing real-time progress tracking for document conversion",
       "Managing complex authentication and authorization with Clerk",
       "Optimizing performance for large media file processing",
-      "Creating responsive UI for diverse media management workflows"
+      "Creating responsive UI for diverse media management workflows",
     ],
-    liveLink: "https://cloud-saas-media-demo.vercel.app",
-    githubLink: "https://github.com/username/cloud-saas-media-platform",
+    liveLink: "cloud-saas-five.vercel.app",
+    githubLink: "https://github.com/Sachinsen7/cloud-saas",
     timeline: [
-      { phase: "Architecture & Planning", duration: "2 weeks", status: "completed" },
-      { phase: "Authentication & Database Setup", duration: "1 week", status: "completed" },
-      { phase: "Core Media Processing", duration: "4 weeks", status: "completed" },
-      { phase: "AI Integration (Cloudinary, Azure)", duration: "3 weeks", status: "completed" },
-      { phase: "Document Conversion System", duration: "2 weeks", status: "completed" },
-      { phase: "Frontend UI/UX Development", duration: "3 weeks", status: "completed" },
-      { phase: "Testing & Optimization", duration: "2 weeks", status: "completed" },
-      { phase: "Deployment & Launch", duration: "1 week", status: "completed" }
+      {
+        phase: "Architecture & Planning",
+        duration: "2 weeks",
+        status: "completed",
+      },
+      {
+        phase: "Authentication & Database Setup",
+        duration: "1 week",
+        status: "completed",
+      },
+      {
+        phase: "Core Media Processing",
+        duration: "4 weeks",
+        status: "completed",
+      },
+      {
+        phase: "AI Integration (Cloudinary, Azure)",
+        duration: "3 weeks",
+        status: "completed",
+      },
+      {
+        phase: "Document Conversion System",
+        duration: "2 weeks",
+        status: "completed",
+      },
+      {
+        phase: "Frontend UI/UX Development",
+        duration: "3 weeks",
+        status: "completed",
+      },
+      {
+        phase: "Testing & Optimization",
+        duration: "2 weeks",
+        status: "completed",
+      },
+      { phase: "Deployment & Launch", duration: "1 week", status: "completed" },
     ],
     team: "Solo Project",
     role: "Full Stack Developer & Solution Architect",
     status: "Live & Maintained",
-    duration: "4 months"
+    duration: "4 months",
   },
   {
     id: 2,
@@ -66,20 +108,21 @@ export const projectsData = [
     category: "Developer Tools",
     year: "2025",
     summary: "Comprehensive API testing and documentation platform",
-    fullDescription: "EndPointHub is a powerful API testing and documentation platform that streamlines the development workflow. It provides intuitive tools for testing REST APIs, generating documentation, and collaborating with team members.",
+    fullDescription:
+      "EndPointHub is a powerful API testing and documentation platform that streamlines the development workflow. It provides intuitive tools for testing REST APIs, generating documentation, and collaborating with team members.",
     features: [
       "API endpoint testing with various HTTP methods",
       "Automated documentation generation",
       "Request/response history tracking",
       "Environment variable management",
       "Team collaboration features",
-      "Mock server functionality"
+      "Mock server functionality",
     ],
     challenges: [
       "Building robust API testing infrastructure",
       "Creating intuitive user interface for complex operations",
       "Implementing real-time collaboration features",
-      "Ensuring reliable mock server functionality"
+      "Ensuring reliable mock server functionality",
     ],
     liveLink: "https://endpointhub-demo.vercel.app",
     githubLink: "https://github.com/username/endpointhub",
@@ -87,284 +130,316 @@ export const projectsData = [
       { phase: "Planning & Research", duration: "1 week", status: "completed" },
       { phase: "Core Development", duration: "4 weeks", status: "completed" },
       { phase: "Testing Features", duration: "2 weeks", status: "completed" },
-      { phase: "UI/UX Polish", duration: "1 week", status: "completed" }
+      { phase: "UI/UX Polish", duration: "1 week", status: "completed" },
     ],
     team: "Solo Project",
     role: "Full Stack Developer",
     status: "In Development",
-    duration: "2 months"
+    duration: "2 months",
   },
   {
     id: 3,
     title: "VidTube",
     image: netflix,
-    description: "Video sharing platform with upload and streaming capabilities",
+    description:
+      "Video sharing platform with upload and streaming capabilities",
     tech: ["React", "Node.js", "Express", "MongoDB", "AWS S3"],
     category: "Entertainment",
     year: "2025",
     summary: "Modern video sharing and streaming platform",
-    fullDescription: "VidTube is a comprehensive video sharing platform that allows users to upload, share, and stream videos. Features include user authentication, video processing, comments system, and recommendation algorithms.",
+    fullDescription:
+      "VidTube is a comprehensive video sharing platform that allows users to upload, share, and stream videos. Features include user authentication, video processing, comments system, and recommendation algorithms.",
     features: [
       "Video upload and processing",
       "User authentication and profiles",
       "Comments and rating system",
       "Video recommendations",
       "Playlist creation and management",
-      "Search and filtering capabilities"
+      "Search and filtering capabilities",
     ],
     challenges: [
       "Implementing video processing and compression",
       "Building scalable streaming infrastructure",
       "Creating recommendation algorithms",
-      "Managing large video file storage"
+      "Managing large video file storage",
     ],
     liveLink: "https://vidtube-demo.vercel.app",
     githubLink: "https://github.com/username/vidtube",
     timeline: [
       { phase: "Architecture Design", duration: "1 week", status: "completed" },
-      { phase: "Backend Development", duration: "3 weeks", status: "completed" },
-      { phase: "Frontend Development", duration: "3 weeks", status: "completed" },
-      { phase: "Video Processing", duration: "2 weeks", status: "completed" }
+      {
+        phase: "Backend Development",
+        duration: "3 weeks",
+        status: "completed",
+      },
+      {
+        phase: "Frontend Development",
+        duration: "3 weeks",
+        status: "completed",
+      },
+      { phase: "Video Processing", duration: "2 weeks", status: "completed" },
     ],
     team: "Solo Project",
     role: "Full Stack Developer",
     status: "Portfolio Project",
-    duration: "2 months"
+    duration: "2 months",
   },
   {
     id: 4,
     title: "Code Editor",
     image: ecommerce,
-    description: "Web-based code editor with syntax highlighting and collaboration",
+    description:
+      "Web-based code editor with syntax highlighting and collaboration",
     tech: ["React", "Node.js", "Socket.io", "Monaco Editor"],
     category: "Developer Tools",
     year: "2025",
     summary: "Collaborative web-based code editor",
-    fullDescription: "A feature-rich web-based code editor with real-time collaboration, syntax highlighting, and integrated terminal. Designed for developers who need a powerful online coding environment.",
+    fullDescription:
+      "A feature-rich web-based code editor with real-time collaboration, syntax highlighting, and integrated terminal. Designed for developers who need a powerful online coding environment.",
     features: [
       "Syntax highlighting for multiple languages",
       "Real-time collaborative editing",
       "Integrated terminal and file explorer",
       "Code completion and IntelliSense",
       "Theme customization",
-      "Plugin system for extensions"
+      "Plugin system for extensions",
     ],
     challenges: [
       "Implementing real-time collaborative editing",
       "Building robust syntax highlighting system",
       "Creating responsive editor interface",
-      "Integrating terminal functionality"
+      "Integrating terminal functionality",
     ],
     liveLink: "https://code-editor-demo.vercel.app",
     githubLink: "https://github.com/username/code-editor",
     timeline: [
       { phase: "Editor Setup", duration: "1 week", status: "completed" },
-      { phase: "Collaboration Features", duration: "2 weeks", status: "completed" },
-      { phase: "Terminal Integration", duration: "1 week", status: "completed" },
-      { phase: "UI/UX Enhancement", duration: "1 week", status: "completed" }
+      {
+        phase: "Collaboration Features",
+        duration: "2 weeks",
+        status: "completed",
+      },
+      {
+        phase: "Terminal Integration",
+        duration: "1 week",
+        status: "completed",
+      },
+      { phase: "UI/UX Enhancement", duration: "1 week", status: "completed" },
     ],
     team: "Solo Project",
     role: "Full Stack Developer",
     status: "In Development",
-    duration: "1.5 months"
+    duration: "1.5 months",
   },
 
-  {
-    id: 5,
-    title: "Kia Project",
-    image: ecommerce,
-    description: "Modern automotive showcase platform with interactive features",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
-    category: "Automotive",
-    year: "2025",
-    summary: "Interactive automotive platform for Kia vehicle showcase",
-    fullDescription: "Developed a comprehensive automotive platform for Kia featuring vehicle showcases, interactive configurators, and dealer management system. The platform provides immersive user experience with 360° vehicle views and advanced filtering capabilities.",
-    features: [
-      "Interactive vehicle configurator with real-time pricing",
-      "360° vehicle showcase with detailed specifications",
-      "Dealer locator with appointment booking system",
-      "Advanced search and filtering by model, price, features",
-      "Virtual test drive scheduling",
-      "Financing calculator and loan application",
-      "Service booking and maintenance tracking",
-      "Admin dashboard for inventory management"
-    ],
-    challenges: [
-      "Implementing 360° vehicle visualization",
-      "Building real-time pricing configurator",
-      "Creating responsive design for all device types",
-      "Integrating dealer management system"
-    ],
-    liveLink: "https://kia-project-demo.vercel.app",
-    githubLink: "https://github.com/username/kia-project",
-    timeline: [
-      { phase: "Design & Planning", duration: "2 weeks", status: "completed" },
-      { phase: "Frontend Development", duration: "6 weeks", status: "completed" },
-      { phase: "Backend API", duration: "4 weeks", status: "completed" },
-      { phase: "Integration & Testing", duration: "2 weeks", status: "completed" },
-      { phase: "Deployment & Launch", duration: "1 week", status: "completed" }
-    ],
-    team: "Solo Project",
-    role: "Full Stack Developer",
-    status: "Live & Maintained",
-    duration: "3 months"
-  },
-  {
-    id: 6,
-    title: "Class Crew",
-    image: learnsphere,
-    description: "Student collaboration platform with assignment tracking and group management",
-    tech: ["React", "Node.js", "MongoDB", "Socket.io", "Express"],
-    category: "Education",
-    year: "2025",
-    summary: "Collaborative platform for student project management and teamwork",
-    fullDescription: "Class Crew is a comprehensive student collaboration platform designed to enhance teamwork and project management in educational settings. Features real-time collaboration, assignment tracking, group formation, and progress monitoring tools.",
-    features: [
-      "Real-time collaboration with live document editing",
-      "Assignment tracking and deadline management",
-      "Automated group formation based on skills and preferences",
-      "Progress monitoring with visual analytics",
-      "File sharing and version control system",
-      "Discussion forums and chat functionality",
-      "Teacher dashboard for class oversight",
-      "Grade tracking and performance analytics"
-    ],
-    challenges: [
-      "Implementing real-time collaboration features",
-      "Building intelligent group formation algorithms",
-      "Creating intuitive project management interface",
-      "Ensuring scalable real-time communication"
-    ],
-    liveLink: "https://class-crew-demo.vercel.app",
-    githubLink: "https://github.com/username/class-crew",
-    timeline: [
-      { phase: "Research & Planning", duration: "1 week", status: "completed" },
-      { phase: "UI/UX Design", duration: "2 weeks", status: "completed" },
-      { phase: "Backend Development", duration: "4 weeks", status: "completed" },
-      { phase: "Frontend Development", duration: "5 weeks", status: "completed" },
-      { phase: "Real-time Features", duration: "2 weeks", status: "completed" },
-      { phase: "Testing & Launch", duration: "1 week", status: "completed" }
-    ],
-    team: "Solo Project",
-    role: "Full Stack Developer",
-    status: "Live & Active",
-    duration: "3 months"
-  },
-  {
-    id: 7,
-    title: "ADRS Gem Control",
-    image: gem_control,
-    description: "Jewellery business management with inventory and barcode generation",
-    tech: ["React", "Node.js", "MongoDB", "Express", "Material UI", "Redux"],
-    category: "E-commerce",
-    year: "2025",
-    summary: "Comprehensive jewellery business management with e-commerce integration",
-    fullDescription: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
-    features: [
-      "Advanced inventory management with barcode generation",
-      "Sales tracking and comprehensive analytics",
-      "Customer relationship management system",
-      "E-commerce integration with online catalog",
-      "Real-time dashboard with business insights",
-      "Product catalog with detailed specifications",
-      "Invoice generation and billing system",
-      "Multi-location inventory tracking"
-    ],
-    challenges: [
-      "Handling complex jewellery product specifications",
-      "Implementing barcode generation and scanning system",
-      "Building real-time inventory synchronization",
-      "Creating intuitive UI for non-technical users"
-    ],
-    liveLink: "https://gem-control-demo.vercel.app",
-    githubLink: "https://github.com/username/gem-control",
-    timeline: [
-      { phase: "Business Analysis", duration: "2 weeks", status: "completed" },
-      { phase: "Database Design", duration: "1 week", status: "completed" },
-      { phase: "Backend Development", duration: "6 weeks", status: "completed" },
-      { phase: "Frontend Development", duration: "8 weeks", status: "completed" },
-      { phase: "Barcode Integration", duration: "2 weeks", status: "completed" },
-      { phase: "Testing & Deployment", duration: "1 week", status: "completed" }
-    ],
-    team: "Solo Project",
-    role: "Full Stack Developer",
-    status: "Client Delivered",
-    duration: "3 months"
-  },
+  // {
+  //   id: 5,
+  //   title: "Kia Project",
+  //   image: ecommerce,
+  //   description: "Modern automotive showcase platform with interactive features",
+  //   tech: ["React", "Node.js", "Express", "MongoDB"],
+  //   category: "Automotive",
+  //   year: "2025",
+  //   summary: "Interactive automotive platform for Kia vehicle showcase",
+  //   fullDescription: "Developed a comprehensive automotive platform for Kia featuring vehicle showcases, interactive configurators, and dealer management system. The platform provides immersive user experience with 360° vehicle views and advanced filtering capabilities.",
+  //   features: [
+  //     "Interactive vehicle configurator with real-time pricing",
+  //     "360° vehicle showcase with detailed specifications",
+  //     "Dealer locator with appointment booking system",
+  //     "Advanced search and filtering by model, price, features",
+  //     "Virtual test drive scheduling",
+  //     "Financing calculator and loan application",
+  //     "Service booking and maintenance tracking",
+  //     "Admin dashboard for inventory management"
+  //   ],
+  //   challenges: [
+  //     "Implementing 360° vehicle visualization",
+  //     "Building real-time pricing configurator",
+  //     "Creating responsive design for all device types",
+  //     "Integrating dealer management system"
+  //   ],
+  //   liveLink: "https://kia-project-demo.vercel.app",
+  //   githubLink: "https://github.com/username/kia-project",
+  //   timeline: [
+  //     { phase: "Design & Planning", duration: "2 weeks", status: "completed" },
+  //     { phase: "Frontend Development", duration: "6 weeks", status: "completed" },
+  //     { phase: "Backend API", duration: "4 weeks", status: "completed" },
+  //     { phase: "Integration & Testing", duration: "2 weeks", status: "completed" },
+  //     { phase: "Deployment & Launch", duration: "1 week", status: "completed" }
+  //   ],
+  //   team: "Solo Project",
+  //   role: "Full Stack Developer",
+  //   status: "Live & Maintained",
+  //   duration: "3 months"
+  // },
+  // {
+  //   id: 6,
+  //   title: "Class Crew",
+  //   image: learnsphere,
+  //   description: "Student collaboration platform with assignment tracking and group management",
+  //   tech: ["React", "Node.js", "MongoDB", "Socket.io", "Express"],
+  //   category: "Education",
+  //   year: "2025",
+  //   summary: "Collaborative platform for student project management and teamwork",
+  //   fullDescription: "Class Crew is a comprehensive student collaboration platform designed to enhance teamwork and project management in educational settings. Features real-time collaboration, assignment tracking, group formation, and progress monitoring tools.",
+  //   features: [
+  //     "Real-time collaboration with live document editing",
+  //     "Assignment tracking and deadline management",
+  //     "Automated group formation based on skills and preferences",
+  //     "Progress monitoring with visual analytics",
+  //     "File sharing and version control system",
+  //     "Discussion forums and chat functionality",
+  //     "Teacher dashboard for class oversight",
+  //     "Grade tracking and performance analytics"
+  //   ],
+  //   challenges: [
+  //     "Implementing real-time collaboration features",
+  //     "Building intelligent group formation algorithms",
+  //     "Creating intuitive project management interface",
+  //     "Ensuring scalable real-time communication"
+  //   ],
+  //   liveLink: "https://class-crew-demo.vercel.app",
+  //   githubLink: "https://github.com/username/class-crew",
+  //   timeline: [
+  //     { phase: "Research & Planning", duration: "1 week", status: "completed" },
+  //     { phase: "UI/UX Design", duration: "2 weeks", status: "completed" },
+  //     { phase: "Backend Development", duration: "4 weeks", status: "completed" },
+  //     { phase: "Frontend Development", duration: "5 weeks", status: "completed" },
+  //     { phase: "Real-time Features", duration: "2 weeks", status: "completed" },
+  //     { phase: "Testing & Launch", duration: "1 week", status: "completed" }
+  //   ],
+  //   team: "Solo Project",
+  //   role: "Full Stack Developer",
+  //   status: "Live & Active",
+  //   duration: "3 months"
+  // },
+  // {
+  //   id: 7,
+  //   title: "ADRS Gem Control",
+  //   image: gem_control,
+  //   description: "Jewellery business management with inventory and barcode generation",
+  //   tech: ["React", "Node.js", "MongoDB", "Express", "Material UI", "Redux"],
+  //   category: "E-commerce",
+  //   year: "2025",
+  //   summary: "Comprehensive jewellery business management with e-commerce integration",
+  //   fullDescription: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
+  //   features: [
+  //     "Advanced inventory management with barcode generation",
+  //     "Sales tracking and comprehensive analytics",
+  //     "Customer relationship management system",
+  //     "E-commerce integration with online catalog",
+  //     "Real-time dashboard with business insights",
+  //     "Product catalog with detailed specifications",
+  //     "Invoice generation and billing system",
+  //     "Multi-location inventory tracking"
+  //   ],
+  //   challenges: [
+  //     "Handling complex jewellery product specifications",
+  //     "Implementing barcode generation and scanning system",
+  //     "Building real-time inventory synchronization",
+  //     "Creating intuitive UI for non-technical users"
+  //   ],
+  //   liveLink: "https://gem-control-demo.vercel.app",
+  //   githubLink: "https://github.com/username/gem-control",
+  //   timeline: [
+  //     { phase: "Business Analysis", duration: "2 weeks", status: "completed" },
+  //     { phase: "Database Design", duration: "1 week", status: "completed" },
+  //     { phase: "Backend Development", duration: "6 weeks", status: "completed" },
+  //     { phase: "Frontend Development", duration: "8 weeks", status: "completed" },
+  //     { phase: "Barcode Integration", duration: "2 weeks", status: "completed" },
+  //     { phase: "Testing & Deployment", duration: "1 week", status: "completed" }
+  //   ],
+  //   team: "Solo Project",
+  //   role: "Full Stack Developer",
+  //   status: "Client Delivered",
+  //   duration: "3 months"
+  // },
   {
     id: 8,
     title: "Techora",
     image: learnsphere,
-    description: "Online learning platform with course management and progress tracking",
+    description:
+      "Online learning platform with course management and progress tracking",
     tech: ["React", "Framer Motion", "Express", "Redux", "Node.js", "MongoDB"],
     category: "Education",
     year: "2025",
     summary: "Online learning platform",
-    fullDescription: "Techora is a comprehensive online learning platform that enables educators to create, manage, and sell courses while providing students with an engaging learning experience. Features include video streaming, progress tracking, quizzes, and certification systems.",
+    fullDescription:
+      "Techora is a comprehensive online learning platform that enables educators to create, manage, and sell courses while providing students with an engaging learning experience. Features include video streaming, progress tracking, quizzes, and certification systems.",
     features: [
       "Course creation and management",
       "Video streaming and playback",
       "Student progress tracking",
       "Interactive quizzes and assessments",
       "Certificate generation",
-      "Payment processing for course sales"
+      "Payment processing for course sales",
     ],
     challenges: [
       "Implementing video streaming infrastructure",
       "Building comprehensive progress tracking system",
       "Creating interactive assessment tools",
-      "Designing user-friendly course creation interface"
+      "Designing user-friendly course creation interface",
     ],
     liveLink: "https://learnsphere-demo.vercel.app",
     githubLink: "https://github.com/username/learnsphere",
     timeline: [
       { phase: "UI/UX Design", duration: "1 week", status: "completed" },
-      { phase: "Frontend Development", duration: "3 weeks", status: "completed" },
+      {
+        phase: "Frontend Development",
+        duration: "3 weeks",
+        status: "completed",
+      },
       { phase: "Backend API", duration: "2 weeks", status: "completed" },
       { phase: "Video Integration", duration: "1 week", status: "completed" },
-      { phase: "Testing & Launch", duration: "1 week", status: "completed" }
+      { phase: "Testing & Launch", duration: "1 week", status: "completed" },
     ],
     team: "Solo Project",
     role: "Full Stack Developer",
     status: "Portfolio Project",
-    duration: "2 months"
+    duration: "2 months",
   },
   {
     id: 9,
     title: "Dish Discovery App",
     image: recipe_finder,
-    description: "Recipe finder with nutritional information and cooking instructions",
+    description:
+      "Recipe finder with nutritional information and cooking instructions",
     tech: ["React", "Tailwind CSS"],
     category: "Lifestyle",
     year: "2025",
     summary: "Recipe Finder App",
-    fullDescription: "A feature-rich recipe discovery platform that helps users find, save, and share recipes. Integrated with the Spoonacular API to provide access to thousands of recipes with detailed nutritional information, cooking instructions, and ingredient lists.",
+    fullDescription:
+      "A feature-rich recipe discovery platform that helps users find, save, and share recipes. Integrated with the Spoonacular API to provide access to thousands of recipes with detailed nutritional information, cooking instructions, and ingredient lists.",
     features: [
       "Recipe search and filtering",
       "Nutritional information display",
       "Ingredient-based recipe suggestions",
       "Favorite recipes collection",
       "Cooking timer and instructions",
-      "Dietary restriction filters"
+      "Dietary restriction filters",
     ],
     challenges: [
       "Integrating third-party recipe API",
       "Implementing efficient search and filtering",
       "Creating responsive recipe card layouts",
-      "Managing large datasets of recipe information"
+      "Managing large datasets of recipe information",
     ],
     liveLink: "https://dish-discovery-demo.vercel.app",
     githubLink: "https://github.com/username/dish-discovery",
     timeline: [
       { phase: "API Research", duration: "3 days", status: "completed" },
-      { phase: "Frontend Development", duration: "2 weeks", status: "completed" },
+      {
+        phase: "Frontend Development",
+        duration: "2 weeks",
+        status: "completed",
+      },
       { phase: "API Integration", duration: "1 week", status: "completed" },
-      { phase: "UI Polish", duration: "3 days", status: "completed" }
+      { phase: "UI Polish", duration: "3 days", status: "completed" },
     ],
     team: "Solo Project",
     role: "Full Stack Developer",
     status: "Portfolio Project",
-    duration: "1 month"
+    duration: "1 month",
   },
   {
     id: 10,
@@ -375,111 +450,145 @@ export const projectsData = [
     category: "Entertainment",
     year: "2024",
     summary: "Music Player",
-    fullDescription: "Melody Heaven is a sophisticated music streaming platform that combines beautiful design with powerful functionality. Features include playlist creation, social sharing, music discovery, and high-quality audio streaming with a focus on user experience.",
+    fullDescription:
+      "Melody Heaven is a sophisticated music streaming platform that combines beautiful design with powerful functionality. Features include playlist creation, social sharing, music discovery, and high-quality audio streaming with a focus on user experience.",
     features: [
       "High-quality music streaming",
       "Playlist creation and management",
       "Music discovery algorithms",
       "Social sharing features",
       "Offline listening capability",
-      "Artist and album information"
+      "Artist and album information",
     ],
     challenges: [
       "Implementing audio streaming infrastructure",
       "Building playlist management system",
       "Creating music discovery algorithms",
-      "Designing intuitive user interface"
+      "Designing intuitive user interface",
     ],
     liveLink: "https://melody-heaven-demo.vercel.app",
     githubLink: "https://github.com/username/melody-heaven",
     timeline: [
-      { phase: "Design & Prototyping", duration: "1 week", status: "completed" },
+      {
+        phase: "Design & Prototyping",
+        duration: "1 week",
+        status: "completed",
+      },
       { phase: "Audio System Setup", duration: "2 weeks", status: "completed" },
-      { phase: "Frontend Development", duration: "3 weeks", status: "completed" },
+      {
+        phase: "Frontend Development",
+        duration: "3 weeks",
+        status: "completed",
+      },
       { phase: "Backend & Database", duration: "2 weeks", status: "completed" },
-      { phase: "Testing & Optimization", duration: "1 week", status: "completed" }
+      {
+        phase: "Testing & Optimization",
+        duration: "1 week",
+        status: "completed",
+      },
     ],
     team: "Solo Project",
     role: "Full Stack Developer",
     status: "Portfolio Project",
-    duration: "2 months"
+    duration: "2 months",
   },
   {
     id: 11,
     title: "Netflix Clone",
     image: netflix,
-    description: "Streaming platform clone with user authentication and video playback",
+    description:
+      "Streaming platform clone with user authentication and video playback",
     tech: ["React", "Tailwind CSS"],
     category: "Entertainment",
     year: "2025",
     summary: "Netflix Clone",
-    fullDescription: "A comprehensive Netflix clone that replicates the core functionality and design of the popular streaming platform. Features include user authentication, content browsing, video streaming, and personalized recommendations with a responsive design.",
+    fullDescription:
+      "A comprehensive Netflix clone that replicates the core functionality and design of the popular streaming platform. Features include user authentication, content browsing, video streaming, and personalized recommendations with a responsive design.",
     features: [
       "User authentication and profiles",
       "Video streaming and playback",
       "Content categorization and browsing",
       "Search functionality",
       "Responsive design",
-      "Recommendation system"
+      "Recommendation system",
     ],
     challenges: [
       "Replicating Netflix's complex UI design",
       "Implementing video streaming functionality",
       "Building recommendation algorithms",
-      "Creating responsive grid layouts"
+      "Creating responsive grid layouts",
     ],
     liveLink: "https://netflix-clone-demo.vercel.app",
     githubLink: "https://github.com/username/netflix-clone",
     timeline: [
       { phase: "UI Replication", duration: "2 weeks", status: "completed" },
-      { phase: "Authentication System", duration: "1 week", status: "completed" },
+      {
+        phase: "Authentication System",
+        duration: "1 week",
+        status: "completed",
+      },
       { phase: "Video Integration", duration: "2 weeks", status: "completed" },
       { phase: "Responsive Design", duration: "1 week", status: "completed" },
-      { phase: "Final Polish", duration: "1 week", status: "completed" }
+      { phase: "Final Polish", duration: "1 week", status: "completed" },
     ],
     team: "Solo Project",
     role: "Full Stack Developer",
     status: "Portfolio Project",
-    duration: "2 months"
+    duration: "2 months",
   },
-  {
-    id: 12,
-    title: "Yadav Bus Service Platform",
-    image: yadav_bus,
-    description: "Bus platform with ticket, cab, and hotel booking + WhatsApp API integration",
-    tech: ["React", "Framer Motion", "Whatsapp API"],
-    category: "Full Stack",
-    year: "2025",
-    summary: "A comprehensive bus management system with multi-service booking capabilities",
-    fullDescription: "Built a comprehensive bus platform with ticket, cab, and hotel booking capabilities integrated with WhatsApp API, boosting operational efficiency by 90%. The platform features real-time seat availability, automated booking confirmations, and integrated payment processing.",
-    features: [
-      "Real-time seat booking system with live availability",
-      "WhatsApp API integration for instant notifications",
-      "Multi-service booking (Bus, Cab, Hotel)",
-      "Admin dashboard with comprehensive analytics",
-      "Secure payment gateway integration",
-      "Route management and optimization system",
-      "Customer management and booking history",
-      "Dynamic pricing based on demand and season"
-    ],
-    challenges: [
-      "Implementing real-time seat availability across multiple buses",
-      "Integrating WhatsApp API for seamless customer communication",
-      "Building a scalable booking system handling concurrent users",
-      "Creating an intuitive admin dashboard for operations management"
-    ],
-    liveLink: "https://yadav-bus-demo.vercel.app",
-    githubLink: "https://github.com/username/yadav-bus-service",
-    timeline: [
-      { phase: "Planning & Design", duration: "2 weeks", status: "completed" },
-      { phase: "Backend Development", duration: "4 weeks", status: "completed" },
-      { phase: "Frontend Development", duration: "3 weeks", status: "completed" },
-      { phase: "API Integration", duration: "2 weeks", status: "completed" },
-      { phase: "Testing & Deployment", duration: "1 week", status: "completed" }
-    ],
-    team: "Solo Project",
-    role: "Full Stack Developer",
-    status: "Live & Maintained",
-    duration: "2 months"
-  },
+  // {
+  //   id: 12,
+  //   title: "Yadav Bus Service Platform",
+  //   image: yadav_bus,
+  //   description:
+  //     "Bus platform with ticket, cab, and hotel booking + WhatsApp API integration",
+  //   tech: ["React", "Framer Motion", "Whatsapp API"],
+  //   category: "Full Stack",
+  //   year: "2025",
+  //   summary:
+  //     "A comprehensive bus management system with multi-service booking capabilities",
+  //   fullDescription:
+  //     "Built a comprehensive bus platform with ticket, cab, and hotel booking capabilities integrated with WhatsApp API, boosting operational efficiency by 90%. The platform features real-time seat availability, automated booking confirmations, and integrated payment processing.",
+  //   features: [
+  //     "Real-time seat booking system with live availability",
+  //     "WhatsApp API integration for instant notifications",
+  //     "Multi-service booking (Bus, Cab, Hotel)",
+  //     "Admin dashboard with comprehensive analytics",
+  //     "Secure payment gateway integration",
+  //     "Route management and optimization system",
+  //     "Customer management and booking history",
+  //     "Dynamic pricing based on demand and season",
+  //   ],
+  //   challenges: [
+  //     "Implementing real-time seat availability across multiple buses",
+  //     "Integrating WhatsApp API for seamless customer communication",
+  //     "Building a scalable booking system handling concurrent users",
+  //     "Creating an intuitive admin dashboard for operations management",
+  //   ],
+  //   liveLink: "https://yadav-bus-demo.vercel.app",
+  //   githubLink: "https://github.com/username/yadav-bus-service",
+  //   timeline: [
+  //     { phase: "Planning & Design", duration: "2 weeks", status: "completed" },
+  //     {
+  //       phase: "Backend Development",
+  //       duration: "4 weeks",
+  //       status: "completed",
+  //     },
+  //     {
+  //       phase: "Frontend Development",
+  //       duration: "3 weeks",
+  //       status: "completed",
+  //     },
+  //     { phase: "API Integration", duration: "2 weeks", status: "completed" },
+  //     {
+  //       phase: "Testing & Deployment",
+  //       duration: "1 week",
+  //       status: "completed",
+  //     },
+  //   ],
+  //   team: "Solo Project",
+  //   role: "Full Stack Developer",
+  //   status: "Live & Maintained",
+  //   duration: "2 months",
+  // },
 ];
