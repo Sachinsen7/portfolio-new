@@ -7,11 +7,7 @@ export function ThemeProvider({ children }) {
     const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
-        // Add transition class before theme change
-        if (isTransitioning) {
-            document.documentElement.classList.add("theme-transitioning");
-        }
-
+        // Apply theme changes immediately
         document.documentElement.setAttribute("data-theme", theme);
         localStorage.setItem("theme", theme);
 
@@ -20,23 +16,18 @@ export function ThemeProvider({ children }) {
         } else {
             document.documentElement.classList.remove("dark");
         }
-
-        // Remove transition class after animation completes
-        if (isTransitioning) {
-            setTimeout(() => {
-                document.documentElement.classList.remove("theme-transitioning");
-                setIsTransitioning(false);
-            }, 500); // Match CSS transition duration
-        }
-    }, [theme, isTransitioning]);
+    }, [theme]);
 
     const toggleTheme = () => {
         setIsTransitioning(true);
 
-        // Add a slight delay to ensure smooth transition
-        requestAnimationFrame(() => {
-            setTheme(theme === "light" ? "dark" : "light");
-        });
+        // Change theme immediately
+        setTheme(theme === "light" ? "dark" : "light");
+
+        // Reset transition state quickly
+        setTimeout(() => {
+            setIsTransitioning(false);
+        }, 200);
     };
 
     return (
