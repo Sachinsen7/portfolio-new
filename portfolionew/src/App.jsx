@@ -7,6 +7,7 @@ import BlogPost from '@/pages/BlogPost'
 import NotFound from '@/pages/NotFound'
 import { ThemeProvider } from '@/context/ThemeContext'
 import { MusicProvider } from '@/context/MusicContext'
+import ThemeTransition from '@/components/common/ThemeTransition'
 import ProjectDetails from '@/components/sections/projectDetails'
 
 
@@ -32,6 +33,7 @@ function App() {
       <MusicProvider>
         <Router>
           <AnimatedRoutes />
+          <ThemeTransition />
         </Router>
       </MusicProvider>
     </ThemeProvider>
