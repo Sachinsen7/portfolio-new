@@ -17,12 +17,14 @@ export default function ScrollProgress() {
     }, []);
 
     return (
-        <motion.div
-            className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent/20 to-accent/40 z-50"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: scrollProgress }}
-            style={{ transformOrigin: '0%' }}
-            transition={{ duration: 0.1, ease: 'easeOut' }}
-        />
+        <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-800 z-50">
+            <motion.div
+                className="h-full bg-gradient-to-r from-blue-500 to-blue-600"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: scrollProgress }}
+                style={{ transformOrigin: '0%' }}
+                transition={{ duration: 0.1, ease: 'easeOut' }}
+            />
+        </div>
     );
 }
