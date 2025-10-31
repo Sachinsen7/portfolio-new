@@ -7,7 +7,7 @@ import netflix from "../../public/assets/images/netflix.png";
 import music_player from "../../public/assets/images/music_player.png";
 import learnsphere from "../../public/assets/images/learnsphere.png";
 import cloud_saas from "../../public/assets/images/cloud_saas.png";
-// Using ecommerce image as placeholder for Cloud SaaS - you can replace with actual image later
+import vidtube from "../../public/assets/images/vidtube.png";
 
 export const projectsData = [
   {
@@ -140,10 +140,10 @@ export const projectsData = [
   {
     id: 3,
     title: "VidTube",
-    image: netflix,
+    image: vidtube,
     description:
       "Video sharing platform with upload and streaming capabilities",
-    tech: ["React", "Node.js", "Express", "MongoDB", "AWS S3"],
+    tech: ["React", "Material UI", "Node.js", "Express", "MongoDB"],
     category: "Entertainment",
     year: "2025",
     summary: "Modern video sharing and streaming platform",
