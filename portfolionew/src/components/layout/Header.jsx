@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import CompactMusicPlayer from "@/components/common/CompactMusicPlayer";
 import { smoothScrollTo } from "@/utils/smoothScroll";
+import { useViewTransition, useViewTransitionScroll } from "@/hooks/useViewTransition";
 
 const navItems = [
   { href: "/projects", label: "Work", icon: Briefcase, type: "link" },
@@ -33,6 +34,8 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
+  const { transitionTo } = useViewTransition();
+  const { scrollToElement } = useViewTransitionScroll();
 
   // Check if we're on the home page or project detail page
   const isHomePage = location.pathname === "/";
@@ -61,7 +64,12 @@ export default function Header() {
   const handleNavClick = (item, e) => {
     if (item.type === "scroll" && isHomePage) {
       e.preventDefault();
-      smoothScrollTo(item.href);
+      scrollToElement(item.href, { offset: 80 });
+    } else if (item.type === "link") {
+      e.preventDefault();
+      transitionTo(item.href, {
+        transitionName: `nav-${item.label.toLowerCase()}`
+      });
     }
   };
 
