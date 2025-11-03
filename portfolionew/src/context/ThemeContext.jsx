@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { transitionTheme } from "@/utils/viewTransitions";
 
 export const ThemeContext = createContext();
 
@@ -21,13 +22,15 @@ export function ThemeProvider({ children }) {
     const toggleTheme = () => {
         setIsTransitioning(true);
 
-        // Change theme immediately
-        setTheme(theme === "light" ? "dark" : "light");
-
-        // Reset transition state quickly
-        setTimeout(() => {
-            setIsTransitioning(false);
-        }, 200);
+        // Use View Transition API for smooth theme switching
+        transitionTheme(() => {
+            setTheme(theme === "light" ? "dark" : "light");
+        }).finally(() => {
+            // Reset transition state quickly for better performance
+            setTimeout(() => {
+                setIsTransitioning(false);
+            }, 50);
+        });
     };
 
     return (
