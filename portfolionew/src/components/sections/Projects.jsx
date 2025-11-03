@@ -131,7 +131,7 @@ export default function Projects() {
       </div>
 
       {/* Show All Projects */}
-      <div className="flex justify-center mt-12">
+      <div className="flex justify-center mt-12 mb-14">
         <Link
           to="/projects"
           className="flex items-center gap-2 bg-gray-50 dark:bg-gray-900/60 backdrop-blur px-6 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:text-accent border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-200"
