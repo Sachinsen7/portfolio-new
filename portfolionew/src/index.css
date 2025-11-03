@@ -173,6 +173,7 @@ body,
 }
 
 @keyframes glitch {
+
   2%,
   64% {
     transform: translate(2px, 0) skew(0deg);
@@ -200,12 +201,10 @@ body,
 }
 
 .glass-shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--glass-bg),
-    var(--glass-dark),
-    var(--glass-bg)
-  );
+  background: linear-gradient(90deg,
+      var(--glass-bg),
+      var(--glass-dark),
+      var(--glass-bg));
   background-size: 200% 100%;
   animation: glass-shimmer 5s linear infinite;
 }
@@ -217,4 +216,268 @@ body,
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* ===== VIEW TRANSITION API STYLES ===== */
+
+/* Optimized for better performance on all devices */
+/* Default page transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+::view-transition-old(root) {
+  animation-name: slide-out-right;
+}
+
+::view-transition-new(root) {
+  animation-name: slide-in-left;
+}
+
+/* Optimized fade animations for better performance */
+@keyframes slide-out-right {
+  from {
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(30px) translateZ(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px) translateZ(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+  }
+}
+
+/* Theme transition - optimized radial wipe effect */
+.theme-transitioning::view-transition-old(root),
+.theme-transitioning::view-transition-new(root) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: clip-path;
+  transform: translateZ(0);
+}
+
+.theme-transitioning::view-transition-old(root) {
+  animation-name: theme-fade-out;
+}
+
+.theme-transitioning::view-transition-new(root) {
+  animation-name: theme-fade-in;
+}
+
+@keyframes theme-fade-out {
+  from {
+    clip-path: circle(100% at 50% 50%);
+  }
+
+  to {
+    clip-path: circle(0% at 50% 50%);
+  }
+}
+
+@keyframes theme-fade-in {
+  from {
+    clip-path: circle(0% at 50% 50%);
+  }
+
+  to {
+    clip-path: circle(100% at 50% 50%);
+  }
+}
+
+/* Project detail transitions - optimized */
+[style*="project-"]::view-transition-old(root),
+[style*="project-"]::view-transition-new(root) {
+  animation-duration: 0.15s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+[style*="project-"]::view-transition-old(root) {
+  animation-name: project-zoom-out;
+}
+
+[style*="project-"]::view-transition-new(root) {
+  animation-name: project-zoom-in;
+}
+
+@keyframes project-zoom-out {
+  from {
+    transform: scale(1) translateZ(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(0.95) translateZ(0);
+    opacity: 0;
+  }
+}
+
+@keyframes project-zoom-in {
+  from {
+    transform: scale(1.05) translateZ(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateZ(0);
+    opacity: 1;
+  }
+}
+
+/* Modal transitions */
+[style*="modal-open"]::view-transition-old(root),
+[style*="modal-open"]::view-transition-new(root) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[style*="modal-open"]::view-transition-new(root) {
+  animation-name: modal-scale-in;
+}
+
+[style*="modal-close"]::view-transition-old(root) {
+  animation-name: modal-scale-out;
+}
+
+@keyframes modal-scale-in {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes modal-scale-out {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Unique portfolio-specific transitions */
+.portfolio-hero::view-transition-old(root) {
+  animation-name: hero-dissolve;
+}
+
+.portfolio-hero::view-transition-new(root) {
+  animation-name: hero-emerge;
+}
+
+@keyframes hero-dissolve {
+  from {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  to {
+    transform: scale(0.9) rotateY(-15deg);
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+
+@keyframes hero-emerge {
+  from {
+    transform: scale(1.1) rotateY(15deg);
+    opacity: 0;
+    filter: blur(4px);
+  }
+
+  to {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* Smooth scroll transitions */
+.smooth-scroll-transition::view-transition-old(root),
+.smooth-scroll-transition::view-transition-new(root) {
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Fallback for browsers without View Transition support */
+@media (prefers-reduced-motion: no-preference) {
+  .view-transition-fallback {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.1s !important;
+    animation-timing-function: ease !important;
+  }
+
+  .theme-transitioning::view-transition-old(root),
+  .theme-transitioning::view-transition-new(root) {
+    animation-duration: 0.1s !important;
+  }
+
+  [style*="project-"]::view-transition-old(root),
+  [style*="project-"]::view-transition-new(root) {
+    animation-duration: 0.1s !important;
+  }
+}
+
+/* Professional loading states during transitions */
+.view-transition-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.view-transition-loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(var(--accent), 0.1),
+      transparent);
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
 }
