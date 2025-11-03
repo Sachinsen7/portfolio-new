@@ -34,7 +34,7 @@ export default function LiquidHero() {
         <div className="flex-1 text-left">
           <h1
             id="hero-heading"
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3"
+            className="font-authorLight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3"
           >
             Hi, I'm <span className="text-accent">Sachin</span>
           </h1>
