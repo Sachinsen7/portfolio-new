@@ -28,9 +28,17 @@ export const theme = {
       glass: "var(--glass-border)",
     },
     backgroundImage: {
-      "glass-gradient": "linear-gradient(135deg, var(--glass-bg), var(--glass-bg))",
-      "glass-dark-gradient": "linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))",
-      "gradient-radial": "radial-gradient(ellipse at center, var(--tw-gradient-stops))",
+      "glass-gradient":
+        "linear-gradient(135deg, var(--glass-bg), var(--glass-bg))",
+      "glass-dark-gradient":
+        "linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))",
+      "gradient-radial":
+        "radial-gradient(ellipse at center, var(--tw-gradient-stops))",
+    },
+    fontFamily: {
+      author: ['"Author-Regular"', "sans-serif"],
+      authorBold: ['"Author-Bold"', "sans-serif"],
+      authorLight: ['"Author-Light"', "sans-serif"],
     },
   },
 };
