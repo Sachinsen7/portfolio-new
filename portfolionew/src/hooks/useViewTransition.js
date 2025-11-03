@@ -2,9 +2,7 @@ import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { transitionToPage, transitionToProject, supportsViewTransitions } from '@/utils/viewTransitions';
 
-/**
- * Custom hook for handling View Transitions in React Router
- */
+
 export const useViewTransition = () => {
     const navigate = useNavigate();
 
@@ -49,9 +47,7 @@ export const useViewTransition = () => {
     };
 };
 
-/**
- * Hook for smooth scrolling with View Transitions
- */
+
 export const useViewTransitionScroll = () => {
     const scrollToElement = useCallback((elementId, options = {}) => {
         const {
