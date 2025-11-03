@@ -52,7 +52,8 @@ export default function Header() {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  const shouldShowHeader = !isProjectDetailPage && !(isAllProjectsPage && isDesktop);
+
+  const shouldShowHeader = !isProjectDetailPage && !isAllProjectsPage;
 
   // Use appropriate nav items based on current page
   const currentNavItems = isHomePage ? homeNavItems : navItems;
@@ -64,15 +65,13 @@ export default function Header() {
     }
   };
 
-  // Auto-hide header on mobile when scrolling
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const isMobile = window.innerWidth < 640; // sm breakpoint
+      const isMobile = window.innerWidth < 640;
 
       if (isMobile) {
         if (currentScrollY < 50) {
-          // Always show when near top
           setIsVisible(true);
         } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
           // Hide when scrolling down
