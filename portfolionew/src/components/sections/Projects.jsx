@@ -4,14 +4,16 @@ import {
   Github,
   ArrowRight,
   Grid3X3,
-  Folder,
+
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projectsData } from "@/lib/projectsData";
 import { getTechIcon } from "@/lib/techIcons.jsx";
 import { motion } from "framer-motion";
+import { useViewTransition } from "@/hooks/useViewTransition";
 
 export default function Projects() {
+  const { transitionTo } = useViewTransition();
   return (
     <section
       id="projects"
@@ -111,14 +113,18 @@ export default function Projects() {
                     )}
                   </div>
 
-                  <Link
-                    to={`/project/${project.id}`}
+                  <button
+                    onClick={() => transitionTo(`/project/${project.id}`, {
+                      isProject: true,
+                      projectId: project.id,
+                      transitionName: `project-${project.id}`
+                    })}
                     className="flex items-center gap-1 text-sm text-accent hover:gap-2 transition-all duration-200"
                     aria-label={`View ${project.title} project details`}
                   >
                     View
                     <ArrowRight className="h-3 w-3" />
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -132,14 +138,16 @@ export default function Projects() {
 
       {/* Show All Projects */}
       <div className="flex justify-center mt-12 mb-14">
-        <Link
-          to="/projects"
+        <button
+          onClick={() => transitionTo("/projects", {
+            transitionName: "all-projects"
+          })}
           className="flex items-center gap-2 bg-gray-50 dark:bg-gray-900/60 backdrop-blur px-6 py-3 rounded-lg text-gray-900 dark:text-gray-100 hover:text-accent border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-200"
         >
           <Grid3X3 className="h-4 w-4" />
           <span>Show All Projects</span>
           <ArrowRight className="h-4 w-4" />
-        </Link>
+        </button>
       </div>
     </section>
   );
