@@ -16,7 +16,7 @@ const Sparkle = ({ x, y, id }) => {
       }}
       transition={{ duration: 2, ease: "easeOut" }}
     >
-      <div className="w-1 h-1 bg-gradient-to-r from-accent to-primary rounded-full shadow-lg" />
+      <div className="w-3 h-3 bg-gradient-to-r from-accent to-primary rounded-full shadow-lg" />
     </motion.div>
   );
 };
