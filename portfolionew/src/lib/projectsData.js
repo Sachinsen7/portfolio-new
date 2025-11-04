@@ -54,7 +54,7 @@ export const projectsData = [
       "Optimizing performance for large media file processing",
       "Creating responsive UI for diverse media management workflows",
     ],
-    liveLink: "cloud-saas-five.vercel.app",
+    liveLink: "https://cloud-saas-five.vercel.app/",
     githubLink: "https://github.com/Sachinsen7/cloud-saas",
     timeline: [
       {
