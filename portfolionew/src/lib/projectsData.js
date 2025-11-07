@@ -8,10 +8,59 @@ import music_player from "../../public/assets/images/music_player.png";
 import learnsphere from "../../public/assets/images/learnsphere.png";
 import cloud_saas from "../../public/assets/images/cloud_saas.png";
 import vidtube from "../../public/assets/images/vidtube.png";
+import monositi from "../../public/assets/images/monositi.png";
+import endpointhub from "../../public/assets/images/endpointhub.png";
 
 export const projectsData = [
   {
     id: 1,
+    title: "Monositi",
+    image: monositi,
+    description:
+      "Modern web application built with cutting-edge JavaScript technologies",
+    tech: ["JavaScript", "React", "Node.js", "Express", "Vercel"],
+    category: "Web Application",
+    year: "2025",
+    summary: "Lightweight and modern web application platform",
+    fullDescription:
+      "Monositi is a modern web application showcasing clean architecture and responsive design. Built with vanilla JavaScript and modern web technologies, it demonstrates best practices in frontend development.",
+    features: [
+      "Responsive and modern UI design",
+      "Fast and lightweight performance",
+      "Clean and maintainable codebase",
+      "Cross-browser compatibility",
+      "SEO optimized",
+      "Mobile-first approach",
+    ],
+    challenges: [
+      "Creating performant JavaScript architecture",
+      "Implementing responsive design patterns",
+      "Optimizing for web performance",
+      "Ensuring cross-browser compatibility",
+    ],
+    liveLink: "https://monositi-new.vercel.app",
+    githubLink: "https://github.com/Sachinsen7/monositi-new",
+    timeline: [
+      { phase: "Planning & Design", duration: "1 week", status: "completed" },
+      {
+        phase: "Core Development",
+        duration: "2 weeks",
+        status: "completed",
+      },
+      {
+        phase: "Testing & Optimization",
+        duration: "1 week",
+        status: "completed",
+      },
+      { phase: "Deployment", duration: "3 days", status: "completed" },
+    ],
+    team: "Team Project",
+    role: "Full Stack Developer",
+    status: "Live & Maintained",
+    duration: "3 months",
+  },
+  {
+    id: 2,
     title: "Cloud SaaS Media Platform",
     image: cloud_saas, // Replace with actual image when available
     description:
@@ -100,32 +149,53 @@ export const projectsData = [
     duration: "4 months",
   },
   {
-    id: 2,
+    id: 3,
     title: "EndPointHub",
-    image: ecommerce,
-    description: "API testing and documentation platform",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
-    category: "Developer Tools",
+    image: endpointhub,
+    description:
+      "Lightweight API marketplace for developers to publish, discover, and consume APIs with ease",
+    tech: [
+      "Next.js 14",
+      "React",
+      "TypeScript",
+      "Redux Toolkit",
+      "RTK Query",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "JWT",
+      "Docker",
+      "Swagger UI",
+      "Zod",
+      "Framer Motion",
+    ],
+    category: "API Management",
     year: "2025",
-    summary: "Comprehensive API testing and documentation platform",
+    summary: "Free-first API marketplace with authentication and rate limiting",
     fullDescription:
-      "EndPointHub is a powerful API testing and documentation platform that streamlines the development workflow. It provides intuitive tools for testing REST APIs, generating documentation, and collaborating with team members.",
+      "EndpointHub is a lightweight and free-first API marketplace designed for developers to publish, discover, and consume APIs with ease. It features user authentication, API key management, secure request proxying with rate limiting, and interactive documentation. Built entirely with free and open-source technologies.",
     features: [
-      "API endpoint testing with various HTTP methods",
-      "Automated documentation generation",
-      "Request/response history tracking",
-      "Environment variable management",
-      "Team collaboration features",
-      "Mock server functionality",
+      "User registration/login with JWT authentication",
+      "Publish APIs with OpenAPI/Swagger docs",
+      "Generate and revoke API keys per user and API",
+      "Proxy API requests with key validation and rate limiting",
+      "Interactive API documentation viewer",
+      "Usage analytics dashboard (requests, errors, latency)",
+      "Responsive UI with light/dark mode support",
+      "Redis caching for performance optimization",
     ],
     challenges: [
-      "Building robust API testing infrastructure",
-      "Creating intuitive user interface for complex operations",
-      "Implementing real-time collaboration features",
-      "Ensuring reliable mock server functionality",
+      "Building secure API key management system",
+      "Implementing rate limiting with Redis",
+      "Creating interactive API documentation viewer",
+      "Designing scalable proxy architecture",
+      "Integrating comprehensive analytics tracking",
     ],
-    liveLink: "https://endpointhub-demo.vercel.app",
-    githubLink: "https://github.com/username/endpointhub",
+    liveLink: "https://endpointhub.vercel.app",
+    githubLink: "https://github.com/Sachinsen7/EndPointHub",
     timeline: [
       { phase: "Planning & Research", duration: "1 week", status: "completed" },
       { phase: "Core Development", duration: "4 weeks", status: "completed" },
@@ -138,7 +208,7 @@ export const projectsData = [
     duration: "2 months",
   },
   {
-    id: 3,
+    id: 4,
     title: "VidTube",
     image: vidtube,
     description:
@@ -185,7 +255,7 @@ export const projectsData = [
     duration: "2 months",
   },
   {
-    id: 4,
+    id: 5,
     title: "Code Editor",
     image: ecommerce,
     description:
@@ -355,7 +425,7 @@ export const projectsData = [
   //   duration: "3 months"
   // },
   {
-    id: 8,
+    id: 6,
     title: "Techora",
     image: learnsphere,
     description:
@@ -399,7 +469,7 @@ export const projectsData = [
     duration: "2 months",
   },
   {
-    id: 9,
+    id: 7,
     title: "Dish Discovery App",
     image: recipe_finder,
     description:
@@ -442,7 +512,7 @@ export const projectsData = [
     duration: "1 month",
   },
   {
-    id: 10,
+    id: 8,
     title: "Melody Heaven",
     image: music_player,
     description: "Music streaming platform with playlist management",
@@ -493,7 +563,7 @@ export const projectsData = [
     duration: "2 months",
   },
   {
-    id: 11,
+    id: 9,
     title: "Netflix Clone",
     image: netflix,
     description:
