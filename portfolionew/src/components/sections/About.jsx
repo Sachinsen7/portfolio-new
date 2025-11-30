@@ -25,7 +25,7 @@ export default function About() {
     >
       {/* Section Header */}
       <div className="flex flex-col items-start gap-4 mb-8">
-        <h2 id="about-heading" className="text-xl text-start">
+        <h2 id="about-heading" className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
           Featured
         </h2>
         <h3 className="text-2xl font-semibold text-foreground flex items-center justify-center">
