@@ -56,7 +56,7 @@ body,
 #root {
   background-color: var(--background);
   color: var(--foreground);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.1s ease, color 0.1s ease;
 }
 
 /* Fast and smooth transitions for all elements */
@@ -267,9 +267,9 @@ body,
 /* Theme transition - optimized radial wipe effect */
 .theme-transitioning::view-transition-old(root),
 .theme-transitioning::view-transition-new(root) {
-  animation-duration: 0.3s;
+  animation-duration: 0.15s;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: clip-path;
+  will-change: opacity;
   transform: translateZ(0);
 }
 
@@ -283,21 +283,21 @@ body,
 
 @keyframes theme-fade-out {
   from {
-    clip-path: circle(100% at 50% 50%);
+    opacity: 1;
   }
 
   to {
-    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
   }
 }
 
 @keyframes theme-fade-in {
   from {
-    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
   }
 
   to {
-    clip-path: circle(100% at 50% 50%);
+    opacity: 1;
   }
 }
 
