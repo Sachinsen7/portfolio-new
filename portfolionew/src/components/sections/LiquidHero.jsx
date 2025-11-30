@@ -7,7 +7,7 @@ import {
   GithubIcon,
   MailIcon,
 } from "lucide-react";
-import profileImage from "/assets/images/me_and_bill.png";
+import profileImage from "/assets/images/me.jpg";
 import { basicSkills } from "@/lib/skillsData";
 
 export default function LiquidHero() {
@@ -105,6 +105,8 @@ export default function LiquidHero() {
             </a>
             <a
               href="https://linkedin.com/in/sachinsen1"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
               aria-label="LinkedIn Profile"
             >
@@ -112,6 +114,8 @@ export default function LiquidHero() {
             </a>
             <a
               href="https://twitter.com/sen_sachiin"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
               aria-label="Twitter Profile"
             >
