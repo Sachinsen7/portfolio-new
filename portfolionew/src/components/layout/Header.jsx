@@ -132,7 +132,7 @@ export default function Header() {
     <AnimatePresence>
       {isVisible && (
         <motion.header
-          className="fixed bottom-4 sm:fixed left-20 sm:bottom-6 sm:left-[40%] z-50 -translate-x-1/2"
+          className="fixed bottom-4 sm:fixed left-20 sm:bottom-6 sm:left-[41.5%] z-50 -translate-x-1/2"
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
