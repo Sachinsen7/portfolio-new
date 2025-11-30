@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LazyImage from "@/components/common/LazyImage";
+import ImageCarousel from "@/components/common/ImageCarousel";
 
 import { SlideTransition } from "@/components/common/PageTransition";
 import Header from "../layout/Header";
@@ -112,15 +113,12 @@ export default function ProjectDetails() {
             </h3>
           </div>
 
-          {/* Project Image */}
+          {/* Project Images Carousel */}
           <div className="mb-6">
-            <div className="bg-glass backdrop-blur rounded-lg p-3">
-              <LazyImage
-                src={project.image}
-                alt={`${project.title} screenshot`}
-                className="rounded-md object-cover w-full h-48"
-              />
-            </div>
+            <ImageCarousel
+              images={[project.image]}
+              projectTitle={project.title}
+            />
           </div>
 
           {/* Project Info */}
