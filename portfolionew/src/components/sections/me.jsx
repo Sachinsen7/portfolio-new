@@ -1,4 +1,4 @@
-import profileImage from "/assets/images/me_and_bill.png";
+import profileImage from "/assets/images/me.jpg";
 import {
   IconBrandNextjs,
   IconBrandTypescript,
@@ -113,7 +113,7 @@ export default function Me() {
       <div className="flex flex-col items-start gap-6">
         {/* Section Header */}
         <div className="flex flex-col items-start gap-2">
-          <h2 id="me-heading" className="text-xl text-start">
+          <h2 id="me-heading" className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
             About
           </h2>
           <h3 className="text-2xl font-semibold text-foreground flex justify-center items-center">
