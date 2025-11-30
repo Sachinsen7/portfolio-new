@@ -26,10 +26,8 @@ export function ThemeProvider({ children }) {
         transitionTheme(() => {
             setTheme(theme === "light" ? "dark" : "light");
         }).finally(() => {
-            // Reset transition state quickly for better performance
-            setTimeout(() => {
-                setIsTransitioning(false);
-            }, 50);
+            // Reset transition state immediately for better performance
+            setIsTransitioning(false);
         });
     };
 
