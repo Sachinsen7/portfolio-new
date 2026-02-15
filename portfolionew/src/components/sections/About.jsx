@@ -203,7 +203,7 @@ export default function About() {
                   </p>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-xs text-gray-800 dark:text-gray-300 bg-gray-100 dark:bg-glass backdrop-blur px-2 py-1 rounded border border-gray-300 dark:border-glass-border">
-                      May 2025 - Present
+                      May 2025 - Feb 2026
                     </span>
                     <span className="text-xs text-gray-800 dark:text-gray-300 bg-gray-100 dark:bg-glass backdrop-blur px-2 py-1 rounded border border-gray-300 dark:border-glass-border">
                       Full Time
