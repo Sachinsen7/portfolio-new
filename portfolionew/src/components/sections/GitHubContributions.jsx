@@ -48,7 +48,7 @@ export default function GitHubContributions() {
   }, []);
 
   return (
-    <section className="container mx-auto py-8 max-w-4xl">
+    <section className="container mx-auto max-w-4xl px-4 py-8 sm:px-6">
       <div className="flex flex-col items-start gap-3 mb-6">
         <h2 className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">GitHub</h2>
         <h3 className="text-xl font-semibold flex items-center sm:text-2xl">
@@ -82,9 +82,9 @@ export default function GitHubContributions() {
           </a>
         </div>
       ) : (
-        <div className="rounded-2xl p-4 border border-gray-300 dark:border-gray-700/50 bg-white dark:bg-transparent">
+        <div className="rounded-2xl border border-gray-300 bg-white p-4 dark:border-gray-700/50 dark:bg-transparent">
           {/* Total Contributions Display */}
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-600 dark:text-gray-400">
                 @{githubUsername}
@@ -101,17 +101,21 @@ export default function GitHubContributions() {
             </div>
           </div>
 
-          <GitHubCalendar
-            username={githubUsername}
-            theme={customTheme}
-            hideColorLegend
-            hideMonthLabels={false}
-            hideTotalCount
-            blockSize={11}
-            blockMargin={5}
-            fontSize={15}
-            transformData={selectLastYear}
-          />
+          <div className="overflow-x-auto pb-2">
+            <div className="min-w-[720px]">
+              <GitHubCalendar
+                username={githubUsername}
+                theme={customTheme}
+                hideColorLegend
+                hideMonthLabels={false}
+                hideTotalCount
+                blockSize={11}
+                blockMargin={5}
+                fontSize={15}
+                transformData={selectLastYear}
+              />
+            </div>
+          </div>
         </div>
       )}
     </section>

@@ -53,7 +53,7 @@ const focusAreas = [
 export default function Me() {
   return (
     <section
-      className="container mx-auto max-w-4xl py-10"
+      className="container mx-auto max-w-4xl px-4 py-10 sm:px-6"
       aria-labelledby="me-heading"
     >
       <div className="flex flex-col items-start gap-8">

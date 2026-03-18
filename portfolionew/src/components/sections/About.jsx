@@ -77,7 +77,7 @@ export default function About() {
 
   return (
     <section
-      className="container mx-auto max-w-4xl py-8"
+      className="container mx-auto max-w-4xl px-4 py-8 sm:px-6"
       aria-labelledby="about-heading"
     >
       <div className="mb-10 flex flex-col items-start gap-3">
@@ -139,12 +139,12 @@ export default function About() {
                       >
                         <Globe className="h-4 w-4" />
                       </a>
-                      {experience.status && (
+                      {/* {experience.status && (
                         <span className="inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs font-medium text-green-700 dark:text-green-300">
                           <span className="h-2 w-2 rounded-full bg-green-500" />
                           {experience.status}
                         </span>
-                      )}
+                      )} */}
                     </div>
                     <p className="text-sm text-foreground-muted">
                       {experience.role}

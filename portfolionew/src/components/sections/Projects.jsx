@@ -10,7 +10,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="container mx-auto max-w-4xl py-12"
+      className="container mx-auto max-w-4xl px-4 py-12 sm:px-6"
       aria-labelledby="projects-heading"
     >
       <div className="mb-10 flex flex-col items-start gap-3">
@@ -37,12 +37,12 @@ export default function Projects() {
             key={project.id}
             className="interactive-surface group rounded-2xl border border-gray-200/80 bg-white/70 p-4 transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20 sm:p-5"
           >
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-              <div className="h-40 w-full overflow-hidden rounded-xl border border-gray-200/80 bg-gray-100 dark:border-white/10 dark:bg-white/[0.03] sm:h-28 sm:w-44">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+              <div className="aspect-[16/10] w-full shrink-0 overflow-hidden rounded-xl border border-gray-200/80 bg-gradient-to-br from-gray-100 to-gray-50 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02] sm:h-32 sm:w-48 sm:aspect-auto md:h-36 md:w-52">
                 <LazyImage
                   src={project.image}
                   alt={`${project.title} thumbnail`}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain p-2 sm:p-3"
                 />
               </div>
 
@@ -60,7 +60,7 @@ export default function Projects() {
                     </h4>
                   </div>
 
-                  <div className="flex items-center gap-2 text-foreground-muted">
+                  <div className="flex items-center justify-end gap-2 text-foreground-muted">
                     <a
                       href={project.liveLink}
                       target="_blank"
@@ -91,7 +91,7 @@ export default function Projects() {
                     {project.tech.slice(0, 4).map((tech) => (
                       <div
                         key={tech}
-                        className="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-xs text-foreground dark:border-white/10 dark:bg-white/[0.03]"
+                        className="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-[11px] text-foreground dark:border-white/10 dark:bg-white/[0.03] sm:text-xs"
                       >
                         <span className="text-foreground-muted">{getTechIcon(tech, "h-3.5 w-3.5")}</span>
                         <span>{tech}</span>
@@ -112,7 +112,7 @@ export default function Projects() {
                         transitionName: `project-${project.id}`,
                       })
                     }
-                    className="interactive-text-link inline-flex items-center gap-2 text-sm font-medium text-foreground-muted transition-colors duration-200 hover:text-foreground"
+                    className="interactive-text-link inline-flex w-full items-center justify-between gap-2 text-sm font-medium text-foreground-muted transition-colors duration-200 hover:text-foreground sm:w-auto sm:justify-start"
                     aria-label={`View ${project.title} project details`}
                   >
                     View case study

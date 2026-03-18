@@ -26,7 +26,7 @@ export default function Home() {
         <Header />
         {/* <AccessibilityToggle /> */}
 
-        <main className="relative z-10 pt-40 sm:pt-44 md:pt-40">
+        <main className="relative z-10 pt-28 sm:pt-36 md:pt-40">
           <LiquidHero />
           <Me />
           <About />

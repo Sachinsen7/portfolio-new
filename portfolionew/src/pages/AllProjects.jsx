@@ -23,7 +23,7 @@ export default function AllProjects() {
         <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
           {/* Keep the blue accent scroll progress bar */}
           <ScrollProgress />
-          <div className="container mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-28 lg:px-8">
+          <div className="container mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
             {/* Header */}
             <div className="mb-12">
               <button
@@ -35,10 +35,10 @@ export default function AllProjects() {
               </button>
 
               <div className="text-start mb-8">
-                <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl">
                   All Projects
                 </h1>
-                <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+                <p className="max-w-2xl text-base text-gray-600 dark:text-gray-400 sm:text-lg">
                   A comprehensive collection of my work, side projects, and contributions to the development community
                 </p>
 
@@ -58,18 +58,18 @@ export default function AllProjects() {
                   whileHover={{ y: -8, scale: 1.02 }}
                 >
                   {/* Project Image */}
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden bg-gradient-to-br from-slate-100 to-white dark:from-gray-900 dark:to-gray-800">
                     <LazyImage
                       src={project.image}
                       alt={`${project.title} screenshot`}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="h-48 w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105 sm:p-4"
                     />
 
                     {/* Gradient overlay for better text readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                     {/* Action buttons */}
-                    <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <div className="absolute right-3 top-3 flex gap-2 opacity-100 transition-all duration-300 sm:right-4 sm:top-4 sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
                       <a
                         href={project.liveLink}
                         target="_blank"
@@ -100,14 +100,14 @@ export default function AllProjects() {
                   </div>
 
                   {/* Project Info */}
-                  <div className="p-6">
+                  <div className="p-4 sm:p-6">
                     {/* Header */}
-                    <div className="flex items-start justify-between mb-3">
+                    <div className="mb-3 flex items-start justify-between gap-3">
                       <div className="flex-1">
-                        <h3 className="font-bold text-xl text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-1 line-clamp-1">
+                        <h3 className="mb-1 text-lg font-bold text-gray-900 transition-colors group-hover:text-blue-600 line-clamp-1 dark:text-gray-100 dark:group-hover:text-blue-400 sm:text-xl">
                           {project.title}
                         </h3>
-                        <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+                        <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500 dark:text-gray-400 sm:gap-3">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-3 w-3" />
                             {project.year}
@@ -129,7 +129,7 @@ export default function AllProjects() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mb-4 leading-relaxed line-clamp-3">
+                    <p className="mb-4 text-sm leading-relaxed text-gray-700 line-clamp-3 dark:text-gray-300">
                       {project.description}
                     </p>
 
@@ -160,7 +160,7 @@ export default function AllProjects() {
                         projectId: project.id,
                         transitionName: `project-detail-${project.id}`
                       })}
-                      className="interactive-text-link inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors group/link"
+                      className="interactive-text-link inline-flex w-full items-center justify-between gap-2 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700 group/link dark:text-blue-400 dark:hover:text-blue-300 sm:w-auto sm:justify-start"
                     >
                       <span>View Details</span>
                       <ArrowLeft className="h-4 w-4 rotate-180 group-hover/link:translate-x-1 transition-transform" />

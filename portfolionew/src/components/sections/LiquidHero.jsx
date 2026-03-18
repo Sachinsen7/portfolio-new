@@ -60,7 +60,7 @@ const introParagraphs = [
 
 export default function LiquidHero() {
   return (
-    <section className="container mx-auto flex min-h-[70vh] max-w-4xl items-center py-10 md:pt-8 lg:py-16">
+    <section className="container mx-auto flex min-h-[70vh] max-w-4xl items-center px-4 py-8 sm:px-6 sm:py-10 md:pt-8 lg:py-16">
       <div className="w-full">
         <div className="mb-8 flex items-center gap-4 sm:gap-5">
           <div className="relative shrink-0">

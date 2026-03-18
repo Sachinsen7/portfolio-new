@@ -129,7 +129,7 @@ export default function TastePage() {
           <div className="page-backdrop" aria-hidden="true" />
           <div className="light-dot-pattern" aria-hidden="true" />
 
-          <div className="relative z-10 container mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-28 lg:px-8">
+          <div className="relative z-10 container mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
             <div className="mb-12">
               <button
                 onClick={() => transitionBack({ transitionName: "back-to-home" })}
@@ -143,7 +143,7 @@ export default function TastePage() {
                 <p className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   Off Screen
                 </p>
-                <h1 className="mt-4 text-4xl font-semibold text-foreground sm:text-5xl">
+                <h1 className="mt-4 text-3xl font-semibold text-foreground sm:text-5xl">
                   Movies, Music, and the stuff I genuinely enjoy outside of code.
                 </h1>
                 <p className="mt-4 text-base leading-relaxed text-foreground-muted sm:text-lg">
@@ -153,8 +153,8 @@ export default function TastePage() {
             </div>
 
             <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
-              <section className="rounded-[30px] border border-gray-200/80 bg-white/80 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-white/[0.03]">
-                <div className="mb-6 flex items-start justify-between gap-4">
+              <section className="rounded-[30px] border border-gray-200/80 bg-white/80 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-white/[0.03] sm:p-6">
+                <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50/80 px-3 py-1 text-xs text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]">
                       <Film className="h-3.5 w-3.5" />
@@ -219,8 +219,8 @@ export default function TastePage() {
                 </div>
               </section>
 
-              <section className="rounded-[30px] border border-[#1db954]/20 bg-[#121212]/95 p-6 text-white shadow-[0_18px_45px_rgba(0,0,0,0.24)]">
-                <div className="mb-6 flex items-start justify-between gap-4">
+              <section className="rounded-[30px] border border-[#1db954]/20 bg-[#121212]/95 p-4 text-white shadow-[0_18px_45px_rgba(0,0,0,0.24)] sm:p-6">
+                <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
                       <Music4 className="h-3.5 w-3.5 text-[#1db954]" />
@@ -237,7 +237,7 @@ export default function TastePage() {
                 </div>
 
                 <div className="rounded-[24px] border border-white/10 bg-[#181818] p-5">
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div className="flex items-start gap-4">
                       <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1db954] to-[#0d7a35] text-black">
                         <Disc3 className="h-7 w-7" />
@@ -256,7 +256,7 @@ export default function TastePage() {
                     <button
                       type="button"
                       onClick={() => setIsTracklistOpen((current) => !current)}
-                      className="interactive-icon inline-flex h-11 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 text-sm text-white/80 hover:border-white/20 hover:bg-white/10"
+                      className="interactive-icon inline-flex h-11 w-full items-center justify-between gap-2 rounded-full border border-white/10 bg-white/5 px-4 text-sm text-white/80 hover:border-white/20 hover:bg-white/10 sm:w-auto sm:justify-center"
                     >
                       <Mic2 className="h-4 w-4 text-[#1db954]" />
                       <span>{isTracklistOpen ? "Hide tracks" : "Show tracks"}</span>
@@ -290,7 +290,7 @@ export default function TastePage() {
                               href={song.spotifyUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="interactive-surface flex items-center justify-between gap-4 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 hover:border-white/15 hover:bg-white/[0.06]"
+                              className="interactive-surface flex flex-col gap-4 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 hover:border-white/15 hover:bg-white/[0.06] sm:flex-row sm:items-center sm:justify-between"
                             >
                               <div className="flex min-w-0 items-center gap-4">
                                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/6 text-sm text-white/70">
@@ -306,7 +306,7 @@ export default function TastePage() {
                                 </div>
                               </div>
 
-                              <div className="flex items-center gap-3">
+                              <div className="flex items-center justify-between gap-3 sm:justify-start">
                                 <span className="hidden rounded-full border border-white/10 px-2.5 py-1 text-xs text-white/60 sm:inline-flex">
                                   {song.mood}
                                 </span>

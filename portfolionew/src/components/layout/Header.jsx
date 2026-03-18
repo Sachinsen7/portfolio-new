@@ -46,7 +46,7 @@ function NavItem({ item, active, compact = false, onClick }) {
       type="button"
       onClick={onClick}
       className={`group relative inline-flex items-center rounded-xl border px-3 py-2 text-sm transition-all duration-200 ${
-        compact ? "h-10 w-10 justify-center px-0" : "gap-2"
+        compact ? "h-9 w-9 justify-center px-0 sm:h-10 sm:w-10" : "gap-2"
       } ${
         active
           ? "border-gray-300 bg-gray-100/90 text-foreground dark:border-white/15 dark:bg-white/[0.08]"
@@ -54,7 +54,7 @@ function NavItem({ item, active, compact = false, onClick }) {
       }`}
       aria-label={item.label}
     >
-      <Icon className="h-4 w-4" />
+      <Icon className={compact ? "h-3.5 w-3.5 sm:h-4 sm:w-4" : "h-4 w-4"} />
       {!compact && <span className="font-tech text-[0.8rem]">{item.label}</span>}
       {compact && (
         <span className="font-tech pointer-events-none absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-lg border border-gray-200 bg-white/95 px-2.5 py-1 text-xs text-foreground opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 dark:border-white/10 dark:bg-[#141414]">
@@ -167,7 +167,7 @@ export default function Header() {
 
   const handleNavClick = (item) => {
     if (item.type === "scroll" && isHomePage) {
-      scrollToElement(item.href, { offset: 132 });
+      scrollToElement(item.href, { offset: window.innerWidth < 768 ? 104 : 132 });
       return;
     }
 
@@ -205,7 +205,7 @@ export default function Header() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -24, opacity: 0 }}
           transition={{ duration: 0.22, ease: "easeOut" }}
-          className="fixed inset-x-0 top-7 z-50"
+          className="fixed inset-x-0 top-4 z-50 md:top-7"
           role="navigation"
           aria-label="Main navigation"
         >
@@ -213,7 +213,7 @@ export default function Header() {
             <motion.div
               onHoverStart={() => setIsExpanded(true)}
               onHoverEnd={() => setIsExpanded(false)}
-              className="relative mx-auto w-[calc(100vw-15rem)]"
+              className="relative mx-auto w-full max-w-6xl"
             >
               <motion.div
                 animate={{ opacity: isExpanded ? 1 : 0, scale: isExpanded ? 1 : 0.985 }}
@@ -293,7 +293,7 @@ export default function Header() {
             </motion.div>
           </div>
 
-          <div className="mx-auto mt-2 flex w-fit items-center gap-1 rounded-2xl border border-gray-200/80 bg-white/85 p-2 shadow-[0_10px_24px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/85 md:hidden">
+          <div className="scrollbar-hide mx-2 mt-2 flex max-w-[calc(100vw-1rem)] items-center gap-1 overflow-x-auto rounded-2xl border border-gray-200/80 bg-white/85 p-1.5 shadow-[0_10px_24px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/85 md:hidden">
             {currentNavItems.map((item) => (
               <NavItem
                 key={item.href}

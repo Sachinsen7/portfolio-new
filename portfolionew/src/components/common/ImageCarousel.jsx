@@ -7,10 +7,7 @@ export default function ImageCarousel({ images = [], projectTitle = "Project" })
     const [currentIndex, setCurrentIndex] = useState(0);
     const [hoveredIndex, setHoveredIndex] = useState(null);
 
-    // Create array of 3 images for display (use same image as placeholder)
-    const displayImages = images.length > 0
-        ? [images[0], images[0], images[0]]
-        : [];
+    const displayImages = images.length > 0 ? images : [];
 
     const totalImages = displayImages.length;
 
@@ -35,8 +32,8 @@ export default function ImageCarousel({ images = [], projectTitle = "Project" })
     return (
         <div className="relative w-full">
             {/* Carousel Container */}
-            <div className="relative overflow-hidden rounded-lg border border-gray-300 dark:border-gray-700/50 bg-white dark:bg-transparent p-3">
-                <div className="flex gap-2 h-64 sm:h-80 md:h-96">
+            <div className="relative overflow-hidden rounded-lg border border-gray-300 bg-white p-2 dark:border-gray-700/50 dark:bg-transparent sm:p-3">
+                <div className="flex h-56 gap-2 sm:h-80 md:h-96">
                     {displayImages.map((image, index) => (
                         <motion.div
                             key={index}
@@ -50,7 +47,7 @@ export default function ImageCarousel({ images = [], projectTitle = "Project" })
                             <LazyImage
                                 src={image}
                                 alt={`${projectTitle} screenshot ${index + 1}`}
-                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                className="h-full w-full object-contain bg-gradient-to-br from-slate-100 to-white p-2 transition-transform duration-300 hover:scale-105 dark:from-gray-900 dark:to-gray-800 sm:p-3"
                             />
 
                             {/* Overlay on hover */}

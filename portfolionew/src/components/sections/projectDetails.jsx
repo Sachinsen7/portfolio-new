@@ -71,17 +71,17 @@ export default function ProjectDetails() {
           className="container mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8"
           aria-labelledby="project-heading"
         >
-          <div className="mb-6 flex items-center justify-between gap-3">
+          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <Button
               onClick={() => transitionTo("/", { transitionName: "back-to-home" })}
               variant="outline"
-              className="border-gray-200 bg-gray-50/80 text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+              className="w-full border-gray-200 bg-gray-50/80 text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20 sm:w-auto"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Portfolio
             </Button>
 
-            <div className="flex items-center gap-2">
+            <div className="flex w-full items-center justify-end gap-2 sm:w-auto">
               {prevProject && (
                 <button
                   type="button"
@@ -119,7 +119,7 @@ export default function ProjectDetails() {
             </div>
           </div>
 
-          <header className="mb-8 rounded-2xl border border-gray-200/80 bg-white/70 p-5 dark:border-white/10 dark:bg-white/[0.03]">
+          <header className="mb-8 rounded-2xl border border-gray-200/80 bg-white/70 p-4 dark:border-white/10 dark:bg-white/[0.03] sm:p-5">
             <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-foreground-muted">
               <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 px-2.5 py-1 dark:border-white/10">
                 <Tag className="h-3 w-3" />
@@ -156,7 +156,7 @@ export default function ProjectDetails() {
             </div>
           </header>
 
-          <div className="mb-8 overflow-hidden rounded-2xl border border-gray-200/80 bg-white/70 p-3 dark:border-white/10 dark:bg-white/[0.03]">
+          <div className="mb-8 overflow-hidden rounded-2xl border border-gray-200/80 bg-white/70 p-2 dark:border-white/10 dark:bg-white/[0.03] sm:p-3">
             <ImageCarousel images={[project.image]} projectTitle={project.title} />
           </div>
 
@@ -240,7 +240,7 @@ export default function ProjectDetails() {
                   {project.timeline.map((phase) => (
                     <div
                       key={`${phase.phase}-${phase.duration}`}
-                      className="flex items-center justify-between gap-3 rounded-xl border border-gray-200 bg-gray-50/70 p-3 dark:border-white/10 dark:bg-white/[0.03]"
+                      className="flex flex-col items-start gap-2 rounded-xl border border-gray-200 bg-gray-50/70 p-3 dark:border-white/10 dark:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between"
                     >
                       <div className="flex items-center gap-3">
                         <span
@@ -258,19 +258,19 @@ export default function ProjectDetails() {
 
               <DetailCard title="Project Information" icon={Users}>
                 <div className="space-y-3 text-sm text-foreground-muted">
-                  <div className="flex items-center justify-between gap-3 rounded-xl border border-gray-200 bg-gray-50/70 px-3 py-2.5 dark:border-white/10 dark:bg-white/[0.03]">
+                  <div className="flex flex-col items-start gap-1 rounded-xl border border-gray-200 bg-gray-50/70 px-3 py-2.5 dark:border-white/10 dark:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between">
                     <span>Team</span>
                     <span className="text-foreground">{project.team}</span>
                   </div>
-                  <div className="flex items-center justify-between gap-3 rounded-xl border border-gray-200 bg-gray-50/70 px-3 py-2.5 dark:border-white/10 dark:bg-white/[0.03]">
+                  <div className="flex flex-col items-start gap-1 rounded-xl border border-gray-200 bg-gray-50/70 px-3 py-2.5 dark:border-white/10 dark:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between">
                     <span>Role</span>
                     <span className="text-foreground">{project.role}</span>
                   </div>
-                  <div className="flex items-center justify-between gap-3 rounded-xl border border-gray-200 bg-gray-50/70 px-3 py-2.5 dark:border-white/10 dark:bg-white/[0.03]">
+                  <div className="flex flex-col items-start gap-1 rounded-xl border border-gray-200 bg-gray-50/70 px-3 py-2.5 dark:border-white/10 dark:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between">
                     <span>Status</span>
                     <span className="text-foreground">{project.status}</span>
                   </div>
-                  <div className="flex items-center justify-between gap-3 rounded-xl border border-gray-200 bg-gray-50/70 px-3 py-2.5 dark:border-white/10 dark:bg-white/[0.03]">
+                  <div className="flex flex-col items-start gap-1 rounded-xl border border-gray-200 bg-gray-50/70 px-3 py-2.5 dark:border-white/10 dark:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between">
                     <span>Duration</span>
                     <span className="text-foreground">{project.duration}</span>
                   </div>
