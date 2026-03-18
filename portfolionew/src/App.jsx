@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import { AnimatePresence } from 'framer-motion'
 import Home from '@/pages/Home'
 import AllProjects from '@/pages/AllProjects'
+import TastePage from '@/pages/TastePage'
 import BlogPost from '@/pages/BlogPost'
 import NotFound from '@/pages/NotFound'
 import { ThemeProvider } from '@/context/ThemeContext'
@@ -46,6 +47,7 @@ function AnimatedRoutes() {
         <Routes location={location} key={location.pathname}>
           <Route path='/' element={<Home />} />
           <Route path='/projects' element={<AllProjects />} />
+          <Route path='/taste' element={<TastePage />} />
           <Route path='/project/:id' element={<ProjectDetails />} />
           <Route path='/blog/:id' element={<BlogPost />} />
           <Route path='*' element={<NotFound />} />
@@ -70,4 +72,3 @@ function App() {
 }
 
 export default App
-
