@@ -36,9 +36,10 @@ export const theme = {
         "radial-gradient(ellipse at center, var(--tw-gradient-stops))",
     },
     fontFamily: {
-      author: ['"Author-Regular"', "sans-serif"],
-      authorBold: ['"Author-Bold"', "sans-serif"],
-      authorLight: ['"Author-Light"', "sans-serif"],
+      sans: ['"Gerbil"', '"Trebuchet MS"', "sans-serif"],
+      author: ['"Gerbil"', '"Trebuchet MS"', "sans-serif"],
+      authorBold: ['"Gerbil"', '"Trebuchet MS"', "sans-serif"],
+      authorLight: ['"Gerbil"', '"Trebuchet MS"', "sans-serif"],
     },
   },
 };
