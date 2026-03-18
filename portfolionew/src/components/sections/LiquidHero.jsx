@@ -1,133 +1,159 @@
 import { Button } from "@/components/ui/button";
 import {
-  Sparkles,
   Download,
-  TwitterIcon,
-  LinkedinIcon,
   GithubIcon,
+  LinkedinIcon,
   MailIcon,
+  TwitterIcon,
 } from "lucide-react";
 import profileImage from "/assets/images/me.jpg";
-import { basicSkills } from "@/lib/skillsData";
+
+const socialLinks = [
+  {
+    name: "Email",
+    href: "mailto:sachinsen1920@gmail.com",
+    icon: MailIcon,
+    ariaLabel: "Email Sachin",
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/sen_sachiin",
+    icon: TwitterIcon,
+    ariaLabel: "Sachin on Twitter",
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/Sachinsen7",
+    icon: GithubIcon,
+    ariaLabel: "Sachin on GitHub",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/in/sachinsen1",
+    icon: LinkedinIcon,
+    ariaLabel: "Sachin on LinkedIn",
+  },
+];
+
+const introParagraphs = [
+  <>
+    I&apos;m <span className="text-foreground font-medium">Sachin</span>, a
+    full-stack developer from India focused on building products that feel
+    clean, useful, and ready for real people.
+  </>,
+  <>
+    I enjoy both <span className="text-foreground font-medium">development</span>
+    and <span className="text-foreground font-medium">design</span>, so I care
+    just as much about how an interface feels as how well it performs.
+  </>,
+  <>
+    Most of my work lives around <span className="text-foreground font-medium">React</span>,
+    <span className="text-foreground font-medium"> Next.js</span>,
+    <span className="text-foreground font-medium"> Node.js</span>, and modern
+    frontend systems with a minimal, thoughtful finish.
+  </>,
+  <>
+    I&apos;m always chasing new things to learn, better systems to build, and more
+    ambitious problems to solve.
+  </>,
+];
 
 export default function LiquidHero() {
-  const skills = basicSkills;
-
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 max-w-4xl min-h-[70vh] flex items-center">
-      <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8 w-full">
-        {/* Profile Image */}
-        <div className="flex-shrink-0">
-          <div className="relative">
+    <section className="container mx-auto flex min-h-[70vh] max-w-4xl items-center py-10 md:pt-8 lg:py-16">
+      <div className="w-full">
+        <div className="mb-8 flex items-center gap-4 sm:gap-5">
+          <div className="relative shrink-0">
             <img
               src={profileImage}
               alt="Sachin, a full-stack developer"
-              className="h-24 w-24 sm:h-32 sm:w-32 md:h-40 md:w-40 rounded-full object-cover border-2 border-glass backdrop-blur"
+              className="h-20 w-20 rounded-3xl object-cover border border-gray-200 dark:border-white/10 sm:h-24 sm:w-24"
             />
-            <div className="absolute -bottom-2 -right-2 bg-accent rounded-full p-2">
-              <Sparkles className="h-4 w-4 text-white" />
-            </div>
+            {/* <div className="absolute -bottom-1 -right-1 rounded-full border border-white/20 bg-accent p-1.5 shadow-sm">
+              <Sparkles className="h-3.5 w-3.5 text-white" />
+            </div> */}
+          </div>
+
+          <div>
+            <h1
+              id="hero-heading"
+              className="font-authorLight text-2xl font-semibold tracking-wide text-foreground sm:text-3xl"
+            >
+              Sachin
+            </h1>
+            <p className="mt-1 text-sm text-foreground-muted sm:text-base">
+              @sachinsen7
+            </p>
           </div>
         </div>
 
-        {/* Text and Buttons */}
-        <div className="flex-1 text-left">
-          <h1
-            id="hero-heading"
-            className="font-authorLight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3"
+        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-foreground-muted sm:text-lg">
+          {introParagraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <Button
+            variant="glass"
+            size="lg"
+            className="justify-start rounded-2xl border-gray-200 bg-gray-50/80 px-5 text-sm shadow-none hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+            asChild
           >
-            Hi, I'm <span className="text-accent">Sachin</span>
-          </h1>
-
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-2">
-            A passionate full-stack developer crafting modern web experiences
-          </p>
-
-          <p className="text-sm sm:text-base text-gray-500 mb-4 sm:mb-6">
-            Specializing in React, Node.js, and Web3 technologies
-          </p>
-
-          {/* Skills List */}
-          <div className="flex flex-wrap gap-2 justify-start mb-8">
-            {skills.map((skill) => (
-              <span
-                key={skill}
-                className="bg-glass backdrop-blur px-3 py-1 rounded-md text-sm text-foreground border border-white/20"
-                aria-label={`Skill: ${skill}`}
-              >
-                {skill}
+            <a href="mailto:sachinsen1920@gmail.com" className="flex items-center gap-3">
+              <span className="relative flex h-3 w-3">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-500 opacity-75" />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-pink-500" />
               </span>
-            ))}
-          </div>
+              <span>Available for new opportunities</span>
+            </a>
+          </Button>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-start mb-4 sm:mb-6">
-            <Button
-              variant="default"
-              size="default"
-              className="bg-accent hover:bg-accent/90 text-white rounded-lg px-6"
-              asChild
+          <Button
+            variant="outline"
+            size="lg"
+            className="justify-start rounded-2xl border-gray-200 bg-gray-50/80 px-5 text-sm shadow-none hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+            asChild
+          >
+            <a
+              className="flex items-center gap-3"
+              href="https://drive.google.com/file/d/1e7cZVh0q4nq4T9Qp7q4l3q4l3q4u4u4/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Sachin's CV"
             >
-              <a href="#projects" className="flex items-center">
-                <Sparkles className="h-4 w-4 mr-2" aria-hidden="true" />
-                Explore My Work
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              size="default"
-              className="bg-glass backdrop-blur border-white/20 hover:bg-white/10 rounded-lg px-6"
-              asChild
-            >
-              <a
-                className="flex items-center"
-                href="https://drive.google.com/file/d/1e7cZVh0q4nq4T9Qp7q4l3q4l3q4u4u4/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View Sachin's resume"
-              >
-                <Download className="h-4 w-4 mr-2" aria-hidden="true" />
-                Resume
-              </a>
-            </Button>
-          </div>
+              <Download className="h-4 w-4" aria-hidden="true" />
+              <span>Download CV</span>
+            </a>
+          </Button>
+        </div>
 
-          {/* Social Links */}
-          <div className="flex gap-3 justify-start">
-            <a
-              href="https://github.com/Sachinsen7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
-              aria-label="GitHub Profile"
-            >
-              <GithubIcon className="h-4 w-4" />
-            </a>
-            <a
-              href="https://linkedin.com/in/sachinsen1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedinIcon className="h-4 w-4" />
-            </a>
-            <a
-              href="https://twitter.com/sen_sachiin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
-              aria-label="Twitter Profile"
-            >
-              <TwitterIcon className="h-4 w-4" />
-            </a>
-            <a
-              href="mailto:sachinsen1920@gmail.com"
-              className="p-2 bg-glass backdrop-blur rounded-lg hover:bg-white/20 transition-colors"
-              aria-label="Email Contact"
-            >
-              <MailIcon className="h-4 w-4" />
-            </a>
+        <div className="mt-10 border-t border-gray-200/80 pt-7 dark:border-white/10">
+          <p className="mb-4 text-sm leading-relaxed text-foreground-muted sm:text-base">
+            Where to find me <span className="font-medium text-foreground">digitally</span>
+          </p>
+
+          <div className="flex flex-wrap gap-3">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+
+              return (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={social.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                  aria-label={social.ariaLabel}
+                  className="interactive-surface group relative inline-flex items-center gap-3 rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-3 text-sm text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+                >
+                  <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 translate-y-2 rounded-lg border border-gray-200 bg-white/95 px-2.5 py-1 text-xs text-foreground opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 dark:border-white/10 dark:bg-[#141414]">
+                    {social.name}
+                  </span>
+                  <Icon className="h-4 w-4 text-foreground-muted transition-colors duration-200 group-hover:text-foreground" />
+                  <span>{social.name}</span>
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
