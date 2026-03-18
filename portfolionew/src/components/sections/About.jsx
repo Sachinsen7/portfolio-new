@@ -1,390 +1,222 @@
-import { Briefcase, Globe, Award, TrendingUp } from "lucide-react";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Globe } from "lucide-react";
 import logo from "/assets/images/logo.png";
 import agumentik from "/assets/images/agumentikgroup_logo.jpg";
 import {
-  IconBrandReact,
-  IconBrandJavascript,
-  IconBrandTailwind,
-  IconBrandNodejs,
-  IconBrandVercel,
-  IconBrandMongodb,
-  IconBrandNextjs,
-  IconBrandTypescript,
-  IconBrandPython,
   IconBrandAws,
   IconBrandDocker,
-  IconApi,
-  IconDatabase,
-  IconCloud,
+  IconBrandMongodb,
+  IconBrandNextjs,
+  IconBrandNodejs,
+  IconBrandReact,
   IconBrandReactNative,
+  IconBrandTailwind,
+  IconBrandTypescript,
+  IconBrandVercel,
+  IconCloud,
+  IconDatabase,
 } from "@tabler/icons-react";
 
+const experiences = [
+  {
+    company: "Agumentik Software Private Limited",
+    role: "Cross Application Developer",
+    period: "Feb 2026 - Present",
+    location: "Remote",
+    link: "https://www.agumentiksoftware.com/",
+    logo: agumentik,
+    logoAlt: "Agumentik Software Private Limited logo",
+    status: "Current",
+    technologies: [
+      { label: "React Native", icon: IconBrandReactNative },
+      { label: "Next.js", icon: IconBrandNextjs },
+      { label: "TypeScript", icon: IconBrandTypescript },
+      { label: "React", icon: IconBrandReact },
+      { label: "Node.js", icon: IconBrandNodejs },
+      { label: "AWS", icon: IconBrandAws },
+      { label: "MongoDB", icon: IconBrandMongodb },
+      { label: "Prisma", icon: IconDatabase },
+      { label: "Docker", icon: IconBrandDocker },
+      { label: "Cloudinary", icon: IconCloud },
+      { label: "Tailwind CSS", icon: IconBrandTailwind },
+      { label: "Vercel", icon: IconBrandVercel },
+    ],
+    highlights: [
+      "Building cross-platform product flows with React Native, Next.js, and TypeScript.",
+      "Working across APIs, data layers, and delivery pipelines with Node.js, Prisma, MongoDB, and AWS.",
+      "Shipping polished interfaces with a strong focus on usability, system clarity, and maintainable code.",
+    ],
+  },
+  {
+    company: "ADRS Technosoft",
+    role: "Full Stack Developer",
+    period: "May 2025 - Feb 2026",
+    location: "Remote",
+    link: "https://www.adrstechno.com/",
+    logo,
+    logoAlt: "ADRS Technosoft logo",
+    technologies: [
+      { label: "Next.js", icon: IconBrandNextjs },
+      { label: "React", icon: IconBrandReact },
+      { label: "Node.js", icon: IconBrandNodejs },
+      { label: "MongoDB", icon: IconBrandMongodb },
+      { label: "Tailwind CSS", icon: IconBrandTailwind },
+      { label: "Vercel", icon: IconBrandVercel },
+    ],
+    highlights: [
+      "Built full-stack business platforms and internal dashboards for day-to-day operational workflows.",
+      "Handled frontend implementation, backend integration, and feature refinement across multiple products.",
+      "Worked closely on responsive UI, admin tools, and practical systems that improved delivery speed.",
+    ],
+  },
+];
+
 export default function About() {
+  const [openCompany, setOpenCompany] = useState(experiences[0].company);
+
   return (
     <section
-      className="container mx-auto py-8 max-w-4xl"
+      className="container mx-auto max-w-4xl py-8"
       aria-labelledby="about-heading"
     >
-      {/* Section Header */}
-      <div className="flex flex-col items-start gap-4 mb-8">
+      <div className="mb-10 flex flex-col items-start gap-3">
         <h2
           id="about-heading"
           className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400"
         >
           Featured
         </h2>
-        <h3 className="text-2xl font-semibold text-foreground flex items-center justify-center">
-          Experience
-        </h3>
-      </div>
-
-      {/* Experience Content */}
-      <div className="space-y-6">
-        <div className="p-3 sm:p-4 rounded-lg transition-all duration-300">
-          <div className="flex flex-col sm:flex-col items-start gap-3 sm:gap-4">
-            {/* Company Logo */}
-            <div className="flex-shrink-0">
-              <img
-                src={agumentik}
-                alt="Agumentik Software Private Limited logo"
-                className="w-12 h-12 sm:w-16 sm:h-16 rounded-md object-contain"
-              />
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between mb-2">
-                <div>
-                  <h4 className="font-semibold text-base text-foreground">
-                    Agumentik Software Private Limited
-                  </h4>
-                  <p className="text-sm text-gray-700 dark:text-gray-400">
-                    Cross Application Developer
-                  </p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xs text-gray-800 dark:text-gray-300 bg-gray-100 dark:bg-glass backdrop-blur px-2 py-1 rounded border border-gray-300 dark:border-glass-border">
-                      Feb 2026 - Present
-                    </span>
-                    <span className="text-xs text-gray-800 dark:text-gray-300 bg-gray-100 dark:bg-glass backdrop-blur px-2 py-1 rounded border border-gray-300 dark:border-glass-border">
-                      Full Time
-                    </span>
-                  </div>
-                </div>
-                <a
-                  href="https://www.agumentiksoftware.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
-                  aria-label="Visit Agumentik Software"
-                >
-                  <Globe className="h-4 w-4" />
-                </a>
-              </div>
-
-              {/* Core Technologies */}
-              <div className="mt-4">
-                <h5 className="font-semibold text-sm text-foreground mb-3 flex items-center gap-2">
-                  Core Technologies & Expertise
-                </h5>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  <TechTag
-                    color="cyan"
-                    icon={<IconBrandReactNative />}
-                    label="React Native"
-                  />
-                  <TechTag
-                    color="cyan"
-                    icon={<IconBrandNextjs />}
-                    label="Next.js"
-                  />
-                  <TechTag
-                    color="blue"
-                    icon={<IconBrandTypescript />}
-                    label="TypeScript"
-                  />
-                  <TechTag
-                    color="teal"
-                    icon={<IconBrandReact />}
-                    label="React"
-                  />
-                  <TechTag
-                    color="green"
-                    icon={<IconBrandNodejs />}
-                    label="Node.js"
-                  />
-                  <TechTag color="orange" icon={<IconBrandAws />} label="AWS" />
-                  <TechTag
-                    color="emerald"
-                    icon={<IconBrandMongodb />}
-                    label="MongoDB"
-                  />
-                </div>
-
-                {/* Additional Skills */}
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <SkillTag
-                    color="purple"
-                    icon={<IconDatabase />}
-                    label="Prisma"
-                  />
-                  <SkillTag
-                    color="sky"
-                    icon={<IconBrandDocker />}
-                    label="Docker"
-                  />
-                  <SkillTag
-                    color="indigo"
-                    icon={<IconApi />}
-                    label="REST APIs"
-                  />
-                  <SkillTag
-                    color="blue"
-                    icon={<IconCloud />}
-                    label="Cloudinary"
-                  />
-                  <SkillTag
-                    color="cyan"
-                    icon={<IconBrandTailwind />}
-                    label="Tailwind CSS"
-                  />
-                  <SkillTag
-                    color="gray"
-                    icon={<IconBrandVercel />}
-                    label="Vercel"
-                  />
-                </div>
-              </div>
-
-              {/* Key Achievements */}
-              <div className="mt-4">
-                <h5 className="font-semibold text-sm text-foreground mb-3 flex items-center gap-2">
-                  Key Achievements & Impact
-                </h5>
-                <div className="space-y-3">
-                  <AchievementCard
-                    dotColor="bg-green-500"
-                    borderColor="border-green-300"
-                    title="Enterprise SaaS Platform Development"
-                    desc="Built comprehensive bus management platform with multi-service booking (tickets, cabs, hotels) and WhatsApp API integration, achieving 90% operational efficiency boost."
-                    highlightColor="text-green-600 dark:text-green-400"
-                  />
-                  <AchievementCard
-                    dotColor="bg-blue-500"
-                    borderColor="border-blue-300"
-                    title="Scalable Architecture & Analytics"
-                    desc="Architected enterprise management system with real-time analytics, role-based access control, and automated workflows, reducing manual overhead by 85%."
-                    highlightColor="text-blue-600 dark:text-blue-400"
-                  />
-                  <AchievementCard
-                    dotColor="bg-purple-500"
-                    borderColor="border-purple-300"
-                    title="Full-Stack Business Solutions"
-                    desc="Developed jewelry business management application with inventory control, sales tracking, customer management, and real-time dashboard analytics with barcode generation."
-                    highlightColor="text-purple-600 dark:text-purple-400"
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Experience Info */}
-            <div className="flex-shrink-0">
-              <img
-                src={logo}
-                alt="ADRS Technosoft logo"
-                className="w-12 h-12 sm:w-16 sm:h-16 rounded-md object-contain"
-              />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between mb-2">
-                <div>
-                  <h4 className="font-semibold text-base text-foreground">
-                    ADRS Technosoft
-                  </h4>
-                  <p className="text-sm text-gray-700 dark:text-gray-400">
-                    Full Stack Developer
-                  </p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xs text-gray-800 dark:text-gray-300 bg-gray-100 dark:bg-glass backdrop-blur px-2 py-1 rounded border border-gray-300 dark:border-glass-border">
-                      May 2025 - Feb 2026
-                    </span>
-                    <span className="text-xs text-gray-800 dark:text-gray-300 bg-gray-100 dark:bg-glass backdrop-blur px-2 py-1 rounded border border-gray-300 dark:border-glass-border">
-                      Full Time
-                    </span>
-                  </div>
-                </div>
-                <a
-                  href="https://www.adrstechno.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
-                  aria-label="Visit ADRS Technosoft website"
-                >
-                  <Globe className="h-4 w-4" />
-                </a>
-              </div>
-
-              {/* Core Technologies */}
-              <div className="mt-4">
-                <h5 className="font-semibold text-sm text-foreground mb-3 flex items-center gap-2">
-                  Core Technologies & Expertise
-                </h5>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  <TechTag
-                    color="cyan"
-                    icon={<IconBrandNextjs />}
-                    label="Next.js"
-                  />
-                  <TechTag
-                    color="blue"
-                    icon={<IconBrandTypescript />}
-                    label="TypeScript"
-                  />
-                  <TechTag
-                    color="teal"
-                    icon={<IconBrandReact />}
-                    label="React"
-                  />
-                  <TechTag
-                    color="green"
-                    icon={<IconBrandNodejs />}
-                    label="Node.js"
-                  />
-                  <TechTag color="orange" icon={<IconBrandAws />} label="AWS" />
-                  <TechTag
-                    color="emerald"
-                    icon={<IconBrandMongodb />}
-                    label="MongoDB"
-                  />
-                </div>
-
-                {/* Additional Skills */}
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <SkillTag
-                    color="purple"
-                    icon={<IconDatabase />}
-                    label="Prisma"
-                  />
-                  <SkillTag
-                    color="sky"
-                    icon={<IconBrandDocker />}
-                    label="Docker"
-                  />
-                  <SkillTag
-                    color="indigo"
-                    icon={<IconApi />}
-                    label="REST APIs"
-                  />
-                  <SkillTag
-                    color="blue"
-                    icon={<IconCloud />}
-                    label="Cloudinary"
-                  />
-                  <SkillTag
-                    color="cyan"
-                    icon={<IconBrandTailwind />}
-                    label="Tailwind CSS"
-                  />
-                  <SkillTag
-                    color="gray"
-                    icon={<IconBrandVercel />}
-                    label="Vercel"
-                  />
-                </div>
-              </div>
-
-              {/* Key Achievements */}
-              <div className="mt-4">
-                <h5 className="font-semibold text-sm text-foreground mb-3 flex items-center gap-2">
-                  Key Achievements & Impact
-                </h5>
-                <div className="space-y-3">
-                  <AchievementCard
-                    dotColor="bg-green-500"
-                    borderColor="border-green-300"
-                    title="Enterprise SaaS Platform Development"
-                    desc="Built comprehensive bus management platform with multi-service booking (tickets, cabs, hotels) and WhatsApp API integration, achieving 90% operational efficiency boost."
-                    highlightColor="text-green-600 dark:text-green-400"
-                  />
-                  <AchievementCard
-                    dotColor="bg-blue-500"
-                    borderColor="border-blue-300"
-                    title="Scalable Architecture & Analytics"
-                    desc="Architected enterprise management system with real-time analytics, role-based access control, and automated workflows, reducing manual overhead by 85%."
-                    highlightColor="text-blue-600 dark:text-blue-400"
-                  />
-                  <AchievementCard
-                    dotColor="bg-purple-500"
-                    borderColor="border-purple-300"
-                    title="Full-Stack Business Solutions"
-                    desc="Developed jewelry business management application with inventory control, sales tracking, customer management, and real-time dashboard analytics with barcode generation."
-                    highlightColor="text-purple-600 dark:text-purple-400"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ----------------- Reusable Components ----------------- */
-
-function TechTag({ color, icon, label }) {
-  return (
-    <div
-      className={`bg-gradient-to-r from-${color}-100 to-${color}-200 dark:from-${color}-900/30 dark:to-${color}-800/30
-      flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-${color}-900 dark:text-${color}-100
-      border border-${color}-300 dark:border-${color}-700 shadow-sm hover:shadow-md transition-all duration-300`}
-    >
-      {icon}
-      <span className="font-medium">{label}</span>
-    </div>
-  );
-}
-
-function SkillTag({ color, icon, label }) {
-  return (
-    <div
-      className={`bg-gradient-to-r from-${color}-100 to-${color}-200 dark:from-${color}-900/20 dark:to-${color}-800/20
-      flex items-center gap-1 px-2 py-1 rounded text-xs text-${color}-900 dark:text-${color}-100
-      border border-${color}-300 dark:border-${color}-700`}
-    >
-      {icon}
-      {label}
-    </div>
-  );
-}
-
-function AchievementCard({
-  dotColor,
-  borderColor,
-  title,
-  desc,
-  highlightColor,
-}) {
-  return (
-    <div
-      className={`bg-gradient-to-r from-gray-50/70 to-white/80 dark:from-gray-900/10 dark:to-gray-800/10
-      p-3 rounded-lg border ${borderColor} dark:border-gray-700/30`}
-    >
-      <div className="flex items-start gap-3">
-        <div
-          className={`w-2 h-2 ${dotColor} rounded-full mt-2 flex-shrink-0`}
-        ></div>
-        <div>
-          <p className="text-sm text-foreground font-medium mb-1">{title}</p>
-          <p className="text-xs text-foreground-muted">
-            {desc.split("boost").length > 1 ? (
-              <>
-                {desc.split("boost")[0]}
-                <span className={highlightColor}>boost</span>
-              </>
-            ) : (
-              desc
-            )}
+        <div className="max-w-2xl">
+          <h3 className="text-xl font-semibold text-foreground sm:text-2xl">
+            Experience
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
+            A closer look at the teams I&apos;ve worked with, the tools I&apos;ve used,
+            and the kind of product work I&apos;ve been trusted to ship.
           </p>
         </div>
       </div>
-    </div>
+
+      <div className="space-y-4">
+        {experiences.map((experience) => {
+          const isOpen = openCompany === experience.company;
+
+          return (
+            <article
+              key={experience.company}
+              className="rounded-2xl border border-gray-200/80 bg-white/70 dark:border-white/10 dark:bg-white/[0.03]"
+            >
+              <button
+                type="button"
+                onClick={() =>
+                  setOpenCompany((current) =>
+                    current === experience.company ? null : experience.company
+                  )
+                }
+                className="flex w-full flex-col gap-5 p-4 text-left transition-colors duration-200 hover:bg-gray-50/70 dark:hover:bg-white/[0.02] sm:p-5 md:flex-row md:items-start md:justify-between"
+                aria-expanded={isOpen}
+              >
+                <div className="flex min-w-0 items-start gap-4">
+                  <img
+                    src={experience.logo}
+                    alt={experience.logoAlt}
+                    className="h-14 w-14 rounded-2xl border border-gray-200 bg-white p-2 object-contain dark:border-white/10 dark:bg-white/[0.04] sm:h-16 sm:w-16"
+                  />
+
+                  <div className="min-w-0">
+                    <div className="mb-1 flex flex-wrap items-center gap-2">
+                      <h4 className="text-base font-semibold text-foreground sm:text-lg">
+                        {experience.company}
+                      </h4>
+                      <a
+                        href={experience.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-foreground-muted transition-colors duration-200 hover:border-gray-400 hover:text-foreground dark:border-white/10 dark:hover:border-white/20"
+                        aria-label={`Visit ${experience.company}`}
+                        onClick={(event) => event.stopPropagation()}
+                      >
+                        <Globe className="h-4 w-4" />
+                      </a>
+                      {experience.status && (
+                        <span className="inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs font-medium text-green-700 dark:text-green-300">
+                          <span className="h-2 w-2 rounded-full bg-green-500" />
+                          {experience.status}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-foreground-muted">
+                      {experience.role}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between gap-4 md:justify-end">
+                  <div className="text-sm text-foreground-muted md:text-right">
+                    <p>{experience.period}</p>
+                    <p>{experience.location}</p>
+                  </div>
+                  <span
+                    className={`inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-foreground-muted transition-all duration-300 dark:border-white/10 ${
+                      isOpen ? "rotate-180 text-foreground" : ""
+                    }`}
+                  >
+                    <ChevronDown className="h-4 w-4" />
+                  </span>
+                </div>
+              </button>
+
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="border-t border-gray-200/80 px-4 pb-5 pt-4 dark:border-white/10 sm:px-5 md:pl-[5.5rem]">
+                      <div>
+                        <h5 className="mb-3 text-sm font-semibold text-foreground">
+                          Skills & Tools
+                        </h5>
+                        <div className="flex flex-wrap gap-2">
+                          {experience.technologies.map((tech) => {
+                            const Icon = tech.icon;
+
+                            return (
+                              <div
+                                key={tech.label}
+                                className="interactive-surface inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-3 py-2 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                              >
+                                <Icon className="h-4 w-4 text-foreground-muted" />
+                                <span>{tech.label}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      <ul className="mt-5 space-y-3">
+                        {experience.highlights.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-start gap-3 text-sm leading-relaxed text-foreground-muted sm:text-base"
+                          >
+                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-foreground/70" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </article>
+          );
+        })}
+      </div>
+    </section>
   );
 }
