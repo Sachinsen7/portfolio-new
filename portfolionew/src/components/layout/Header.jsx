@@ -55,9 +55,9 @@ function NavItem({ item, active, compact = false, onClick }) {
       aria-label={item.label}
     >
       <Icon className="h-4 w-4" />
-      {!compact && <span>{item.label}</span>}
+      {!compact && <span className="font-tech text-[0.8rem]">{item.label}</span>}
       {compact && (
-        <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-lg border border-gray-200 bg-white/95 px-2.5 py-1 text-xs text-foreground opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 dark:border-white/10 dark:bg-[#141414]">
+        <span className="font-tech pointer-events-none absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-lg border border-gray-200 bg-white/95 px-2.5 py-1 text-xs text-foreground opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 dark:border-white/10 dark:bg-[#141414]">
           {item.label}
         </span>
       )}
@@ -73,7 +73,7 @@ function DesktopMeta({ isExpanded, currentTime }) {
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -10 }}
-          className="ml-3 flex items-center gap-2 whitespace-nowrap text-xs text-foreground-muted"
+          className="font-tech ml-3 flex items-center gap-2 whitespace-nowrap text-xs text-foreground-muted"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           <span>{currentTime}</span>
@@ -233,7 +233,7 @@ export default function Header() {
                     className="interactive-surface flex items-center gap-3 rounded-xl border border-transparent px-2.5 py-2 text-left hover:border-gray-200 hover:bg-gray-50/80 dark:hover:border-white/10 dark:hover:bg-white/[0.04]"
                     aria-label="Go to homepage"
                   >
-                    <span className="text-sm font-semibold text-foreground">coco</span>
+                    <span className="font-heading text-sm font-semibold text-foreground">coco</span>
                   </button>
                   <DesktopMeta isExpanded={isExpanded} currentTime={currentTime} />
                 </motion.div>
@@ -263,7 +263,7 @@ export default function Header() {
                       initial={{ opacity: 0, x: 8 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 8 }}
-                      className="mr-2 flex items-center gap-2 whitespace-nowrap text-xs text-foreground-muted"
+                      className="font-tech mr-2 flex items-center gap-2 whitespace-nowrap text-xs text-foreground-muted"
                     >
                       <MapPin className="h-3.5 w-3.5" />
                       <span>Jabalpur, India</span>

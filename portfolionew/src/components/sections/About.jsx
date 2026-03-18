@@ -191,7 +191,7 @@ export default function About() {
                                 className="interactive-surface inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-3 py-2 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                               >
                                 <Icon className="h-4 w-4 text-foreground-muted" />
-                                <span>{tech.label}</span>
+                                <span className="font-tech text-[0.82rem]">{tech.label}</span>
                               </div>
                             );
                           })}
