@@ -5,9 +5,9 @@ const vidtube = "/assets/images/vidtube.png";
 const endpointhub = "/assets/images/endpointhub.png";
 
 // Fallbacks for projects that do not have a dedicated image in `public/assets/images` yet.
-const monositi = "/assets/images/new.png";
-const recipe_finder = "/assets/images/ecommerce.png";
-const music_player = "/assets/images/videocrew.png";
+const monositi = "/assets/images/monositi.png";
+const recipe_finder = "/assets/images/recipefinder.png";
+const music_player = "/assets/images/music_player.png";
 
 export const projectsData = [
   {
@@ -106,10 +106,10 @@ export const projectsData = [
       "Next.js 15",
       "React 19",
       "TypeScript",
+      "Cloudinary",
       "Tailwind CSS",
       "Prisma",
       "PostgreSQL",
-      "Cloudinary",
       "Azure AI",
       "Clerk",
     ],

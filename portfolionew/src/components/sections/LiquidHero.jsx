@@ -77,17 +77,17 @@ export default function LiquidHero() {
           <div>
             <h1
               id="hero-heading"
-              className="font-authorLight text-2xl font-semibold tracking-wide text-foreground sm:text-3xl"
+              className="font-heading text-2xl font-semibold tracking-wide text-foreground sm:text-3xl"
             >
               Sachin
             </h1>
-            <p className="mt-1 text-sm text-foreground-muted sm:text-base">
+            <p className="font-tech mt-1 text-sm text-foreground-muted sm:text-base">
               @sachinsen7
             </p>
           </div>
         </div>
 
-        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-foreground-muted sm:text-lg">
+        <div className="font-body max-w-3xl space-y-4 text-base leading-relaxed text-foreground-muted sm:text-lg">
           {introParagraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}

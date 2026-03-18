@@ -1,17 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-  font-family: "Gerbil";
-  src: url("./assets/fonts/Gerbil-Font/gerbil.otf") format("opentype");
-  font-display: swap;
+  font-family: "Author-Variable";
+  src: url("../fonts/Author-Variable.woff2") format("woff2"),
+    url("../fonts/Author-Variable.woff") format("woff"),
+    url("../fonts/Author-Variable.ttf") format("truetype");
   font-style: normal;
-  font-weight: 400;
+  font-weight: 200 700;
+  font-display: swap;
 }
 
 :root {
-  --font-base: "Gerbil", "Trebuchet MS", sans-serif;
+  --font-heading: "Author-Variable", "Trebuchet MS", sans-serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
+  --font-tech: "Space Mono", "Courier New", monospace;
+  --font-base: var(--font-body);
   --background: #ffffff;
   --foreground: #171717;
   --foreground-muted: #6b7280;
@@ -107,6 +114,22 @@ input,
 textarea,
 select {
   font-family: var(--font-base);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-variation-settings: "wght" 560;
+  letter-spacing: -0.04em;
+}
+
+p,
+li {
+  font-family: var(--font-body);
 }
 
 /* Fast and smooth transitions for all elements */
@@ -363,6 +386,10 @@ select {
 .interactive-text-link:focus-visible::after {
   opacity: 0.85;
   transform: scaleX(1);
+}
+
+.font-tech {
+  letter-spacing: -0.04em;
 }
 
 /* ===== VIEW TRANSITION API STYLES ===== */
