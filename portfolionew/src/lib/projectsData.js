@@ -1,15 +1,13 @@
-// Import project images
-import ecommerce from "../../public/assets/images/ecommerce.png";
-import gem_control from "../../public/assets/images/gem_control.png";
-import yadav_bus from "../../public/assets/images/yadav_bus.png";
-import recipe_finder from "../../public/assets/images/recipefinder.png";
-import netflix from "../../public/assets/images/netflix.png";
-import music_player from "../../public/assets/images/music_player.png";
-import learnsphere from "../../public/assets/images/learnsphere.png";
-import cloud_saas from "../../public/assets/images/cloud_saas.png";
-import vidtube from "../../public/assets/images/vidtube.png";
-import monositi from "../../public/assets/images/monositi.png";
-import endpointhub from "../../public/assets/images/endpointhub.png";
+const ecommerce = "/assets/images/ecommerce.png";
+const learnsphere = "/assets/images/learnsphere.png";
+const cloud_saas = "/assets/images/cloud_saas.png";
+const vidtube = "/assets/images/vidtube.png";
+const endpointhub = "/assets/images/endpointhub.png";
+
+// Fallbacks for projects that do not have a dedicated image in `public/assets/images` yet.
+const monositi = "/assets/images/new.png";
+const recipe_finder = "/assets/images/ecommerce.png";
+const music_player = "/assets/images/videocrew.png";
 
 export const projectsData = [
   {
