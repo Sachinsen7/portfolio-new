@@ -49,10 +49,10 @@ export default function GitHubContributions() {
 
   return (
     <section className="container mx-auto py-8 max-w-4xl">
-      <div className="flex flex-col items-start gap-4 mb-6">
+      <div className="flex flex-col items-start gap-3 mb-6">
         <h2 className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">GitHub</h2>
-        <h3 className="text-2xl font-semibold flex items-center">
-          <Activity className="h-6 w-6 mr-2 text-accent" />
+        <h3 className="text-xl font-semibold flex items-center sm:text-2xl">
+          <Activity className="h-5 w-5 mr-2 text-accent" />
           Contributions
         </h3>
       </div>
@@ -76,13 +76,13 @@ export default function GitHubContributions() {
             href={`https://github.com/${githubUsername}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-accent hover:underline"
+            className="interactive-text-link text-sm text-accent"
           >
             View on GitHub →
           </a>
         </div>
       ) : (
-        <div className="rounded-lg p-4 border border-gray-300 dark:border-gray-700/50 bg-white dark:bg-transparent">
+        <div className="rounded-2xl p-4 border border-gray-300 dark:border-gray-700/50 bg-white dark:bg-transparent">
           {/* Total Contributions Display */}
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -92,10 +92,10 @@ export default function GitHubContributions() {
             </div>
             <div className="flex items-center gap-2 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 px-3 py-1.5 rounded-lg border border-green-200 dark:border-green-700/30">
               <Activity className="h-4 w-4 text-green-600 dark:text-green-400" />
-              <span className="text-sm font-semibold text-green-700 dark:text-green-300">
+              <span className="text-xs font-semibold text-green-700 dark:text-green-300 sm:text-sm">
                 {totalContributions.toLocaleString()}
               </span>
-              <span className="text-xs text-green-600 dark:text-green-400">
+              <span className="text-[11px] text-green-600 dark:text-green-400 sm:text-xs">
                 contributions in {new Date().getFullYear()}
               </span>
             </div>
