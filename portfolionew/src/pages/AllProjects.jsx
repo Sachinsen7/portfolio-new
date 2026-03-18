@@ -1,5 +1,4 @@
 import { ArrowLeft, ExternalLink, Github, Calendar, Tag, Clock } from "lucide-react";
-import { Link } from "react-router-dom";
 import LazyImage from "@/components/common/LazyImage";
 import Header from "@/components/layout/Header";
 import { projectsData } from "@/lib/projectsData";
@@ -24,12 +23,12 @@ export default function AllProjects() {
         <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
           {/* Keep the blue accent scroll progress bar */}
           <ScrollProgress />
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 max-w-6xl">
+          <div className="container mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-28 lg:px-8">
             {/* Header */}
             <div className="mb-12">
               <button
                 onClick={() => transitionBack({ transitionName: 'back-to-home' })}
-                className="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-6 group"
+                className="interactive-text-link inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 mb-6 group"
               >
                 <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                 Back to Home
@@ -75,7 +74,7 @@ export default function AllProjects() {
                         href={project.liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2.5 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl hover:bg-white dark:hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl"
+                        className="interactive-icon p-2.5 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl hover:bg-white dark:hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl"
                         aria-label="View live demo"
                       >
                         <ExternalLink className="h-4 w-4 text-gray-700 dark:text-gray-300" />
@@ -84,7 +83,7 @@ export default function AllProjects() {
                         href={project.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2.5 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl hover:bg-white dark:hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl"
+                        className="interactive-icon p-2.5 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl hover:bg-white dark:hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl"
                         aria-label="View source code"
                       >
                         <Github className="h-4 w-4 text-gray-700 dark:text-gray-300" />
@@ -140,7 +139,7 @@ export default function AllProjects() {
                         {project.tech.slice(0, 4).map((tech) => (
                           <div
                             key={tech}
-                            className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/60 px-2 py-1 rounded-lg text-xs text-gray-700 dark:text-gray-300 border border-gray-200/50 dark:border-gray-700/50 hover:bg-gray-200 dark:hover:bg-gray-700/60 transition-colors"
+                            className="interactive-surface flex items-center gap-1 bg-gray-100 dark:bg-gray-800/60 px-2 py-1 rounded-lg text-xs text-gray-700 dark:text-gray-300 border border-gray-200/50 dark:border-gray-700/50 hover:bg-gray-200 dark:hover:bg-gray-700/60 transition-colors"
                           >
                             {getTechIcon(tech, "h-3 w-3")}
                             <span className="font-medium">{tech}</span>
@@ -161,7 +160,7 @@ export default function AllProjects() {
                         projectId: project.id,
                         transitionName: `project-detail-${project.id}`
                       })}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors group/link"
+                      className="interactive-text-link inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors group/link"
                     >
                       <span>View Details</span>
                       <ArrowLeft className="h-4 w-4 rotate-180 group-hover/link:translate-x-1 transition-transform" />
