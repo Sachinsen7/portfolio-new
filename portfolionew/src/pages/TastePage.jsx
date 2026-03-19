@@ -124,7 +124,7 @@ export default function TastePage() {
       className="min-h-screen"
     >
       <PageTransition>
-        <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+        <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
           <ScrollProgress />
           <div className="page-backdrop" aria-hidden="true" />
           <div className="light-dot-pattern" aria-hidden="true" />

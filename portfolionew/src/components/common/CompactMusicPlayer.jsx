@@ -20,7 +20,7 @@ export default function CompactMusicPlayer() {
 
         {/* Playing indicator */}
         {isPlaying && (
-          <div className="absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full animate-pulse" />
+          <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full animate-pulse" />
         )}
       </button>
       <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-lg border border-gray-200 bg-white/95 px-2.5 py-1 text-xs text-foreground opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 dark:border-white/10 dark:bg-[#141414]">

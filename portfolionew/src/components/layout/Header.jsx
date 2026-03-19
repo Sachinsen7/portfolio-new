@@ -3,11 +3,14 @@ import { ThemeContext } from "@/context/ThemeContext";
 import {
   Briefcase,
   Clapperboard,
+  FileText,
   FolderOpen,
+  Gamepad2,
   Github,
   Home,
   MapPin,
   Moon,
+  Sparkles,
   Sun,
   User,
 } from "lucide-react";
@@ -18,8 +21,11 @@ import { useViewTransition, useViewTransitionScroll } from "@/hooks/useViewTrans
 
 const homeNavItems = [
   { href: "me", label: "Me", icon: User, type: "scroll" },
+  { href: "/system", label: "System", icon: Sparkles, type: "link" },
   { href: "about", label: "Experience", icon: Briefcase, type: "scroll" },
   { href: "projects", label: "Projects", icon: FolderOpen, type: "scroll" },
+  { href: "/notes", label: "Notes", icon: FileText, type: "link" },
+  { href: "/play", label: "Play", icon: Gamepad2, type: "link" },
   { href: "/taste", label: "Taste", icon: Clapperboard, type: "link" },
   { href: "github", label: "GitHub", icon: Github, type: "scroll" },
 ];
@@ -27,6 +33,9 @@ const homeNavItems = [
 const pageNavItems = [
   { href: "/", label: "Home", icon: Home, type: "link" },
   { href: "/projects", label: "Projects", icon: FolderOpen, type: "link" },
+  { href: "/notes", label: "Notes", icon: FileText, type: "link" },
+  { href: "/system", label: "System", icon: Sparkles, type: "link" },
+  { href: "/play", label: "Play", icon: Gamepad2, type: "link" },
   { href: "/taste", label: "Taste", icon: Clapperboard, type: "link" },
 ];
 
@@ -40,6 +49,13 @@ const formatIndiaTime = () =>
 
 function NavItem({ item, active, compact = false, onClick }) {
   const Icon = item.icon;
+  const isSystemItem = item.label === "System";
+  const isPremiumActive = isSystemItem && active;
+  const activeClass = isPremiumActive
+    ? "border-sky-300 bg-sky-50/90 text-sky-700 shadow-[0_10px_24px_rgba(59,130,246,0.16)] dark:border-sky-400/30 dark:bg-sky-400/[0.12] dark:text-sky-200"
+    : active
+      ? "border-gray-300 bg-gray-100/90 text-foreground dark:border-white/15 dark:bg-white/[0.08]"
+      : "border-transparent text-foreground-muted hover:border-gray-200 hover:bg-gray-50/80 hover:text-foreground dark:hover:border-white/10 dark:hover:bg-white/[0.04]";
 
   return (
     <button
@@ -47,15 +63,33 @@ function NavItem({ item, active, compact = false, onClick }) {
       onClick={onClick}
       className={`group relative inline-flex items-center rounded-xl border px-3 py-2 text-sm transition-all duration-200 ${
         compact ? "h-11 w-11 justify-center px-0 md:h-10 md:w-10" : "gap-2"
-      } ${
-        active
-          ? "border-gray-300 bg-gray-100/90 text-foreground dark:border-white/15 dark:bg-white/[0.08]"
-          : "border-transparent text-foreground-muted hover:border-gray-200 hover:bg-gray-50/80 hover:text-foreground dark:hover:border-white/10 dark:hover:bg-white/[0.04]"
-      }`}
+      } ${activeClass}`}
       aria-label={item.label}
     >
-      <Icon className={compact ? "h-[18px] w-[18px] md:h-4 md:w-4" : "h-4 w-4"} />
-      {!compact && <span className="font-tech text-[0.8rem]">{item.label}</span>}
+      {isPremiumActive && (
+        <>
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              backgroundPosition: ["0% 50%", "100% 50%"],
+            }}
+            exit={{ opacity: 0 }}
+            transition={{
+              opacity: { duration: 0.2 },
+              backgroundPosition: { duration: 5, repeat: Infinity, ease: "linear" },
+            }}
+            className="pointer-events-none absolute inset-[1px] rounded-[11px] bg-gradient-to-r from-sky-500/12 via-cyan-400/25 to-sky-500/12 dark:from-sky-400/10 dark:via-cyan-300/20 dark:to-sky-400/10"
+            style={{ backgroundSize: "200% 200%" }}
+          />
+         
+        </>
+      )}
+
+      <Icon
+        className={`relative z-10 ${compact ? "h-[18px] w-[18px] md:h-4 md:w-4" : "h-4 w-4"}`}
+      />
+      {!compact && <span className="relative z-10 font-tech text-[0.8rem]">{item.label}</span>}
       {compact && (
         <span className="font-tech pointer-events-none absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-lg border border-gray-200 bg-white/95 px-2.5 py-1 text-xs text-foreground opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 dark:border-white/10 dark:bg-[#141414]">
           {item.label}
@@ -190,7 +224,7 @@ export default function Header() {
       return activeSection === item.href;
     }
 
-    return location.pathname === item.href;
+    return location.pathname === item.href || location.pathname.startsWith(`${item.href}/`);
   };
 
   const bubbleClass = isExpanded
@@ -213,7 +247,7 @@ export default function Header() {
             <motion.div
               onHoverStart={() => setIsExpanded(true)}
               onHoverEnd={() => setIsExpanded(false)}
-              className="relative mx-auto w-full max-w-6xl"
+              className="relative mx-auto w-full max-w-7xl"
             >
               <motion.div
                 animate={{ opacity: isExpanded ? 1 : 0, scale: isExpanded ? 1 : 0.985 }}

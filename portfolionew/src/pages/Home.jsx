@@ -2,6 +2,8 @@ import LiquidHero from "@/components/sections/LiquidHero";
 import Projects from "@/components/sections/Projects";
 import About from "@/components/sections/About";
 import Me from "@/components/sections/me";
+import NotesSection from "@/components/sections/NotesSection";
+import ProofSection from "@/components/sections/ProofSection";
 import GitHubContributions from "@/components/sections/GitHubContributions";
 import Header from "@/components/layout/Header";
 import ChatBot from "@/components/common/ChatBot";
@@ -30,6 +32,8 @@ export default function Home() {
           <LiquidHero />
           <Me />
           <About />
+          <ProofSection />
+          <NotesSection />
           <Projects />
           <GitHubContributions />
         </main>

@@ -18,7 +18,7 @@ import {
   IconDatabase,
 } from "@tabler/icons-react";
 
-const experiences = [
+export const experiences = [
   {
     company: "Agumentik Software Private Limited",
     role: "Cross Application Developer",
