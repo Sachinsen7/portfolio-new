@@ -1,6 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MessageCircle, X, Send, Bot, User } from "lucide-react";
-import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from "@/components/ui/DIalog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/Input";
 import { motion, AnimatePresence } from "framer-motion";
@@ -30,22 +29,22 @@ const TypingIndicator = () => (
     exit={{ opacity: 0, y: -10 }}
     className="flex justify-start"
   >
-    <div className="max-w-[80%] p-2 sm:p-3 rounded-lg bg-glass backdrop-blur border border-glass-border">
+    <div className="max-w-[85%] rounded-2xl border border-gray-200/80 bg-white/80 p-3 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/[0.04]">
       <div className="flex items-start gap-2">
-        <Bot className="h-4 w-4 mt-0.5 text-accent" />
+        <Bot className="mt-0.5 h-4 w-4 text-accent" />
         <div className="flex space-x-1">
           <motion.div
-            className="w-2 h-2 bg-accent rounded-full"
+            className="h-2 w-2 rounded-full bg-accent"
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
           />
           <motion.div
-            className="w-2 h-2 bg-accent rounded-full"
+            className="h-2 w-2 rounded-full bg-accent"
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
           />
           <motion.div
-            className="w-2 h-2 bg-accent rounded-full"
+            className="h-2 w-2 rounded-full bg-accent"
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
           />
@@ -67,15 +66,74 @@ export default function ChatBot() {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const panelRef = useRef(null);
   const messagesEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
+  const shouldAutoScrollRef = useRef(true);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToBottom = (behavior = "smooth") => {
+    messagesEndRef.current?.scrollIntoView({ behavior, block: "end" });
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages, isTyping]);
+    if (!isOpen) {
+      return undefined;
+    }
+
+    const container = messagesContainerRef.current;
+    if (!container) {
+      return undefined;
+    }
+
+    const updateScrollLock = () => {
+      const distanceFromBottom =
+        container.scrollHeight - container.scrollTop - container.clientHeight;
+      shouldAutoScrollRef.current = distanceFromBottom < 96;
+    };
+
+    updateScrollLock();
+    container.addEventListener("scroll", updateScrollLock, { passive: true });
+
+    return () => container.removeEventListener("scroll", updateScrollLock);
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    if (shouldAutoScrollRef.current) {
+      scrollToBottom(messages.length > 1 ? "smooth" : "auto");
+    }
+  }, [isOpen, isTyping, messages]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return undefined;
+    }
+
+    const handlePointerDown = (event) => {
+      if (panelRef.current?.contains(event.target)) {
+        return;
+      }
+
+      setIsOpen(false);
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
 
   const handleQuickQuestion = (question) => {
     const userMessage = {
@@ -85,20 +143,22 @@ export default function ChatBot() {
       timestamp: new Date(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
 
     setIsTyping(true);
 
     setTimeout(() => {
       const botResponse = {
         id: Date.now() + 1,
-        text: responses[question] || "Thanks for your question! Feel free to explore the website or use the contact form for more specific inquiries.",
+        text:
+          responses[question] ||
+          "Thanks for your question! Feel free to explore the website or use the contact form for more specific inquiries.",
         sender: "bot",
         timestamp: new Date(),
       };
 
       setIsTyping(false);
-      setMessages(prev => [...prev, botResponse]);
+      setMessages((prev) => [...prev, botResponse]);
     }, 1500 + Math.random() * 1000); // 1.5-2.5 seconds delay
   };
 
@@ -112,7 +172,7 @@ export default function ChatBot() {
       timestamp: new Date(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
 
     const currentInput = inputValue;
     setInputValue("");
@@ -121,9 +181,19 @@ export default function ChatBot() {
     let botResponseText = "Thanks for your message! For detailed inquiries about enterprise projects or SaaS development, reach me at sachinsen1920@gmail.com or connect on LinkedIn/GitHub.";
 
     const lowerInput = currentInput.toLowerCase();
-    if (lowerInput.includes("technology") || lowerInput.includes("tech") || lowerInput.includes("stack") || lowerInput.includes("skills")) {
+    if (
+      lowerInput.includes("technology") ||
+      lowerInput.includes("tech") ||
+      lowerInput.includes("stack") ||
+      lowerInput.includes("skills")
+    ) {
       botResponseText = responses["What technologies do you use?"];
-    } else if (lowerInput.includes("experience") || lowerInput.includes("work") || lowerInput.includes("background") || lowerInput.includes("career")) {
+    } else if (
+      lowerInput.includes("experience") ||
+      lowerInput.includes("work") ||
+      lowerInput.includes("background") ||
+      lowerInput.includes("career")
+    ) {
       botResponseText = responses["Tell me about your experience"];
     } else if (lowerInput.includes("project") || lowerInput.includes("portfolio") || lowerInput.includes("work")) {
       botResponseText = responses["What projects have you worked on?"];
@@ -148,7 +218,7 @@ export default function ChatBot() {
       };
 
       setIsTyping(false);
-      setMessages(prev => [...prev, botResponse]);
+      setMessages((prev) => [...prev, botResponse]);
     }, 1500 + Math.random() * 1000);
   };
 
@@ -163,173 +233,145 @@ export default function ChatBot() {
   return (
     <>
       <motion.div
-        className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40"
-        initial={{ scale: 0, y: 100 }}
-        animate={{ scale: 1, y: 0 }}
-        transition={{
-          delay: 1,
-          type: "spring",
-          stiffness: 400,
-          damping: 25,
-          duration: 0.6
-        }}
+        className="fixed bottom-24 right-4 z-40 sm:bottom-8 sm:right-6"
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
-          <DialogTrigger asChild>
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              animate={{ scale: isOpen ? 0.9 : 1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            >
-              <Button
-                size="lg"
-                className="h-14 w-14 rounded-full bg-accent hover:bg-accent/90 shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
-                <AnimatePresence mode="wait">
-                  {isOpen ? (
-                    <motion.div
-                      key="close"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <X className="h-6 w-6 text-white" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="chat"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <MessageCircle className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </Button>
-            </motion.div>
-          </DialogTrigger>
-
-          <DialogContent className="max-w-md h-[600px] p-0 overflow-hidden">
-            <motion.div
-              initial={{
-                scale: 0.1,
-                opacity: 0,
-                y: 100,
-                rotateX: -30,
-                rotateY: 10
-              }}
-              animate={{
-                scale: [0.1, 1.05, 1],
-                opacity: [0, 0.8, 1],
-                y: [100, -10, 0],
-                rotateX: [-30, 5, 0],
-                rotateY: [10, -2, 0]
-              }}
-              exit={{
-                scale: [1, 0.95, 0.1],
-                opacity: [1, 0.5, 0],
-                y: [0, 20, 100],
-                rotateX: [0, 10, 30],
-                rotateY: [0, -5, -10]
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 25,
-                duration: 0.6,
-                times: [0, 0.6, 1]
-              }}
-              className="h-full flex flex-col"
-              style={{
-                transformStyle: "preserve-3d",
-                perspective: "1000px"
-              }}
-            >
-              <DialogHeader className="flex-shrink-0 p-4 border-b border-glass-border">
-                <DialogTitle className="flex items-center gap-2">
-                  <Bot className="h-5 w-5 text-accent" />
-                  Chat with Sachin
-                </DialogTitle>
-              </DialogHeader>
-
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide min-h-0">
-                {messages.map((message) => (
-                  <motion.div
-                    key={message.id}
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 500,
-                      damping: 30,
-                      duration: 0.3
-                    }}
-                    className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
-                  >
-                    <div
-                      className={`max-w-[80%] p-3 rounded-lg ${message.sender === "user"
-                        ? "bg-accent text-white"
-                        : "bg-glass backdrop-blur border border-glass-border"
-                        }`}
-                    >
-                      <div className="flex items-start gap-2">
-                        {message.sender === "bot" && <Bot className="h-4 w-4 mt-0.5 text-accent" />}
-                        {message.sender === "user" && <User className="h-4 w-4 mt-0.5" />}
-                        <p className="text-sm">{message.text}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-
-                {isTyping && <TypingIndicator />}
-
-                <div ref={messagesEndRef} />
-              </div>
-
-              <div className="flex-shrink-0 border-t border-glass-border">
-                <div className="p-3">
-                  <p className="text-xs text-foreground-muted mb-2">Quick questions:</p>
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {quickQuestions.slice(0, 4).map((question, index) => (
-                      <Button
-                        key={index}
-                        size="sm"
-                        className="text-xs h-6 px-2 bg-accent/10 hover:bg-accent/20 text-foreground border-none"
-                        onClick={() => handleQuickQuestion(question)}
-                      >
-                        {question}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="p-3 border-t border-glass-border/50">
-                  <div className="flex gap-2">
-                    <Input
-                      value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
-                      onKeyPress={handleKeyPress}
-                      placeholder="Type your message..."
-                      className="flex-1 bg-glass backdrop-blur border-glass-border text-foreground placeholder:text-foreground-muted"
-                    />
-                    <Button
-                      onClick={handleSendMessage}
-                      size="sm"
-                      className="bg-accent hover:bg-accent/90"
-                    >
-                      <Send className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </DialogContent>
-        </Dialog>
+        <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
+          <Button
+            type="button"
+            size="lg"
+            onClick={() => setIsOpen((prev) => !prev)}
+            className="h-14 w-14 rounded-2xl border border-gray-200/80 bg-white/92 text-foreground shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl transition-all duration-300 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-[#101113]/92 dark:hover:border-white/20"
+            aria-label={isOpen ? "Close chat" : "Open chat"}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {isOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ opacity: 0, rotate: -12 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: 12 }}
+                  transition={{ duration: 0.18 }}
+                >
+                  <X className="h-5 w-5" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="chat"
+                  initial={{ opacity: 0, rotate: 12 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: -12 }}
+                  transition={{ duration: 0.18 }}
+                >
+                  <MessageCircle className="h-5 w-5" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </Button>
+        </motion.div>
       </motion.div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            ref={panelRef}
+            initial={{ opacity: 0, y: 24, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.98 }}
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed bottom-40 right-4 z-40 flex h-[min(34rem,calc(100vh-8.5rem))] w-[calc(100vw-2rem)] max-w-[24rem] flex-col overflow-hidden rounded-[28px] border border-gray-200/80 bg-white/92 shadow-[0_24px_60px_rgba(15,23,42,0.16)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#0f1012]/94 sm:bottom-24 sm:right-6"
+          >
+            <div className="flex items-center justify-between border-b border-gray-200/80 px-4 py-4 dark:border-white/10">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-gray-200/80 bg-gray-50/80 dark:border-white/10 dark:bg-white/[0.04]">
+                  <Bot className="h-4.5 w-4.5 text-accent" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Chat with Sachin</p>
+                  <p className="text-xs text-foreground-muted">Ask about work, projects, or hiring</p>
+                </div>
+              </div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-gray-200/80 px-2.5 py-1 text-[11px] text-foreground-muted dark:border-white/10">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                Online
+              </span>
+            </div>
+
+            <div
+              ref={messagesContainerRef}
+              className="flex-1 space-y-3 overflow-y-auto px-3 py-3 min-h-0 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-1.5"
+            >
+              {messages.map((message) => (
+                <motion.div
+                  key={message.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <div
+                    className={`max-w-[86%] rounded-2xl border px-3.5 py-3 ${
+                      message.sender === "user"
+                        ? "border-accent/20 bg-accent text-white shadow-sm"
+                        : "border-gray-200/80 bg-white/78 text-foreground shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/[0.04]"
+                    }`}
+                  >
+                    <div className="flex items-start gap-2.5">
+                      {message.sender === "bot" && (
+                        <Bot className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
+                      )}
+                      {message.sender === "user" && (
+                        <User className="mt-0.5 h-4 w-4 flex-shrink-0 text-white/90" />
+                      )}
+                      <p className="text-sm leading-6">{message.text}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+
+              {isTyping && <TypingIndicator />}
+
+              <div ref={messagesEndRef} />
+            </div>
+
+            <div className="border-t border-gray-200/80 px-3 py-3 dark:border-white/10">
+              <div className="mb-3 flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                {quickQuestions.slice(0, 4).map((question, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => handleQuickQuestion(question)}
+                    className="whitespace-nowrap rounded-full border border-gray-200/80 bg-gray-50/80 px-3 py-1.5 text-xs text-foreground-muted transition-colors hover:border-gray-300 hover:text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                  >
+                    {question}
+                  </button>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2 rounded-2xl border border-gray-200/80 bg-gray-50/70 p-2 dark:border-white/10 dark:bg-white/[0.03]">
+                <Input
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={handleKeyPress}
+                  placeholder="Type your message..."
+                  className="h-10 border-0 bg-transparent px-2 text-foreground shadow-none ring-0 placeholder:text-foreground-muted focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+                <Button
+                  type="button"
+                  onClick={handleSendMessage}
+                  size="sm"
+                  className="h-10 w-10 rounded-xl bg-accent px-0 text-white hover:bg-accent/90"
+                  aria-label="Send message"
+                >
+                  <Send className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

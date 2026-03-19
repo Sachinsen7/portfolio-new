@@ -40,6 +40,12 @@ html {
   font-size: 18px;
 }
 
+@media (max-width: 767px) {
+  html {
+    font-size: 15px;
+  }
+}
+
 a,
 button,
 [role="button"] {
