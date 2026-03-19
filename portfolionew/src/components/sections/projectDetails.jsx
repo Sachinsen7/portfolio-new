@@ -71,17 +71,17 @@ export default function ProjectDetails() {
           className="container mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8"
           aria-labelledby="project-heading"
         >
-          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mb-6 flex flex-wrap items-center justify-center gap-3 sm:justify-between">
             <Button
               onClick={() => transitionTo("/", { transitionName: "back-to-home" })}
               variant="outline"
-              className="w-full border-gray-200 bg-gray-50/80 text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20 sm:w-auto"
+              className="min-h-11 rounded-xl border-gray-200 bg-gray-50/80 px-5 text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Portfolio
             </Button>
 
-            <div className="flex w-full items-center justify-end gap-2 sm:w-auto">
+            <div className="flex items-center justify-center gap-2">
               {prevProject && (
                 <button
                   type="button"
@@ -92,7 +92,7 @@ export default function ProjectDetails() {
                       transitionName: `project-${prevProject.id}`,
                     })
                   }
-                  className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 bg-gray-50/80 text-foreground-muted hover:border-gray-400 hover:text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                  className="interactive-icon inline-flex h-11 w-11 items-center justify-center rounded-xl border border-gray-200 bg-gray-50/80 text-foreground-muted hover:border-gray-400 hover:text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                   title={`Previous: ${prevProject.title}`}
                   aria-label={`Previous project: ${prevProject.title}`}
                 >
@@ -109,7 +109,7 @@ export default function ProjectDetails() {
                       transitionName: `project-${nextProject.id}`,
                     })
                   }
-                  className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 bg-gray-50/80 text-foreground-muted hover:border-gray-400 hover:text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                  className="interactive-icon inline-flex h-11 w-11 items-center justify-center rounded-xl border border-gray-200 bg-gray-50/80 text-foreground-muted hover:border-gray-400 hover:text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                   title={`Next: ${nextProject.title}`}
                   aria-label={`Next project: ${nextProject.title}`}
                 >

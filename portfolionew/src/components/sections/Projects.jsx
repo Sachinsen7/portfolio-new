@@ -88,7 +88,7 @@ export default function Projects() {
 
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                   <div className="flex flex-wrap gap-2">
-                    {project.tech.slice(0, 4).map((tech) => (
+                    {project.tech.slice(0, 3).map((tech) => (
                       <div
                         key={tech}
                         className="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-[11px] text-foreground dark:border-white/10 dark:bg-white/[0.03] sm:text-xs"
