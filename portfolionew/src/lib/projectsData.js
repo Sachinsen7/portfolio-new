@@ -16,6 +16,7 @@ export const projectsData = [
     image: monositi,
     description:
       "Full-stack property rental and service provider marketplace platform with real-time geolocation and OTP authentication",
+      
     tech: [
       "React 19",
       "Node.js",
@@ -33,7 +34,7 @@ export const projectsData = [
     category: "Full Stack Web Application",
     year: "2025",
     summary:
-      "Comprehensive property rental and service marketplace platform with advanced search, geolocation, and multi-role authentication",
+      "Comprehensive property rental and service marketplace platform with advanced search",
     fullDescription:
       "Monositi is a modern full-stack marketplace platform that connects property owners, tenants, and service providers. Built with React 19 and Node.js, it features a robust authentication system with OTP verification via Twilio, real-time geolocation-based property search, and a comprehensive service booking system. The platform supports multiple user roles (Tenant, Landlord, Service Provider, Admin) with role-based access control and includes advanced features like KYC verification, property document management, and service provider ratings.",
     features: [

@@ -23,7 +23,7 @@ export default function AllProjects() {
         <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
           {/* Keep the blue accent scroll progress bar */}
           <ScrollProgress />
-          <div className="container mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+          <div className="container mt-10 mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
             {/* Header */}
             <div className="mb-12">
               <button
