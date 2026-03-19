@@ -9,6 +9,7 @@ import {
   Github,
   Home,
   MapPin,
+  MoreHorizontal,
   Moon,
   Sparkles,
   Sun,
@@ -123,6 +124,7 @@ export default function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState("me");
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(formatIndiaTime());
   const location = useLocation();
   const { transitionTo } = useViewTransition();
@@ -134,6 +136,8 @@ export default function Header() {
     () => (isHomePage ? homeNavItems : pageNavItems),
     [isHomePage]
   );
+  const mobilePrimaryItems = useMemo(() => currentNavItems.slice(0, 4), [currentNavItems]);
+  const mobileOverflowItems = useMemo(() => currentNavItems.slice(4), [currentNavItems]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -195,11 +199,17 @@ export default function Header() {
     return () => observer.disconnect();
   }, [isHomePage]);
 
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   if (isProjectDetailPage) {
     return null;
   }
 
   const handleNavClick = (item) => {
+    setIsMobileMenuOpen(false);
+
     if (item.type === "scroll" && isHomePage) {
       scrollToElement(item.href, { offset: window.innerWidth < 768 ? 104 : 132 });
       return;
@@ -230,6 +240,7 @@ export default function Header() {
   const bubbleClass = isExpanded
     ? "border-transparent bg-transparent shadow-none"
     : "border border-gray-200/80 bg-white/88 shadow-[0_10px_24px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-[#0f0f10]/88";
+  const hasActiveOverflowItem = mobileOverflowItems.some((item) => isActive(item));
 
   return (
     <AnimatePresence>
@@ -327,34 +338,81 @@ export default function Header() {
             </motion.div>
           </div>
 
-          <div className="mx-auto mt-2 flex w-fit max-w-[calc(100vw-1rem)] flex-wrap items-center justify-center gap-1.5 rounded-[22px] border border-gray-200/80 bg-white/85 p-2 shadow-[0_10px_24px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/85 md:hidden">
-            {currentNavItems.map((item) => (
-              <NavItem
-                key={item.href}
-                item={item}
-                active={isActive(item)}
-                compact
-                onClick={() => handleNavClick(item)}
-              />
-            ))}
-            <CompactMusicPlayer />
-            <div className="group relative flex items-center">
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className="interactive-icon inline-flex h-11 w-11 items-center justify-center rounded-xl border border-transparent text-foreground hover:border-gray-200 hover:bg-gray-50/80 dark:hover:border-white/10 dark:hover:bg-white/[0.04] md:h-10 md:w-10"
-                aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-              >
-                {theme === "light" ? (
-                  <Moon className="h-[18px] w-[18px] md:h-4 md:w-4" />
-                ) : (
-                  <Sun className="h-[18px] w-[18px] text-accent md:h-4 md:w-4" />
-                )}
-              </button>
-              <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-lg border border-gray-200 bg-white/95 px-2.5 py-1 text-xs text-foreground opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 dark:border-white/10 dark:bg-[#141414]">
-                {theme === "light" ? "Dark mode" : "Light mode"}
-              </span>
+          <div className="relative mx-auto mt-2 w-fit max-w-[calc(100vw-1rem)] md:hidden">
+            <div className="flex flex-nowrap items-center justify-center gap-1.5 overflow-hidden rounded-[22px] border border-gray-200/80 bg-white/85 p-2 shadow-[0_10px_24px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/85">
+              {mobilePrimaryItems.map((item) => (
+                <NavItem
+                  key={item.href}
+                  item={item}
+                  active={isActive(item)}
+                  compact
+                  onClick={() => handleNavClick(item)}
+                />
+              ))}
+              {mobileOverflowItems.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setIsMobileMenuOpen((current) => !current)}
+                  className={`group relative inline-flex h-11 w-11 items-center justify-center rounded-xl border px-0 text-sm transition-all duration-200 ${
+                    isMobileMenuOpen || hasActiveOverflowItem
+                      ? "border-gray-300 bg-gray-100/90 text-foreground dark:border-white/15 dark:bg-white/[0.08]"
+                      : "border-transparent text-foreground-muted hover:border-gray-200 hover:bg-gray-50/80 hover:text-foreground dark:hover:border-white/10 dark:hover:bg-white/[0.04]"
+                  }`}
+                  aria-label={isMobileMenuOpen ? "Close more navigation items" : "Show more navigation items"}
+                  aria-expanded={isMobileMenuOpen}
+                >
+                  <MoreHorizontal className="h-[18px] w-[18px]" />
+                  {hasActiveOverflowItem && !isMobileMenuOpen && (
+                    <span className="pointer-events-none absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_12px_rgba(59,130,246,0.7)]" />
+                  )}
+                  <span className="font-tech pointer-events-none absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-lg border border-gray-200 bg-white/95 px-2.5 py-1 text-xs text-foreground opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 dark:border-white/10 dark:bg-[#141414]">
+                    More
+                  </span>
+                </button>
+              )}
+              <CompactMusicPlayer />
+              <div className="group relative flex items-center">
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  className="interactive-icon inline-flex h-11 w-11 items-center justify-center rounded-xl border border-transparent text-foreground hover:border-gray-200 hover:bg-gray-50/80 dark:hover:border-white/10 dark:hover:bg-white/[0.04] md:h-10 md:w-10"
+                  aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+                >
+                  {theme === "light" ? (
+                    <Moon className="h-[18px] w-[18px] md:h-4 md:w-4" />
+                  ) : (
+                    <Sun className="h-[18px] w-[18px] text-accent md:h-4 md:w-4" />
+                  )}
+                </button>
+                <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-lg border border-gray-200 bg-white/95 px-2.5 py-1 text-xs text-foreground opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 dark:border-white/10 dark:bg-[#141414]">
+                  {theme === "light" ? "Dark mode" : "Light mode"}
+                </span>
+              </div>
             </div>
+
+            <AnimatePresence>
+              {isMobileMenuOpen && mobileOverflowItems.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  className="absolute inset-x-0 top-full z-50 mt-2 rounded-[22px] border border-gray-200/80 bg-white/92 p-2 shadow-[0_16px_36px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/92"
+                >
+                  <div className="grid grid-cols-4 gap-1.5">
+                    {mobileOverflowItems.map((item) => (
+                      <NavItem
+                        key={item.href}
+                        item={item}
+                        active={isActive(item)}
+                        compact
+                        onClick={() => handleNavClick(item)}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </motion.header>
       )}

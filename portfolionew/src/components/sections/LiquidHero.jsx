@@ -42,8 +42,7 @@ const introParagraphs = [
     clean, useful, and ready for real people.
   </>,
   <>
-    I enjoy both <span className="text-foreground font-medium">development</span>
-    and <span className="text-foreground font-medium">design</span>, so I care
+    I enjoy both <span className="text-foreground font-medium">development</span> and <span className="text-foreground font-medium">design</span>, so I care
     just as much about how an interface feels as how well it performs.
   </>,
   <>
