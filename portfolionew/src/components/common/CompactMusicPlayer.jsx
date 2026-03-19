@@ -9,13 +9,13 @@ export default function CompactMusicPlayer() {
     <div className="group relative flex items-center">
       <button
         onClick={togglePlay}
-        className="interactive-icon flex h-8 w-8 items-center justify-center rounded-xl border border-transparent text-foreground hover:border-gray-200 hover:bg-button-hover hover:text-accent sm:h-10 sm:w-10 dark:hover:border-white/10 relative"
+        className="interactive-icon relative flex h-11 w-11 items-center justify-center rounded-xl border border-transparent text-foreground hover:border-gray-200 hover:bg-button-hover hover:text-accent dark:hover:border-white/10 md:h-10 md:w-10"
         aria-label={label}
       >
         {isPlaying ? (
-          <Pause className="h-4 w-4 sm:h-5 sm:w-5" />
+          <Pause className="h-[18px] w-[18px] md:h-4 md:w-4" />
         ) : (
-          <Play className="h-4 w-4 sm:h-5 sm:w-5 ml-0.5" />
+          <Play className="ml-0.5 h-[18px] w-[18px] md:h-4 md:w-4" />
         )}
 
         {/* Playing indicator */}
