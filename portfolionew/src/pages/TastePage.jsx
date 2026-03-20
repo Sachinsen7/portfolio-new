@@ -129,7 +129,7 @@ export default function TastePage() {
           <div className="page-backdrop" aria-hidden="true" />
           <div className="light-dot-pattern" aria-hidden="true" />
 
-          <div className="relative z-10 mt-10 container mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+          <div className="relative z-10 container mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
             <div className="mb-12">
               <button
                 onClick={() => transitionBack({ transitionName: "back-to-home" })}
