@@ -76,7 +76,7 @@ export default function Me() {
         </div>
 
         <div className="grid w-full gap-5 lg:grid-cols-[220px_minmax(0,1fr)]">
-          <div className="rounded-2xl border border-gray-200/80 bg-white/70 p-4 dark:border-white/10 dark:bg-white/[0.03]">
+          <div className="rounded-sm border border-gray-200/80 bg-white/70 p-4 dark:border-white/10 dark:bg-white/[0.03]">
             <img
               src={profileImage}
               alt="Sachin - Full Stack Developer"
@@ -96,7 +96,7 @@ export default function Me() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-gray-200/80 bg-white/70 p-5 dark:border-white/10 dark:bg-white/[0.03]">
+          <div className="rounded-sm border border-gray-200/80 bg-white/70 p-5 dark:border-white/10 dark:bg-white/[0.03]">
             <div className="space-y-4 text-sm leading-relaxed text-foreground-muted sm:text-[0.95rem]">
               <p>
                 I build modern web applications with a strong balance between
@@ -115,7 +115,7 @@ export default function Me() {
               {focusAreas.map((item) => (
                 <div
                   key={item}
-                  className="rounded-xl border border-gray-200 bg-gray-50/80 p-3 text-sm leading-relaxed text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]"
+                  className="rounded-sm border border-gray-200 bg-gray-50/80 p-3 text-sm leading-relaxed text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]"
                 >
                   {item}
                 </div>
@@ -138,7 +138,7 @@ export default function Me() {
                 return (
                   <div
                     key={skill.name}
-                    className="interactive-surface flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-3 py-2 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                    className="interactive-surface flex items-center gap-2 rounded-sm border border-gray-200 bg-gray-50/80 px-3 py-2 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                   >
                     <IconComponent className="h-4 w-4 text-foreground-muted" />
                     <span className="truncate">{skill.name}</span>
@@ -161,7 +161,7 @@ export default function Me() {
                 return (
                   <div
                     key={skill.name}
-                    className="interactive-surface flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-xs text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                    className="interactive-surface flex items-center gap-2 rounded-sm border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-xs text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                   >
                     <IconComponent className="h-3.5 w-3.5 text-foreground-muted" />
                     <span>{skill.name}</span>

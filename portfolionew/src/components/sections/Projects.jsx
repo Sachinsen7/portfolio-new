@@ -35,7 +35,7 @@ export default function Projects() {
         {projectsData.map((project) => (
           <article
             key={project.id}
-            className="interactive-surface group rounded-2xl border border-gray-200/80 bg-white/70 p-4 transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20 sm:p-5"
+            className="interactive-surface group rounded-sm border border-gray-200/80 bg-white/70 p-4 transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20 sm:p-5"
           >
             <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
               <div className="aspect-[16/10] w-full shrink-0 overflow-hidden rounded-xl border border-gray-200/80 bg-gradient-to-br from-gray-100 to-gray-50 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02] sm:h-32 sm:w-48 sm:aspect-auto md:h-36 md:w-52">
@@ -91,14 +91,14 @@ export default function Projects() {
                     {project.tech.slice(0, 3).map((tech) => (
                       <div
                         key={tech}
-                        className="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-[11px] text-foreground dark:border-white/10 dark:bg-white/[0.03] sm:text-xs"
+                        className="inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-[11px] text-foreground dark:border-white/10 dark:bg-white/[0.03] sm:text-xs"
                       >
                         <span className="text-foreground-muted">{getTechIcon(tech, "h-3.5 w-3.5")}</span>
                         <span>{tech}</span>
                       </div>
                     ))}
                     {project.tech.length > 4 && (
-                      <span className="inline-flex items-center rounded-lg border border-gray-200 px-3 py-1.5 text-xs text-foreground-muted dark:border-white/10">
+                      <span className="inline-flex items-center rounded-sm border border-gray-200 px-3 py-1.5 text-xs text-foreground-muted dark:border-white/10">
                         +{project.tech.length - 4} more
                       </span>
                     )}
@@ -133,7 +133,7 @@ export default function Projects() {
               transitionName: "all-projects",
             })
           }
-          className="interactive-surface inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-5 py-3 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+          className="interactive-surface inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-gray-50/80 px-5 py-3 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
         >
           <Grid3X3 className="h-4 w-4 text-foreground-muted" />
           <span>See All Projects</span>

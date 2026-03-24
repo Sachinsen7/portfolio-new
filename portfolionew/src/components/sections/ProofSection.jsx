@@ -75,7 +75,7 @@ export default function ProofSection() {
           return (
             <div
               key={metric.label}
-              className="rounded-2xl border border-gray-200/80 bg-white/72 p-4 dark:border-white/10 dark:bg-white/[0.03]"
+              className="rounded-sm border border-gray-200/80 bg-white/72 p-4 dark:border-white/10 dark:bg-white/[0.03]"
             >
               <div className="flex items-center justify-between gap-3">
                 <p className="text-[11px] uppercase tracking-[0.18em] text-foreground-muted">
@@ -92,7 +92,7 @@ export default function ProofSection() {
       </div>
 
       <div className="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)]">
-        <div className="rounded-[28px] border border-gray-200/80 bg-white/72 p-5 shadow-[0_18px_45px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.03]">
+        <div className="rounded-sm border border-gray-200/80 bg-white/72 p-5 shadow-[0_18px_45px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.03]">
           <div className="mb-5 flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-foreground-muted" />
             <p className="text-sm font-semibold text-foreground">Selected Proof</p>
@@ -102,7 +102,7 @@ export default function ProofSection() {
             {proofCards.map((card) => (
               <div
                 key={card.title}
-                className="rounded-2xl border border-gray-200/80 bg-gray-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03]"
+                className="rounded-sm border border-gray-200/80 bg-gray-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03]"
               >
                 <p className="text-sm font-semibold text-foreground">{card.title}</p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
@@ -117,7 +117,7 @@ export default function ProofSection() {
         </div>
 
         <div className="space-y-5">
-          <div className="rounded-[28px] border border-gray-200/80 bg-gradient-to-br from-white to-gray-50 p-5 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]">
+          <div className="rounded-sm border border-gray-200/80 bg-gradient-to-br from-white to-gray-50 p-5 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]">
             <div className="mb-5 flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-foreground-muted" />
               <p className="text-sm font-semibold text-foreground">What the work already shows</p>
@@ -127,7 +127,7 @@ export default function ProofSection() {
               {selectedResults.map((item) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 rounded-2xl border border-gray-200/80 bg-white/75 px-3.5 py-3 text-sm leading-relaxed text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]"
+                  className="flex items-start gap-3 rounded-sm border border-gray-200/80 bg-white/75 px-3.5 py-3 text-sm leading-relaxed text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]"
                 >
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-foreground/70" />
                   <span>{item}</span>
@@ -136,13 +136,13 @@ export default function ProofSection() {
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-gray-200/80 bg-white/72 p-5 dark:border-white/10 dark:bg-white/[0.03]">
+          <div className="rounded-sm border border-gray-200/80 bg-white/72 p-5 dark:border-white/10 dark:bg-white/[0.03]">
             <div className="mb-5 flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-foreground-muted" />
               <p className="text-sm font-semibold text-foreground">Testimonials & references</p>
             </div>
 
-            <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50/70 p-4 dark:border-white/15 dark:bg-white/[0.02]">
+            <div className="rounded-sm border border-dashed border-gray-300 bg-gray-50/70 p-4 dark:border-white/15 dark:bg-white/[0.02]">
               <p className="text-sm leading-relaxed text-foreground-muted">
                 I&apos;m not adding manufactured testimonials here. As the portfolio grows,
                 this section can hold real client or team feedback. Until then, the stronger

@@ -42,7 +42,7 @@ export default function NotesPage() {
                 {notesData.map((note) => (
                   <article
                     key={note.slug}
-                    className="interactive-surface rounded-[26px] border border-gray-200/80 bg-white/72 p-5 dark:border-white/10 dark:bg-white/[0.03] sm:p-6"
+                    className="interactive-surface rounded-sm border border-gray-200/80 bg-white/72 p-5 dark:border-white/10 dark:bg-white/[0.03] sm:p-6"
                   >
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                       <div className="max-w-2xl">

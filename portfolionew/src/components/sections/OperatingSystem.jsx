@@ -149,7 +149,7 @@ export default function OperatingSystem() {
       </div>
 
       <div
-        className="relative overflow-hidden rounded-[28px] border border-gray-200/80 bg-white/75 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-white/[0.03] sm:p-6"
+        className="relative overflow-hidden rounded-sm border border-gray-200/80 bg-white/75 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-white/[0.03] sm:p-6"
         onMouseMove={handleSpotlightMove}
         onMouseLeave={() =>
           setSpotlight((current) => ({
@@ -209,7 +209,7 @@ export default function OperatingSystem() {
                       key={mode.id}
                       type="button"
                       onClick={() => setActiveMode(mode)}
-                      className={`relative flex w-full items-start gap-3 rounded-2xl border px-3 py-3 text-left transition-all duration-200 ${
+                      className={`relative flex w-full items-start gap-3 rounded-sm border px-3 py-3 text-left transition-all duration-200 ${
                         isActive
                           ? `bg-gray-950 text-white shadow-sm dark:bg-white dark:text-gray-950 ${mode.ring}`
                           : "border-gray-200/80 bg-white/65 text-foreground-muted hover:border-gray-300 hover:text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20 dark:hover:text-white"

@@ -105,7 +105,7 @@ export default function About() {
           return (
             <article
               key={experience.company}
-              className="rounded-2xl border border-gray-200/80 bg-white/70 dark:border-white/10 dark:bg-white/[0.03]"
+              className="rounded-sm border border-gray-200/80 bg-white/70 dark:border-white/10 dark:bg-white/[0.03]"
             >
               <button
                 type="button"

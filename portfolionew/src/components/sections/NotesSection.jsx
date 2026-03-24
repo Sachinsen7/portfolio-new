@@ -34,7 +34,7 @@ export default function NotesSection() {
         {featuredNotes.map((note) => (
           <article
             key={note.slug}
-            className="interactive-surface rounded-[24px] border border-gray-200/80 bg-white/72 p-5 dark:border-white/10 dark:bg-white/[0.03]"
+            className="interactive-surface rounded-sm border border-gray-200/80 bg-white/72 p-5 dark:border-white/10 dark:bg-white/[0.03]"
           >
             <div className="mb-4 flex items-center justify-between gap-3">
               <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50/80 px-3 py-1 text-xs text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]">
@@ -78,7 +78,7 @@ export default function NotesSection() {
         <button
           type="button"
           onClick={() => transitionTo("/notes", { transitionName: "notes-page" })}
-          className="interactive-surface inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-5 py-3 text-sm text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+          className="interactive-surface inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-gray-50/80 px-5 py-3 text-sm text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
         >
           <FileText className="h-4 w-4 text-foreground-muted" />
           <span>See All Notes</span>

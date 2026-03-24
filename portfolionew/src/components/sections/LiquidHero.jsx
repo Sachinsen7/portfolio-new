@@ -96,7 +96,7 @@ export default function LiquidHero() {
           <Button
             variant="glass"
             size="lg"
-            className="justify-start rounded-2xl border-gray-200 bg-gray-50/80 px-5 text-sm shadow-none hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+            className="justify-start rounded-sm border-gray-200 bg-gray-50/80 px-5 text-sm shadow-none hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
             asChild
           >
             <a href="mailto:sachinsen1920@gmail.com" className="flex items-center gap-3">
@@ -111,7 +111,7 @@ export default function LiquidHero() {
           <Button
             variant="outline"
             size="lg"
-            className="justify-start rounded-2xl border-gray-200 bg-gray-50/80 px-5 text-sm shadow-none hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+            className="justify-start rounded-sm border-gray-200 bg-gray-50/80 px-5 text-sm shadow-none hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
             asChild
           >
             <a
@@ -143,7 +143,7 @@ export default function LiquidHero() {
                   target={social.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={social.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
                   aria-label={social.ariaLabel}
-                  className="interactive-surface group relative inline-flex items-center gap-3 rounded-2xl border border-gray-200 bg-gray-50/80 px-4 py-3 text-sm text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
+                  className="interactive-surface group relative inline-flex items-center gap-3 rounded-sm border border-gray-200 bg-gray-50/80 px-4 py-3 text-sm text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/25"
                 >
                   <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 translate-y-2 rounded-lg border border-gray-200 bg-white/95 px-2.5 py-1 text-xs text-foreground opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 dark:border-white/10 dark:bg-[#141414]">
                     {social.name}
