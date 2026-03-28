@@ -116,7 +116,7 @@ export default function LiquidHero() {
           >
             <a
               className="flex items-center gap-3"
-              href="https://drive.google.com/file/d/1e7cZVh0q4nq4T9Qp7q4l3q4l3q4u4u4/view?usp=sharing"
+              href="https://docs.google.com/document/d/182KsVsAotbobSoabH4VqZ-yN2sjkBRCx/edit?usp=sharing&ouid=113667387201002486550&rtpof=true&sd=true"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download Sachin's CV"
