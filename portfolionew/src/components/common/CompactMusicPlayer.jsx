@@ -9,7 +9,7 @@ export default function CompactMusicPlayer() {
     <div className="group relative flex items-center">
       <button
         onClick={togglePlay}
-        className="interactive-icon relative flex h-11 w-11 items-center justify-center rounded-xl border border-transparent text-foreground hover:border-gray-200 hover:bg-button-hover hover:text-accent dark:hover:border-white/10 md:h-10 md:w-10"
+        className="interactive-icon relative flex h-11 w-11 items-center justify-center rounded-sm border border-transparent text-foreground hover:border-gray-200 hover:bg-button-hover hover:text-accent dark:hover:border-white/10 md:h-10 md:w-10"
         aria-label={label}
       >
         {isPlaying ? (

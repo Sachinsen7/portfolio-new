@@ -29,7 +29,7 @@ const TypingIndicator = () => (
     exit={{ opacity: 0, y: -10 }}
     className="flex justify-start"
   >
-    <div className="max-w-[85%] rounded-2xl border border-gray-200/80 bg-white/80 p-3 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/[0.04]">
+    <div className="max-w-[85%] rounded-sm border border-gray-200/80 bg-white/80 p-3 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/[0.04]">
       <div className="flex items-start gap-2">
         <Bot className="mt-0.5 h-4 w-4 text-accent" />
         <div className="flex space-x-1">
@@ -243,7 +243,7 @@ export default function ChatBot() {
             type="button"
             size="lg"
             onClick={() => setIsOpen((prev) => !prev)}
-            className="h-14 w-14 rounded-2xl border border-gray-200/80 bg-white/92 text-foreground shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl transition-all duration-300 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-[#101113]/92 dark:hover:border-white/20"
+            className="h-14 w-14 rounded-sm border border-gray-200/80 bg-white/92 text-foreground shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl transition-all duration-300 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-[#101113]/92 dark:hover:border-white/20"
             aria-label={isOpen ? "Close chat" : "Open chat"}
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -281,11 +281,11 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-40 right-4 z-40 flex h-[min(34rem,calc(100vh-8.5rem))] w-[calc(100vw-2rem)] max-w-[24rem] flex-col overflow-hidden rounded-[28px] border border-gray-200/80 bg-white/92 shadow-[0_24px_60px_rgba(15,23,42,0.16)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#0f1012]/94 sm:bottom-24 sm:right-6"
+            className="fixed bottom-40 right-4 z-40 flex h-[min(34rem,calc(100vh-8.5rem))] w-[calc(100vw-2rem)] max-w-[24rem] flex-col overflow-hidden rounded-sm border border-gray-200/80 bg-white/92 shadow-[0_24px_60px_rgba(15,23,42,0.16)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#0f1012]/94 sm:bottom-24 sm:right-6"
           >
             <div className="flex items-center justify-between border-b border-gray-200/80 px-4 py-4 dark:border-white/10">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-gray-200/80 bg-gray-50/80 dark:border-white/10 dark:bg-white/[0.04]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200/80 bg-gray-50/80 dark:border-white/10 dark:bg-white/[0.04]">
                   <Bot className="h-4.5 w-4.5 text-accent" />
                 </div>
                 <div>
@@ -312,7 +312,7 @@ export default function ChatBot() {
                   className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[86%] rounded-2xl border px-3.5 py-3 ${
+                    className={`max-w-[86%] rounded-sm border px-3.5 py-3 ${
                       message.sender === "user"
                         ? "border-accent/20 bg-accent text-white shadow-sm"
                         : "border-gray-200/80 bg-white/78 text-foreground shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/[0.04]"
@@ -343,14 +343,14 @@ export default function ChatBot() {
                     key={index}
                     type="button"
                     onClick={() => handleQuickQuestion(question)}
-                    className="whitespace-nowrap rounded-full border border-gray-200/80 bg-gray-50/80 px-3 py-1.5 text-xs text-foreground-muted transition-colors hover:border-gray-300 hover:text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                    className="whitespace-nowrap rounded-sm border border-gray-200/80 bg-gray-50/80 px-3 py-1.5 text-xs text-foreground-muted transition-colors hover:border-gray-300 hover:text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                   >
                     {question}
                   </button>
                 ))}
               </div>
 
-              <div className="flex items-center gap-2 rounded-2xl border border-gray-200/80 bg-gray-50/70 p-2 dark:border-white/10 dark:bg-white/[0.03]">
+              <div className="flex items-center gap-2 rounded-sm border border-gray-200/80 bg-gray-50/70 p-2 dark:border-white/10 dark:bg-white/[0.03]">
                 <Input
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
@@ -362,7 +362,7 @@ export default function ChatBot() {
                   type="button"
                   onClick={handleSendMessage}
                   size="sm"
-                  className="h-10 w-10 rounded-xl bg-accent px-0 text-white hover:bg-accent/90"
+                  className="h-10 w-10 rounded-sm bg-accent px-0 text-white hover:bg-accent/90"
                   aria-label="Send message"
                 >
                   <Send className="h-4 w-4" />
