@@ -245,7 +245,7 @@ export default function OperatingSystem() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -14 }}
                   transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-                  className={`rounded-[24px] border bg-white/86 p-5 backdrop-blur-xl dark:bg-[#0f1012]/88 ${activeMode.ring}`}
+                  className={`rounded-sm border bg-white/86 p-5 backdrop-blur-xl dark:bg-[#0f1012]/88 ${activeMode.ring}`}
                 >
                   <div className="mb-6 flex items-start justify-between gap-4">
                     <div>
@@ -257,7 +257,7 @@ export default function OperatingSystem() {
                         {activeMode.title}
                       </h4>
                     </div>
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-gray-200/80 bg-gray-50/80 dark:border-white/10 dark:bg-white/[0.04]">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm border border-gray-200/80 bg-gray-50/80 dark:border-white/10 dark:bg-white/[0.04]">
                       <activeMode.icon className="h-5 w-5 text-foreground-muted" />
                     </div>
                   </div>
@@ -270,7 +270,7 @@ export default function OperatingSystem() {
                     {activeMode.outputs.map((item, index) => (
                       <div
                         key={item}
-                        className="rounded-2xl border border-gray-200/80 bg-gray-50/75 p-3 dark:border-white/10 dark:bg-white/[0.03]"
+                        className="rounded-sm border border-gray-200/80 bg-gray-50/75 p-3 dark:border-white/10 dark:bg-white/[0.03]"
                       >
                         <p className="text-[11px] uppercase tracking-[0.18em] text-foreground-muted">
                           0{index + 1}
@@ -284,7 +284,7 @@ export default function OperatingSystem() {
                     {activeMode.bullets.map((item) => (
                       <div
                         key={item}
-                        className="flex items-start gap-3 rounded-2xl border border-gray-200/80 bg-white/70 px-3.5 py-3 text-sm leading-relaxed text-foreground-muted dark:border-white/10 dark:bg-white/[0.02]"
+                        className="flex items-start gap-3 rounded-sm border border-gray-200/80 bg-white/70 px-3.5 py-3 text-sm leading-relaxed text-foreground-muted dark:border-white/10 dark:bg-white/[0.02]"
                       >
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-foreground/70" />
                         <span>{item}</span>
@@ -295,7 +295,7 @@ export default function OperatingSystem() {
               </AnimatePresence>
 
               <div className="space-y-4">
-                <div className="overflow-hidden rounded-[24px] border border-gray-200/80 bg-[#0d1117] p-4 text-green-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] dark:border-white/10">
+                <div className="overflow-hidden rounded-sm border border-gray-200/80 bg-[#0d1117] p-4 text-green-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] dark:border-white/10">
                   <div className="mb-4 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <TerminalSquare className="h-4 w-4 text-green-300" />
@@ -328,7 +328,7 @@ export default function OperatingSystem() {
                   </div>
                 </div>
 
-                <div className="rounded-[24px] border border-gray-200/80 bg-gray-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03]">
+                <div className="rounded-sm border border-gray-200/80 bg-gray-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03]">
                   <div className="mb-4 flex items-center gap-2">
                     <Gauge className="h-4 w-4 text-foreground-muted" />
                     <p className="text-sm font-semibold text-foreground">Signal Board</p>
@@ -338,7 +338,7 @@ export default function OperatingSystem() {
                     {signatureSignals.map((signal) => (
                       <div
                         key={signal.label}
-                        className="rounded-2xl border border-gray-200/80 bg-white/75 px-3.5 py-3 dark:border-white/10 dark:bg-white/[0.03]"
+                        className="rounded-sm border border-gray-200/80 bg-white/75 px-3.5 py-3 dark:border-white/10 dark:bg-white/[0.03]"
                       >
                         <p className="text-xs uppercase tracking-[0.14em] text-foreground-muted">
                           {signal.label}
@@ -349,7 +349,7 @@ export default function OperatingSystem() {
                   </div>
                 </div>
 
-                <div className="rounded-[24px] border border-gray-200/80 bg-gradient-to-br from-white to-gray-50 p-4 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]">
+                <div className="rounded-sm border border-gray-200/80 bg-gradient-to-br from-white to-gray-50 p-4 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]">
                   <div className="mb-4 flex items-center gap-2">
                     <Sparkles className="h-4 w-4 text-foreground-muted" />
                     <p className="text-sm font-semibold text-foreground">What this means in practice</p>

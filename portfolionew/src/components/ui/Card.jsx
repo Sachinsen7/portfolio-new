@@ -6,7 +6,7 @@ const Card = React.forwardRef(({ className, ...props }, ref) => (
   <motion.div
     ref={ref}
     className={cn(
-      "rounded-xl border border-white/10 dark:border-white/5 bg-[var(--glass-bg)] backdrop-blur-lg shadow-lg transition-all duration-300",
+      "rounded-sm border border-white/10 dark:border-white/5 bg-[var(--glass-bg)] backdrop-blur-lg shadow-lg transition-all duration-300",
       className
     )}
     whileHover={{

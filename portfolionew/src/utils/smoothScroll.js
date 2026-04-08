@@ -1,4 +1,3 @@
-// Smooth scroll utility with professional easing
 export const smoothScrollTo = (elementId, offset = 80) => {
   const element = document.getElementById(elementId);
   if (!element) return;
@@ -12,7 +11,6 @@ export const smoothScrollTo = (elementId, offset = 80) => {
   });
 };
 
-// Smooth scroll to top
 export const scrollToTop = () => {
   window.scrollTo({
     top: 0,
@@ -20,7 +18,6 @@ export const scrollToTop = () => {
   });
 };
 
-// Check if element is in viewport
 export const isInViewport = (element) => {
   const rect = element.getBoundingClientRect();
   return (
@@ -31,13 +28,11 @@ export const isInViewport = (element) => {
   );
 };
 
-// Smooth scroll with custom easing (for programmatic scrolling)
 export const smoothScrollToPosition = (targetPosition, duration = 800) => {
   const startPosition = window.pageYOffset;
   const distance = targetPosition - startPosition;
   let startTime = null;
 
-  // Easing function for smooth animation
   const easeInOutCubic = (t) => {
     return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
   };

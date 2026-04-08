@@ -38,7 +38,7 @@ export default function Projects() {
             className="interactive-surface group rounded-sm border border-gray-200/80 bg-white/70 p-4 transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20 sm:p-5"
           >
             <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-              <div className="aspect-[16/10] w-full shrink-0 overflow-hidden rounded-xl border border-gray-200/80 bg-gradient-to-br from-gray-100 to-gray-50 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02] sm:h-32 sm:w-48 sm:aspect-auto md:h-36 md:w-52">
+              <div className="aspect-[16/10] w-full shrink-0 overflow-hidden rounded-sm border border-gray-200/80 bg-gradient-to-br from-gray-100 to-gray-50 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02] sm:h-32 sm:w-48 sm:aspect-auto md:h-36 md:w-52">
                 <LazyImage
                   src={project.image}
                   alt={`${project.title} thumbnail`}

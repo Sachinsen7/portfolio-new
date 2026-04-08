@@ -23,7 +23,7 @@ export default function NotesPage() {
 
           <Header />
 
-          <main className="relative z-10 pt-28 sm:pt-36 md:pt-32">
+          <main className="relative z-10 pt-28 sm:pt-36 md:pt-40">
             <section className="container mx-auto max-w-6xl px-4 py-10 sm:px-6">
               <div className="max-w-3xl">
                 <p className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">

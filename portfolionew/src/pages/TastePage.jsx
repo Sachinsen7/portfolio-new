@@ -118,18 +118,16 @@ export default function TastePage() {
   const [isTracklistOpen, setIsTracklistOpen] = useState(true);
 
   return (
-    <ViewTransitionWrapper
-      transitionKey="taste-page"
-      fallbackAnimation="slide"
-      className="min-h-screen"
-    >
-      <PageTransition>
-        <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-          <ScrollProgress />
-          <div className="page-backdrop" aria-hidden="true" />
-          <div className="light-dot-pattern" aria-hidden="true" />
+    <PageTransition>
+      <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+        <ScrollProgress />
+        <div className="page-backdrop" aria-hidden="true" />
+        <div className="light-dot-pattern" aria-hidden="true" />
 
-          <div className="relative z-10 container mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <Header />
+
+        <main className="relative z-10 pt-28 sm:pt-36 md:pt-40">
+          <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="mb-12">
               <button
                 onClick={() => transitionBack({ transitionName: "back-to-home" })}
@@ -153,7 +151,7 @@ export default function TastePage() {
             </div>
 
             <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
-              <section className="rounded-[30px] border border-gray-200/80 bg-white/80 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-white/[0.03] sm:p-6">
+              <section className="rounded-sm border border-gray-200/80 bg-white/80 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-white/[0.03] sm:p-6">
                 <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50/80 px-3 py-1 text-xs text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]">
@@ -164,13 +162,13 @@ export default function TastePage() {
                       Cinema is one of the ways I reset and stay inspired.
                     </h2>
                   </div>
-                  <div className="rounded-2xl border border-gray-200 bg-gray-50/80 p-3 text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]">
+                  <div className="rounded-sm border border-gray-200 bg-gray-50/80 p-3 text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]">
                     <Clapperboard className="h-5 w-5" />
                   </div>
                 </div>
 
                 <div className="grid gap-5">
-                  <div className="rounded-2xl border border-gray-200 bg-gray-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03]">
+                  <div className="rounded-sm border border-gray-200 bg-gray-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03]">
                     <div className="mb-3 flex items-center gap-2 text-sm font-medium text-foreground">
                       <Ticket className="h-4 w-4 text-foreground-muted" />
                       Genres I lean toward
@@ -179,7 +177,7 @@ export default function TastePage() {
                       {movieGenres.map((genre) => (
                         <span
                           key={genre}
-                          className="interactive-surface rounded-xl border border-gray-200 bg-white/80 px-3 py-2 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                          className="interactive-surface rounded-sm border border-gray-200 bg-white/80 px-3 py-2 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                         >
                           {genre}
                         </span>
@@ -196,7 +194,7 @@ export default function TastePage() {
                       {favoriteMovies.map((movie) => (
                         <article
                           key={movie.title}
-                          className="interactive-surface rounded-2xl border border-gray-200 bg-gray-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                          className="interactive-surface rounded-sm border border-gray-200 bg-gray-50/80 p-4 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                         >
                           <div className="mb-3 flex items-center justify-between gap-3">
                             <div>
@@ -219,7 +217,7 @@ export default function TastePage() {
                 </div>
               </section>
 
-              <section className="rounded-[30px] border border-[#1db954]/20 bg-[#121212]/95 p-4 text-white shadow-[0_18px_45px_rgba(0,0,0,0.24)] sm:p-6">
+              <section className="rounded-sm border border-[#1db954]/20 bg-[#121212]/95 p-4 text-white shadow-[0_18px_45px_rgba(0,0,0,0.24)] sm:p-6">
                 <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
@@ -231,15 +229,15 @@ export default function TastePage() {
                       The artist I go back to when I want layered writing, storytelling, replay value, and music that still feels cinematic.
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-[#1db954]">
+                  <div className="rounded-sm border border-white/10 bg-white/5 p-3 text-[#1db954]">
                     <Headphones className="h-5 w-5" />
                   </div>
                 </div>
 
-                <div className="rounded-[24px] border border-white/10 bg-[#181818] p-5">
+                <div className="rounded-sm border border-white/10 bg-[#181818] p-5">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div className="flex items-start gap-4">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1db954] to-[#0d7a35] text-black">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-sm bg-gradient-to-br from-[#1db954] to-[#0d7a35] text-black">
                         <Disc3 className="h-7 w-7" />
                       </div>
                       <div>
@@ -256,7 +254,7 @@ export default function TastePage() {
                     <button
                       type="button"
                       onClick={() => setIsTracklistOpen((current) => !current)}
-                      className="interactive-icon inline-flex h-11 w-full items-center justify-between gap-2 rounded-full border border-white/10 bg-white/5 px-4 text-sm text-white/80 hover:border-white/20 hover:bg-white/10 sm:w-auto sm:justify-center"
+                      className="interactive-icon inline-flex h-11 w-full items-center justify-between gap-2 rounded-sm border border-white/10 bg-white/5 px-4 text-sm text-white/80 hover:border-white/20 hover:bg-white/10 sm:w-auto sm:justify-center"
                     >
                       <Mic2 className="h-4 w-4 text-[#1db954]" />
                       <span>{isTracklistOpen ? "Hide tracks" : "Show tracks"}</span>
@@ -290,7 +288,7 @@ export default function TastePage() {
                               href={song.spotifyUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="interactive-surface flex flex-col gap-4 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 hover:border-white/15 hover:bg-white/[0.06] sm:flex-row sm:items-center sm:justify-between"
+                              className="interactive-surface flex flex-col gap-4 rounded-sm border border-white/8 bg-white/[0.03] px-4 py-3 hover:border-white/15 hover:bg-white/[0.06] sm:flex-row sm:items-center sm:justify-between"
                             >
                               <div className="flex min-w-0 items-center gap-4">
                                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/6 text-sm text-white/70">
@@ -325,12 +323,8 @@ export default function TastePage() {
               </section>
             </div>
           </div>
-
-          <div className="relative z-10">
-            <Header />
-          </div>
-        </div>
-      </PageTransition>
-    </ViewTransitionWrapper>
+        </main>
+      </div>
+    </PageTransition>
   );
 }

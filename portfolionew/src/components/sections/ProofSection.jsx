@@ -81,7 +81,7 @@ export default function ProofSection() {
                 <p className="text-[11px] uppercase tracking-[0.18em] text-foreground-muted">
                   {metric.label}
                 </p>
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-50/80 dark:border-white/10 dark:bg-white/[0.04]">
+                <span className="flex h-9 w-9 items-center justify-center rounded-sm border border-gray-200 bg-gray-50/80 dark:border-white/10 dark:bg-white/[0.04]">
                   <Icon className="h-4 w-4 text-foreground-muted" />
                 </span>
               </div>

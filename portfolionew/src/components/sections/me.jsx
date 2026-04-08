@@ -80,7 +80,7 @@ export default function Me() {
             <img
               src={profileImage}
               alt="Sachin - Full Stack Developer"
-              className="h-20 w-20 rounded-2xl object-cover"
+              className="h-20 w-20 rounded-sm object-cover"
             />
             <div className="mt-4">
               <h4 className="text-base font-semibold text-foreground">

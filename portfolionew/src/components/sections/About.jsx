@@ -52,7 +52,7 @@ export const experiences = [
     company: "ADRS Technosoft",
     role: "Full Stack Developer",
     period: "May 2025 - Feb 2026",
-    location: "Remote",
+    location: "On-site, Jabalpur, India",
     link: "https://www.adrstechno.com/",
     logo,
     logoAlt: "ADRS Technosoft logo",
@@ -121,7 +121,7 @@ export default function About() {
                   <img
                     src={experience.logo}
                     alt={experience.logoAlt}
-                    className="h-14 w-14 rounded-2xl border border-gray-200 bg-white p-2 object-contain dark:border-white/10 dark:bg-white/[0.04] sm:h-16 sm:w-16"
+                    className="h-14 w-14 rounded-sm border border-gray-200 bg-white p-2 object-contain dark:border-white/10 dark:bg-white/[0.04] sm:h-16 sm:w-16"
                   />
 
                   <div className="min-w-0">
@@ -188,7 +188,7 @@ export default function About() {
                             return (
                               <div
                                 key={tech.label}
-                                className="interactive-surface inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-3 py-2 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                                className="interactive-surface inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-gray-50/80 px-3 py-2 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                               >
                                 <Icon className="h-4 w-4 text-foreground-muted" />
                                 <span className="font-tech text-[0.82rem]">{tech.label}</span>

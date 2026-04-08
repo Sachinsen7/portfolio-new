@@ -66,7 +66,7 @@ export default function LiquidHero() {
             <img
               src={profileImage}
               alt="Sachin, a full-stack developer"
-              className="h-20 w-20 rounded-3xl object-cover border border-gray-200 dark:border-white/10 sm:h-24 sm:w-24"
+              className="h-20 w-20 rounded-sm object-cover border border-gray-200 dark:border-white/10 sm:h-24 sm:w-24"
             />
             {/* <div className="absolute -bottom-1 -right-1 rounded-full border border-white/20 bg-accent p-1.5 shadow-sm">
               <Sparkles className="h-3.5 w-3.5 text-white" />

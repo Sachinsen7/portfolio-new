@@ -20,7 +20,7 @@ const Button = React.forwardRef(({ className, variant = 'default', size = 'defau
   return (
     <Comp
       className={cn(
-        'inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-95',
+        'inline-flex items-center justify-center rounded-sm font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-95',
         variants[variant],
         sizes[size],
         className

@@ -62,7 +62,7 @@ function NavItem({ item, active, compact = false, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className={`group relative inline-flex items-center rounded-xl border px-3 py-2 text-sm transition-all duration-200 ${
+      className={`group relative inline-flex items-center rounded-sm border px-3 py-2 text-sm transition-all duration-200 ${
         compact ? "h-11 w-11 justify-center px-0 md:h-10 md:w-10" : "gap-2"
       } ${activeClass}`}
       aria-label={item.label}
@@ -258,24 +258,24 @@ export default function Header() {
             <motion.div
               onHoverStart={() => setIsExpanded(true)}
               onHoverEnd={() => setIsExpanded(false)}
-              className="relative mx-auto w-full max-w-7xl"
+              className="relative mx-auto w-full max-w-8xl"
             >
               <motion.div
                 animate={{ opacity: isExpanded ? 1 : 0, scale: isExpanded ? 1 : 0.985 }}
                 transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                className="pointer-events-none absolute inset-y-0 left-0 right-0 rounded-[30px] border border-gray-200/80 bg-white/80 shadow-[0_16px_40px_rgba(15,23,42,0.1)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/80"
+                className="pointer-events-none absolute inset-y-0 left-0 right-0 rounded-sm border border-gray-200/80 bg-white/80 shadow-[0_16px_40px_rgba(15,23,42,0.1)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/80"
               />
 
               <div className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-5">
                 <motion.div
                   layout
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                  className={`flex w-fit items-center justify-self-start rounded-[24px] px-3 py-2 transition-all duration-300 ${bubbleClass}`}
+                  className={`flex w-fit items-center justify-self-start rounded-sm px-3 py-2 transition-all duration-300 ${bubbleClass}`}
                 >
                   <button
                     type="button"
                     onClick={handleBrandClick}
-                    className="interactive-surface flex items-center gap-3 rounded-xl border border-transparent px-2.5 py-2 text-left hover:border-gray-200 hover:bg-gray-50/80 dark:hover:border-white/10 dark:hover:bg-white/[0.04]"
+                    className="interactive-surface flex items-center gap-3 rounded-sm border border-transparent px-2.5 py-2 text-left hover:border-gray-200 hover:bg-gray-50/80 dark:hover:border-white/10 dark:hover:bg-white/[0.04]"
                     aria-label="Go to homepage"
                   >
                     <span className="font-heading text-sm font-semibold text-foreground">coco</span>
@@ -286,7 +286,7 @@ export default function Header() {
                 <motion.nav
                   layout
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                  className={`flex items-center gap-1 rounded-[24px] px-2 py-2 justify-self-center transition-all duration-300 ${bubbleClass}`}
+                  className={`flex items-center gap-1 rounded-sm px-2 py-2 justify-self-center transition-all duration-300 ${bubbleClass}`}
                 >
                   {currentNavItems.map((item) => (
                     <NavItem
@@ -301,7 +301,7 @@ export default function Header() {
                 <motion.div
                   layout
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                  className={`flex w-fit items-center gap-1 rounded-[24px] px-3 py-2 justify-self-end transition-all duration-300 ${bubbleClass}`}
+                  className={`flex w-fit items-center gap-1 rounded-sm px-3 py-2 justify-self-end transition-all duration-300 ${bubbleClass}`}
                 >
                   {isExpanded && (
                     <motion.div
@@ -320,7 +320,7 @@ export default function Header() {
                     <button
                       type="button"
                       onClick={toggleTheme}
-                      className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-xl border border-transparent text-foreground hover:border-gray-200 hover:bg-gray-50/80 dark:hover:border-white/10 dark:hover:bg-white/[0.04]"
+                      className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-transparent text-foreground hover:border-gray-200 hover:bg-gray-50/80 dark:hover:border-white/10 dark:hover:bg-white/[0.04]"
                       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
                     >
                       {theme === "light" ? (
@@ -339,7 +339,7 @@ export default function Header() {
           </div>
 
           <div className="relative mx-auto mt-2 w-fit max-w-[calc(100vw-1rem)] md:hidden">
-            <div className="flex flex-nowrap items-center justify-center gap-1.5 overflow-hidden rounded-[22px] border border-gray-200/80 bg-white/85 p-2 shadow-[0_10px_24px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/85">
+            <div className="flex flex-nowrap items-center justify-center gap-1.5 overflow-hidden rounded-md border border-gray-200/80 bg-white/85 p-2 shadow-[0_10px_24px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/85">
               {mobilePrimaryItems.map((item) => (
                 <NavItem
                   key={item.href}
@@ -353,7 +353,7 @@ export default function Header() {
                 <button
                   type="button"
                   onClick={() => setIsMobileMenuOpen((current) => !current)}
-                  className={`group relative inline-flex h-11 w-11 items-center justify-center rounded-xl border px-0 text-sm transition-all duration-200 ${
+                  className={`group relative inline-flex h-11 w-11 items-center justify-center rounded-sm border px-0 text-sm transition-all duration-200 ${
                     isMobileMenuOpen || hasActiveOverflowItem
                       ? "border-gray-300 bg-gray-100/90 text-foreground dark:border-white/15 dark:bg-white/[0.08]"
                       : "border-transparent text-foreground-muted hover:border-gray-200 hover:bg-gray-50/80 hover:text-foreground dark:hover:border-white/10 dark:hover:bg-white/[0.04]"
@@ -375,7 +375,7 @@ export default function Header() {
                 <button
                   type="button"
                   onClick={toggleTheme}
-                  className="interactive-icon inline-flex h-11 w-11 items-center justify-center rounded-xl border border-transparent text-foreground hover:border-gray-200 hover:bg-gray-50/80 dark:hover:border-white/10 dark:hover:bg-white/[0.04] md:h-10 md:w-10"
+                  className="interactive-icon inline-flex h-11 w-11 items-center justify-center rounded-sm border border-transparent text-foreground hover:border-gray-200 hover:bg-gray-50/80 dark:hover:border-white/10 dark:hover:bg-white/[0.04] md:h-10 md:w-10"
                   aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
                 >
                   {theme === "light" ? (
@@ -397,7 +397,7 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
-                  className="absolute inset-x-0 top-full z-50 mt-2 rounded-[22px] border border-gray-200/80 bg-white/92 p-2 shadow-[0_16px_36px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/92"
+                  className="absolute inset-x-0 top-full z-50 mt-2 rounded-sm border border-gray-200/80 bg-white/92 p-2 shadow-[0_16px_36px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/92"
                 >
                   <div className="grid grid-cols-4 gap-1.5">
                     {mobileOverflowItems.map((item) => (

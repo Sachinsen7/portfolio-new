@@ -14,16 +14,16 @@ import ViewTransitionWrapper from "@/components/common/ViewTransitionWrapper";
 export default function AllProjects() {
   const { transitionTo, transitionBack } = useViewTransition();
   return (
-    <ViewTransitionWrapper
-      transitionKey="all-projects"
-      fallbackAnimation="slide"
-      className="min-h-screen"
-    >
       <PageTransition>
-        <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-          {/* Keep the blue accent scroll progress bar */}
+        <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
           <ScrollProgress />
-          <div className="container mt-10 mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+          <div className="page-backdrop" aria-hidden="true" />
+          <div className="light-dot-pattern" aria-hidden="true" />
+
+          <Header />
+
+          <main className="relative z-10 pt-28 sm:pt-36 md:pt-40">
+            <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             {/* Header */}
             <div className="mb-12">
               <button
@@ -172,10 +172,9 @@ export default function AllProjects() {
                 </motion.div>
               ))}
             </div>
-          </div>
-          <Header />
+            </div>
+          </main>
         </div>
       </PageTransition>
-    </ViewTransitionWrapper>
   );
 }
