@@ -3,20 +3,114 @@ const learnsphere = "/assets/images/learnsphere.png";
 const cloud_saas = "/assets/images/cloud_saas.png";
 const vidtube = "/assets/images/vidtube.png";
 const endpointhub = "/assets/images/endpointhub.png";
-
-// Fallbacks for projects that do not have a dedicated image in `public/assets/images` yet.
+const routelink = "/assets/images/routelink.png";
 const monositi = "/assets/images/monositi.png";
 const recipe_finder = "/assets/images/recipefinder.png";
 const music_player = "/assets/images/music_player.png";
 
 export const projectsData = [
   {
+    id: 0,
+    title: "RouteLink",
+    image: routelink,
+    description:
+      "Peer-to-peer delivery and travel coordination platform that matches senders with travelers through a mobile app backed by a scalable microservice architecture",
+
+    tech: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Next.js",
+      "React 19",
+      "Fastify",
+      "Prisma",
+      "PostgreSQL",
+      "Zustand",
+      "NativeWind",
+      "JWT",
+      "Twilio",
+      "Google OAuth",
+      "Razorpay",
+      "Nodemailer",
+      "Docker",
+    ],
+    category: "Mobile App + Microservice Platform",
+    year: "2026",
+    summary:
+      "RouteLink is a trust-first logistics platform for posting routes, booking package space, verifying users, and managing payments in real time.",
+    fullDescription:
+      "RouteLink is a full-stack logistics and mobility platform designed to help people send packages through travelers already heading in the same direction. I built the project as a mobile-first experience using React Native and Expo, supported by a microservice backend for authentication, routes, users, chat, payments, and notifications. The platform includes OTP-based authentication, DigiLocker-inspired identity verification, route posting and discovery, route request handling for both rides and packages, secure payment intent creation, user reputation tracking, and direct messaging between participants. I also created a separate Next.js marketing website to present the product story, feature set, and trust-focused onboarding experience.",
+
+    features: [
+      "OTP-based login and signup flow with Twilio-powered phone verification",
+      "Mobile-first app built with React Native, Expo, TypeScript, and NativeWind",
+      "Microservice architecture with separate auth, user, route, chat, payment, and notification services",
+      "Route posting flow for travelers with departure city, destination, timing, transport mode, seating, and pricing",
+      "Smart route discovery and search for senders looking for verified travelers",
+      "Route request system supporting both ride booking and package delivery use cases",
+      "Trust and verification workflow with DigiLocker-style identity verification",
+      "User profile, trust score, rating, and reviews management",
+      "Secure payment intent creation and status polling with Razorpay",
+      "Chat rooms and direct messaging between route participants",
+      "Notification system designed for SMS, email, and push-style communication",
+      "JWT-based session handling with refresh token support",
+      "Separate Next.js landing website to showcase the product and drive adoption",
+      "Dockerized local development setup for running multiple backend services together",
+    ],
+    challenges: [
+      "Designing a clean microservice architecture instead of a single monolithic backend",
+      "Coordinating communication between multiple services with separate responsibilities and schemas",
+      "Implementing secure OTP authentication, token issuance, and refresh flows",
+      "Handling trust-sensitive user verification in a logistics product where identity matters",
+      "Structuring PostgreSQL and Prisma schemas across multiple independent services",
+      "Building a polished mobile UI while integrating live backend APIs and async state flows",
+      "Creating a flexible route request model that supports both passenger rides and package delivery",
+      "Implementing payment intent creation and live payment status polling with Razorpay",
+      "Managing chat, notifications, and profile reputation as separate but connected product flows",
+      "Keeping development and testing manageable across Docker, local services, and mobile app environments",
+    ],
+    liveLink: "https://movi-rose.vercel.app/",
+    githubLink: "https://github.com/Sachinsen7/routelink",
+    timeline: [
+      {
+        phase: "Product Planning & System Architecture",
+        duration: "4 days",
+        status: "completed",
+      },
+      {
+        phase: "Backend Microservices & Database Design",
+        duration: "2 weeks",
+        status: "completed",
+      },
+      {
+        phase: "Mobile App UI & API Integration",
+        duration: "2 weeks",
+        status: "completed",
+      },
+      {
+        phase: "Payments, Verification, Chat & Notifications",
+        duration: "1 week",
+        status: "completed",
+      },
+      {
+        phase: "Marketing Website & Final Polish",
+        duration: "4 days",
+        status: "completed",
+      },
+    ],
+    team: "Solo Project",
+    role: "Full Stack Developer",
+    status: "In Active Development",
+    duration: "1 month",
+  },
+  ,
+  {
     id: 1,
     title: "Monositi",
     image: monositi,
     description:
       "Full-stack property rental and service provider marketplace platform with real-time geolocation and OTP authentication",
-      
+
     tech: [
       "React 19",
       "Node.js",
