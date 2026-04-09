@@ -22,12 +22,16 @@ import {
   IconCloud,
   IconCode,
   IconBrain,
+  IconBrandReactNative,
+  IconBrandGolang
 } from "@tabler/icons-react";
 
 export const basicSkills = [
   "Next.js",
   "TypeScript",
-  "React",
+  "React Native",
+  "Go",
+  "React", 
   "Node.js",
   "JavaScript",
   "Python",
@@ -40,21 +44,22 @@ export const basicSkills = [
 ];
 
 export const detailedSkills = [
-  // Core Technologies
   { name: "Next.js", icon: IconBrandNextjs, category: "Framework", level: "Expert", color: "slate" },
   { name: "TypeScript", icon: IconBrandTypescript, category: "Language", level: "Expert", color: "blue" },
   { name: "React", icon: IconBrandReact, category: "Frontend", level: "Expert", color: "cyan" },
+  { name: "React Native", icon: IconBrandReactNative, category: "Frontend", level: "Advanced", color: "cyan" },
   { name: "Node.js", icon: IconBrandNodejs, category: "Backend", level: "Expert", color: "green" },
   { name: "JavaScript", icon: IconBrandJavascript, category: "Language", level: "Expert", color: "yellow" },
+  { name: "Go", icon: IconBrandGolang, category: "Language", level: "Advanced", color: "blue" },
 
-  // Advanced Technologies
+
   { name: "Python", icon: IconBrandPython, category: "Language", level: "Advanced", color: "blue" },
   { name: "AWS", icon: IconBrandAws, category: "Cloud", level: "Advanced", color: "orange" },
   { name: "Docker", icon: IconBrandDocker, category: "DevOps", level: "Advanced", color: "sky" },
   { name: "MongoDB", icon: IconBrandMongodb, category: "Database", level: "Advanced", color: "emerald" },
   { name: "Prisma", icon: IconDatabase, category: "ORM", level: "Advanced", color: "purple" },
 
-  // Frontend & Styling
+  
   { name: "Tailwind CSS", icon: IconBrandTailwind, category: "Styling", level: "Expert", color: "cyan" },
   { name: "Redux", icon: IconBrandRedux, category: "State Management", level: "Advanced", color: "violet" },
 
@@ -82,6 +87,8 @@ export const skillsByCategory = {
     { name: "React", icon: IconBrandReact, level: "Expert" },
     { name: "Node.js", icon: IconBrandNodejs, level: "Expert" },
     { name: "JavaScript", icon: IconBrandJavascript, level: "Expert" },
+    { name: "Go", icon: IconBrandGolang, level: "Advanced" },
+    { name: "React Native", icon: IconBrandReactNative, level: "Advanced" },
   ],
   "Cloud & DevOps": [
     { name: "AWS", icon: IconBrandAws, level: "Advanced" },
@@ -123,6 +130,10 @@ export const techStack = [
   { name: "Tailwind CSS", icon: IconBrandTailwind },
   { name: "MongoDB", icon: IconBrandMongodb },
   { name: "Vercel", icon: IconBrandVercel },
+  { name: "Git", icon: IconBrandGit },
+  { name: "GitHub", icon: IconBrandGithub },
+  { name: "Figma", icon: IconBrandFigma },
+  { name: "VS Code", icon: IconBrandVscode },
 ];
 
 export const getTechIcon = (tech) => {

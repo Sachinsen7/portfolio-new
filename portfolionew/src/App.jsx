@@ -7,6 +7,7 @@ import SystemPage from '@/pages/SystemPage'
 import NotesPage from '@/pages/NotesPage'
 import PlayPage from '@/pages/PlayPage'
 import TastePage from '@/pages/TastePage'
+import ExperiencePage from '@/pages/ExperiencePage'
 import BlogPost from '@/pages/BlogPost'
 import NotFound from '@/pages/NotFound'
 import { ThemeProvider } from '@/context/ThemeContext'
@@ -53,6 +54,7 @@ function AnimatedRoutes() {
           <Route path='/notes' element={<NotesPage />} />
           <Route path='/notes/:slug' element={<BlogPost />} />
           <Route path='/play' element={<PlayPage />} />
+          <Route path='/experience' element={<ExperiencePage />} />
           <Route path='/projects' element={<AllProjects />} />
           <Route path='/taste' element={<TastePage />} />
           <Route path='/project/:id' element={<ProjectDetails />} />

@@ -23,7 +23,7 @@ import { useViewTransition, useViewTransitionScroll } from "@/hooks/useViewTrans
 const homeNavItems = [
   { href: "me", label: "Me", icon: User, type: "scroll" },
   { href: "/system", label: "System", icon: Sparkles, type: "link" },
-  { href: "about", label: "Experience", icon: Briefcase, type: "scroll" },
+  { href: "/experience", label: "Experience", icon: Briefcase, type: "link" },
   { href: "projects", label: "Projects", icon: FolderOpen, type: "scroll" },
   { href: "/notes", label: "Notes", icon: FileText, type: "link" },
   { href: "/play", label: "Play", icon: Gamepad2, type: "link" },
@@ -33,6 +33,7 @@ const homeNavItems = [
 
 const pageNavItems = [
   { href: "/", label: "Home", icon: Home, type: "link" },
+  { href: "/experience", label: "Experience", icon: Briefcase, type: "link" },
   { href: "/projects", label: "Projects", icon: FolderOpen, type: "link" },
   { href: "/notes", label: "Notes", icon: FileText, type: "link" },
   { href: "/system", label: "System", icon: Sparkles, type: "link" },

@@ -1,19 +1,42 @@
-import { ArrowLeft, ExternalLink, Github, Calendar, Tag, Clock } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  Calendar,
+  Clock3,
+  ExternalLink,
+  FolderOpen,
+  Github,
+  Layers3,
+  Sparkles,
+} from "lucide-react";
+import { motion } from "framer-motion";
 import LazyImage from "@/components/common/LazyImage";
 import Header from "@/components/layout/Header";
 import { projectsData } from "@/lib/projectsData";
 import { getTechIcon } from "@/lib/techIcons.jsx";
 import PageTransition from "@/components/common/PageTransition";
 import ScrollProgress from "@/components/common/ScrollProgress";
-import { motion } from "framer-motion";
 import { useViewTransition } from "@/hooks/useViewTransition";
 import ViewTransitionWrapper from "@/components/common/ViewTransitionWrapper";
 
+const uniqueCategories = new Set(projectsData.map((project) => project.category)).size;
+const liveProjects = projectsData.filter((project) => project.status === "Live & Maintained").length;
 
+const introMetrics = [
+  { label: "Projects", value: `${projectsData.length}`, icon: FolderOpen },
+  { label: "Categories", value: `${uniqueCategories}`, icon: Layers3 },
+  { label: "Live now", value: `${liveProjects}`, icon: Sparkles },
+];
 
 export default function AllProjects() {
   const { transitionTo, transitionBack } = useViewTransition();
+
   return (
+    <ViewTransitionWrapper
+      transitionKey="all-projects-page"
+      fallbackAnimation="slide"
+      className="min-h-screen"
+    >
       <PageTransition>
         <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
           <ScrollProgress />
@@ -23,158 +46,247 @@ export default function AllProjects() {
           <Header />
 
           <main className="relative z-10 pt-28 sm:pt-36 md:pt-40">
-            <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            {/* Header */}
-            <div className="mb-12">
+            <section className="container mx-auto max-w-6xl px-4 pb-8 sm:px-6">
               <button
-                onClick={() => transitionBack({ transitionName: 'back-to-home' })}
-                className="interactive-text-link inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 mb-6 group"
+                type="button"
+                onClick={() => transitionBack({ transitionName: "back-to-home" })}
+                className="interactive-text-link inline-flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
               >
-                <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-                Back to Home
+                <ArrowLeft className="h-4 w-4" />
+                <span>Back to home</span>
               </button>
 
-              <div className="text-start mb-8">
-                <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl">
-                  All Projects
-                </h1>
-                <p className="max-w-2xl text-base text-gray-600 dark:text-gray-400 sm:text-lg">
-                  A comprehensive collection of my work, side projects, and contributions to the development community
-                </p>
+              <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_380px]">
+                <div className="max-w-3xl">
+                  <p className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Project Archive
+                  </p>
+                  <h1 className="mt-4 text-3xl font-semibold text-foreground sm:text-5xl">
+                    A cleaner view of the products, systems, and experiments I have built.
+                  </h1>
+                  <p className="mt-4 text-base leading-relaxed text-foreground-muted sm:text-lg">
+                    This page collects the broader body of work behind the portfolio. It is not
+                    just a gallery of thumbnails. It is a map of the kinds of problems I like
+                    solving across SaaS, developer tools, mobile apps, and full-stack systems.
+                  </p>
 
+                  <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                    {introMetrics.map((metric) => {
+                      const Icon = metric.icon;
 
+                      return (
+                        <div
+                          key={metric.label}
+                          className="rounded-sm border border-gray-200/80 bg-white/75 p-4 shadow-[0_16px_40px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.03]"
+                        >
+                          <div className="flex items-center justify-between gap-3">
+                            <p className="text-[11px] uppercase tracking-[0.18em] text-foreground-muted">
+                              {metric.label}
+                            </p>
+                            <span className="flex h-9 w-9 items-center justify-center rounded-sm border border-gray-200 bg-gray-50/80 dark:border-white/10 dark:bg-white/[0.04]">
+                              <Icon className="h-4 w-4 text-foreground-muted" />
+                            </span>
+                          </div>
+                          <p className="mt-4 text-xl font-semibold text-foreground sm:text-2xl">
+                            {metric.value}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="relative overflow-hidden rounded-sm border border-sky-200/70 bg-gradient-to-br from-sky-50 via-white to-cyan-50 p-6 shadow-[0_18px_50px_rgba(14,165,233,0.12)] dark:border-sky-400/15 dark:from-sky-400/10 dark:via-white/[0.03] dark:to-cyan-400/10">
+                  <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/70 to-transparent" />
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-sky-700 dark:text-sky-200">
+                    Design direction
+                  </p>
+                  <h2 className="mt-4 text-2xl font-semibold text-foreground">
+                    Boxy, calm, and information-rich.
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-foreground-muted">
+                    I reshaped this page to match the rest of the website more closely: less glossy
+                    card noise, stronger structure, and a more editorial reading flow.
+                  </p>
+
+                  <div className="mt-6 space-y-2.5">
+                    {[
+                      "Project cards now use the same square geometry as the rest of the portfolio.",
+                      "Metadata is clearer, so every project reads faster before you open the case study.",
+                      "The page feels richer through hierarchy, not extra decoration.",
+                    ].map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-center gap-3 rounded-sm border border-white/70 bg-white/70 px-3.5 py-3 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.04]"
+                      >
+                        <span className="h-2 w-2 rounded-full bg-sky-500" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            </section>
 
-            {/* Projects Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projectsData.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  className="group relative bg-white/95 dark:bg-gray-900/90 backdrop-blur-lg border border-gray-200/60 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:bg-white dark:hover:bg-gray-900/95 transition-all duration-300 shadow-lg hover:shadow-2xl dark:shadow-gray-900/20"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                >
-                  {/* Project Image */}
-                  <div className="relative overflow-hidden bg-gradient-to-br from-slate-100 to-white dark:from-gray-900 dark:to-gray-800">
-                    <LazyImage
-                      src={project.image}
-                      alt={`${project.title} screenshot`}
-                      className="h-48 w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105 sm:p-4"
-                    />
+            <section className="container mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+              <div className="grid gap-5 lg:grid-cols-2">
+                {projectsData.map((project, index) => (
+                  <motion.article
+                    key={project.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.32, delay: index * 0.05 }}
+                    className="group relative overflow-hidden rounded-sm border border-gray-200/80 bg-white/80 shadow-[0_18px_50px_rgba(15,23,42,0.05)] backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03]"
+                  >
+                    <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                    {/* Gradient overlay for better text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                    {/* Action buttons */}
-                    <div className="absolute right-3 top-3 flex gap-2 opacity-100 transition-all duration-300 sm:right-4 sm:top-4 sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
-                      <a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="interactive-icon p-2.5 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl hover:bg-white dark:hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl"
-                        aria-label="View live demo"
-                      >
-                        <ExternalLink className="h-4 w-4 text-gray-700 dark:text-gray-300" />
-                      </a>
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="interactive-icon p-2.5 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl hover:bg-white dark:hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl"
-                        aria-label="View source code"
-                      >
-                        <Github className="h-4 w-4 text-gray-700 dark:text-gray-300" />
-                      </a>
-                    </div>
-
-                    {/* Status badge */}
-                    <div className="absolute top-4 left-4">
-                      <div className="flex items-center gap-1 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-gray-700 dark:text-gray-300">{project.status}</span>
+                    <div className="border-b border-gray-200/80 px-5 py-4 dark:border-white/10 sm:px-6">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="rounded-sm border border-gray-200 bg-gray-50/80 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-foreground-muted dark:border-white/10 dark:bg-white/[0.04]">
+                          {project.category}
+                        </span>
+                        <span className="rounded-sm border border-sky-200 bg-sky-50 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-sky-700 dark:border-sky-400/20 dark:bg-sky-400/10 dark:text-sky-200">
+                          {project.status}
+                        </span>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Project Info */}
-                  <div className="p-4 sm:p-6">
-                    {/* Header */}
-                    <div className="mb-3 flex items-start justify-between gap-3">
-                      <div className="flex-1">
-                        <h3 className="mb-1 text-lg font-bold text-gray-900 transition-colors group-hover:text-blue-600 line-clamp-1 dark:text-gray-100 dark:group-hover:text-blue-400 sm:text-xl">
-                          {project.title}
-                        </h3>
-                        <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500 dark:text-gray-400 sm:gap-3">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            {project.year}
+                    <div className="p-5 sm:p-6">
+                      <div className="overflow-hidden rounded-sm border border-gray-200/80 bg-gradient-to-br from-gray-100 to-white dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]">
+                        <LazyImage
+                          src={project.image}
+                          alt={`${project.title} preview`}
+                          className="h-56 w-full object-contain p-4 transition-transform duration-300 group-hover:scale-[1.02] sm:h-64"
+                        />
+                      </div>
+
+                      <div className="mt-5 flex flex-col gap-4">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="min-w-0">
+                            <h2 className="text-2xl font-semibold text-foreground">
+                              {project.title}
+                            </h2>
+                            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-foreground-muted sm:text-base">
+                              {project.summary || project.description}
+                            </p>
                           </div>
-                          <div className="flex items-center gap-1">
-                            <Clock className="h-3 w-3" />
-                            {project.duration}
+
+                          <div className="hidden shrink-0 items-center gap-2 text-foreground-muted sm:flex">
+                            <a
+                              href={project.liveLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`${project.title} live demo`}
+                              className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+                            >
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                            <a
+                              href={project.githubLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`${project.title} GitHub repository`}
+                              className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+                            >
+                              <Github className="h-4 w-4" />
+                            </a>
                           </div>
+                        </div>
+
+                        <div className="grid gap-3 border-y border-gray-200/80 py-4 dark:border-white/10 sm:grid-cols-3">
+                          <div className="rounded-sm border border-gray-200/80 bg-gray-50/80 px-3.5 py-3 dark:border-white/10 dark:bg-white/[0.04]">
+                            <div className="flex items-center gap-2 text-foreground-muted">
+                              <Calendar className="h-3.5 w-3.5" />
+                              <span className="text-[11px] uppercase tracking-[0.16em]">Year</span>
+                            </div>
+                            <p className="mt-2 text-sm font-medium text-foreground">{project.year}</p>
+                          </div>
+
+                          <div className="rounded-sm border border-gray-200/80 bg-gray-50/80 px-3.5 py-3 dark:border-white/10 dark:bg-white/[0.04]">
+                            <div className="flex items-center gap-2 text-foreground-muted">
+                              <Clock3 className="h-3.5 w-3.5" />
+                              <span className="text-[11px] uppercase tracking-[0.16em]">Duration</span>
+                            </div>
+                            <p className="mt-2 text-sm font-medium text-foreground">{project.duration}</p>
+                          </div>
+
+                          <div className="rounded-sm border border-gray-200/80 bg-gray-50/80 px-3.5 py-3 dark:border-white/10 dark:bg-white/[0.04]">
+                            <div className="flex items-center gap-2 text-foreground-muted">
+                              <FolderOpen className="h-3.5 w-3.5" />
+                              <span className="text-[11px] uppercase tracking-[0.16em]">Role</span>
+                            </div>
+                            <p className="mt-2 text-sm font-medium text-foreground">{project.role}</p>
+                          </div>
+                        </div>
+
+                        <div>
+                          <p className="text-sm font-semibold text-foreground">Stack snapshot</p>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {project.tech.slice(0, 5).map((tech) => (
+                              <div
+                                key={tech}
+                                className="inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-white/85 px-3 py-2 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.04]"
+                              >
+                                <span className="text-foreground-muted">
+                                  {getTechIcon(tech, "h-3.5 w-3.5")}
+                                </span>
+                                <span className="font-tech text-[0.76rem]">{tech}</span>
+                              </div>
+                            ))}
+                            {project.tech.length > 5 && (
+                              <span className="inline-flex items-center rounded-sm border border-gray-200 px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-foreground-muted dark:border-white/10">
+                                +{project.tech.length - 5} more
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
+                          <div className="flex items-center gap-2 text-foreground-muted sm:hidden">
+                            <a
+                              href={project.liveLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`${project.title} live demo`}
+                              className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+                            >
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                            <a
+                              href={project.githubLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`${project.title} GitHub repository`}
+                              className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+                            >
+                              <Github className="h-4 w-4" />
+                            </a>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() =>
+                              transitionTo(`/project/${project.id}`, {
+                                isProject: true,
+                                projectId: project.id,
+                                transitionName: `project-detail-${project.id}`,
+                              })
+                            }
+                            className="interactive-surface inline-flex w-full items-center justify-between gap-2 rounded-sm border border-gray-200 bg-gray-50/80 px-4 py-3 text-sm font-medium text-foreground hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20 sm:w-auto"
+                          >
+                            <span>Open case study</span>
+                            <ArrowUpRight className="h-4 w-4" />
+                          </button>
                         </div>
                       </div>
                     </div>
-
-                    {/* Category */}
-                    <div className="flex items-center gap-2 mb-4">
-                      <Tag className="h-3 w-3 text-blue-600 dark:text-blue-400" />
-                      <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-800/50 font-medium">
-                        {project.category}
-                      </span>
-                    </div>
-
-                    {/* Description */}
-                    <p className="mb-4 text-sm leading-relaxed text-gray-700 line-clamp-3 dark:text-gray-300">
-                      {project.description}
-                    </p>
-
-                    {/* Tech Stack */}
-                    <div className="mb-5">
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.tech.slice(0, 4).map((tech) => (
-                          <div
-                            key={tech}
-                            className="interactive-surface flex items-center gap-1 bg-gray-100 dark:bg-gray-800/60 px-2 py-1 rounded-lg text-xs text-gray-700 dark:text-gray-300 border border-gray-200/50 dark:border-gray-700/50 hover:bg-gray-200 dark:hover:bg-gray-700/60 transition-colors"
-                          >
-                            {getTechIcon(tech, "h-3 w-3")}
-                            <span className="font-medium">{tech}</span>
-                          </div>
-                        ))}
-                        {project.tech.length > 4 && (
-                          <div className="flex items-center px-2 py-1 text-xs text-gray-500 dark:text-gray-400">
-                            +{project.tech.length - 4} more
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* View Details Link */}
-                    <button
-                      onClick={() => transitionTo(`/project/${project.id}`, {
-                        isProject: true,
-                        projectId: project.id,
-                        transitionName: `project-detail-${project.id}`
-                      })}
-                      className="interactive-text-link inline-flex w-full items-center justify-between gap-2 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700 group/link dark:text-blue-400 dark:hover:text-blue-300 sm:w-auto sm:justify-start"
-                    >
-                      <span>View Details</span>
-                      <ArrowLeft className="h-4 w-4 rotate-180 group-hover/link:translate-x-1 transition-transform" />
-                    </button>
-                  </div>
-
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:via-blue-500/5 group-hover:to-purple-500/5 transition-all duration-500 pointer-events-none"></div>
-                </motion.div>
-              ))}
-            </div>
-            </div>
+                  </motion.article>
+                ))}
+              </div>
+            </section>
           </main>
         </div>
       </PageTransition>
+    </ViewTransitionWrapper>
   );
 }

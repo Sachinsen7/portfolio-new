@@ -67,6 +67,7 @@ export default function ChatBot() {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const panelRef = useRef(null);
+  const triggerRef = useRef(null);
   const messagesEndRef = useRef(null);
   const messagesContainerRef = useRef(null);
   const shouldAutoScrollRef = useRef(true);
@@ -113,7 +114,10 @@ export default function ChatBot() {
     }
 
     const handlePointerDown = (event) => {
-      if (panelRef.current?.contains(event.target)) {
+      if (
+        panelRef.current?.contains(event.target) ||
+        triggerRef.current?.contains(event.target)
+      ) {
         return;
       }
 
@@ -233,6 +237,7 @@ export default function ChatBot() {
   return (
     <>
       <motion.div
+        ref={triggerRef}
         className="fixed bottom-24 right-4 z-40 sm:bottom-8 sm:right-6"
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
@@ -243,7 +248,7 @@ export default function ChatBot() {
             type="button"
             size="lg"
             onClick={() => setIsOpen((prev) => !prev)}
-            className="h-14 w-14 rounded-sm border border-gray-200/80 bg-white/92 text-foreground shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl transition-all duration-300 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-[#101113]/92 dark:hover:border-white/20"
+            className="h-14 w-14 rounded-sm border border-gray-200/80 bg-white/92 text-foreground shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl transition-all duration-300 hover:border-gray-300 hover:bg-white hover:text-black  dark:border-white/10 dark:bg-[#101113]/92 dark:hover:border-white/20 "
             aria-label={isOpen ? "Close chat" : "Open chat"}
           >
             <AnimatePresence mode="wait" initial={false}>

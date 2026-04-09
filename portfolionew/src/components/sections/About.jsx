@@ -1,117 +1,64 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Globe } from "lucide-react";
-import logo from "/assets/images/logo.png";
-import agumentik from "/assets/images/agumentikgroup_logo.jpg";
-import {
-  IconBrandAws,
-  IconBrandDocker,
-  IconBrandMongodb,
-  IconBrandNextjs,
-  IconBrandNodejs,
-  IconBrandReact,
-  IconBrandReactNative,
-  IconBrandTailwind,
-  IconBrandTypescript,
-  IconBrandVercel,
-  IconCloud,
-  IconDatabase,
-} from "@tabler/icons-react";
-
-export const experiences = [
-  {
-    company: "Agumentik Software Private Limited",
-    role: "Cross Application Developer",
-    period: "Feb 2026 - Present",
-    location: "Remote",
-    link: "https://www.agumentiksoftware.com/",
-    logo: agumentik,
-    logoAlt: "Agumentik Software Private Limited logo",
-    status: "Current",
-    technologies: [
-      { label: "React Native", icon: IconBrandReactNative },
-      { label: "Next.js", icon: IconBrandNextjs },
-      { label: "TypeScript", icon: IconBrandTypescript },
-      { label: "React", icon: IconBrandReact },
-      { label: "Node.js", icon: IconBrandNodejs },
-      { label: "AWS", icon: IconBrandAws },
-      { label: "MongoDB", icon: IconBrandMongodb },
-      { label: "Prisma", icon: IconDatabase },
-      { label: "Docker", icon: IconBrandDocker },
-      { label: "Cloudinary", icon: IconCloud },
-      { label: "Tailwind CSS", icon: IconBrandTailwind },
-      { label: "Vercel", icon: IconBrandVercel },
-    ],
-    highlights: [
-      "Building cross-platform product flows with React Native, Next.js, and TypeScript.",
-      "Working across APIs, data layers, and delivery pipelines with Node.js, Prisma, MongoDB, and AWS.",
-      "Shipping polished interfaces with a strong focus on usability, system clarity, and maintainable code.",
-    ],
-  },
-  {
-    company: "ADRS Technosoft",
-    role: "Full Stack Developer",
-    period: "May 2025 - Feb 2026",
-    location: "On-site, Jabalpur, India",
-    link: "https://www.adrstechno.com/",
-    logo,
-    logoAlt: "ADRS Technosoft logo",
-    technologies: [
-      { label: "Next.js", icon: IconBrandNextjs },
-      { label: "React", icon: IconBrandReact },
-      { label: "Node.js", icon: IconBrandNodejs },
-      { label: "MongoDB", icon: IconBrandMongodb },
-      { label: "Tailwind CSS", icon: IconBrandTailwind },
-      { label: "Vercel", icon: IconBrandVercel },
-    ],
-    highlights: [
-      "Built full-stack business platforms and internal dashboards for day-to-day operational workflows.",
-      "Handled frontend implementation, backend integration, and feature refinement across multiple products.",
-      "Worked closely on responsive UI, admin tools, and practical systems that improved delivery speed.",
-    ],
-  },
-];
+import { ArrowUpRight, ChevronDown, Globe } from "lucide-react";
+import { experiences } from "@/lib/experienceData";
+import { useViewTransition } from "@/hooks/useViewTransition";
 
 export default function About() {
-  const [openCompany, setOpenCompany] = useState(experiences[0].company);
+  const [openExperience, setOpenExperience] = useState(experiences[0].id);
+  const { transitionTo } = useViewTransition();
 
   return (
     <section
+      id="about"
       className="container mx-auto max-w-4xl px-4 py-8 sm:px-6"
       aria-labelledby="about-heading"
     >
-      <div className="mb-10 flex flex-col items-start gap-3">
-        <h2
-          id="about-heading"
-          className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400"
-        >
-          Featured
-        </h2>
+      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-2xl">
-          <h3 className="text-xl font-semibold text-foreground sm:text-2xl">
+          <h2
+            id="about-heading"
+            className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400"
+          >
+            Featured
+          </h2>
+          <h3 className="mt-3 text-xl font-semibold text-foreground sm:text-2xl">
             Experience
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
-            A closer look at the teams I&apos;ve worked with, the tools I&apos;ve used,
-            and the kind of product work I&apos;ve been trusted to ship.
+            A quick preview of where I&apos;ve worked and the kind of product work I&apos;ve
+            been trusted to ship. The full story now lives on a dedicated page.
           </p>
         </div>
+
+        <button
+          type="button"
+          onClick={() =>
+            transitionTo("/experience", {
+              transitionName: "nav-experience",
+            })
+          }
+          className="interactive-surface inline-flex items-center gap-2 self-start rounded-sm border border-gray-200 bg-white/80 px-4 py-2.5 text-sm font-medium text-foreground shadow-[0_12px_30px_rgba(15,23,42,0.06)] hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+        >
+          <span>Open full timeline</span>
+          <ArrowUpRight className="h-4 w-4" />
+        </button>
       </div>
 
       <div className="space-y-4">
         {experiences.map((experience) => {
-          const isOpen = openCompany === experience.company;
+          const isOpen = openExperience === experience.id;
 
           return (
             <article
-              key={experience.company}
+              key={experience.id}
               className="rounded-sm border border-gray-200/80 bg-white/70 dark:border-white/10 dark:bg-white/[0.03]"
             >
               <button
                 type="button"
                 onClick={() =>
-                  setOpenCompany((current) =>
-                    current === experience.company ? null : experience.company
+                  setOpenExperience((current) =>
+                    current === experience.id ? null : experience.id
                   )
                 }
                 className="flex w-full flex-col gap-5 p-4 text-left transition-colors duration-200 hover:bg-gray-50/70 dark:hover:bg-white/[0.02] sm:p-5 md:flex-row md:items-start md:justify-between"
@@ -129,6 +76,9 @@ export default function About() {
                       <h4 className="text-base font-semibold text-foreground sm:text-lg">
                         {experience.company}
                       </h4>
+                      <span className="rounded-full border border-sky-200 bg-sky-50 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-sky-700 dark:border-sky-400/20 dark:bg-sky-400/10 dark:text-sky-200">
+                        {experience.status}
+                      </span>
                       <a
                         href={experience.link}
                         target="_blank"
@@ -199,6 +149,13 @@ export default function About() {
                       </div>
 
                       <ul className="mt-5 space-y-3">
+                        <li className="flex items-start gap-3 text-sm leading-relaxed text-foreground-muted sm:text-base">
+                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-foreground/70" />
+                          <span>{experience.summary}</span>
+                        </li>
+                        <li className="pt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground-muted">
+                          Key Contributions
+                        </li>
                         {experience.highlights.map((item) => (
                           <li
                             key={item}

@@ -1,6 +1,6 @@
 import { CheckCircle2, Globe2, Layers3, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
 import { projectsData } from "@/lib/projectsData";
-import { experiences } from "@/components/sections/About";
+import { experiences } from "@/lib/experienceData";
 
 const uniqueCategories = new Set(projectsData.map((project) => project.category)).size;
 const uniqueTechnologies = new Set(projectsData.flatMap((project) => project.tech)).size;
