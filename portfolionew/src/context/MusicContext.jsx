@@ -18,7 +18,6 @@ export const MusicProvider = ({ children }) => {
     const autoplayAttempted = useRef(false);
 
     useEffect(() => {
-        // Create a single audio instance that persists across page changes
         if (!audioRef.current) {
             audioRef.current = new Audio(music);
             audioRef.current.volume = 0.3;
@@ -28,7 +27,6 @@ export const MusicProvider = ({ children }) => {
 
         const audio = audioRef.current;
 
-        // Check if autoplay is possible
         const checkAutoplaySupport = async () => {
             try {
                 const testAudio = new Audio();
@@ -43,7 +41,6 @@ export const MusicProvider = ({ children }) => {
 
         checkAutoplaySupport();
 
-        // Attempt autoplay only once
         const attemptAutoplay = async () => {
             if (autoplayAttempted.current) return;
             autoplayAttempted.current = true;
@@ -55,7 +52,6 @@ export const MusicProvider = ({ children }) => {
                 console.log('Autoplay blocked by browser');
                 setIsPlaying(false);
 
-                // Set up listeners for first user interaction
                 const startOnInteraction = async () => {
                     try {
                         await audio.play();
