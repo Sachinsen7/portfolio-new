@@ -32,7 +32,7 @@ export default function Home() {
           <LiquidHero />
           <Me />
           <About />
-          <ProofSection />
+          {/* <ProofSection /> */}
           <NotesSection />
           <Projects />
           <GitHubContributions />
