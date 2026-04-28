@@ -3,46 +3,40 @@ import { motion } from "framer-motion";
 const pageVariants = {
   initial: {
     opacity: 0,
-    y: 10,
-    scale: 0.99
+    filter: "blur(2px)"
   },
   in: {
     opacity: 1,
-    y: 0,
-    scale: 1
+    filter: "blur(0px)"
   },
   out: {
     opacity: 0,
-    y: -10,
-    scale: 1.01
+    filter: "blur(1px)"
   }
 };
 
 const pageTransition = {
   type: "tween",
-  ease: "easeInOut",
-  duration: 0.2
+  ease: [0.22, 1, 0.36, 1],
+  duration: 0.16
 };
 
 const slideVariants = {
   initial: {
-    opacity: 0,
-    x: 15
+    opacity: 0
   },
   in: {
-    opacity: 1,
-    x: 0
+    opacity: 1
   },
   out: {
-    opacity: 0,
-    x: -15
+    opacity: 0
   }
 };
 
 const slideTransition = {
   type: "tween",
-  ease: "easeInOut",
-  duration: 0.2
+  ease: [0.22, 1, 0.36, 1],
+  duration: 0.14
 };
 
 export function PageTransition({ children, className = "" }) {
@@ -81,7 +75,7 @@ export function FadeTransition({ children, className = "" }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.15, ease: "easeInOut" }}
+      transition={{ duration: 0.14, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}

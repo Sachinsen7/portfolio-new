@@ -356,43 +356,47 @@ li {
 /* Default page transition */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 0.25s;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform, opacity;
+  animation-duration: 0.16s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity, filter;
   backface-visibility: hidden;
   transform: translateZ(0);
 }
 
 ::view-transition-old(root) {
-  animation-name: slide-out-right;
+  animation-name: page-fade-out;
 }
 
 ::view-transition-new(root) {
-  animation-name: slide-in-left;
+  animation-name: page-fade-in;
 }
 
-/* Optimized fade animations for better performance */
-@keyframes slide-out-right {
+/* Soft page change animations */
+@keyframes page-fade-out {
   from {
     opacity: 1;
-    transform: translateX(0) translateZ(0);
+    transform: translateZ(0);
+    filter: blur(0px);
   }
 
   to {
     opacity: 0;
-    transform: translateX(30px) translateZ(0);
+    transform: translateZ(0);
+    filter: blur(1px);
   }
 }
 
-@keyframes slide-in-left {
+@keyframes page-fade-in {
   from {
     opacity: 0;
-    transform: translateX(-30px) translateZ(0);
+    transform: translateZ(0);
+    filter: blur(2px);
   }
 
   to {
     opacity: 1;
-    transform: translateX(0) translateZ(0);
+    transform: translateZ(0);
+    filter: blur(0px);
   }
 }
 
@@ -515,39 +519,11 @@ li {
 
 /* Unique portfolio-specific transitions */
 .portfolio-hero::view-transition-old(root) {
-  animation-name: hero-dissolve;
+  animation-name: page-fade-out;
 }
 
 .portfolio-hero::view-transition-new(root) {
-  animation-name: hero-emerge;
-}
-
-@keyframes hero-dissolve {
-  from {
-    transform: scale(1) rotateY(0deg);
-    opacity: 1;
-    filter: blur(0px);
-  }
-
-  to {
-    transform: scale(0.9) rotateY(-15deg);
-    opacity: 0;
-    filter: blur(4px);
-  }
-}
-
-@keyframes hero-emerge {
-  from {
-    transform: scale(1.1) rotateY(15deg);
-    opacity: 0;
-    filter: blur(4px);
-  }
-
-  to {
-    transform: scale(1) rotateY(0deg);
-    opacity: 1;
-    filter: blur(0px);
-  }
+  animation-name: page-fade-in;
 }
 
 /* Smooth scroll transitions */
@@ -581,35 +557,5 @@ li {
   [style*="project-"]::view-transition-old(root),
   [style*="project-"]::view-transition-new(root) {
     animation-duration: 0.1s !important;
-  }
-}
-
-/* Professional loading states during transitions */
-.view-transition-loading {
-  position: relative;
-  overflow: hidden;
-}
-
-.view-transition-loading::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg,
-      transparent,
-      rgba(var(--accent), 0.1),
-      transparent);
-  animation: loading-shimmer 1.5s infinite;
-}
-
-@keyframes loading-shimmer {
-  0% {
-    left: -100%;
-  }
-
-  100% {
-    left: 100%;
   }
 }

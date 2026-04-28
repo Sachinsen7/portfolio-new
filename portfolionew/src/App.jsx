@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Home from '@/pages/Home'
@@ -20,7 +20,6 @@ import { supportsViewTransitions } from '@/utils/viewTransitions'
 
 function AnimatedRoutes() {
   const location = useLocation();
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Add view transition class based on route
   useEffect(() => {
@@ -34,19 +33,14 @@ function AnimatedRoutes() {
         root.classList.remove('portfolio-hero');
       }
 
-      // Add loading state during transitions
-      setIsTransitioning(true);
-      const timer = setTimeout(() => setIsTransitioning(false), 300);
-
       return () => {
-        clearTimeout(timer);
         root.classList.remove('portfolio-hero');
       };
     }
   }, [location.pathname]);
 
   return (
-    <div className={isTransitioning ? 'view-transition-loading' : ''}>
+    <div>
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path='/' element={<Home />} />
