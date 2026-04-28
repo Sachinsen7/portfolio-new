@@ -238,7 +238,9 @@ export default function Header() {
     return location.pathname === item.href || location.pathname.startsWith(`${item.href}/`);
   };
 
-  const bubbleClass = isExpanded
+  const hasScrolled = lastScrollY > 24;
+  const isConnected = isExpanded || hasScrolled;
+  const bubbleClass = isConnected
     ? "border-transparent bg-transparent shadow-none"
     : "border border-gray-200/80 bg-white/88 shadow-[0_10px_24px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-[#0f0f10]/88";
   const hasActiveOverflowItem = mobileOverflowItems.some((item) => isActive(item));
@@ -262,7 +264,7 @@ export default function Header() {
               className="relative mx-auto w-full max-w-8xl"
             >
               <motion.div
-                animate={{ opacity: isExpanded ? 1 : 0, scale: isExpanded ? 1 : 0.985 }}
+                animate={{ opacity: isConnected ? 1 : 0, scale: isConnected ? 1 : 0.985 }}
                 transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 className="pointer-events-none absolute inset-y-0 left-0 right-0 rounded-sm border border-gray-200/80 bg-white/80 shadow-[0_16px_40px_rgba(15,23,42,0.1)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0f0f10]/80"
               />
