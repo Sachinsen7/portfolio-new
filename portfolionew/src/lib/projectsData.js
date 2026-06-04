@@ -7,6 +7,7 @@ const routelink = "/assets/images/routelink.png";
 const monositi = "/assets/images/monositi.png";
 const recipe_finder = "/assets/images/recipefinder.png";
 const music_player = "/assets/images/music_player.png";
+const classcrew = "/assets/images/classcrew.png";
 
 export const projectsData = [
   {
@@ -434,130 +435,130 @@ export const projectsData = [
     duration: "1.5 months",
   },
 
-  // {
-  //   id: 5,
-  //   title: "Kia Project",
-  //   image: ecommerce,
-  //   description: "Modern automotive showcase platform with interactive features",
-  //   tech: ["React", "Node.js", "Express", "MongoDB"],
-  //   category: "Automotive",
-  //   year: "2025",
-  //   summary: "Interactive automotive platform for Kia vehicle showcase",
-  //   fullDescription: "Developed a comprehensive automotive platform for Kia featuring vehicle showcases, interactive configurators, and dealer management system. The platform provides immersive user experience with 360° vehicle views and advanced filtering capabilities.",
-  //   features: [
-  //     "Interactive vehicle configurator with real-time pricing",
-  //     "360° vehicle showcase with detailed specifications",
-  //     "Dealer locator with appointment booking system",
-  //     "Advanced search and filtering by model, price, features",
-  //     "Virtual test drive scheduling",
-  //     "Financing calculator and loan application",
-  //     "Service booking and maintenance tracking",
-  //     "Admin dashboard for inventory management"
-  //   ],
-  //   challenges: [
-  //     "Implementing 360° vehicle visualization",
-  //     "Building real-time pricing configurator",
-  //     "Creating responsive design for all device types",
-  //     "Integrating dealer management system"
-  //   ],
-  //   liveLink: "https://kia-project-demo.vercel.app",
-  //   githubLink: "https://github.com/username/kia-project",
-  //   timeline: [
-  //     { phase: "Design & Planning", duration: "2 weeks", status: "completed" },
-  //     { phase: "Frontend Development", duration: "6 weeks", status: "completed" },
-  //     { phase: "Backend API", duration: "4 weeks", status: "completed" },
-  //     { phase: "Integration & Testing", duration: "2 weeks", status: "completed" },
-  //     { phase: "Deployment & Launch", duration: "1 week", status: "completed" }
-  //   ],
-  //   team: "Solo Project",
-  //   role: "Full Stack Developer",
-  //   status: "Live & Maintained",
-  //   duration: "3 months"
-  // },
-  // {
-  //   id: 6,
-  //   title: "Class Crew",
-  //   image: learnsphere,
-  //   description: "Student collaboration platform with assignment tracking and group management",
-  //   tech: ["React", "Node.js", "MongoDB", "Socket.io", "Express"],
-  //   category: "Education",
-  //   year: "2025",
-  //   summary: "Collaborative platform for student project management and teamwork",
-  //   fullDescription: "Class Crew is a comprehensive student collaboration platform designed to enhance teamwork and project management in educational settings. Features real-time collaboration, assignment tracking, group formation, and progress monitoring tools.",
-  //   features: [
-  //     "Real-time collaboration with live document editing",
-  //     "Assignment tracking and deadline management",
-  //     "Automated group formation based on skills and preferences",
-  //     "Progress monitoring with visual analytics",
-  //     "File sharing and version control system",
-  //     "Discussion forums and chat functionality",
-  //     "Teacher dashboard for class oversight",
-  //     "Grade tracking and performance analytics"
-  //   ],
-  //   challenges: [
-  //     "Implementing real-time collaboration features",
-  //     "Building intelligent group formation algorithms",
-  //     "Creating intuitive project management interface",
-  //     "Ensuring scalable real-time communication"
-  //   ],
-  //   liveLink: "https://class-crew-demo.vercel.app",
-  //   githubLink: "https://github.com/username/class-crew",
-  //   timeline: [
-  //     { phase: "Research & Planning", duration: "1 week", status: "completed" },
-  //     { phase: "UI/UX Design", duration: "2 weeks", status: "completed" },
-  //     { phase: "Backend Development", duration: "4 weeks", status: "completed" },
-  //     { phase: "Frontend Development", duration: "5 weeks", status: "completed" },
-  //     { phase: "Real-time Features", duration: "2 weeks", status: "completed" },
-  //     { phase: "Testing & Launch", duration: "1 week", status: "completed" }
-  //   ],
-  //   team: "Solo Project",
-  //   role: "Full Stack Developer",
-  //   status: "Live & Active",
-  //   duration: "3 months"
-  // },
-  // {
-  //   id: 7,
-  //   title: "ADRS Gem Control",
-  //   image: gem_control,
-  //   description: "Jewellery business management with inventory and barcode generation",
-  //   tech: ["React", "Node.js", "MongoDB", "Express", "Material UI", "Redux"],
-  //   category: "E-commerce",
-  //   year: "2025",
-  //   summary: "Comprehensive jewellery business management with e-commerce integration",
-  //   fullDescription: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
-  //   features: [
-  //     "Advanced inventory management with barcode generation",
-  //     "Sales tracking and comprehensive analytics",
-  //     "Customer relationship management system",
-  //     "E-commerce integration with online catalog",
-  //     "Real-time dashboard with business insights",
-  //     "Product catalog with detailed specifications",
-  //     "Invoice generation and billing system",
-  //     "Multi-location inventory tracking"
-  //   ],
-  //   challenges: [
-  //     "Handling complex jewellery product specifications",
-  //     "Implementing barcode generation and scanning system",
-  //     "Building real-time inventory synchronization",
-  //     "Creating intuitive UI for non-technical users"
-  //   ],
-  //   liveLink: "https://gem-control-demo.vercel.app",
-  //   githubLink: "https://github.com/username/gem-control",
-  //   timeline: [
-  //     { phase: "Business Analysis", duration: "2 weeks", status: "completed" },
-  //     { phase: "Database Design", duration: "1 week", status: "completed" },
-  //     { phase: "Backend Development", duration: "6 weeks", status: "completed" },
-  //     { phase: "Frontend Development", duration: "8 weeks", status: "completed" },
-  //     { phase: "Barcode Integration", duration: "2 weeks", status: "completed" },
-  //     { phase: "Testing & Deployment", duration: "1 week", status: "completed" }
-  //   ],
-  //   team: "Solo Project",
-  //   role: "Full Stack Developer",
-  //   status: "Client Delivered",
-  //   duration: "3 months"
-  // },
+  {
+    id: 5,
+    title: "Kia Project",
+    image: ecommerce,
+    description: "Modern automotive showcase platform with interactive features",
+    tech: ["React", "Node.js", "Express", "MongoDB"],
+    category: "Automotive",
+    year: "2025",
+    summary: "Interactive automotive platform for Kia vehicle showcase",
+    fullDescription: "Developed a comprehensive automotive platform for Kia featuring vehicle showcases, interactive configurators, and dealer management system. The platform provides immersive user experience with 360° vehicle views and advanced filtering capabilities.",
+    features: [
+      "Interactive vehicle configurator with real-time pricing",
+      "360° vehicle showcase with detailed specifications",
+      "Dealer locator with appointment booking system",
+      "Advanced search and filtering by model, price, features",
+      "Virtual test drive scheduling",
+      "Financing calculator and loan application",
+      "Service booking and maintenance tracking",
+      "Admin dashboard for inventory management"
+    ],
+    challenges: [
+      "Implementing 360° vehicle visualization",
+      "Building real-time pricing configurator",
+      "Creating responsive design for all device types",
+      "Integrating dealer management system"
+    ],
+    liveLink: "https://kia-project-demo.vercel.app",
+    githubLink: "https://github.com/username/kia-project",
+    timeline: [
+      { phase: "Design & Planning", duration: "2 weeks", status: "completed" },
+      { phase: "Frontend Development", duration: "6 weeks", status: "completed" },
+      { phase: "Backend API", duration: "4 weeks", status: "completed" },
+      { phase: "Integration & Testing", duration: "2 weeks", status: "completed" },
+      { phase: "Deployment & Launch", duration: "1 week", status: "completed" }
+    ],
+    team: "Solo Project",
+    role: "Full Stack Developer",
+    status: "Live & Maintained",
+    duration: "3 months"
+  },
   {
     id: 6,
+    title: "Class Crew",
+    image: classcrew,
+    description: "Student collaboration platform with assignment tracking and group management",
+    tech: ["React", "Node.js", "MongoDB", "Socket.io", "Express"],
+    category: "Education",
+    year: "2025",
+    summary: "Collaborative platform for student project management and teamwork",
+    fullDescription: "Class Crew is a comprehensive student collaboration platform designed to enhance teamwork and project management in educational settings. Features real-time collaboration, assignment tracking, group formation, and progress monitoring tools.",
+    features: [
+      "Real-time collaboration with live document editing",
+      "Assignment tracking and deadline management",
+      "Automated group formation based on skills and preferences",
+      "Progress monitoring with visual analytics",
+      "File sharing and version control system",
+      "Discussion forums and chat functionality",
+      "Teacher dashboard for class oversight",
+      "Grade tracking and performance analytics"
+    ],
+    challenges: [
+      "Implementing real-time collaboration features",
+      "Building intelligent group formation algorithms",
+      "Creating intuitive project management interface",
+      "Ensuring scalable real-time communication"
+    ],
+    liveLink: "https://crew-frontend-amber.vercel.app/",
+    githubLink: "https://github.com/username/class-crew",
+    timeline: [
+      { phase: "Research & Planning", duration: "1 week", status: "completed" },
+      { phase: "UI/UX Design", duration: "2 weeks", status: "completed" },
+      { phase: "Backend Development", duration: "4 weeks", status: "completed" },
+      { phase: "Frontend Development", duration: "5 weeks", status: "completed" },
+      { phase: "Real-time Features", duration: "2 weeks", status: "completed" },
+      { phase: "Testing & Launch", duration: "1 week", status: "completed" }
+    ],
+    team: "Solo Project",
+    role: "Full Stack Developer",
+    status: "Live & Active",
+    duration: "3 months"
+  },
+  {
+    id: 6,
+    title: "ADRS Gem Control",
+    image: "",
+    description: "Jewellery business management with inventory and barcode generation",
+    tech: ["React", "Node.js", "MongoDB", "Express", "Material UI", "Redux"],
+    category: "E-commerce",
+    year: "2025",
+    summary: "Comprehensive jewellery business management with e-commerce integration",
+    fullDescription: "Developed a full-stack web application for jewellery business management, featuring inventory, sales, and real-time dashboards with barcode generation.",
+    features: [
+      "Advanced inventory management with barcode generation",
+      "Sales tracking and comprehensive analytics",
+      "Customer relationship management system",
+      "E-commerce integration with online catalog",
+      "Real-time dashboard with business insights",
+      "Product catalog with detailed specifications",
+      "Invoice generation and billing system",
+      "Multi-location inventory tracking"
+    ],
+    challenges: [
+      "Handling complex jewellery product specifications",
+      "Implementing barcode generation and scanning system",
+      "Building real-time inventory synchronization",
+      "Creating intuitive UI for non-technical users"
+    ],
+    liveLink: "https://gem-control-demo.vercel.app",
+    githubLink: "https://github.com/username/gem-control",
+    timeline: [
+      { phase: "Business Analysis", duration: "2 weeks", status: "completed" },
+      { phase: "Database Design", duration: "1 week", status: "completed" },
+      { phase: "Backend Development", duration: "6 weeks", status: "completed" },
+      { phase: "Frontend Development", duration: "8 weeks", status: "completed" },
+      { phase: "Barcode Integration", duration: "2 weeks", status: "completed" },
+      { phase: "Testing & Deployment", duration: "1 week", status: "completed" }
+    ],
+    team: "Solo Project",
+    role: "Full Stack Developer",
+    status: "Client Delivered",
+    duration: "3 months"
+  },
+  {
+    id: 7,
     title: "Techora",
     image: learnsphere,
     description:
@@ -601,7 +602,7 @@ export const projectsData = [
     duration: "2 months",
   },
   {
-    id: 7,
+    id: 8,
     title: "Dish Discovery App",
     image: recipe_finder,
     description:
@@ -644,7 +645,7 @@ export const projectsData = [
     duration: "1 month",
   },
   {
-    id: 8,
+    id: 9,
     title: "Melody Heaven",
     image: music_player,
     description: "Music streaming platform with playlist management",
