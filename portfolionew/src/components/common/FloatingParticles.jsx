@@ -2,7 +2,15 @@ import { motion } from "framer-motion";
 import { useMemo } from "react";
 
 export default function FloatingParticles() {
+    const prefersReducedMotion = useMemo(
+        () =>
+            typeof window !== "undefined" &&
+            window.matchMedia?.("(prefers-reduced-motion: reduce)").matches,
+        []
+    );
+
     const particles = useMemo(() => {
+        if (prefersReducedMotion) return [];
         return Array.from({ length: 20 }, (_, i) => ({
             id: i,
             x: Math.random() * 100,
@@ -11,7 +19,7 @@ export default function FloatingParticles() {
             duration: Math.random() * 20 + 10,
             delay: Math.random() * 5,
         }));
-    }, []);
+    }, [prefersReducedMotion]);
 
     return (
         <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">

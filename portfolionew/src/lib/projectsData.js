@@ -1,13 +1,13 @@
-const ecommerce = "/assets/images/ecommerce.png";
-const learnsphere = "/assets/images/learnsphere.png";
-const cloud_saas = "/assets/images/cloud_saas.png";
-const vidtube = "/assets/images/vidtube.png";
-const endpointhub = "/assets/images/endpointhub.png";
-const routelink = "/assets/images/routelink.png";
-const monositi = "/assets/images/monositi.png";
-const recipe_finder = "/assets/images/recipefinder.png";
-const music_player = "/assets/images/music_player.png";
-const classcrew = "/assets/images/classcrew.png";
+const ecommerce = "/assets/images/ecommerce.webp";
+const learnsphere = "/assets/images/learnsphere.webp";
+const cloud_saas = "/assets/images/cloud_saas.webp";
+const endpointhub = "/assets/images/endpointhub.webp";
+const routelink = "/assets/images/routelink.webp";
+const monositi = "/assets/images/monositi.webp";
+const recipe_finder = "/assets/images/recipefinder.webp";
+const music_player = "/assets/images/music_player.webp";
+const classcrew = "/assets/images/classcrew.webp";
+const gem_control = "/assets/images/gem_control.webp";
 
 export const projectsData = [
   {
@@ -104,7 +104,6 @@ export const projectsData = [
     status: "In Active Development",
     duration: "1 month",
   },
-  ,
   {
     id: 1,
     title: "Monositi",
@@ -191,11 +190,10 @@ export const projectsData = [
     status: "Live & Maintained",
     duration: "3.5 months",
   },
-
   {
     id: 2,
     title: "Cloud SaaS Media Platform",
-    image: cloud_saas, // Replace with actual image when available
+    image: cloud_saas,
     description:
       "A comprehensive Next.js-based SaaS platform with advanced media processing, AI-powered image analysis, and document conversion capabilities",
     tech: [
@@ -342,53 +340,6 @@ export const projectsData = [
   },
   {
     id: 4,
-    title: "VidTube",
-    image: vidtube,
-    description:
-      "Video sharing platform with upload and streaming capabilities",
-    tech: ["React", "Material UI", "Node.js", "Express", "MongoDB"],
-    category: "Entertainment",
-    year: "2025",
-    summary: "Modern video sharing and streaming platform",
-    fullDescription:
-      "VidTube is a comprehensive video sharing platform that allows users to upload, share, and stream videos. Features include user authentication, video processing, comments system, and recommendation algorithms.",
-    features: [
-      "Video upload and processing",
-      "User authentication and profiles",
-      "Comments and rating system",
-      "Video recommendations",
-      "Playlist creation and management",
-      "Search and filtering capabilities",
-    ],
-    challenges: [
-      "Implementing video processing and compression",
-      "Building scalable streaming infrastructure",
-      "Creating recommendation algorithms",
-      "Managing large video file storage",
-    ],
-    liveLink: "https://vidtube-demo.vercel.app",
-    githubLink: "https://github.com/username/vidtube",
-    timeline: [
-      { phase: "Architecture Design", duration: "1 week", status: "completed" },
-      {
-        phase: "Backend Development",
-        duration: "3 weeks",
-        status: "completed",
-      },
-      {
-        phase: "Frontend Development",
-        duration: "3 weeks",
-        status: "completed",
-      },
-      { phase: "Video Processing", duration: "2 weeks", status: "completed" },
-    ],
-    team: "Solo Project",
-    role: "Full Stack Developer",
-    status: "Portfolio Project",
-    duration: "2 months",
-  },
-  {
-    id: 5,
     title: "Code Editor",
     image: ecommerce,
     description:
@@ -413,8 +364,8 @@ export const projectsData = [
       "Creating responsive editor interface",
       "Integrating terminal functionality",
     ],
-    liveLink: "https://code-editor-demo.vercel.app",
-    githubLink: "https://github.com/username/code-editor",
+    liveLink: "",
+    githubLink: "",
     timeline: [
       { phase: "Editor Setup", duration: "1 week", status: "completed" },
       {
@@ -431,10 +382,9 @@ export const projectsData = [
     ],
     team: "Solo Project",
     role: "Full Stack Developer",
-    status: "In Development",
+    status: "Portfolio Project",
     duration: "1.5 months",
   },
-
   {
     id: 5,
     title: "Kia Project",
@@ -461,8 +411,8 @@ export const projectsData = [
       "Creating responsive design for all device types",
       "Integrating dealer management system"
     ],
-    liveLink: "https://kia-project-demo.vercel.app",
-    githubLink: "https://github.com/username/kia-project",
+    liveLink: "",
+    githubLink: "",
     timeline: [
       { phase: "Design & Planning", duration: "2 weeks", status: "completed" },
       { phase: "Frontend Development", duration: "6 weeks", status: "completed" },
@@ -472,7 +422,7 @@ export const projectsData = [
     ],
     team: "Solo Project",
     role: "Full Stack Developer",
-    status: "Live & Maintained",
+    status: "Portfolio Project",
     duration: "3 months"
   },
   {
@@ -502,7 +452,7 @@ export const projectsData = [
       "Ensuring scalable real-time communication"
     ],
     liveLink: "https://crew-frontend-amber.vercel.app/",
-    githubLink: "https://github.com/username/class-crew",
+    githubLink: "",
     timeline: [
       { phase: "Research & Planning", duration: "1 week", status: "completed" },
       { phase: "UI/UX Design", duration: "2 weeks", status: "completed" },
@@ -517,9 +467,9 @@ export const projectsData = [
     duration: "3 months"
   },
   {
-    id: 6,
+    id: 7,
     title: "ADRS Gem Control",
-    image: "",
+    image: gem_control,
     description: "Jewellery business management with inventory and barcode generation",
     tech: ["React", "Node.js", "MongoDB", "Express", "Material UI", "Redux"],
     category: "E-commerce",
@@ -542,8 +492,8 @@ export const projectsData = [
       "Building real-time inventory synchronization",
       "Creating intuitive UI for non-technical users"
     ],
-    liveLink: "https://gem-control-demo.vercel.app",
-    githubLink: "https://github.com/username/gem-control",
+    liveLink: "",
+    githubLink: "",
     timeline: [
       { phase: "Business Analysis", duration: "2 weeks", status: "completed" },
       { phase: "Database Design", duration: "1 week", status: "completed" },
@@ -558,7 +508,7 @@ export const projectsData = [
     duration: "3 months"
   },
   {
-    id: 7,
+    id: 8,
     title: "Techora",
     image: learnsphere,
     description:
@@ -583,8 +533,8 @@ export const projectsData = [
       "Creating interactive assessment tools",
       "Designing user-friendly course creation interface",
     ],
-    liveLink: "https://learnsphere-demo.vercel.app",
-    githubLink: "https://github.com/username/learnsphere",
+    liveLink: "",
+    githubLink: "",
     timeline: [
       { phase: "UI/UX Design", duration: "1 week", status: "completed" },
       {
@@ -602,7 +552,7 @@ export const projectsData = [
     duration: "2 months",
   },
   {
-    id: 8,
+    id: 9,
     title: "Dish Discovery App",
     image: recipe_finder,
     description:
@@ -627,8 +577,8 @@ export const projectsData = [
       "Creating responsive recipe card layouts",
       "Managing large datasets of recipe information",
     ],
-    liveLink: "https://dish-discovery-demo.vercel.app",
-    githubLink: "https://github.com/username/dish-discovery",
+    liveLink: "",
+    githubLink: "",
     timeline: [
       { phase: "API Research", duration: "3 days", status: "completed" },
       {
@@ -645,7 +595,7 @@ export const projectsData = [
     duration: "1 month",
   },
   {
-    id: 9,
+    id: 10,
     title: "Melody Heaven",
     image: music_player,
     description: "Music streaming platform with playlist management",
@@ -669,8 +619,8 @@ export const projectsData = [
       "Creating music discovery algorithms",
       "Designing intuitive user interface",
     ],
-    liveLink: "https://melody-heaven-demo.vercel.app",
-    githubLink: "https://github.com/username/melody-heaven",
+    liveLink: "",
+    githubLink: "",
     timeline: [
       {
         phase: "Design & Prototyping",
@@ -695,103 +645,144 @@ export const projectsData = [
     status: "Portfolio Project",
     duration: "2 months",
   },
-  // {
-  //   id: 9,
-  //   title: "Netflix Clone",
-  //   image: netflix,
-  //   description:
-  //     "Streaming platform clone with user authentication and video playback",
-  //   tech: ["React", "Tailwind CSS"],
-  //   category: "Entertainment",
-  //   year: "2025",
-  //   summary: "Netflix Clone",
-  //   fullDescription:
-  //     "A comprehensive Netflix clone that replicates the core functionality and design of the popular streaming platform. Features include user authentication, content browsing, video streaming, and personalized recommendations with a responsive design.",
-  //   features: [
-  //     "User authentication and profiles",
-  //     "Video streaming and playback",
-  //     "Content categorization and browsing",
-  //     "Search functionality",
-  //     "Responsive design",
-  //     "Recommendation system",
-  //   ],
-  //   challenges: [
-  //     "Replicating Netflix's complex UI design",
-  //     "Implementing video streaming functionality",
-  //     "Building recommendation algorithms",
-  //     "Creating responsive grid layouts",
-  //   ],
-  //   liveLink: "https://netflix-clone-demo.vercel.app",
-  //   githubLink: "https://github.com/username/netflix-clone",
-  //   timeline: [
-  //     { phase: "UI Replication", duration: "2 weeks", status: "completed" },
-  //     {
-  //       phase: "Authentication System",
-  //       duration: "1 week",
-  //       status: "completed",
-  //     },
-  //     { phase: "Video Integration", duration: "2 weeks", status: "completed" },
-  //     { phase: "Responsive Design", duration: "1 week", status: "completed" },
-  //     { phase: "Final Polish", duration: "1 week", status: "completed" },
-  //   ],
-  //   team: "Solo Project",
-  //   role: "Full Stack Developer",
-  //   status: "Portfolio Project",
-  //   duration: "2 months",
-  // },
-  // {
-  //   id: 12,
-  //   title: "Yadav Bus Service Platform",
-  //   image: yadav_bus,
-  //   description:
-  //     "Bus platform with ticket, cab, and hotel booking + WhatsApp API integration",
-  //   tech: ["React", "Framer Motion", "Whatsapp API"],
-  //   category: "Full Stack",
-  //   year: "2025",
-  //   summary:
-  //     "A comprehensive bus management system with multi-service booking capabilities",
-  //   fullDescription:
-  //     "Built a comprehensive bus platform with ticket, cab, and hotel booking capabilities integrated with WhatsApp API, boosting operational efficiency by 90%. The platform features real-time seat availability, automated booking confirmations, and integrated payment processing.",
-  //   features: [
-  //     "Real-time seat booking system with live availability",
-  //     "WhatsApp API integration for instant notifications",
-  //     "Multi-service booking (Bus, Cab, Hotel)",
-  //     "Admin dashboard with comprehensive analytics",
-  //     "Secure payment gateway integration",
-  //     "Route management and optimization system",
-  //     "Customer management and booking history",
-  //     "Dynamic pricing based on demand and season",
-  //   ],
-  //   challenges: [
-  //     "Implementing real-time seat availability across multiple buses",
-  //     "Integrating WhatsApp API for seamless customer communication",
-  //     "Building a scalable booking system handling concurrent users",
-  //     "Creating an intuitive admin dashboard for operations management",
-  //   ],
-  //   liveLink: "https://yadav-bus-demo.vercel.app",
-  //   githubLink: "https://github.com/username/yadav-bus-service",
-  //   timeline: [
-  //     { phase: "Planning & Design", duration: "2 weeks", status: "completed" },
-  //     {
-  //       phase: "Backend Development",
-  //       duration: "4 weeks",
-  //       status: "completed",
-  //     },
-  //     {
-  //       phase: "Frontend Development",
-  //       duration: "3 weeks",
-  //       status: "completed",
-  //     },
-  //     { phase: "API Integration", duration: "2 weeks", status: "completed" },
-  //     {
-  //       phase: "Testing & Deployment",
-  //       duration: "1 week",
-  //       status: "completed",
-  //     },
-  //   ],
-  //   team: "Solo Project",
-  //   role: "Full Stack Developer",
-  //   status: "Live & Maintained",
-  //   duration: "2 months",
-  // },
+  {
+    id: 11,
+    title: "YourBeep",
+    image: null,
+    description:
+      "Social and content platform combining short-form video, live streaming, community games, and courses across web, mobile, and admin apps",
+    tech: [
+      "React 19",
+      "Three.js",
+      "React Three Fiber",
+      "Redux Toolkit",
+      "Firebase",
+      "HLS.js",
+      "Expo",
+      "React Native",
+      "Bun",
+      "Express",
+      "MongoDB",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
+    category: "Social Platform (Web + Mobile + Microservices)",
+    year: "2026",
+    summary:
+      "A social/content platform spanning a 3D-accented web app, a native mobile app, and a Bun-based microservice backend.",
+    fullDescription:
+      "YourBeep is a social and content platform built across three surfaces: a React 19 web app with Three.js-powered 3D touches and HLS video streaming through a Bunny CDN pipeline, an Expo/React Native mobile app, and a dedicated admin panel for content and commerce operations. The backend is a Bun-based microservice architecture split into gateway, identity, content, and commerce services backed by MongoDB, with Firebase handling authentication. The platform includes community games and course content alongside its core social feed and video experience.",
+    features: [
+      "Web app built with React 19, Three.js/React Three Fiber for 3D UI moments, and Firebase auth",
+      "HLS video streaming via Bunny CDN with Plyr playback controls",
+      "Native mobile app built with Expo and React Native, sharing Redux Toolkit state with the web client",
+      "Bun-based microservice backend split into gateway, identity, content, and commerce services",
+      "MongoDB data layer per service behind a shared API gateway",
+      "Separate admin panel for managing content, users, and commerce",
+      "Community games and course content modules",
+      "Dockerized deployment configuration for the backend services",
+    ],
+    challenges: [
+      "Coordinating a single product across three separate clients (web, mobile, admin) sharing one backend",
+      "Designing a Bun microservice split (gateway/identity/content/commerce) with clean service boundaries",
+      "Integrating HLS video streaming and CDN delivery for a smooth playback experience",
+      "Bringing 3D interactions into a React web app without hurting load performance",
+      "Keeping authentication and session handling consistent across Firebase-backed web and mobile clients",
+    ],
+    liveLink: "https://yourbeep.com",
+    githubLink: "",
+    timeline: [
+      {
+        phase: "Backend Microservices (Gateway, Identity, Content, Commerce)",
+        duration: "Ongoing",
+        status: "in-progress",
+      },
+      {
+        phase: "Web App (React, Three.js, Video Streaming)",
+        duration: "Ongoing",
+        status: "in-progress",
+      },
+      {
+        phase: "Mobile App (Expo / React Native)",
+        duration: "Ongoing",
+        status: "in-progress",
+      },
+      {
+        phase: "Admin Panel, Games & Course Content",
+        duration: "Ongoing",
+        status: "in-progress",
+      },
+    ],
+    team: "Solo Project",
+    role: "Full Stack Developer",
+    status: "In Active Development",
+    duration: "Ongoing",
+  },
+  {
+    id: 12,
+    title: "SpeedCopy",
+    image: null,
+    description:
+      "Multi-vendor print and document service marketplace with live pricing, custom design services, and pickup/delivery order flow",
+    tech: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Razorpay",
+      "Cloudinary",
+      "Twilio",
+      "Google Maps API",
+      "Socket.IO",
+      "Sharp",
+    ],
+    category: "E-commerce / Service Marketplace",
+    year: "2026",
+    summary:
+      "A print and document-service marketplace where customers upload files, get live pricing, and order printing, binding, or custom design work.",
+    fullDescription:
+      "SpeedCopy is a multi-vendor platform for print and document services. Customers upload PDFs and get automatic page detection and live price calculation for standard printing, spiral binding, soft binding, and thesis binding, alongside custom design services. Orders flow through a full lifecycle with pickup or delivery options and OTP verification. The backend is a Node/Express microservice monorepo split into auth, product, and design services behind a gateway, with Razorpay for payments, Cloudinary and Sharp for image handling, Twilio for notifications, and Google Maps for location-based logistics.",
+    features: [
+      "PDF upload with automatic page-count detection and manual override",
+      "Live price calculation across standard printing, spiral binding, soft binding, and thesis binding",
+      "Custom design service ordering alongside standard print services",
+      "Full order lifecycle: cart, checkout, pickup/delivery, OTP verification, processing, completion",
+      "Node/Express microservice backend split into auth, product, and design services behind a gateway",
+      "Razorpay payment integration",
+      "Cloudinary and Sharp for image processing and storage",
+      "Twilio-powered order and OTP notifications",
+      "Google Maps integration for location-based pickup/delivery",
+      "Admin and vendor portals for order and catalog management",
+    ],
+    challenges: [
+      "Building a live pricing engine that adapts to multiple service types and configurable options",
+      "Designing a microservice split (auth/product/design) behind a single gateway with bundled and per-service run modes",
+      "Handling PDF page-count detection and validation reliably across file types",
+      "Coordinating an order lifecycle that spans cart, payment, OTP verification, and pickup/delivery logistics",
+      "Integrating multiple third-party services (Razorpay, Cloudinary, Twilio, Google Maps) into one coherent checkout flow",
+    ],
+    liveLink: "",
+    githubLink: "",
+    timeline: [
+      {
+        phase: "Pricing Engine & Order Flow Design",
+        duration: "Ongoing",
+        status: "in-progress",
+      },
+      {
+        phase: "Backend Microservices (Auth, Product, Design)",
+        duration: "Ongoing",
+        status: "in-progress",
+      },
+      {
+        phase: "Vendor & Admin Portals",
+        duration: "Ongoing",
+        status: "in-progress",
+      },
+    ],
+    team: "Solo Project",
+    role: "Full Stack Developer",
+    status: "In Development",
+    duration: "Ongoing",
+  },
 ];

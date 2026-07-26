@@ -15,7 +15,6 @@ import Header from "@/components/layout/Header";
 import { projectsData } from "@/lib/projectsData";
 import { getTechIcon } from "@/lib/techIcons.jsx";
 import PageTransition from "@/components/common/PageTransition";
-import ScrollProgress from "@/components/common/ScrollProgress";
 import { useViewTransition } from "@/hooks/useViewTransition";
 import ViewTransitionWrapper from "@/components/common/ViewTransitionWrapper";
 
@@ -39,9 +38,7 @@ export default function AllProjects() {
     >
       <PageTransition>
         <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-          <ScrollProgress />
           <div className="page-backdrop" aria-hidden="true" />
-          <div className="light-dot-pattern" aria-hidden="true" />
 
           <Header />
 
@@ -50,7 +47,7 @@ export default function AllProjects() {
               <button
                 type="button"
                 onClick={() => transitionBack({ transitionName: "back-to-home" })}
-                className="interactive-text-link inline-flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                className="interactive-text-link inline-flex items-center gap-2 text-sm text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent"
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span>Back to home</span>
@@ -96,9 +93,9 @@ export default function AllProjects() {
                   </div>
                 </div>
 
-                <div className="relative overflow-hidden rounded-sm border border-sky-200/70 bg-gradient-to-br from-sky-50 via-white to-cyan-50 p-6 shadow-[0_18px_50px_rgba(14,165,233,0.12)] dark:border-sky-400/15 dark:from-sky-400/10 dark:via-white/[0.03] dark:to-cyan-400/10">
-                  <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/70 to-transparent" />
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-sky-700 dark:text-sky-200">
+                <div className="relative overflow-hidden rounded-sm border border-accent/30 bg-gradient-to-br from-accent/10 via-white to-accent/5 p-6 shadow-[0_18px_50px_rgba(29,185,84,0.12)] dark:border-accent/20 dark:from-accent/10 dark:via-white/[0.03] dark:to-accent/5">
+                  <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-accent dark:text-accent">
                     Design direction
                   </p>
                   <h2 className="mt-4 text-2xl font-semibold text-foreground">
@@ -119,7 +116,7 @@ export default function AllProjects() {
                         key={item}
                         className="flex items-center gap-3 rounded-sm border border-white/70 bg-white/70 px-3.5 py-3 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.04]"
                       >
-                        <span className="h-2 w-2 rounded-full bg-sky-500" />
+                        <span className="h-2 w-2 rounded-full bg-accent" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -138,14 +135,14 @@ export default function AllProjects() {
                     transition={{ duration: 0.32, delay: index * 0.05 }}
                     className="group relative overflow-hidden rounded-sm border border-gray-200/80 bg-white/80 shadow-[0_18px_50px_rgba(15,23,42,0.05)] backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03]"
                   >
-                    <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                     <div className="border-b border-gray-200/80 px-5 py-4 dark:border-white/10 sm:px-6">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="rounded-sm border border-gray-200 bg-gray-50/80 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-foreground-muted dark:border-white/10 dark:bg-white/[0.04]">
                           {project.category}
                         </span>
-                        <span className="rounded-sm border border-sky-200 bg-sky-50 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-sky-700 dark:border-sky-400/20 dark:bg-sky-400/10 dark:text-sky-200">
+                        <span className="rounded-sm border border-accent/30 bg-accent/10 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-accent dark:border-accent/30 dark:bg-accent/10 dark:text-accent">
                           {project.status}
                         </span>
                       </div>
@@ -172,24 +169,28 @@ export default function AllProjects() {
                           </div>
 
                           <div className="hidden shrink-0 items-center gap-2 text-foreground-muted sm:flex">
-                            <a
-                              href={project.liveLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`${project.title} live demo`}
-                              className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
-                            >
-                              <ExternalLink className="h-4 w-4" />
-                            </a>
-                            <a
-                              href={project.githubLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`${project.title} GitHub repository`}
-                              className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
-                            >
-                              <Github className="h-4 w-4" />
-                            </a>
+                            {project.liveLink && (
+                              <a
+                                href={project.liveLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${project.title} live demo`}
+                                className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+                              >
+                                <ExternalLink className="h-4 w-4" />
+                              </a>
+                            )}
+                            {project.githubLink && (
+                              <a
+                                href={project.githubLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${project.title} GitHub repository`}
+                                className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+                              >
+                                <Github className="h-4 w-4" />
+                              </a>
+                            )}
                           </div>
                         </div>
 
@@ -228,7 +229,7 @@ export default function AllProjects() {
                                 className="inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-white/85 px-3 py-2 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.04]"
                               >
                                 <span className="text-foreground-muted">
-                                  {getTechIcon(tech, "h-3.5 w-3.5")}
+                                  {getTechIcon(tech, "h-5 w-5")}
                                 </span>
                                 <span className="font-tech text-[0.76rem]">{tech}</span>
                               </div>
@@ -243,24 +244,28 @@ export default function AllProjects() {
 
                         <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
                           <div className="flex items-center gap-2 text-foreground-muted sm:hidden">
-                            <a
-                              href={project.liveLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`${project.title} live demo`}
-                              className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
-                            >
-                              <ExternalLink className="h-4 w-4" />
-                            </a>
-                            <a
-                              href={project.githubLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`${project.title} GitHub repository`}
-                              className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
-                            >
-                              <Github className="h-4 w-4" />
-                            </a>
+                            {project.liveLink && (
+                              <a
+                                href={project.liveLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${project.title} live demo`}
+                                className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+                              >
+                                <ExternalLink className="h-4 w-4" />
+                              </a>
+                            )}
+                            {project.githubLink && (
+                              <a
+                                href={project.githubLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${project.title} GitHub repository`}
+                                className="interactive-icon inline-flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200 bg-white/82 hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+                              >
+                                <Github className="h-4 w-4" />
+                              </a>
+                            )}
                           </div>
 
                           <button

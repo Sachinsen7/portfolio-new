@@ -1,21 +1,23 @@
-import { useEffect } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Home from '@/pages/Home'
-import AllProjects from '@/pages/AllProjects'
-import SystemPage from '@/pages/SystemPage'
-import NotesPage from '@/pages/NotesPage'
-import PlayPage from '@/pages/PlayPage'
-import TastePage from '@/pages/TastePage'
-import ExperiencePage from '@/pages/ExperiencePage'
-import BlogPost from '@/pages/BlogPost'
-import NotFound from '@/pages/NotFound'
 import { ThemeProvider } from '@/context/ThemeContext'
 import { MusicProvider } from '@/context/MusicContext'
 import ThemeTransition from '@/components/common/ThemeTransition'
-import ProjectDetails from '@/components/sections/projectDetails'
+import RouteLoader from '@/components/common/RouteLoader'
+import VerticalScrollIndicator from '@/components/common/VerticalScrollIndicator'
 import { supportsViewTransitions } from '@/utils/viewTransitions'
-// import { MinimalTransitionIndicator } from '@/components/common/TransitionIndicator'
+
+const AllProjects = lazy(() => import('@/pages/AllProjects'))
+const SystemPage = lazy(() => import('@/pages/SystemPage'))
+const NotesPage = lazy(() => import('@/pages/NotesPage'))
+const PlayPage = lazy(() => import('@/pages/PlayPage'))
+const TastePage = lazy(() => import('@/pages/TastePage'))
+const ExperiencePage = lazy(() => import('@/pages/ExperiencePage'))
+const BlogPost = lazy(() => import('@/pages/BlogPost'))
+const NotFound = lazy(() => import('@/pages/NotFound'))
+const ProjectDetails = lazy(() => import('@/components/sections/projectDetails'))
 
 
 function AnimatedRoutes() {
@@ -41,20 +43,23 @@ function AnimatedRoutes() {
 
   return (
     <div>
+      <RouteLoader />
       <AnimatePresence mode="wait" initial={false}>
-        <Routes location={location} key={location.pathname}>
-          <Route path='/' element={<Home />} />
-          <Route path='/system' element={<SystemPage />} />
-          <Route path='/notes' element={<NotesPage />} />
-          <Route path='/notes/:slug' element={<BlogPost />} />
-          <Route path='/play' element={<PlayPage />} />
-          <Route path='/experience' element={<ExperiencePage />} />
-          <Route path='/projects' element={<AllProjects />} />
-          <Route path='/taste' element={<TastePage />} />
-          <Route path='/project/:id' element={<ProjectDetails />} />
-          <Route path='/blog/:id' element={<BlogPost />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes location={location} key={location.pathname}>
+            <Route path='/' element={<Home />} />
+            <Route path='/system' element={<SystemPage />} />
+            <Route path='/notes' element={<NotesPage />} />
+            <Route path='/notes/:slug' element={<BlogPost />} />
+            <Route path='/play' element={<PlayPage />} />
+            <Route path='/experience' element={<ExperiencePage />} />
+            <Route path='/projects' element={<AllProjects />} />
+            <Route path='/taste' element={<TastePage />} />
+            <Route path='/project/:id' element={<ProjectDetails />} />
+            <Route path='/blog/:id' element={<BlogPost />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </AnimatePresence>
     </div>
   );
@@ -67,7 +72,7 @@ function App() {
         <Router>
           <AnimatedRoutes />
           <ThemeTransition />
-          {/* <MinimalTransitionIndicator /> */}
+          <VerticalScrollIndicator />
         </Router>
       </MusicProvider>
     </ThemeProvider>

@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import Header from "@/components/layout/Header";
 import PageTransition from "@/components/common/PageTransition";
-import ScrollProgress from "@/components/common/ScrollProgress";
 import ViewTransitionWrapper from "@/components/common/ViewTransitionWrapper";
 
 const puzzles = [
@@ -214,9 +213,7 @@ export default function PlayPage() {
     >
       <PageTransition>
         <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-          <ScrollProgress />
           <div className="page-backdrop" aria-hidden="true" />
-          <div className="light-dot-pattern" aria-hidden="true" />
 
           <Header />
 
@@ -321,9 +318,9 @@ export default function PlayPage() {
                             onClick={() => setSelectedCell(index)}
                             className={`aspect-square min-h-[2.5rem] ${borderClass} relative flex items-center justify-center border-gray-300 text-center transition-colors dark:border-white/10 ${
                               isSelected
-                                ? "bg-sky-100 dark:bg-sky-400/20"
+                                ? "bg-accent/20 dark:bg-accent/25"
                                 : isRelated
-                                  ? "bg-sky-50/70 dark:bg-white/[0.04]"
+                                  ? "bg-accent/10 dark:bg-white/[0.04]"
                                   : "bg-white/85 dark:bg-[#111214]"
                             } ${hasConflict ? "text-rose-500 dark:text-rose-300" : isGiven ? "text-foreground" : "text-foreground-muted"}`}
                           >
@@ -395,7 +392,7 @@ export default function PlayPage() {
                         onClick={() => setNotesMode((current) => !current)}
                         className={`interactive-surface inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm ${
                           notesMode
-                            ? "border-sky-300 bg-sky-50 text-sky-700 dark:border-sky-400/30 dark:bg-sky-400/[0.12] dark:text-sky-200"
+                            ? "border-accent/50 bg-accent/10 text-accent dark:border-accent/40 dark:bg-accent/[0.12] dark:text-accent"
                             : "border-gray-200 bg-gray-50/80 text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                         }`}
                       >

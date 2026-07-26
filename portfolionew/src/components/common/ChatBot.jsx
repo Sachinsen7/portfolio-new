@@ -243,12 +243,12 @@ export default function ChatBot() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
-        <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
+        <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className="relative">
           <Button
             type="button"
             size="lg"
             onClick={() => setIsOpen((prev) => !prev)}
-            className="h-14 w-14 rounded-sm border border-gray-200/80 bg-white/92 text-foreground shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl transition-all duration-300 hover:border-gray-300 hover:bg-white hover:text-black  dark:border-white/10 dark:bg-[#101113]/92 dark:hover:border-white/20 "
+            className="h-14 w-14 rounded-sm border border-gray-200/80 bg-white/92 text-foreground shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl transition-all duration-300 hover:border-accent/40 hover:bg-white hover:text-black  dark:border-white/10 dark:bg-[#101113]/92 dark:hover:border-accent/40 "
             aria-label={isOpen ? "Close chat" : "Open chat"}
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -286,12 +286,13 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-40 right-4 z-40 flex h-[min(34rem,calc(100vh-8.5rem))] w-[calc(100vw-2rem)] max-w-[24rem] flex-col overflow-hidden rounded-sm border border-gray-200/80 bg-white/92 shadow-[0_24px_60px_rgba(15,23,42,0.16)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#0f1012]/94 sm:bottom-24 sm:right-6"
+            className="fixed bottom-40 right-4 z-40 flex h-[max(20rem,min(30rem,calc(100vh-16rem)))] w-[calc(100vw-2rem)] max-w-[24rem] flex-col overflow-hidden rounded-sm border border-gray-200/80 bg-white/92 shadow-[0_24px_60px_rgba(15,23,42,0.16)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#0f1012]/94 sm:bottom-24 sm:right-6 sm:h-[max(22rem,min(32rem,calc(100vh-12rem)))]"
           >
-            <div className="flex items-center justify-between border-b border-gray-200/80 px-4 py-4 dark:border-white/10">
+            <div className="relative flex items-center justify-between border-b border-gray-200/80 px-4 py-4 dark:border-white/10">
+              <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-sm border border-gray-200/80 bg-gray-50/80 dark:border-white/10 dark:bg-white/[0.04]">
-                  <Bot className="h-4.5 w-4.5 text-accent" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-accent/25 to-accent/10 text-accent">
+                  <Bot className="h-4.5 w-4.5" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-foreground">Chat with Sachin</p>
@@ -299,7 +300,10 @@ export default function ChatBot() {
                 </div>
               </div>
               <span className="inline-flex items-center gap-2 rounded-full border border-gray-200/80 px-2.5 py-1 text-[11px] text-foreground-muted dark:border-white/10">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+                </span>
                 Online
               </span>
             </div>
@@ -325,7 +329,9 @@ export default function ChatBot() {
                   >
                     <div className="flex items-start gap-2.5">
                       {message.sender === "bot" && (
-                        <Bot className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
+                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent/25 to-accent/10 text-accent">
+                          <Bot className="h-3.5 w-3.5" />
+                        </span>
                       )}
                       {message.sender === "user" && (
                         <User className="mt-0.5 h-4 w-4 flex-shrink-0 text-white/90" />

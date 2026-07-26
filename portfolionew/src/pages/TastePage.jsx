@@ -16,7 +16,6 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "@/components/layout/Header";
 import PageTransition from "@/components/common/PageTransition";
-import ScrollProgress from "@/components/common/ScrollProgress";
 import ViewTransitionWrapper from "@/components/common/ViewTransitionWrapper";
 import { useViewTransition } from "@/hooks/useViewTransition";
 
@@ -120,9 +119,7 @@ export default function TastePage() {
   return (
     <PageTransition>
       <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-        <ScrollProgress />
         <div className="page-backdrop" aria-hidden="true" />
-        <div className="light-dot-pattern" aria-hidden="true" />
 
         <Header />
 
@@ -131,7 +128,7 @@ export default function TastePage() {
             <div className="mb-12">
               <button
                 onClick={() => transitionBack({ transitionName: "back-to-home" })}
-                className="interactive-text-link mb-6 inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 group"
+                className="interactive-text-link mb-6 inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent group"
               >
                 <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                 Back to Home

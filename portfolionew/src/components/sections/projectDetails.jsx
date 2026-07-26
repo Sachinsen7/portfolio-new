@@ -306,26 +306,32 @@ export default function ProjectDetails() {
             ))}
           </div>
 
-          <div className="mb-8 flex flex-wrap items-center gap-3">
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="interactive-surface inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-4 py-2 text-sm text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
-            >
-              <ExternalLink className="h-4 w-4 text-foreground-muted" />
-              Live demo
-            </a>
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="interactive-surface inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-4 py-2 text-sm text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
-            >
-              <Github className="h-4 w-4 text-foreground-muted" />
-              Source code
-            </a>
-          </div>
+          {(project.liveLink || project.githubLink) && (
+            <div className="mb-8 flex flex-wrap items-center gap-3">
+              {project.liveLink && (
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="interactive-surface inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-4 py-2 text-sm text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                >
+                  <ExternalLink className="h-4 w-4 text-foreground-muted" />
+                  Live demo
+                </a>
+              )}
+              {project.githubLink && (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="interactive-surface inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-4 py-2 text-sm text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                >
+                  <Github className="h-4 w-4 text-foreground-muted" />
+                  Source code
+                </a>
+              )}
+            </div>
+          )}
 
           <div className="grid gap-6">
             <DetailCard title="The Challenge" icon={Target}>
@@ -354,7 +360,7 @@ export default function ProjectDetails() {
                     key={tech}
                     className="interactive-surface inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50/80 px-3 py-2 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                   >
-                    <span className="text-foreground-muted">{getTechIcon(tech, "h-4 w-4")}</span>
+                    <span>{getTechIcon(tech, "h-5 w-5")}</span>
                     <span>{tech}</span>
                   </div>
                 ))}

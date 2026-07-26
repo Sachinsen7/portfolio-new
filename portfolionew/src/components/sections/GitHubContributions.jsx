@@ -1,10 +1,15 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
+import { motion } from "framer-motion";
 import GitHubCalendar from "react-github-calendar";
 import { Github, Activity } from "lucide-react";
 import { ThemeContext } from "@/context/ThemeContext";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+};
+
 export default function GitHubContributions() {
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [totalContributions, setTotalContributions] = useState(0);
   const { theme } = useContext(ThemeContext);
@@ -41,32 +46,23 @@ export default function GitHubContributions() {
     return contributions;
   };
 
-  useEffect(() => {
-    // Simple timeout so you see loading state briefly
-    const timer = setTimeout(() => setLoading(false), 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section className="container mx-auto max-w-4xl px-4 py-8 sm:px-6">
-      <div className="flex flex-col items-start gap-3 mb-6">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, margin: "-40px" }}
+        variants={fadeUp}
+        className="flex flex-col items-start gap-3 mb-6"
+      >
         <h2 className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">GitHub</h2>
         <h3 className="text-xl font-semibold flex items-center sm:text-2xl">
           <Activity className="h-5 w-5 mr-2 text-accent" />
           Contributions
         </h3>
-      </div>
+      </motion.div>
 
-      {loading ? (
-        <div className="flex items-center justify-center py-16">
-          <div className="flex flex-col items-center gap-3">
-            <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin"></div>
-            <span className="text-sm text-gray-400">
-              Loading contributions...
-            </span>
-          </div>
-        </div>
-      ) : error ? (
+      {error ? (
         <div className="flex flex-col items-center justify-center py-16 text-center">
           <Github className="h-12 w-12 text-gray-500 mb-3" />
           <p className="text-sm text-gray-400 mb-2">

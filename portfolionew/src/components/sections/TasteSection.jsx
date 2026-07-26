@@ -117,7 +117,7 @@ export default function TasteSection() {
         </article>
 
         <article className="relative overflow-hidden rounded-[28px] border border-gray-200/80 bg-white/70 p-5 dark:border-white/10 dark:bg-white/[0.03]">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-blue-500/10 via-sky-500/5 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-accent/10 via-accent/5 to-transparent" />
 
           <div className="relative">
             <div className="mb-4 flex items-start justify-between gap-4">
@@ -142,7 +142,7 @@ export default function TasteSection() {
               {[28, 48, 36, 60, 44, 52, 30, 58, 40, 34].map((height, index) => (
                 <span
                   key={`bar-${index}`}
-                  className="w-full rounded-full bg-gradient-to-t from-blue-600/70 to-sky-400/60"
+                  className="w-full rounded-full bg-gradient-to-t from-accent/80 to-accent/50"
                   style={{ height: `${height}px` }}
                 />
               ))}

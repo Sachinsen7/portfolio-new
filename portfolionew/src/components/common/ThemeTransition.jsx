@@ -37,13 +37,14 @@ export default function ThemeTransition() {
                             ease: [0.25, 0.46, 0.45, 0.94]
                         }}
                         style={{
-                            background: 'radial-gradient(circle at center, transparent 0%, rgba(59, 130, 246, 0.1) 50%, transparent 100%)'
+                            background: 'radial-gradient(circle at center, transparent 0%, var(--accent) 50%, transparent 100%)',
+                            opacity: 0.1,
                         }}
                     />
 
                     {/* Subtle color wash */}
                     <motion.div
-                        className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-cyan-500/5"
+                        className="absolute inset-0 bg-accent/5"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: [0, 0.3, 0] }}
                         transition={{

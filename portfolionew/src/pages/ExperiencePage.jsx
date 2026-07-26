@@ -10,10 +10,15 @@ import {
 } from "lucide-react";
 import Header from "@/components/layout/Header";
 import PageTransition from "@/components/common/PageTransition";
-import ScrollProgress from "@/components/common/ScrollProgress";
 import ViewTransitionWrapper from "@/components/common/ViewTransitionWrapper";
 import { useViewTransition } from "@/hooks/useViewTransition";
 import { experiencePrinciples, experiences } from "@/lib/experienceData";
+import { techColorMap } from "@/lib/techIcons.jsx";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+};
 
 const totalTechnologies = new Set(
   experiences.flatMap((experience) => experience.technologies.map((tech) => tech.label))
@@ -37,9 +42,7 @@ export default function ExperiencePage() {
     >
       <PageTransition>
         <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-          <ScrollProgress />
           <div className="page-backdrop" aria-hidden="true" />
-          <div className="light-dot-pattern" aria-hidden="true" />
 
           <Header />
 
@@ -48,14 +51,20 @@ export default function ExperiencePage() {
               <button
                 type="button"
                 onClick={() => transitionBack({ transitionName: "back-to-home" })}
-                className="interactive-text-link inline-flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                className="interactive-text-link inline-flex items-center gap-2 text-sm text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent"
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span>Back</span>
               </button>
 
               <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_380px]">
-                <div className="max-w-3xl">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, margin: "-40px" }}
+                  variants={fadeUp}
+                  className="max-w-3xl"
+                >
                   <p className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                     Career Path
                   </p>
@@ -75,7 +84,7 @@ export default function ExperiencePage() {
                       return (
                         <div
                           key={metric.label}
-                          className="rounded-sm border border-gray-200/80 bg-white/75 p-4 shadow-[0_16px_40px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.03]"
+                          className="interactive-surface rounded-sm border border-gray-200/80 bg-white/75 p-4 shadow-[0_16px_40px_rgba(15,23,42,0.05)] transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 dark:border-white/10 dark:bg-white/[0.03]"
                         >
                           <div className="flex items-center justify-between gap-3">
                             <p className="text-[11px] uppercase tracking-[0.18em] text-foreground-muted">
@@ -92,11 +101,16 @@ export default function ExperiencePage() {
                       );
                     })}
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="relative overflow-hidden rounded-sm border border-sky-200/70 bg-gradient-to-br from-sky-50 via-white to-cyan-50 p-6 shadow-[0_18px_50px_rgba(14,165,233,0.12)] dark:border-sky-400/15 dark:from-sky-400/10 dark:via-white/[0.03] dark:to-cyan-400/10">
-                  <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/70 to-transparent" />
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-sky-700 dark:text-sky-200">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, margin: "-40px" }}
+                  variants={fadeUp}
+                  className="relative overflow-hidden rounded-sm border border-accent/30 bg-gradient-to-br from-accent/10 via-white to-accent/5 p-6 shadow-[0_18px_50px_rgba(29,185,84,0.12)] dark:border-accent/20 dark:from-accent/10 dark:via-white/[0.03] dark:to-accent/5">
+                  <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-accent dark:text-accent">
                     Current chapter
                   </p>
                   <h2 className="mt-4 text-2xl font-semibold text-foreground">
@@ -107,10 +121,10 @@ export default function ExperiencePage() {
                   </p>
 
                   <div className="mt-5 flex flex-wrap gap-2 text-xs text-foreground-muted">
-                    <span className="rounded-full border border-sky-200 bg-white/80 px-3 py-1.5 dark:border-white/10 dark:bg-white/[0.05]">
+                    <span className="rounded-full border border-accent/30 bg-white/80 px-3 py-1.5 dark:border-white/10 dark:bg-white/[0.05]">
                       {currentRole.period}
                     </span>
-                    <span className="inline-flex items-center gap-1 rounded-full border border-sky-200 bg-white/80 px-3 py-1.5 dark:border-white/10 dark:bg-white/[0.05]">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-accent/30 bg-white/80 px-3 py-1.5 dark:border-white/10 dark:bg-white/[0.05]">
                       <MapPin className="h-3.5 w-3.5" />
                       {currentRole.location}
                     </span>
@@ -126,18 +140,24 @@ export default function ExperiencePage() {
                         key={item}
                         className="flex items-center gap-3 rounded-sm border border-white/70 bg-white/70 px-3.5 py-3 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.04]"
                       >
-                        <span className="h-2 w-2 rounded-full bg-sky-500" />
+                        <span className="h-2 w-2 rounded-full bg-accent" />
                         <span>{item}</span>
                       </div>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               </div>
             </section>
 
             <section className="container mx-auto max-w-6xl px-4 pb-8 sm:px-6">
               <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-                <div className="space-y-4 lg:sticky lg:top-32 lg:self-start">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, margin: "-40px" }}
+                  variants={fadeUp}
+                  className="space-y-4 lg:sticky lg:top-32 lg:self-start"
+                >
                   <div className="rounded-sm border border-gray-200/80 bg-white/75 p-5 dark:border-white/10 dark:bg-white/[0.03]">
                     <div className="flex items-center gap-2">
                       <Sparkles className="h-4 w-4 text-foreground-muted" />
@@ -158,23 +178,26 @@ export default function ExperiencePage() {
                       considered when it reaches people.
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
                 <div className="relative pl-6 sm:pl-8">
-                  <div className="absolute bottom-0 left-1.5 top-0 w-px bg-gradient-to-b from-sky-400/70 via-sky-300/40 to-transparent sm:left-2" />
+                  <div className="absolute bottom-0 left-1.5 top-0 w-px bg-gradient-to-b from-accent/70 via-accent/40 to-transparent sm:left-2" />
 
                   <div className="space-y-6">
                     {experiences.map((experience, index) => (
                       <motion.article
                         key={experience.id}
                         initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.35, delay: index * 0.08 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, margin: "-80px" }}
+                        transition={{ duration: 0.4, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                         className="relative"
                       >
-                        <span className="absolute -left-[1.6rem] top-8 h-3.5 w-3.5 rounded-full border border-sky-300 bg-white shadow-[0_0_0_6px_rgba(255,255,255,0.75)] dark:border-sky-300/60 dark:bg-[#0a0a0a] dark:shadow-[0_0_0_6px_rgba(10,10,10,0.85)] sm:-left-[2rem]" />
+                        <span className="absolute -left-[1.9rem] top-6 flex h-7 w-7 items-center justify-center rounded-full border border-accent bg-white font-tech text-[11px] font-semibold text-accent shadow-[0_0_0_6px_rgba(255,255,255,0.75)] dark:border-accent/60 dark:bg-[#0a0a0a] dark:shadow-[0_0_0_6px_rgba(10,10,10,0.85)] sm:-left-[2.3rem]">
+                          {String(experiences.length - index).padStart(2, "0")}
+                        </span>
 
-                        <div className="rounded-sm border border-gray-200/80 bg-white/82 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03] sm:p-6">
+                        <div className="interactive-surface rounded-sm border border-gray-200/80 bg-white/82 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-sm transition-colors duration-200 hover:border-accent/30 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-accent/30 sm:p-6">
                           <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_280px]">
                             <div>
                               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -187,7 +210,7 @@ export default function ExperiencePage() {
 
                                   <div className="min-w-0">
                                     <div className="flex flex-wrap items-center gap-2">
-                                      <p className="rounded-full border border-sky-200 bg-sky-50 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-sky-700 dark:border-sky-400/20 dark:bg-sky-400/10 dark:text-sky-200">
+                                      <p className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-accent dark:border-accent/30 dark:bg-accent/10 dark:text-accent">
                                         {experience.status}
                                       </p>
                                       <p className="text-[11px] uppercase tracking-[0.16em] text-foreground-muted">
@@ -256,13 +279,14 @@ export default function ExperiencePage() {
                               <div className="mt-4 flex flex-wrap gap-2">
                                 {experience.technologies.map((tech) => {
                                   const Icon = tech.icon;
+                                  const color = techColorMap[tech.label] ?? "var(--accent)";
 
                                   return (
                                     <div
                                       key={tech.label}
                                       className="inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-white/85 px-3 py-2 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.04]"
                                     >
-                                      <Icon className="h-4 w-4 text-foreground-muted" />
+                                      <Icon className="h-4 w-4" style={{ color }} />
                                       <span className="font-tech text-[0.8rem]">{tech.label}</span>
                                     </div>
                                   );
@@ -279,7 +303,12 @@ export default function ExperiencePage() {
             </section>
 
             <section className="container mx-auto max-w-6xl px-4 pb-16 sm:px-6">
-              <div className="rounded-sm border border-gray-200/80 bg-white/78 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.03]">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, margin: "-40px" }}
+                variants={fadeUp}
+                className="rounded-sm border border-gray-200/80 bg-white/78 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.03]">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div className="max-w-2xl">
                     <p className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
@@ -308,7 +337,7 @@ export default function ExperiencePage() {
                   {experiencePrinciples.map((principle) => (
                     <div
                       key={principle.title}
-                      className="rounded-sm border border-gray-200/80 bg-gradient-to-br from-white to-gray-50 p-5 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]"
+                      className="interactive-surface rounded-sm border border-gray-200/80 bg-gradient-to-br from-white to-gray-50 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/30 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]"
                     >
                       <p className="text-lg font-semibold text-foreground">{principle.title}</p>
                       <p className="mt-3 text-sm leading-relaxed text-foreground-muted">
@@ -317,7 +346,7 @@ export default function ExperiencePage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </section>
           </main>
         </div>

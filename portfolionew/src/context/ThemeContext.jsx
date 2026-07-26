@@ -4,7 +4,7 @@ import { transitionTheme } from "@/utils/viewTransitions";
 export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-    const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
     const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {

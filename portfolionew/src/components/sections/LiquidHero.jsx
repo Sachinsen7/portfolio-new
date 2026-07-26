@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Download,
@@ -6,7 +7,9 @@ import {
   MailIcon,
   TwitterIcon,
 } from "lucide-react";
-import profileImage from "/assets/images/me.jpg";
+import profileImage from "/assets/images/me.webp";
+import { projectsData } from "@/lib/projectsData";
+import { experiences } from "@/lib/experienceData";
 
 const socialLinks = [
   {
@@ -35,64 +38,84 @@ const socialLinks = [
   },
 ];
 
-const introParagraphs = [
+const introParagraph = (
   <>
     I&apos;m <span className="text-foreground font-medium">Sachin</span>, a
-    full-stack developer from India focused on building products that feel
+    full-stack developer from India building products with{" "}
+    <span className="text-foreground font-medium">React</span>,{" "}
+    <span className="text-foreground font-medium">Next.js</span>, and{" "}
+    <span className="text-foreground font-medium">Node.js</span> that feel
     clean, useful, and ready for real people.
-  </>,
-  <>
-    I enjoy both <span className="text-foreground font-medium">development</span> and <span className="text-foreground font-medium">design</span>, so I care
-    just as much about how an interface feels as how well it performs.
-  </>,
-  <>
-    Most of my work lives around <span className="text-foreground font-medium">React</span>,
-    <span className="text-foreground font-medium"> Next.js</span>,
-    <span className="text-foreground font-medium"> Node.js</span>, and modern
-    frontend systems with a minimal, thoughtful finish.
-  </>,
-  <>
-    I&apos;m always chasing new things to learn, better systems to build, and more
-    ambitious problems to solve.
-  </>,
+  </>
+);
+
+const MONTHS = {
+  Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+  Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
+};
+
+function computeYearsExperience() {
+  const starts = experiences
+    .map((exp) => {
+      const match = exp.period.match(/([A-Za-z]{3})\w*\s+(\d{4})/);
+      if (!match) return null;
+      const [, mon, year] = match;
+      return new Date(Number(year), MONTHS[mon] ?? 0, 1);
+    })
+    .filter(Boolean);
+
+  if (starts.length === 0) return 1;
+
+  const earliest = new Date(Math.min(...starts.map((d) => d.getTime())));
+  const years = (Date.now() - earliest.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+  return Math.max(1, Math.floor(years));
+}
+
+const heroStats = [
+  { label: "Projects Shipped", value: `${projectsData.length}+` },
+  {
+    label: "Technologies",
+    value: `${new Set(projectsData.flatMap((project) => project.tech)).size}+`,
+  },
+  { label: "Years Experience", value: `${computeYearsExperience()}+` },
 ];
+
+const headlineLines = [
+  { words: ["Sachin", "Sen"], className: "text-accent" },
+  { words: ["Full-Stack", "Developer"], className: "text-foreground" },
+];
+
+const wordReveal = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const headlineContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+};
 
 export default function LiquidHero() {
   return (
     <section className="container mx-auto flex min-h-[70vh] max-w-4xl items-center px-4 py-8 sm:px-6 sm:py-10 md:pt-8 lg:py-16">
       <div className="w-full">
-        <div className="mb-8 flex items-center gap-4 sm:gap-5">
-          <div className="relative shrink-0">
-            <img
-              src={profileImage}
-              alt="Sachin, a full-stack developer"
-              className="h-20 w-20 rounded-sm object-cover border border-gray-200 dark:border-white/10 sm:h-24 sm:w-24"
-            />
-            {/* <div className="absolute -bottom-1 -right-1 rounded-full border border-white/20 bg-accent p-1.5 shadow-sm">
-              <Sparkles className="h-3.5 w-3.5 text-white" />
-            </div> */}
-          </div>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 flex flex-wrap items-center gap-4"
+        >
+          <img
+            src={profileImage}
+            alt="Sachin, a full-stack developer"
+            className="h-14 w-14 shrink-0 rounded-sm border border-gray-200 object-cover dark:border-white/10"
+          />
 
-          <div>
-            <h1
-              id="hero-heading"
-              className="font-heading text-2xl font-semibold tracking-wide text-foreground sm:text-3xl"
-            >
-              Sachin
-            </h1>
-            <p className="font-tech mt-1 text-sm text-foreground-muted sm:text-base">
-              @sachinsen7
-            </p>
-          </div>
-        </div>
-
-        <div className="font-body max-w-3xl space-y-4 text-base leading-relaxed text-foreground-muted sm:text-lg">
-          {introParagraphs.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </div>
-
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Button
             variant="glass"
             size="lg"
@@ -101,13 +124,68 @@ export default function LiquidHero() {
           >
             <a href="mailto:sachinsen1920@gmail.com" className="flex items-center gap-3">
               <span className="relative flex h-3 w-3">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-500 opacity-75" />
-                <span className="relative inline-flex h-3 w-3 rounded-full bg-pink-500" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-accent" />
               </span>
               <span>Available for new opportunities</span>
             </a>
           </Button>
+        </motion.div>
 
+        <motion.h1
+          id="hero-heading"
+          initial="hidden"
+          animate="visible"
+          variants={headlineContainer}
+          className="font-heading text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-6xl md:text-7xl"
+        >
+          {headlineLines.map((line) => (
+            <span key={line.words.join(" ")} className={`block overflow-hidden pb-1 ${line.className}`}>
+              {line.words.map((word) => (
+                <motion.span key={word} variants={wordReveal} className="mr-4 inline-block last:mr-0">
+                  {word}
+                </motion.span>
+              ))}
+            </span>
+          ))}
+        </motion.h1>
+
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          transition={{ delay: 0.35 }}
+          className="font-body mt-6 max-w-2xl text-base leading-relaxed text-foreground-muted sm:text-lg"
+        >
+          {introParagraph}
+        </motion.p>
+
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          transition={{ delay: 0.45 }}
+          className="mt-8 grid grid-cols-3 gap-4 border-y border-gray-200/80 py-6 dark:border-white/10"
+        >
+          {heroStats.map((stat) => (
+            <div key={stat.label}>
+              <p className="font-heading text-2xl font-semibold text-foreground sm:text-3xl">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-foreground-muted sm:text-xs">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          transition={{ delay: 0.55 }}
+          className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+        >
           <Button
             variant="outline"
             size="lg"
@@ -125,20 +203,26 @@ export default function LiquidHero() {
               <span>Download CV</span>
             </a>
           </Button>
-        </div>
+        </motion.div>
 
         <div className="mt-10 border-t border-gray-200/80 pt-7 dark:border-white/10">
           <p className="mb-4 text-sm leading-relaxed text-foreground-muted sm:text-base">
             Where to find me <span className="font-medium text-foreground">digitally</span>
           </p>
 
-          <div className="flex flex-wrap gap-3">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: 0.06, delayChildren: 0.65 } } }}
+            className="flex flex-wrap gap-3"
+          >
             {socialLinks.map((social) => {
               const Icon = social.icon;
 
               return (
-                <a
+                <motion.a
                   key={social.name}
+                  variants={fadeUp}
                   href={social.href}
                   target={social.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={social.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
@@ -150,10 +234,10 @@ export default function LiquidHero() {
                   </span>
                   <Icon className="h-4 w-4 text-foreground-muted transition-colors duration-200 group-hover:text-foreground" />
                   <span>{social.name}</span>
-                </a>
+                </motion.a>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

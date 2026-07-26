@@ -1,5 +1,5 @@
-import logo from "/assets/images/logo.png";
-import agumentik from "/assets/images/agumentikgroup_logo.jpg";
+import logo from "/assets/images/logo.webp";
+import agumentik from "/assets/images/agumentikgroup_logo.webp";
 import {
   IconBrandAws,
   IconBrandDocker,

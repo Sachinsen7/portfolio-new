@@ -22,7 +22,7 @@ export const MusicProvider = ({ children }) => {
             audioRef.current = new Audio(music);
             audioRef.current.volume = 0.3;
             audioRef.current.loop = true;
-            audioRef.current.preload = 'auto';
+            audioRef.current.preload = 'metadata';
         }
 
         const audio = audioRef.current;

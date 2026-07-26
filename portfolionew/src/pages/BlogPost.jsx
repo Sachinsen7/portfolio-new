@@ -3,7 +3,6 @@ import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import PageTransition from "@/components/common/PageTransition";
-import ScrollProgress from "@/components/common/ScrollProgress";
 import ViewTransitionWrapper from "@/components/common/ViewTransitionWrapper";
 import { notesData } from "@/lib/notesData";
 import { useViewTransition } from "@/hooks/useViewTransition";
@@ -17,7 +16,6 @@ export default function BlogPost() {
     return (
       <PageTransition>
         <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-          <ScrollProgress />
           <Header />
           <main className="container mx-auto max-w-3xl px-4 py-32 sm:px-6">
             <div className="rounded-[28px] border border-gray-200/80 bg-white/72 p-8 text-center dark:border-white/10 dark:bg-white/[0.03]">
@@ -48,9 +46,7 @@ export default function BlogPost() {
     >
       <PageTransition>
         <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-          <ScrollProgress />
           <div className="page-backdrop" aria-hidden="true" />
-          <div className="light-dot-pattern" aria-hidden="true" />
 
           <Header />
 

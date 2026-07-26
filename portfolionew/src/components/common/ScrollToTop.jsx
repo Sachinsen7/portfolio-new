@@ -8,14 +8,11 @@ export default function ScrollToTop() {
 
     useEffect(() => {
         const toggleVisibility = () => {
-            if (window.pageYOffset > 300) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
+            setIsVisible(window.pageYOffset > 300);
         };
 
-        window.addEventListener('scroll', toggleVisibility);
+        toggleVisibility();
+        window.addEventListener('scroll', toggleVisibility, { passive: true });
         return () => window.removeEventListener('scroll', toggleVisibility);
     }, []);
 
@@ -28,7 +25,7 @@ export default function ScrollToTop() {
                     exit={{ opacity: 0, scale: 0.8, y: 20 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
                     onClick={scrollToTop}
-                    className="interactive-surface fixed bottom-44 right-5 z-40 rounded-full border border-white/20 bg-accent/90 p-3 text-black dark:text-white/80 shadow-lg backdrop-blur-sm hover:bg-accent hover:shadow-xl sm:bottom-24 sm:right-7"
+                    className="interactive-surface fixed bottom-44 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-gray-200/80 bg-white/90 text-foreground shadow-[0_12px_28px_rgba(15,23,42,0.12)] backdrop-blur-sm hover:border-accent/50 hover:shadow-[0_16px_36px_rgba(15,23,42,0.16)] dark:border-white/10 dark:bg-[#101113]/90 sm:bottom-24 sm:right-7"
                     aria-label="Scroll to top"
                 >
                     <ChevronUp className="h-5 w-5" />

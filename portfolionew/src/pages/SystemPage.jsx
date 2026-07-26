@@ -1,7 +1,6 @@
 import Header from "@/components/layout/Header";
 import OperatingSystem from "@/components/sections/OperatingSystem";
 import PageTransition from "@/components/common/PageTransition";
-import ScrollProgress from "@/components/common/ScrollProgress";
 import ViewTransitionWrapper from "@/components/common/ViewTransitionWrapper";
 
 export default function SystemPage() {
@@ -13,9 +12,7 @@ export default function SystemPage() {
     >
       <PageTransition>
         <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-          <ScrollProgress />
           <div className="page-backdrop" aria-hidden="true" />
-          <div className="light-dot-pattern" aria-hidden="true" />
 
           <Header />
 

@@ -2,7 +2,13 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, ChevronDown, Globe } from "lucide-react";
 import { experiences } from "@/lib/experienceData";
+import { techColorMap } from "@/lib/techIcons.jsx";
 import { useViewTransition } from "@/hooks/useViewTransition";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+};
 
 export default function About() {
   const [openExperience, setOpenExperience] = useState(experiences[0].id);
@@ -14,7 +20,13 @@ export default function About() {
       className="container mx-auto max-w-4xl px-4 py-8 sm:px-6"
       aria-labelledby="about-heading"
     >
-      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, margin: "-40px" }}
+        variants={fadeUp}
+        className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+      >
         <div className="max-w-2xl">
           <h2
             id="about-heading"
@@ -43,15 +55,19 @@ export default function About() {
           <span>Open full timeline</span>
           <ArrowUpRight className="h-4 w-4" />
         </button>
-      </div>
+      </motion.div>
 
       <div className="space-y-4">
-        {experiences.map((experience) => {
+        {experiences.map((experience, expIndex) => {
           const isOpen = openExperience === experience.id;
 
           return (
-            <article
+            <motion.article
               key={experience.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-40px" }}
+              transition={{ duration: 0.4, delay: expIndex * 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="rounded-sm border border-gray-200/80 bg-white/70 dark:border-white/10 dark:bg-white/[0.03]"
             >
               <button
@@ -76,7 +92,7 @@ export default function About() {
                       <h4 className="text-base font-semibold text-foreground sm:text-lg">
                         {experience.company}
                       </h4>
-                      <span className="rounded-full border border-sky-200 bg-sky-50 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-sky-700 dark:border-sky-400/20 dark:bg-sky-400/10 dark:text-sky-200">
+                      <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-accent dark:border-accent/30 dark:bg-accent/10 dark:text-accent">
                         {experience.status}
                       </span>
                       <a
@@ -134,13 +150,19 @@ export default function About() {
                         <div className="flex flex-wrap gap-2">
                           {experience.technologies.map((tech) => {
                             const Icon = tech.icon;
+                            const color = techColorMap[tech.label] ?? "var(--accent)";
 
                             return (
                               <div
                                 key={tech.label}
-                                className="interactive-surface inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-gray-50/80 px-3 py-2 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
+                                className="interactive-surface inline-flex items-center gap-2.5 rounded-sm border border-gray-200 bg-gray-50/80 py-2 pl-2 pr-3.5 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
                               >
-                                <Icon className="h-4 w-4 text-foreground-muted" />
+                                <span
+                                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+                                  style={{ backgroundColor: `${color}22` }}
+                                >
+                                  <Icon className="h-4 w-4" style={{ color }} />
+                                </span>
                                 <span className="font-tech text-[0.82rem]">{tech.label}</span>
                               </div>
                             );
@@ -170,7 +192,7 @@ export default function About() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </article>
+            </motion.article>
           );
         })}
       </div>
