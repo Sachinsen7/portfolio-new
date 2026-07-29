@@ -14,6 +14,7 @@ import LazyImage from "@/components/common/LazyImage";
 import Header from "@/components/layout/Header";
 import { projectsData } from "@/lib/projectsData";
 import { getTechIcon } from "@/lib/techIcons.jsx";
+import { getProjectThumbnail } from "@/lib/utils";
 import PageTransition from "@/components/common/PageTransition";
 import { useViewTransition } from "@/hooks/useViewTransition";
 import ViewTransitionWrapper from "@/components/common/ViewTransitionWrapper";
@@ -151,7 +152,7 @@ export default function AllProjects() {
                     <div className="p-5 sm:p-6">
                       <div className="overflow-hidden rounded-sm border border-gray-200/80 bg-gradient-to-br from-gray-100 to-white dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]">
                         <LazyImage
-                          src={project.image}
+                          src={getProjectThumbnail(project.image)}
                           alt={`${project.title} preview`}
                           className="h-56 w-full object-contain p-4 transition-transform duration-300 group-hover:scale-[1.02] sm:h-64"
                         />

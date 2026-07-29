@@ -172,6 +172,13 @@ export default function ProjectDetails() {
   const prevProject = projectsData[currentIndex - 1];
   const caseStudy = caseStudyContent[project?.id] || (project ? buildFallbackCaseStudy(project) : null);
   const impactMetrics = project ? buildImpactMetrics(project) : [];
+  const projectImages = project
+    ? Array.isArray(project.image)
+      ? project.image
+      : project.image
+        ? [project.image]
+        : []
+    : [];
 
   if (!project) {
     return (
@@ -289,7 +296,7 @@ export default function ProjectDetails() {
           </header>
 
           <div className="mb-8 overflow-hidden rounded-2xl border border-gray-200/80 bg-white/70 p-2 dark:border-white/10 dark:bg-white/[0.03] sm:p-3">
-            <ImageCarousel images={[project.image]} projectTitle={project.title} />
+            <ImageCarousel images={projectImages} projectTitle={project.title} />
           </div>
 
           <div className="mb-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">

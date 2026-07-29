@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import LazyImage from "@/components/common/LazyImage";
 import { ArrowRight, ArrowUpRight, Grid3X3 } from "lucide-react";
 import { projectsData } from "@/lib/projectsData";
+import { getProjectThumbnail } from "@/lib/utils";
 import { useViewTransition } from "@/hooks/useViewTransition";
 
 // Homepage stays curated to the strongest work, newest first; the rest live on /projects.
@@ -112,7 +113,7 @@ export default function Projects() {
                   className="absolute inset-0"
                 >
                   <LazyImage
-                    src={hoveredProject.image}
+                    src={getProjectThumbnail(hoveredProject.image)}
                     alt={`${hoveredProject.title} preview`}
                     className="h-full w-full object-contain p-4"
                   />
