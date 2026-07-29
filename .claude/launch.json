@@ -7,6 +7,13 @@
       "runtimeArgs": ["run", "dev", "--prefix", "portfolionew"],
       "port": 5173,
       "autoPort": true
+    },
+    {
+      "name": "watchnxt",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "../WatchNXT", "--", "--port", "5183"],
+      "port": 5183,
+      "autoPort": true
     }
   ]
 }
