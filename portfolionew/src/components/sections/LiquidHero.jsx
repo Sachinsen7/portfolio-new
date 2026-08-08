@@ -38,17 +38,6 @@ const socialLinks = [
   },
 ];
 
-const introParagraph = (
-  <>
-    I&apos;m <span className="text-foreground font-medium">Sachin</span>, a
-    full-stack developer from India building products with{" "}
-    <span className="text-foreground font-medium">React</span>,{" "}
-    <span className="text-foreground font-medium">Next.js</span>, and{" "}
-    <span className="text-foreground font-medium">Node.js</span> that feel
-    clean, useful, and ready for real people.
-  </>
-);
-
 const MONTHS = {
   Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
   Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
@@ -81,18 +70,20 @@ const heroStats = [
 ];
 
 const headlineLines = [
-  { words: ["Sachin", "Sen"], className: "text-accent" },
-  { words: ["Full-Stack", "Developer"], className: "text-foreground" },
+  { text: "Sachin Sen", indent: 0, className: "text-accent" },
+  { text: "Full-Stack", indent: 1, className: "text-foreground" },
+  { text: "Developer", indent: 2, className: "text-foreground" },
 ];
 
-const wordReveal = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const headlineContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+// Each line waves in on its own, one after another, like a flag unfurling.
+const lineReveal = {
+  hidden: { opacity: 0, x: -48, rotate: -3 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    rotate: 0,
+    transition: { duration: 0.6, delay: i * 0.22, ease: [0.22, 1, 0.36, 1] },
+  }),
 };
 
 const fadeUp = {
@@ -132,34 +123,24 @@ export default function LiquidHero() {
           </Button>
         </motion.div>
 
-        <motion.h1
+        <h1
           id="hero-heading"
-          initial="hidden"
-          animate="visible"
-          variants={headlineContainer}
           className="font-heading text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-6xl md:text-7xl"
         >
-          {headlineLines.map((line) => (
-            <span key={line.words.join(" ")} className={`block overflow-hidden pb-1 ${line.className}`}>
-              {line.words.map((word) => (
-                <motion.span key={word} variants={wordReveal} className="mr-4 inline-block last:mr-0">
-                  {word}
-                </motion.span>
-              ))}
-            </span>
+          {headlineLines.map((line, i) => (
+            <motion.span
+              key={line.text}
+              custom={i}
+              initial="hidden"
+              animate="visible"
+              variants={lineReveal}
+              className={`block pb-1 ${line.className}`}
+              style={{ marginLeft: `${line.indent * 2.2}em`, transformOrigin: "left center" }}
+            >
+              {line.text}
+            </motion.span>
           ))}
-        </motion.h1>
-
-        <motion.p
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          transition={{ delay: 0.35 }}
-          className="font-body mt-6 max-w-2xl text-base leading-relaxed text-foreground-muted sm:text-lg"
-        >
-          {introParagraph}
-        </motion.p>
-
+        </h1>
         <motion.div
           initial="hidden"
           animate="visible"
