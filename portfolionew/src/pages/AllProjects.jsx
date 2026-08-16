@@ -28,6 +28,11 @@ const introMetrics = [
   { label: "Live now", value: `${liveProjects}`, icon: Sparkles },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+};
+
 export default function AllProjects() {
   const { transitionTo, transitionBack } = useViewTransition();
 
@@ -55,7 +60,13 @@ export default function AllProjects() {
               </button>
 
               <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_380px]">
-                <div className="max-w-3xl">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, margin: "-40px" }}
+                  variants={fadeUp}
+                  className="max-w-3xl"
+                >
                   <p className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                     Project Archive
                   </p>
@@ -92,9 +103,14 @@ export default function AllProjects() {
                       );
                     })}
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="relative overflow-hidden rounded-sm border border-accent/30 bg-gradient-to-br from-accent/10 via-white to-accent/5 p-6 shadow-[0_18px_50px_rgba(29,185,84,0.12)] dark:border-accent/20 dark:from-accent/10 dark:via-white/[0.03] dark:to-accent/5">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, margin: "-40px" }}
+                  variants={fadeUp}
+                  className="relative overflow-hidden rounded-sm border border-accent/30 bg-gradient-to-br from-accent/10 via-white to-accent/5 p-6 shadow-[0_18px_50px_rgba(29,185,84,0.12)] dark:border-accent/20 dark:from-accent/10 dark:via-white/[0.03] dark:to-accent/5">
                   <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
                   <p className="text-[11px] uppercase tracking-[0.18em] text-accent dark:text-accent">
                     Design direction
@@ -122,7 +138,7 @@ export default function AllProjects() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               </div>
             </section>
 
@@ -131,9 +147,10 @@ export default function AllProjects() {
                 {projectsData.map((project, index) => (
                   <motion.article
                     key={project.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.32, delay: index * 0.05 }}
+                    initial={{ opacity: 0, y: 28 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, margin: "-80px" }}
+                    transition={{ duration: 0.4, delay: (index % 2) * 0.08, ease: [0.22, 1, 0.36, 1] }}
                     className="group relative overflow-hidden rounded-sm border border-gray-200/80 bg-white/80 shadow-[0_18px_50px_rgba(15,23,42,0.05)] backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03]"
                   >
                     <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

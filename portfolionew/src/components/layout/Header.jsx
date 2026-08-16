@@ -14,7 +14,7 @@ const homeNavItems = [
   { href: "/notes", label: "Notes", type: "link" },
   { href: "/play", label: "Play", type: "link" },
   { href: "/taste", label: "Taste", type: "link" },
-  { href: "github", label: "GitHub", type: "scroll" },
+  { href: "https://github.com/Sachinsen7", label: "GitHub", type: "external" },
 ];
 
 const pageNavItems = [
@@ -206,6 +206,11 @@ export default function Header() {
   const handleNavClick = (item) => {
     setIsDrawerOpen(false);
 
+    if (item.type === "external") {
+      window.open(item.href, "_blank", "noopener,noreferrer");
+      return;
+    }
+
     if (item.type === "scroll" && isHomePage) {
       scrollToElement(item.href, { offset: window.innerWidth < 768 ? 104 : 132 });
       return;
@@ -228,6 +233,10 @@ export default function Header() {
   };
 
   const isActive = (item) => {
+    if (item.type === "external") {
+      return false;
+    }
+
     if (item.type === "scroll" && isHomePage) {
       return activeSection === item.href;
     }

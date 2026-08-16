@@ -1,15 +1,35 @@
-import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import LazyImage from "./LazyImage";
 
 export default function ImageCarousel({ images = [], projectTitle = "Project" }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [lightboxIndex, setLightboxIndex] = useState(null);
 
     const displayImages = images.length > 0 ? images : [];
 
     const totalImages = displayImages.length;
+
+    useEffect(() => {
+        if (lightboxIndex === null) return;
+
+        const onKeyDown = (event) => {
+            if (event.key === "Escape") setLightboxIndex(null);
+            if (event.key === "ArrowRight") setLightboxIndex((prev) => (prev + 1) % totalImages);
+            if (event.key === "ArrowLeft") setLightboxIndex((prev) => (prev - 1 + totalImages) % totalImages);
+        };
+
+        document.addEventListener("keydown", onKeyDown);
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            document.removeEventListener("keydown", onKeyDown);
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [lightboxIndex, totalImages]);
 
     if (totalImages === 0) return null;
 
@@ -37,12 +57,14 @@ export default function ImageCarousel({ images = [], projectTitle = "Project" })
                     {displayImages.map((image, index) => (
                         <motion.div
                             key={index}
+                            layoutId={`carousel-image-${projectTitle}-${index}`}
                             className="relative overflow-hidden rounded-md cursor-pointer"
                             initial={{ width: "33.333%" }}
                             animate={{ width: getImageWidth(index) }}
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             onMouseEnter={() => setHoveredIndex(index)}
                             onMouseLeave={() => setHoveredIndex(null)}
+                            onClick={() => setLightboxIndex(index)}
                         >
                             <LazyImage
                                 src={image}
@@ -87,6 +109,68 @@ export default function ImageCarousel({ images = [], projectTitle = "Project" })
                     Hover over images to expand • {totalImages} images
                 </span>
             </div> */}
+
+            <AnimatePresence>
+                {lightboxIndex !== null && (
+                    <motion.div
+                        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 sm:p-8"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        onClick={() => setLightboxIndex(null)}
+                    >
+                        <motion.div
+                            layoutId={`carousel-image-${projectTitle}-${lightboxIndex}`}
+                            className="relative max-h-full max-w-full"
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            onClick={(event) => event.stopPropagation()}
+                        >
+                            <img
+                                src={displayImages[lightboxIndex]}
+                                alt={`${projectTitle} screenshot ${lightboxIndex + 1} full size`}
+                                className="max-h-[85vh] max-w-[90vw] rounded-lg object-contain shadow-2xl"
+                            />
+                        </motion.div>
+
+                        <button
+                            onClick={() => setLightboxIndex(null)}
+                            className="absolute right-4 top-4 sm:right-6 sm:top-6 rounded-full bg-black/50 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+                            aria-label="Close full image"
+                        >
+                            <X className="h-5 w-5" />
+                        </button>
+
+                        {totalImages > 1 && (
+                            <>
+                                <button
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        setLightboxIndex((prev) => (prev - 1 + totalImages) % totalImages);
+                                    }}
+                                    className="absolute left-3 top-1/2 -translate-y-1/2 sm:left-6 rounded-full bg-black/50 p-2.5 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+                                    aria-label="Previous image"
+                                >
+                                    <ChevronLeft className="h-6 w-6" />
+                                </button>
+                                <button
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        setLightboxIndex((prev) => (prev + 1) % totalImages);
+                                    }}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 sm:right-6 rounded-full bg-black/50 p-2.5 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+                                    aria-label="Next image"
+                                >
+                                    <ChevronRight className="h-6 w-6" />
+                                </button>
+                                <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-3 py-1 text-xs text-white backdrop-blur-sm">
+                                    {lightboxIndex + 1} / {totalImages}
+                                </div>
+                            </>
+                        )}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

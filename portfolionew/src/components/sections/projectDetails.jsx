@@ -164,7 +164,7 @@ function DetailCard({ title, icon: Icon, children }) {
 
 export default function ProjectDetails() {
   const { id } = useParams();
-  const { transitionTo } = useViewTransition();
+  const { transitionTo, transitionBack } = useViewTransition();
 
   const project = projectsData.find((p) => p.id === Number.parseInt(id, 10));
   const currentIndex = projectsData.findIndex((p) => p.id === Number.parseInt(id, 10));
@@ -190,7 +190,7 @@ export default function ProjectDetails() {
               The project you&apos;re looking for doesn&apos;t exist.
             </p>
             <Button
-              onClick={() => transitionTo("/", { transitionName: "back-to-home" })}
+              onClick={() => transitionBack({ transitionName: "back-to-home" })}
               variant="outline"
               className="border-gray-200 bg-gray-50/80 text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
             >
@@ -212,7 +212,7 @@ export default function ProjectDetails() {
         >
           <div className="mb-6 flex flex-wrap items-center justify-center gap-3 sm:justify-between">
             <Button
-              onClick={() => transitionTo("/", { transitionName: "back-to-home" })}
+              onClick={() => transitionBack({ transitionName: "back-to-home" })}
               variant="outline"
               className="min-h-11 rounded-xl border-gray-200 bg-gray-50/80 px-5 text-foreground hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
             >
