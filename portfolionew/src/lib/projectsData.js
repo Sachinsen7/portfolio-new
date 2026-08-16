@@ -17,11 +17,20 @@ const ironstreak_dashboard = "/assets/images/ironstreak/dashboard.webp";
 const ironstreak_diet = "/assets/images/ironstreak/diet.webp";
 const ironstreak_stats = "/assets/images/ironstreak/stats.webp";
 
+const githubstats_profile = "/assets/images/githubstats/profile.webp";
+const githubstats_skills = "/assets/images/githubstats/skills.webp";
+const githubstats_activity = "/assets/images/githubstats/activity.webp";
+
+const blip_suggest = "/assets/images/blip/suggest.webp";
+const blip_picker = "/assets/images/blip/picker.webp";
+const blip_manager = "/assets/images/blip/manager.webp";
+const blipImages = [blip_suggest, blip_picker, blip_manager];
+
 export const projectsData = [
   {
     id: 13,
     title: "Blip",
-    image: null,
+    image: blipImages,
     description:
       "Local-first text expander for Chrome and Brave that also notices what you retype and offers to save it, without ever storing the text itself",
     tech: ["JavaScript", "Manifest V3", "Chrome Extension APIs", "Shadow DOM"],
@@ -60,7 +69,7 @@ export const projectsData = [
   {
     id: 14,
     title: "Blip Desktop",
-    image: null,
+    image: blipImages,
     description:
       "System-wide text expansion for Windows, written in Rust — the same idea as Blip, but working in every application, not just the browser",
     tech: ["Rust", "Tauri", "Win32 API", "WebView2"],
@@ -100,7 +109,7 @@ export const projectsData = [
   {
     id: 15,
     title: "Self-Hosted GitHub Profile Stats",
-    image: null,
+    image: [githubstats_profile, githubstats_skills, githubstats_activity],
     description:
       "A reliability-first alternative to the usual GitHub profile stat-card services, which generates SVG cards via GitHub Actions instead of a live server",
     tech: ["Node.js", "GitHub Actions", "GitHub REST API", "SVG"],
