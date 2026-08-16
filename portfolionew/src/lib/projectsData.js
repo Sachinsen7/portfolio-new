@@ -13,7 +13,186 @@ const image1 = "/assets/images/yourbeep/Homepage.avif"
 const image2 = "/assets/images/yourbeep/15.avif"
 const image3 = "/assets/images/yourbeep/Heart.avif"
 
+const ironstreak_dashboard = "/assets/images/ironstreak/dashboard.webp";
+const ironstreak_diet = "/assets/images/ironstreak/diet.webp";
+const ironstreak_stats = "/assets/images/ironstreak/stats.webp";
+
 export const projectsData = [
+  {
+    id: 13,
+    title: "Blip",
+    image: null,
+    description:
+      "Local-first text expander for Chrome and Brave that also notices what you retype and offers to save it, without ever storing the text itself",
+    tech: ["JavaScript", "Manifest V3", "Chrome Extension APIs", "Shadow DOM"],
+    category: "Browser Extension / Developer Tool",
+    year: "2026",
+    summary:
+      "Type ;;pr in any text box on any site and it expands into your saved snippet. No account, no server, no network calls anywhere in the codebase.",
+    fullDescription:
+      "Blip is a Manifest V3 text expander built to work correctly inside the two incompatible input models the web actually has: plain <input>/<textarea> elements and contenteditable divs used by Gmail, ChatGPT, Claude, Notion, and Slack. Insertion goes through document.execCommand('insertText') rather than direct DOM assignment, because React-controlled inputs silently discard a plain .value write on the next render — execCommand fires the same native input events a real keystroke would, so framework state stays correct and the browser's own undo stack still works. The picker that appears mid-typing is positioned using a caret-mirroring technique, since plain inputs expose no API for a caret's on-screen coordinates. The standout feature is a repeat detector: after you retype the same text three times, it offers to save it as a snippet — but it stores only a hash and a count, never the text, so the suggestion can quote you back without ever having kept a copy.",
+    features: [
+      "Expansion works identically inside <input>/<textarea> and contenteditable editors",
+      "Insertion via document.execCommand('insertText') so React/Vue-controlled inputs update correctly and native undo still works",
+      "Caret-position picker for ambiguous shortcuts, rendered in a closed shadow root so host page CSS/JS can't reach it",
+      "Repeat detector that suggests new snippets after three sightings, storing a hash and count only — never the captured text",
+      "Placeholders for {{cursor}}, {{clipboard}}, {{date}}, and other dynamic tokens",
+      "Neo-brutalist UI (hard shadows, no gradients) built entirely in vanilla JS/CSS, no framework dependency",
+    ],
+    challenges: [
+      "Normalising two incompatible text-input models (.value vs. DOM Selection/contenteditable) behind one API",
+      "Writing into React-controlled inputs without the framework silently reverting the change on its next render",
+      "Positioning a picker at the caret inside a plain <input>, which exposes no caret-coordinate API at all",
+      "Designing a 'notices what you retype' feature that is genuinely useful without ever storing what the user typed",
+    ],
+    liveLink: "",
+    githubLink: "https://github.com/Sachinsen7/blip",
+    timeline: [
+      { phase: "Core matching engine & dual input-model support", duration: "1 day", status: "completed" },
+      { phase: "React-safe insertion & shadow-DOM picker UI", duration: "1 day", status: "completed" },
+      { phase: "Repeat detector with hash-only storage", duration: "1 day", status: "completed" },
+    ],
+    team: "Solo Project",
+    role: "Extension Developer",
+    status: "Shipped / Open Source",
+    duration: "1 day",
+  },
+  {
+    id: 14,
+    title: "Blip Desktop",
+    image: null,
+    description:
+      "System-wide text expansion for Windows, written in Rust — the same idea as Blip, but working in every application, not just the browser",
+    tech: ["Rust", "Tauri", "Win32 API", "WebView2"],
+    category: "Desktop Application / Systems Programming",
+    year: "2026",
+    summary:
+      "A low-level Windows keyboard hook that expands text in VS Code, Slack, Word, or a terminal, with a tray icon and a native manager window.",
+    fullDescription:
+      "Blip Desktop reimplements Blip's expansion engine as a native Windows service using a WH_KEYBOARD_LL hook, which sees every keystroke on the system before the focused application does. Getting reliable text injection working was the real engineering problem: SendInput must be called as a single atomic batch, not split into smaller paced calls, or the user's own concurrent keystrokes can interleave with injected ones and corrupt the output. A second, subtler bug came from a key-suppression flag that could get stuck permanently if a key's release event was ever reordered during injection, silently eating every future press of that letter — found only by adding an instrumentation flag that logs the exact payload the engine intends to send, rather than by guessing further. Long snippets are delivered via a clipboard-paste fallback instead of simulated keystrokes, which sidesteps the timing-sensitive path entirely for anything over a dozen characters. The manager window is a Tauri app that reuses Blip's browser-extension UI almost unchanged, talking to the same in-memory engine state the keyboard hook reads, so an edit takes effect on the very next keystroke with no restart.",
+    features: [
+      "System-wide expansion via a low-level Windows keyboard hook (WH_KEYBOARD_LL)",
+      "Layout-aware key translation via ToUnicodeEx, so non-US keyboard layouts work correctly",
+      "Atomic SendInput injection with a clipboard-paste fallback for long or multi-line snippets",
+      "System tray with a live enable/disable toggle and a manager window entry point",
+      "Tauri-based manager window sharing the browser extension's UI and design system",
+      "Snippet edits in the window take effect immediately — no restart, no polling, direct shared state",
+    ],
+    challenges: [
+      "SendInput corrupted output when paced into smaller batches; the fix was recognising it must be called as one atomic batch, not smaller ones",
+      "A key-suppression flag could get stuck permanently if a release event was reordered during heavy injection, silently swallowing future keystrokes",
+      "Diagnosing intermittent corruption required building debug instrumentation to log intended payloads, rather than continuing to guess at timing fixes",
+      "An uninitialised Win32 INPUT union (larger MOUSEINPUT variant sharing memory with the smaller KEYBDINPUT one) passed garbage bytes to the kernel until explicitly zeroed",
+      "Keeping a GUI (Tauri/WebView2) and a headless console binary sharing one engine crate with zero UI-framework coupling",
+    ],
+    liveLink: "",
+    githubLink: "https://github.com/Sachinsen7/blip-desktop",
+    timeline: [
+      { phase: "Keyboard hook, matcher engine, text injection", duration: "1 day", status: "completed" },
+      { phase: "Debugging SendInput corruption & stuck-key suppression bug", duration: "1 day", status: "completed" },
+      { phase: "System tray, clipboard fallback, Tauri manager window", duration: "1 day", status: "completed" },
+    ],
+    team: "Solo Project",
+    role: "Systems / Desktop Developer",
+    status: "Shipped / Open Source",
+    duration: "3 days",
+  },
+  {
+    id: 15,
+    title: "Self-Hosted GitHub Profile Stats",
+    image: null,
+    description:
+      "A reliability-first alternative to the usual GitHub profile stat-card services, which generates SVG cards via GitHub Actions instead of a live server",
+    tech: ["Node.js", "GitHub Actions", "GitHub REST API", "SVG"],
+    category: "Developer Tooling / Automation",
+    year: "2026",
+    summary:
+      "github-readme-stats and github-profile-trophy were both deployment-paused the same week I needed them, so I built a version that structurally can't go down.",
+    fullDescription:
+      "Popular GitHub profile widgets like github-readme-stats render an SVG live, on every profile view, from a single shared free-tier server — which is exactly why they periodically go down under load. This project avoids that failure mode by architecture rather than by hoping for better uptime: a GitHub Action runs on a schedule, calls the GitHub REST API directly, renders three SVG cards from scratch (no external stats library), and commits them straight into the repository. The images the profile README displays are then just static files GitHub itself serves — no shared server to overload, no free-tier deployment to get paused. Because each run's results are committed to git, the stats card can show real trend deltas (\"+3 stars since last run\") between updates, something a stateless live-rendering service structurally cannot do. Brand icons for the skills row are vendored once from Simple Icons (CC0/public domain) directly into the script, so even the icon set carries no runtime dependency on anything outside the repo.",
+    features: [
+      "Zero live rendering dependency — GitHub Actions generates and commits static SVGs on a schedule",
+      "Real trend deltas between runs, enabled by committing a small state snapshot to git each run",
+      "Hand-rolled SVG card renderer (stats, top languages, 14-day activity flow, skills) with no external stats library",
+      "Real technology brand icons vendored once from a public-domain icon set, never fetched at render time",
+      "Runs against the real GitHub API with authenticated rate limits via the Actions-provided token",
+    ],
+    challenges: [
+      "Diagnosing that github-readme-stats' outage was a paused shared deployment, not a config issue — verified by loading the endpoint directly rather than guessing",
+      "Designing around GitHub's unauthenticated API rate limit (60/hr) during local testing versus the Action's authenticated 5,000/hr",
+      "Fixing a real legibility bug where inactive activity cells were rendered at the same fill colour as the card background, making most of the strip invisible",
+      "Keeping the whole card set genuinely dependency-free — including vendoring icon path data rather than fetching it live",
+    ],
+    liveLink: "https://github.com/Sachinsen7/Sachinsen7",
+    githubLink: "https://github.com/Sachinsen7/Sachinsen7",
+    timeline: [
+      { phase: "SVG card generator & GitHub Actions pipeline", duration: "1 day", status: "completed" },
+      { phase: "Design iteration & real technology icons", duration: "1 day", status: "completed" },
+    ],
+    team: "Solo Project",
+    role: "Automation / Tooling Developer",
+    status: "Live",
+    duration: "2 days",
+  },
+  {
+    id: 16,
+    title: "IronStreak",
+    image: [ironstreak_dashboard, ironstreak_diet, ironstreak_stats],
+    description:
+      "Personal gym, diet, and streak-tracking PWA with a Duolingo-style gamification layer and self-photographed food logging",
+    tech: [
+      "React 19",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Node.js",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "Vercel",
+      "Netlify",
+      "Cloudinary",
+      "Nodemailer",
+      "Zod",
+      "JWT",
+    ],
+    category: "Mobile-First PWA / Full Stack",
+    year: "2026",
+    summary:
+      "A self-use gym tracker built the same week I started training — workout logging, a food-photo diet log, and Duolingo-style streaks/XP, shipped as an installable PWA.",
+    fullDescription:
+      "IronStreak is a mobile-first Progressive Web App I built for my own daily gym and diet tracking, pairing a Node/Express/Prisma backend with a React 19/Vite/Tailwind v4 frontend. Workouts run against a configurable weekly split with per-set logging and per-exercise history; diet tracking centers on a swipeable carousel of foods I've actually photographed myself and uploaded via signed, server-side Cloudinary requests, with full macro and fiber tracking, rather than a generic packaged food database. Progress is gamified with streaks, XP levels, and badges, backed by an email layer — instant workout-completion summaries plus a secured cron endpoint for daily membership-expiry and streak-at-risk reminders that keeps working even on a serverless free tier. The backend ships as a Vercel serverless function behind a thin Express-to-serverless wrapper; the frontend deploys separately to Netlify; the two talk over a CORS-locked REST API.",
+    features: [
+      "Weekly workout split editor with per-exercise target sets/reps and per-session set logging",
+      "Exercise history view charting past weight/reps per exercise",
+      "Swipeable food card carousel with camera/gallery photo capture, uploaded via signed Cloudinary requests (API secret never reaches the browser)",
+      "Long-press context menu on food cards for inline edit/delete",
+      "Full macro tracking (calories, protein, carbs, fat, fiber) with a 5-ring daily progress dashboard",
+      "Streak, XP/level, and badge gamification with confetti and haptic feedback on workout completion",
+      "Gym membership tracker with days-left countdown, duration, and fees",
+      "Light/dark/system theming with no flash-of-wrong-theme on load",
+      "Installable PWA with offline shell via vite-plugin-pwa",
+      "Email notifications: instant workout summaries plus daily membership-expiry and streak-at-risk reminders via a secured cron endpoint",
+    ],
+    challenges: [
+      "Refactoring the Express app to run as a Vercel serverless function (splitting app construction from the dev-only listen() call) while keeping the daily-cron logic serverless-safe",
+      "Tracking down a UTF-8 BOM silently prepended to every environment variable by PowerShell's pipe-to-stdin encoding when setting them via the Vercel CLI, which broke the Postgres connection string until switching to the CLI's --value flag",
+      "A Zod .optional() schema rejecting the null a nullable Prisma field returns on GET, breaking the edit-then-save round trip on the membership form",
+      "Removing a capture=\"environment\" attribute that was silently forcing the camera open instead of showing Android's normal photo picker",
+      "Building a scroll-snap food carousel with spring-animated active-card scaling driven by manual scroll-position tracking rather than a carousel library",
+    ],
+    liveLink: "https://ironstreak-995.netlify.app",
+    githubLink: "https://github.com/Sachinsen7/ironstreak",
+    timeline: [
+      { phase: "Backend: schema, auth, workout/diet/notification APIs, Vercel serverless refactor", duration: "1 day", status: "completed" },
+      { phase: "Frontend: design system, screens, food photo uploads, theming, PWA, deployment", duration: "1 day", status: "completed" },
+    ],
+    team: "Solo Project",
+    role: "Full Stack Developer",
+    status: "Live",
+    duration: "2 days",
+  },
   {
     id: 11,
     title: "YourBeep",
@@ -792,121 +971,5 @@ export const projectsData = [
     role: "Full Stack Developer",
     status: "Portfolio Project",
     duration: "2 months",
-  },
-  {
-    id: 13,
-    title: "Blip",
-    image: null,
-    description:
-      "Local-first text expander for Chrome and Brave that also notices what you retype and offers to save it, without ever storing the text itself",
-    tech: ["JavaScript", "Manifest V3", "Chrome Extension APIs", "Shadow DOM"],
-    category: "Browser Extension / Developer Tool",
-    year: "2026",
-    summary:
-      "Type ;;pr in any text box on any site and it expands into your saved snippet. No account, no server, no network calls anywhere in the codebase.",
-    fullDescription:
-      "Blip is a Manifest V3 text expander built to work correctly inside the two incompatible input models the web actually has: plain <input>/<textarea> elements and contenteditable divs used by Gmail, ChatGPT, Claude, Notion, and Slack. Insertion goes through document.execCommand('insertText') rather than direct DOM assignment, because React-controlled inputs silently discard a plain .value write on the next render — execCommand fires the same native input events a real keystroke would, so framework state stays correct and the browser's own undo stack still works. The picker that appears mid-typing is positioned using a caret-mirroring technique, since plain inputs expose no API for a caret's on-screen coordinates. The standout feature is a repeat detector: after you retype the same text three times, it offers to save it as a snippet — but it stores only a hash and a count, never the text, so the suggestion can quote you back without ever having kept a copy.",
-    features: [
-      "Expansion works identically inside <input>/<textarea> and contenteditable editors",
-      "Insertion via document.execCommand('insertText') so React/Vue-controlled inputs update correctly and native undo still works",
-      "Caret-position picker for ambiguous shortcuts, rendered in a closed shadow root so host page CSS/JS can't reach it",
-      "Repeat detector that suggests new snippets after three sightings, storing a hash and count only — never the captured text",
-      "Placeholders for {{cursor}}, {{clipboard}}, {{date}}, and other dynamic tokens",
-      "Neo-brutalist UI (hard shadows, no gradients) built entirely in vanilla JS/CSS, no framework dependency",
-    ],
-    challenges: [
-      "Normalising two incompatible text-input models (.value vs. DOM Selection/contenteditable) behind one API",
-      "Writing into React-controlled inputs without the framework silently reverting the change on its next render",
-      "Positioning a picker at the caret inside a plain <input>, which exposes no caret-coordinate API at all",
-      "Designing a 'notices what you retype' feature that is genuinely useful without ever storing what the user typed",
-    ],
-    liveLink: "",
-    githubLink: "https://github.com/Sachinsen7/blip",
-    timeline: [
-      { phase: "Core matching engine & dual input-model support", duration: "1 day", status: "completed" },
-      { phase: "React-safe insertion & shadow-DOM picker UI", duration: "1 day", status: "completed" },
-      { phase: "Repeat detector with hash-only storage", duration: "1 day", status: "completed" },
-    ],
-    team: "Solo Project",
-    role: "Extension Developer",
-    status: "Shipped / Open Source",
-    duration: "1 day",
-  },
-  {
-    id: 14,
-    title: "Blip Desktop",
-    image: null,
-    description:
-      "System-wide text expansion for Windows, written in Rust — the same idea as Blip, but working in every application, not just the browser",
-    tech: ["Rust", "Tauri", "Win32 API", "WebView2"],
-    category: "Desktop Application / Systems Programming",
-    year: "2026",
-    summary:
-      "A low-level Windows keyboard hook that expands text in VS Code, Slack, Word, or a terminal, with a tray icon and a native manager window.",
-    fullDescription:
-      "Blip Desktop reimplements Blip's expansion engine as a native Windows service using a WH_KEYBOARD_LL hook, which sees every keystroke on the system before the focused application does. Getting reliable text injection working was the real engineering problem: SendInput must be called as a single atomic batch, not split into smaller paced calls, or the user's own concurrent keystrokes can interleave with injected ones and corrupt the output. A second, subtler bug came from a key-suppression flag that could get stuck permanently if a key's release event was ever reordered during injection, silently eating every future press of that letter — found only by adding an instrumentation flag that logs the exact payload the engine intends to send, rather than by guessing further. Long snippets are delivered via a clipboard-paste fallback instead of simulated keystrokes, which sidesteps the timing-sensitive path entirely for anything over a dozen characters. The manager window is a Tauri app that reuses Blip's browser-extension UI almost unchanged, talking to the same in-memory engine state the keyboard hook reads, so an edit takes effect on the very next keystroke with no restart.",
-    features: [
-      "System-wide expansion via a low-level Windows keyboard hook (WH_KEYBOARD_LL)",
-      "Layout-aware key translation via ToUnicodeEx, so non-US keyboard layouts work correctly",
-      "Atomic SendInput injection with a clipboard-paste fallback for long or multi-line snippets",
-      "System tray with a live enable/disable toggle and a manager window entry point",
-      "Tauri-based manager window sharing the browser extension's UI and design system",
-      "Snippet edits in the window take effect immediately — no restart, no polling, direct shared state",
-    ],
-    challenges: [
-      "SendInput corrupted output when paced into smaller batches; the fix was recognising it must be called as one atomic batch, not smaller ones",
-      "A key-suppression flag could get stuck permanently if a release event was reordered during heavy injection, silently swallowing future keystrokes",
-      "Diagnosing intermittent corruption required building debug instrumentation to log intended payloads, rather than continuing to guess at timing fixes",
-      "An uninitialised Win32 INPUT union (larger MOUSEINPUT variant sharing memory with the smaller KEYBDINPUT one) passed garbage bytes to the kernel until explicitly zeroed",
-      "Keeping a GUI (Tauri/WebView2) and a headless console binary sharing one engine crate with zero UI-framework coupling",
-    ],
-    liveLink: "",
-    githubLink: "https://github.com/Sachinsen7/blip-desktop",
-    timeline: [
-      { phase: "Keyboard hook, matcher engine, text injection", duration: "1 day", status: "completed" },
-      { phase: "Debugging SendInput corruption & stuck-key suppression bug", duration: "1 day", status: "completed" },
-      { phase: "System tray, clipboard fallback, Tauri manager window", duration: "1 day", status: "completed" },
-    ],
-    team: "Solo Project",
-    role: "Systems / Desktop Developer",
-    status: "Shipped / Open Source",
-    duration: "3 days",
-  },
-  {
-    id: 15,
-    title: "Self-Hosted GitHub Profile Stats",
-    image: null,
-    description:
-      "A reliability-first alternative to the usual GitHub profile stat-card services, which generates SVG cards via GitHub Actions instead of a live server",
-    tech: ["Node.js", "GitHub Actions", "GitHub REST API", "SVG"],
-    category: "Developer Tooling / Automation",
-    year: "2026",
-    summary:
-      "github-readme-stats and github-profile-trophy were both deployment-paused the same week I needed them, so I built a version that structurally can't go down.",
-    fullDescription:
-      "Popular GitHub profile widgets like github-readme-stats render an SVG live, on every profile view, from a single shared free-tier server — which is exactly why they periodically go down under load. This project avoids that failure mode by architecture rather than by hoping for better uptime: a GitHub Action runs on a schedule, calls the GitHub REST API directly, renders three SVG cards from scratch (no external stats library), and commits them straight into the repository. The images the profile README displays are then just static files GitHub itself serves — no shared server to overload, no free-tier deployment to get paused. Because each run's results are committed to git, the stats card can show real trend deltas (\"+3 stars since last run\") between updates, something a stateless live-rendering service structurally cannot do. Brand icons for the skills row are vendored once from Simple Icons (CC0/public domain) directly into the script, so even the icon set carries no runtime dependency on anything outside the repo.",
-    features: [
-      "Zero live rendering dependency — GitHub Actions generates and commits static SVGs on a schedule",
-      "Real trend deltas between runs, enabled by committing a small state snapshot to git each run",
-      "Hand-rolled SVG card renderer (stats, top languages, 14-day activity flow, skills) with no external stats library",
-      "Real technology brand icons vendored once from a public-domain icon set, never fetched at render time",
-      "Runs against the real GitHub API with authenticated rate limits via the Actions-provided token",
-    ],
-    challenges: [
-      "Diagnosing that github-readme-stats' outage was a paused shared deployment, not a config issue — verified by loading the endpoint directly rather than guessing",
-      "Designing around GitHub's unauthenticated API rate limit (60/hr) during local testing versus the Action's authenticated 5,000/hr",
-      "Fixing a real legibility bug where inactive activity cells were rendered at the same fill colour as the card background, making most of the strip invisible",
-      "Keeping the whole card set genuinely dependency-free — including vendoring icon path data rather than fetching it live",
-    ],
-    liveLink: "https://github.com/Sachinsen7/Sachinsen7",
-    githubLink: "https://github.com/Sachinsen7/Sachinsen7",
-    timeline: [
-      { phase: "SVG card generator & GitHub Actions pipeline", duration: "1 day", status: "completed" },
-      { phase: "Design iteration & real technology icons", duration: "1 day", status: "completed" },
-    ],
-    team: "Solo Project",
-    role: "Automation / Tooling Developer",
-    status: "Live",
-    duration: "2 days",
   },
 ];
