@@ -45,21 +45,32 @@ export const transitionToPage = (callback, transitionName = 'page-transition') =
 
 // Theme transition with special handling
 export const transitionTheme = (callback) => {
-    if (supportsViewTransitions()) {
-        // Add special class for theme transitions
-        document.documentElement.classList.add('theme-transitioning');
+    const root = document.documentElement;
 
+    // Add special class for theme transitions (drives the CSS color
+    // transition below, and the view-transition crossfade when supported)
+    root.classList.add('theme-transitioning');
+
+    if (supportsViewTransitions()) {
         const transition = document.startViewTransition(callback);
 
-        transition.finished.finally(() => {
-            document.documentElement.classList.remove('theme-transitioning');
+        // Return finished (a real Promise) rather than the ViewTransition
+        // object itself, since callers chain .finally() off the result.
+        return transition.finished.finally(() => {
+            root.classList.remove('theme-transitioning');
         });
-
-        return transition;
-    } else {
-        callback();
-        return Promise.resolve();
     }
+
+    // Fallback: run the theme change immediately, but keep the
+    // transitioning class on long enough for the CSS color transition
+    // (see .theme-transitioning in index.css) to actually play.
+    callback();
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            root.classList.remove('theme-transitioning');
+            resolve();
+        }, 400);
+    });
 };
 
 // Project detail transition

@@ -54,7 +54,7 @@ const TypingIndicator = () => (
   </motion.div>
 );
 
-export default function ChatBot() {
+export default function ChatBot({ onOpenChange }) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -75,6 +75,10 @@ export default function ChatBot() {
   const scrollToBottom = (behavior = "smooth") => {
     messagesEndRef.current?.scrollIntoView({ behavior, block: "end" });
   };
+
+  useEffect(() => {
+    onOpenChange?.(isOpen);
+  }, [isOpen, onOpenChange]);
 
   useEffect(() => {
     if (!isOpen) {

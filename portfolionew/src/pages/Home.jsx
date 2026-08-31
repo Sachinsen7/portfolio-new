@@ -1,3 +1,4 @@
+import { useState } from "react";
 import LiquidHero from "@/components/sections/LiquidHero";
 import Projects from "@/components/sections/Projects";
 import About from "@/components/sections/About";
@@ -12,6 +13,8 @@ import ScrollToTop from "@/components/common/ScrollToTop";
 // import AccessibilityToggle from "@/components/common/AccessibilityToggle";
 
 export default function Home() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
   return (
     <PageTransition>
       <div className="relative min-h-screen bg-[var(--background)] text-[var(--foreground)]">
@@ -33,9 +36,9 @@ export default function Home() {
 
         <Footer />
 
-        <ChatBot />
+        <ChatBot onOpenChange={setIsChatOpen} />
 
-        <ScrollToTop />
+        <ScrollToTop hidden={isChatOpen} />
       </div>
     </PageTransition>
   );

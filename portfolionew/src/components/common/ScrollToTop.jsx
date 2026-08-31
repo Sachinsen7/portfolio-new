@@ -3,7 +3,7 @@ import { ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { scrollToTop } from '@/utils/smoothScroll';
 
-export default function ScrollToTop() {
+export default function ScrollToTop({ hidden = false }) {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export default function ScrollToTop() {
 
     return (
         <AnimatePresence>
-            {isVisible && (
+            {isVisible && !hidden && (
                 <motion.button
                     initial={{ opacity: 0, scale: 0.8, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
