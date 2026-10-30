@@ -307,7 +307,7 @@ export const projectsData = [
       "Building a scroll-snap food carousel with spring-animated active-card scaling driven by manual scroll-position tracking rather than a carousel library",
     ],
     liveLink: "https://ironstreak-995.netlify.app",
-    githubLink: "https://github.com/Sachinsen7/ironstreak",
+    githubLink: "",
     timeline: [
       { phase: "Backend: schema, auth, workout/diet/notification APIs, Vercel serverless refactor", duration: "1 day", status: "completed" },
       { phase: "Frontend: design system, screens, food photo uploads, theming, PWA, deployment", duration: "1 day", status: "completed" },
@@ -608,7 +608,7 @@ export const projectsData = [
       "Optimizing image loading and performance for property listings",
     ],
     liveLink: "https://monositi-new.vercel.app",
-    githubLink: "https://github.com/Sachinsen7/monositi-new",
+    githubLink: "",
     timeline: [
       {
         phase: "Planning & Architecture Design",
