@@ -43,6 +43,8 @@ const MONTHS = {
   Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
 };
 
+const MIN_YEARS_EXPERIENCE = 2;
+
 function computeYearsExperience() {
   const starts = experiences
     .map((exp) => {
@@ -53,11 +55,11 @@ function computeYearsExperience() {
     })
     .filter(Boolean);
 
-  if (starts.length === 0) return 1;
+  if (starts.length === 0) return MIN_YEARS_EXPERIENCE;
 
   const earliest = new Date(Math.min(...starts.map((d) => d.getTime())));
   const years = (Date.now() - earliest.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-  return Math.max(1, Math.floor(years));
+  return Math.max(MIN_YEARS_EXPERIENCE, Math.floor(years));
 }
 
 const heroStats = [
