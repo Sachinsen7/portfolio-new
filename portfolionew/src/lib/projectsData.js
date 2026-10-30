@@ -26,7 +26,122 @@ const blip_picker = "/assets/images/blip/picker.webp";
 const blip_manager = "/assets/images/blip/manager.webp";
 const blipImages = [blip_suggest, blip_picker, blip_manager];
 
+const mlos_cover = "/assets/images/mlos/cover.svg";
+const resumestudio_cover = "/assets/images/resumestudio/cover.svg";
+
 export const projectsData = [
+  {
+    id: 17,
+    title: "MLOS",
+    image: [mlos_cover],
+    description:
+      "Manpower Lifecycle OS: one platform that runs a staffing company end to end, from a client's hiring request to the worker's payslip and the client's invoice",
+    tech: [
+      "NestJS",
+      "Next.js",
+      "TypeScript",
+      "MongoDB",
+      "Mongoose",
+      "React Native (Expo)",
+      "Socket.IO",
+      "Groq",
+      "Gemini",
+      "Razorpay",
+      "Cashfree",
+      "Cloudinary",
+      "GitHub Actions",
+    ],
+    category: "Workforce Platform / Full Stack + Mobile",
+    year: "2026",
+    summary:
+      "Seven role-based panels, an AI interviewer, photo proof of work and a talent pool fed by Resume Studio, shipped as four separate live environments.",
+    fullDescription:
+      "MLOS is a workforce management platform for a staffing company. A client raises a requirement, HR and recruiters source candidates and run interview rounds, a verification team clears four checks (documents, police, experience, address), HR hires and deploys the person to the client, and from then on attendance, leave, performance, payroll and billing run in the same system. It is a NestJS and MongoDB backend split into a core service and a finance service, a Next.js frontend with separate panels for Owner, HR, Recruiter, Verification, Finance, Employee, Client and Manager, and an Expo mobile app for workers. It is built as four live environments, each with its own repository, database and deployment: Phase 1 is the core product with an AI Assessment that interviews candidates by text or voice and hands the report to HR; Phase 2 adds Cash, Company Payroll and Contractual hiring models with automatic placement invoices and an ID card and payslip designer; Phase 3 adds HR as a Service, KPI scorecards for any role and daily-wage payroll for non-tech staff; Phase 4 adds Work Proof, where workers submit photos that an AI checks, with a pay cut for missing proof, plus a Talent Pool that pulls consenting candidates from Resume Studio, matches them to requirements and adds them to the hiring pipeline.",
+    features: [
+      "Full hiring lifecycle with a seven-stage pipeline, a verification gate that blocks deployment of unverified people, and permanent blacklisting on rejection",
+      "AI Assessment: an AI interviews candidates in English or Hindi by text, voice or live conversation, then writes a scored report; HR decides and the AI never rejects anyone",
+      "Three hiring models with automatic fee, GST, guarantee and replacement rules and auto-generated invoices",
+      "HR as a Service with virtual and on-site HR, per-employee monthly billing and bulk import of managed staff from Excel or CSV",
+      "KPI scorecards for any role, averaged between client manager and company HR, with grades and employee notifications",
+      "Work Proof: photo tasks with location rules, an AI check on every photo, repeating work, performance scores and a printable proof pack for client billing",
+      "Talent Pool linked to Resume Studio with consent, contact requests the candidate controls, AI-assisted matching and one-click add to the pipeline",
+      "ID card and payslip designer with a free-hand canvas editor and ready-made designs",
+      "Role-based permissions across 13 functional areas, audit logs, real-time notifications and a Hindi toggle for workers",
+    ],
+    challenges: [
+      "Running four phases as separate environments on one hosting account, each with its own database and a repeatable GitHub Actions deploy over SSH",
+      "Making an AI interviewer safe to rely on: HR keeps the decision, links are single-use and expire, only the interview details are public, and the report flags are treated as hints rather than proof",
+      "Checking work photos with AI while handling the cases where the AI cannot run, by routing those tasks to a human reviewer instead of failing",
+      "Modelling money rules (fees, GST, guarantees, daily-wage payroll, pay cuts) so that every number is calculated the same way in the list, the detail page and the invoice",
+      "Connecting two products without a send button: MLOS pulls resumes on a timer, honours consent withdrawal and account deletion, and keeps contact details hidden until the candidate agrees",
+    ],
+    liveLink: "https://core.innovativeminds.in",
+    githubLink: "",
+    timeline: [
+      { phase: "Phase 1: core hiring, verification, vault, attendance, payroll, billing and AI Assessment", duration: "Sep to Oct 2026", status: "completed" },
+      { phase: "Phase 2: hiring models, placements, automatic invoices, ID card and payslip designer", duration: "Oct 2026", status: "completed" },
+      { phase: "Phase 3: HR as a Service, KPI scorecards, non-tech staff features", duration: "Oct 2026", status: "completed" },
+      { phase: "Phase 4: Work Proof, surveys, Hindi phone app and Talent Pool", duration: "Oct 2026", status: "completed" },
+    ],
+    team: "Innovative Minds",
+    role: "Full Stack Developer",
+    status: "Live",
+    duration: "Ongoing",
+  },
+  {
+    id: 18,
+    title: "Resume Studio",
+    image: [resumestudio_cover],
+    description:
+      "AI resume builder whose writing coach fixes wording and grammar but is blocked from inventing facts, with an opt-in link into MLOS hiring",
+    tech: [
+      "Next.js",
+      "React 19",
+      "Tailwind CSS",
+      "Framer Motion",
+      "NestJS",
+      "MongoDB",
+      "Zod",
+      "Groq",
+      "Gemini",
+      "Nodemailer",
+      "GitHub Actions",
+    ],
+    category: "AI Product / Full Stack",
+    year: "2026",
+    summary:
+      "Build a resume with live preview, twelve themes and an AI coach, then choose whether recruiters on MLOS can find it.",
+    fullDescription:
+      "Resume Studio is a resume builder with one rule: the AI may rewrite how something is said but never what is claimed. A candidate signs in with a one-time code sent by email, builds a resume in a guided or free editor with a live paginated preview, and picks from twelve themes with font, spacing and margin controls. The AI coach proposes improvements to bullets, spelling and grammar, and every suggestion passes a fact guard that rejects anything introducing new numbers or proper nouns that were not in the original. A scoring pass grades each bullet and flags typos and gaps. Resumes can be downloaded as PDF or Word. In Settings the candidate can consent to share the resume with MLOS; MLOS then pulls it into a talent pool, and the candidate decides whether to release their email and phone to a recruiter who asks. Withdrawing consent or deleting the account removes the resume from the pool on the next sync. The product is an npm-workspaces monorepo with a shared package for the schema, scoring and fact guard, a NestJS API and a Next.js web app, deployed to its own server through GitHub Actions.",
+    features: [
+      "Guided and free editor with autosave, undo and redo, version history and conflict handling",
+      "Twelve resume themes with font, spacing, margin, section order and hidden-section controls, and a live paginated preview",
+      "AI coach for bullets, spelling and grammar, with a fact guard that rejects invented numbers and proper nouns",
+      "Per-bullet scoring that highlights weak phrasing, typos and gaps in the timeline",
+      "Rich text with bold, italic and bullets; export to PDF and Word",
+      "Email one-time-code sign-in and single-use single sign-on from MLOS",
+      "Opt-in sharing with MLOS recruiters, a withdraw switch, and contact requests the candidate controls through a private link",
+      "Full account export and deletion, with removal from the MLOS talent pool on the next sync",
+    ],
+    challenges: [
+      "Stopping an AI from inventing achievements: suggestions are compared against the original text and rejected when they add numbers or proper nouns",
+      "Keeping a proofread suggestion close to the original by measuring character-level edit distance instead of word ratios, which rejected valid short fixes",
+      "Paginating a resume the same way in the preview, the PDF and the Word export",
+      "A unique index that broke the second sign-up when Google ids were null, fixed with a partial unique index",
+      "Staying signed in across the short-lived access token with a silent refresh, and keeping a pull-based feed correct when owner ids were stored as strings",
+    ],
+    liveLink: "https://resume.innovativeminds.in",
+    githubLink: "",
+    timeline: [
+      { phase: "Editor, themes, live preview and autosave", duration: "Oct 2026", status: "completed" },
+      { phase: "AI coach, fact guard, proofreading and scoring", duration: "Oct 2026", status: "completed" },
+      { phase: "Deployment with CI/CD and MLOS talent link", duration: "Oct 2026", status: "completed" },
+    ],
+    team: "Solo Project",
+    role: "Full Stack Developer",
+    status: "Live",
+    duration: "Ongoing",
+  },
   {
     id: 13,
     title: "Blip",

@@ -7,7 +7,7 @@ import { getProjectThumbnail } from "@/lib/utils";
 import { useViewTransition } from "@/hooks/useViewTransition";
 
 // Homepage stays curated to the strongest work, newest first; the rest live on /projects.
-const featuredProjectIds = [11, 12, 0, 1, 2, 3];
+const featuredProjectIds = [17, 18, 11, 12, 0, 1, 2, 3];
 const featuredProjects = featuredProjectIds
   .map((id) => projectsData.find((project) => project.id === id))
   .filter(Boolean);
