@@ -437,7 +437,7 @@ export const projectsData = [
       "Coordinating an order lifecycle that spans cart, payment, OTP verification, and pickup/delivery logistics",
       "Integrating multiple third-party services (Razorpay, Cloudinary, Twilio, Google Maps) into one coherent checkout flow",
     ],
-    liveLink: "",
+    liveLink: "https://speedcopy.in",
     githubLink: "",
     timeline: [
       {
