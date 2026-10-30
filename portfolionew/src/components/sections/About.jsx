@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, ChevronDown, Globe } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { experiences } from "@/lib/experienceData";
 import { techColorMap } from "@/lib/techIcons.jsx";
 import { useViewTransition } from "@/hooks/useViewTransition";
@@ -10,8 +9,58 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
 };
 
+const TAGS = {
+  current: {
+    label: "Current",
+    pill: "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-300",
+    dot: "bg-green-500",
+  },
+  internship: {
+    label: "Internship",
+    pill: "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300",
+    dot: "bg-amber-500",
+  },
+  previous: {
+    label: "Previous",
+    pill: "border-sky-500/30 bg-sky-500/10 text-sky-700 dark:text-sky-300",
+    dot: "bg-sky-500",
+  },
+};
+
+const getTag = (experience) => {
+  if (/present/i.test(experience.period)) return TAGS.current;
+  if (/intern/i.test(experience.role)) return TAGS.internship;
+  return TAGS.previous;
+};
+
+const groups = experiences.reduce((list, experience) => {
+  const existing = list.find((group) => group.company === experience.company);
+  if (existing) {
+    existing.roles.push(experience);
+    experience.technologies.forEach((tech) => {
+      if (!existing.technologies.some((item) => item.label === tech.label)) {
+        existing.technologies.push(tech);
+      }
+    });
+    return list;
+  }
+
+  list.push({
+    company: experience.company,
+    link: experience.link,
+    logo: experience.logo,
+    logoAlt: experience.logoAlt,
+    location: experience.location,
+    roles: [experience],
+    technologies: [...experience.technologies],
+  });
+  return list;
+}, []);
+
+const VISIBLE_TECH = 6;
+const LIGHT_LOGO_COMPANIES = ["ADRS Technosoft"];
+
 export default function About() {
-  const [openExperience, setOpenExperience] = useState(experiences[0].id);
   const { transitionTo } = useViewTransition();
 
   return (
@@ -25,7 +74,7 @@ export default function About() {
         whileInView="visible"
         viewport={{ once: false, margin: "-40px" }}
         variants={fadeUp}
-        className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+        className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
       >
         <div className="max-w-2xl">
           <h2
@@ -38,8 +87,7 @@ export default function About() {
             Experience
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
-            A quick preview of where I&apos;ve worked and the kind of product work I&apos;ve
-            been trusted to ship. The full story now lives on a dedicated page.
+            Where I&apos;ve worked, at a glance. The details live on the full timeline.
           </p>
         </div>
 
@@ -57,141 +105,96 @@ export default function About() {
         </button>
       </motion.div>
 
-      <div className="space-y-4">
-        {experiences.map((experience, expIndex) => {
-          const isOpen = openExperience === experience.id;
+      <div className="space-y-3">
+        {groups.map((group, groupIndex) => {
+          const hiddenCount = Math.max(0, group.technologies.length - VISIBLE_TECH);
 
           return (
             <motion.article
-              key={experience.id}
+              key={group.company}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: expIndex * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-sm border border-gray-200/80 bg-white/70 dark:border-white/10 dark:bg-white/[0.03]"
+              transition={{ duration: 0.4, delay: groupIndex * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="rounded-sm border border-gray-200/80 bg-white/70 p-4 dark:border-white/10 dark:bg-white/[0.03] sm:p-5"
             >
-              <button
-                type="button"
-                onClick={() =>
-                  setOpenExperience((current) =>
-                    current === experience.id ? null : experience.id
-                  )
-                }
-                className="flex w-full flex-col gap-5 p-4 text-left transition-colors duration-200 hover:bg-gray-50/70 dark:hover:bg-white/[0.02] sm:p-5 md:flex-row md:items-start md:justify-between"
-                aria-expanded={isOpen}
-              >
-                <div className="flex min-w-0 items-start gap-4">
-                  <img
-                    src={experience.logo}
-                    alt={experience.logoAlt}
-                    className="h-14 w-14 rounded-sm border border-gray-200 bg-white p-2 object-contain dark:border-white/10 dark:bg-white/[0.04] sm:h-16 sm:w-16"
-                  />
+              <div className="flex items-center gap-3">
+                <img
+                  src={group.logo}
+                  alt={group.logoAlt}
+                  className={`h-11 w-11 shrink-0 rounded-sm border p-1.5 object-contain ${
+                    LIGHT_LOGO_COMPANIES.includes(group.company)
+                      ? "border-white/10 bg-[#0f0f10]"
+                      : "border-gray-200 bg-white dark:border-white/10 dark:bg-white/[0.04]"
+                  }`}
+                />
+                <div className="min-w-0">
+                  <a
+                    href={group.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-base font-semibold text-foreground transition-colors duration-200 hover:text-accent"
+                  >
+                    <span className="truncate">{group.company}</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-foreground-muted" />
+                  </a>
+                  <p className="text-xs text-foreground-muted">{group.location}</p>
+                </div>
+              </div>
 
-                  <div className="min-w-0">
-                    <div className="mb-1 flex flex-wrap items-center gap-2">
-                      <h4 className="text-base font-semibold text-foreground sm:text-lg">
-                        {experience.company}
-                      </h4>
-                      <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-accent dark:border-accent/30 dark:bg-accent/10 dark:text-accent">
-                        {experience.status}
-                      </span>
-                      <a
-                        href={experience.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-foreground-muted transition-colors duration-200 hover:border-gray-400 hover:text-foreground dark:border-white/10 dark:hover:border-white/20"
-                        aria-label={`Visit ${experience.company}`}
-                        onClick={(event) => event.stopPropagation()}
-                      >
-                        <Globe className="h-4 w-4" />
-                      </a>
-                      {/* {experience.status && (
-                        <span className="inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs font-medium text-green-700 dark:text-green-300">
-                          <span className="h-2 w-2 rounded-full bg-green-500" />
-                          {experience.status}
+              <ol className="mt-4 space-y-3 border-l border-gray-200 pl-4 dark:border-white/10">
+                {group.roles.map((experience) => {
+                  const tag = getTag(experience);
+
+                  return (
+                    <li
+                      key={experience.id}
+                      className="relative flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+                    >
+                      <span
+                        className={`absolute -left-[1.3rem] top-[0.45rem] h-2 w-2 rounded-full ${tag.dot}`}
+                        aria-hidden="true"
+                      />
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-sm font-medium text-foreground">
+                          {experience.role}
                         </span>
-                      )} */}
-                    </div>
-                    <p className="text-sm text-foreground-muted">
-                      {experience.role}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between gap-4 md:justify-end">
-                  <div className="text-sm text-foreground-muted md:text-right">
-                    <p>{experience.period}</p>
-                    <p>{experience.location}</p>
-                  </div>
-                  <span
-                    className={`inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-foreground-muted transition-all duration-300 dark:border-white/10 ${
-                      isOpen ? "rotate-180 text-foreground" : ""
-                    }`}
-                  >
-                    <ChevronDown className="h-4 w-4" />
-                  </span>
-                </div>
-              </button>
-
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <div className="border-t border-gray-200/80 px-4 pb-5 pt-4 dark:border-white/10 sm:px-5 md:pl-[5.5rem]">
-                      <div>
-                        <h5 className="mb-3 text-sm font-semibold text-foreground">
-                          Skills & Tools
-                        </h5>
-                        <div className="flex flex-wrap gap-2">
-                          {experience.technologies.map((tech) => {
-                            const Icon = tech.icon;
-                            const color = techColorMap[tech.label] ?? "var(--accent)";
-
-                            return (
-                              <div
-                                key={tech.label}
-                                className="interactive-surface inline-flex items-center gap-2.5 rounded-sm border border-gray-200 bg-gray-50/80 py-2 pl-2 pr-3.5 text-sm text-foreground transition-colors duration-200 hover:border-gray-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20"
-                              >
-                                <span
-                                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
-                                  style={{ backgroundColor: `${color}22` }}
-                                >
-                                  <Icon className="h-4 w-4" style={{ color }} />
-                                </span>
-                                <span className="font-tech text-[0.82rem]">{tech.label}</span>
-                              </div>
-                            );
-                          })}
-                        </div>
+                        <span
+                          className={`rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.12em] ${tag.pill}`}
+                        >
+                          {tag.label}
+                        </span>
                       </div>
+                      <span className="text-xs text-foreground-muted">{experience.period}</span>
+                    </li>
+                  );
+                })}
+              </ol>
 
-                      <ul className="mt-5 space-y-3">
-                        <li className="flex items-start gap-3 text-sm leading-relaxed text-foreground-muted sm:text-base">
-                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-foreground/70" />
-                          <span>{experience.summary}</span>
-                        </li>
-                        <li className="pt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground-muted">
-                          Key Contributions
-                        </li>
-                        {experience.highlights.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-start gap-3 text-sm leading-relaxed text-foreground-muted sm:text-base"
-                          >
-                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-foreground/70" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </motion.div>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {group.technologies.slice(0, VISIBLE_TECH).map((tech) => {
+                  const color = techColorMap[tech.label] ?? "var(--accent)";
+
+                  return (
+                    <span
+                      key={tech.label}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-gray-50/80 px-2.5 py-1 text-[11px] text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]"
+                    >
+                      <span
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{ backgroundColor: color }}
+                        aria-hidden="true"
+                      />
+                      {tech.label}
+                    </span>
+                  );
+                })}
+                {hiddenCount > 0 && (
+                  <span className="inline-flex items-center rounded-full border border-dashed border-gray-300 px-2.5 py-1 text-[11px] text-foreground-muted dark:border-white/15">
+                    +{hiddenCount} more
+                  </span>
                 )}
-              </AnimatePresence>
+              </div>
             </motion.article>
           );
         })}
