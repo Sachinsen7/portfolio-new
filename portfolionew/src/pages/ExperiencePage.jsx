@@ -1,18 +1,11 @@
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  Briefcase,
-  Layers3,
-  MapPin,
-  Sparkles,
-  Workflow,
-} from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Header from "@/components/layout/Header";
 import PageTransition from "@/components/common/PageTransition";
 import ViewTransitionWrapper from "@/components/common/ViewTransitionWrapper";
 import { useViewTransition } from "@/hooks/useViewTransition";
 import { experiencePrinciples, experiences } from "@/lib/experienceData";
+import { experienceGroups, getTag, logoClassName } from "@/lib/experienceGroups";
 import { techColorMap } from "@/lib/techIcons.jsx";
 
 const fadeUp = {
@@ -24,15 +17,14 @@ const totalTechnologies = new Set(
   experiences.flatMap((experience) => experience.technologies.map((tech) => tech.label))
 ).size;
 
-const introMetrics = [
-  { label: "Roles", value: `${experiences.length}`, icon: Briefcase },
-  { label: "Unique tools", value: `${totalTechnologies}+`, icon: Layers3 },
-  { label: "Working style", value: "Product-minded", icon: Workflow },
+const summaryChips = [
+  `${experiences.length} roles`,
+  `${experienceGroups.length} companies`,
+  `${totalTechnologies}+ tools`,
 ];
 
 export default function ExperiencePage() {
   const { transitionBack, transitionTo } = useViewTransition();
-  const currentRole = experiences[0];
 
   return (
     <ViewTransitionWrapper
@@ -47,7 +39,7 @@ export default function ExperiencePage() {
           <Header />
 
           <main className="relative z-10 pt-28 sm:pt-36 md:pt-40">
-            <section className="container mx-auto max-w-6xl px-4 pb-8 sm:px-6">
+            <section className="container mx-auto max-w-4xl px-4 pb-8 sm:px-6">
               <button
                 type="button"
                 onClick={() => transitionBack({ transitionName: "back-to-home" })}
@@ -57,296 +49,179 @@ export default function ExperiencePage() {
                 <span>Back</span>
               </button>
 
-              <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_380px]">
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, margin: "-40px" }}
-                  variants={fadeUp}
-                  className="max-w-3xl"
-                >
-                  <p className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    Career Path
-                  </p>
-                  <h1 className="mt-4 text-3xl font-semibold text-foreground sm:text-5xl">
-                    Experience, told like product chapters instead of a plain resume.
-                  </h1>
-                  <p className="mt-4 text-base leading-relaxed text-foreground-muted sm:text-lg">
-                    This page is a better view of how I have grown: the teams I worked with,
-                    the systems I touched, and the kind of product responsibility I have
-                    already handled across frontend, backend, and delivery.
-                  </p>
-
-                  <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                    {introMetrics.map((metric) => {
-                      const Icon = metric.icon;
-
-                      return (
-                        <div
-                          key={metric.label}
-                          className="interactive-surface rounded-sm border border-gray-200/80 bg-white/75 p-4 shadow-[0_16px_40px_rgba(15,23,42,0.05)] transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 dark:border-white/10 dark:bg-white/[0.03]"
-                        >
-                          <div className="flex items-center justify-between gap-3">
-                            <p className="text-[11px] uppercase tracking-[0.18em] text-foreground-muted">
-                              {metric.label}
-                            </p>
-                            <span className="flex h-9 w-9 items-center justify-center rounded-sm border border-gray-200 bg-gray-50/80 dark:border-white/10 dark:bg-white/[0.04]">
-                              <Icon className="h-4 w-4 text-foreground-muted" />
-                            </span>
-                          </div>
-                          <p className="mt-4 text-xl font-semibold text-foreground sm:text-2xl">
-                            {metric.value}
-                          </p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, margin: "-40px" }}
-                  variants={fadeUp}
-                  className="relative overflow-hidden rounded-sm border border-accent/30 bg-gradient-to-br from-accent/10 via-white to-accent/5 p-6 shadow-[0_18px_50px_rgba(29,185,84,0.12)] dark:border-accent/20 dark:from-accent/10 dark:via-white/[0.03] dark:to-accent/5">
-                  <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-accent dark:text-accent">
-                    Current chapter
-                  </p>
-                  <h2 className="mt-4 text-2xl font-semibold text-foreground">
-                    {currentRole.role}
-                  </h2>
-                  <p className="mt-2 text-sm text-foreground-muted">
-                    {currentRole.company}
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-2 text-xs text-foreground-muted">
-                    <span className="rounded-full border border-accent/30 bg-white/80 px-3 py-1.5 dark:border-white/10 dark:bg-white/[0.05]">
-                      {currentRole.period}
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded-full border border-accent/30 bg-white/80 px-3 py-1.5 dark:border-white/10 dark:bg-white/[0.05]">
-                      <MapPin className="h-3.5 w-3.5" />
-                      {currentRole.location}
-                    </span>
-                  </div>
-
-                  <p className="mt-5 text-sm leading-relaxed text-foreground-muted">
-                    {currentRole.summary}
-                  </p>
-
-                  <div className="mt-6 space-y-2.5">
-                    {currentRole.focusAreas.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-center gap-3 rounded-sm border border-white/70 bg-white/70 px-3.5 py-3 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.04]"
-                      >
-                        <span className="h-2 w-2 rounded-full bg-accent" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
-            </section>
-
-            <section className="container mx-auto max-w-6xl px-4 pb-8 sm:px-6">
-              <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, margin: "-40px" }}
-                  variants={fadeUp}
-                  className="space-y-4 lg:sticky lg:top-32 lg:self-start"
-                >
-                  <div className="rounded-sm border border-gray-200/80 bg-white/75 p-5 dark:border-white/10 dark:bg-white/[0.03]">
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="h-4 w-4 text-foreground-muted" />
-                      <p className="text-sm font-semibold text-foreground">What this experience shows</p>
-                    </div>
-                    <p className="mt-4 text-sm leading-relaxed text-foreground-muted">
-                      I have mostly worked in environments where one person needs to think
-                      across product clarity, implementation detail, and shipping pressure at
-                      the same time.
-                    </p>
-                  </div>
-
-                  <div className="rounded-sm border border-gray-200/80 bg-gradient-to-br from-white to-gray-50 p-5 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]">
-                    <p className="text-sm font-semibold text-foreground">Shared pattern</p>
-                    <p className="mt-3 text-sm leading-relaxed text-foreground-muted">
-                      The repeated theme across roles is simple: make complex systems easier to
-                      use, keep the codebase maintainable, and deliver something that feels
-                      considered when it reaches people.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <div className="relative pl-6 sm:pl-8">
-                  <div className="absolute bottom-0 left-1.5 top-0 w-px bg-gradient-to-b from-accent/70 via-accent/40 to-transparent sm:left-2" />
-
-                  <div className="space-y-6">
-                    {experiences.map((experience, index) => (
-                      <motion.article
-                        key={experience.id}
-                        initial={{ opacity: 0, y: 24 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, margin: "-80px" }}
-                        transition={{ duration: 0.4, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative"
-                      >
-                        <span className="absolute -left-[1.9rem] top-6 flex h-7 w-7 items-center justify-center rounded-full border border-accent bg-white font-tech text-[11px] font-semibold text-accent shadow-[0_0_0_6px_rgba(255,255,255,0.75)] dark:border-accent/60 dark:bg-[#0a0a0a] dark:shadow-[0_0_0_6px_rgba(10,10,10,0.85)] sm:-left-[2.3rem]">
-                          {String(experiences.length - index).padStart(2, "0")}
-                        </span>
-
-                        <div className="interactive-surface rounded-sm border border-gray-200/80 bg-white/82 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.06)] backdrop-blur-sm transition-colors duration-200 hover:border-accent/30 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-accent/30 sm:p-6">
-                          <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_280px]">
-                            <div>
-                              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                                <div className="flex min-w-0 items-start gap-4">
-                                  <img
-                                    src={experience.logo}
-                                    alt={experience.logoAlt}
-                                    className="h-16 w-16 rounded-sm border border-gray-200 bg-white p-2 object-contain dark:border-white/10 dark:bg-white/[0.04]"
-                                  />
-
-                                  <div className="min-w-0">
-                                    <div className="flex flex-wrap items-center gap-2">
-                                      <p className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-accent dark:border-accent/30 dark:bg-accent/10 dark:text-accent">
-                                        {experience.status}
-                                      </p>
-                                      <p className="text-[11px] uppercase tracking-[0.16em] text-foreground-muted">
-                                        {experience.period}
-                                      </p>
-                                    </div>
-                                    <h2 className="mt-3 text-2xl font-semibold text-foreground">
-                                      {experience.role}
-                                    </h2>
-                                    <p className="mt-1 text-base text-foreground-muted">
-                                      {experience.company}
-                                    </p>
-                                    <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-xs text-foreground-muted dark:border-white/10 dark:bg-white/[0.04]">
-                                      <MapPin className="h-3.5 w-3.5" />
-                                      <span>{experience.location}</span>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <a
-                                  href={experience.link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="interactive-surface inline-flex items-center gap-2 self-start rounded-sm border border-gray-200 bg-white/85 px-3 py-2 text-sm text-foreground hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
-                                >
-                                  <span>Visit company</span>
-                                  <ArrowUpRight className="h-4 w-4" />
-                                </a>
-                              </div>
-
-                              <p className="mt-5 max-w-3xl text-sm leading-relaxed text-foreground-muted sm:text-base">
-                                {experience.summary}
-                              </p>
-
-                              <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                                {experience.focusAreas.map((area) => (
-                                  <div
-                                    key={area}
-                                    className="rounded-sm border border-gray-200/80 bg-gray-50/85 px-3.5 py-3 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.04]"
-                                  >
-                                    {area}
-                                  </div>
-                                ))}
-                              </div>
-
-                              <div className="mt-6">
-                                <p className="text-sm font-semibold text-foreground">
-                                  Key Contributions
-                                </p>
-                                <div className="mt-3 space-y-3">
-                                  {experience.highlights.map((item) => (
-                                    <div
-                                      key={item}
-                                      className="flex items-start gap-3 rounded-sm border border-gray-200/80 bg-white/75 px-4 py-3 text-sm leading-relaxed text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]"
-                                    >
-                                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-foreground/70" />
-                                      <span>{item}</span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="rounded-sm border border-gray-200/80 bg-gradient-to-br from-gray-50 to-white p-5 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]">
-                              <p className="text-sm font-semibold text-foreground">Toolbox in this chapter</p>
-                              <div className="mt-4 flex flex-wrap gap-2">
-                                {experience.technologies.map((tech) => {
-                                  const Icon = tech.icon;
-                                  const color = techColorMap[tech.label] ?? "var(--accent)";
-
-                                  return (
-                                    <div
-                                      key={tech.label}
-                                      className="inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-white/85 px-3 py-2 text-sm text-foreground dark:border-white/10 dark:bg-white/[0.04]"
-                                    >
-                                      <Icon className="h-4 w-4" style={{ color }} />
-                                      <span className="font-tech text-[0.8rem]">{tech.label}</span>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </motion.article>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section className="container mx-auto max-w-6xl px-4 pb-16 sm:px-6">
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, margin: "-40px" }}
                 variants={fadeUp}
-                className="rounded-sm border border-gray-200/80 bg-white/78 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.03]">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                  <div className="max-w-2xl">
-                    <p className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                      Working Principles
-                    </p>
-                    <h2 className="mt-3 text-2xl font-semibold text-foreground sm:text-3xl">
-                      What stays consistent across roles
-                    </h2>
-                  </div>
+                className="mt-8"
+              >
+                <p className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                  Career path
+                </p>
+                <h1 className="mt-3 text-3xl font-semibold text-foreground sm:text-4xl">
+                  Experience
+                </h1>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground-muted sm:text-base">
+                  Where I have worked, what I did there and the tools I used.
+                </p>
 
-                  <button
-                    type="button"
-                    onClick={() =>
-                      transitionTo("/projects", {
-                        transitionName: "nav-projects",
-                      })
-                    }
-                    className="interactive-surface inline-flex items-center gap-2 self-start rounded-sm border border-gray-200 bg-white/85 px-4 py-2.5 text-sm font-medium text-foreground hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
-                  >
-                    <span>See projects next</span>
-                    <ArrowUpRight className="h-4 w-4" />
-                  </button>
-                </div>
-
-                <div className="mt-6 grid gap-4 md:grid-cols-3">
-                  {experiencePrinciples.map((principle) => (
-                    <div
-                      key={principle.title}
-                      className="interactive-surface rounded-sm border border-gray-200/80 bg-gradient-to-br from-white to-gray-50 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/30 dark:border-white/10 dark:from-white/[0.04] dark:to-white/[0.02]"
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {summaryChips.map((chip) => (
+                    <span
+                      key={chip}
+                      className="rounded-full border border-gray-200 bg-white/75 px-3 py-1 text-xs text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]"
                     >
-                      <p className="text-lg font-semibold text-foreground">{principle.title}</p>
-                      <p className="mt-3 text-sm leading-relaxed text-foreground-muted">
-                        {principle.description}
-                      </p>
-                    </div>
+                      {chip}
+                    </span>
                   ))}
                 </div>
               </motion.div>
+            </section>
+
+            <section className="container mx-auto max-w-4xl px-4 pb-10 sm:px-6">
+              <div className="space-y-4">
+                {experienceGroups.map((group, groupIndex) => (
+                  <motion.article
+                    key={group.company}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, margin: "-60px" }}
+                    transition={{ duration: 0.4, delay: groupIndex * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                    className="rounded-sm border border-gray-200/80 bg-white/75 p-4 dark:border-white/10 dark:bg-white/[0.03] sm:p-6"
+                  >
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={group.logo}
+                        alt={group.logoAlt}
+                        className={`h-12 w-12 shrink-0 rounded-sm border p-1.5 object-contain ${logoClassName(group.company)}`}
+                      />
+                      <div className="min-w-0 flex-1">
+                        <a
+                          href={group.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex max-w-full items-center gap-1.5 text-lg font-semibold text-foreground transition-colors duration-200 hover:text-accent"
+                        >
+                          <span className="truncate">{group.company}</span>
+                          <ArrowUpRight className="h-4 w-4 shrink-0 text-foreground-muted" />
+                        </a>
+                        <p className="text-xs text-foreground-muted">{group.location}</p>
+                      </div>
+                    </div>
+
+                    <ol className="mt-6 space-y-8 border-l border-gray-200 pl-5 dark:border-white/10">
+                      {group.roles.map((experience) => {
+                        const tag = getTag(experience);
+
+                        return (
+                          <li key={experience.id} className="relative">
+                            <span
+                              className={`absolute -left-[1.62rem] top-[0.5rem] h-2.5 w-2.5 rounded-full ${tag.dot}`}
+                              aria-hidden="true"
+                            />
+
+                            <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <h2 className="text-base font-semibold text-foreground sm:text-lg">
+                                  {experience.role}
+                                </h2>
+                                <span
+                                  className={`rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.12em] ${tag.pill}`}
+                                >
+                                  {tag.label}
+                                </span>
+                              </div>
+                              <span className="text-xs text-foreground-muted">
+                                {experience.period}
+                              </span>
+                            </div>
+
+                            <p className="mt-3 text-sm leading-relaxed text-foreground-muted">
+                              {experience.summary}
+                            </p>
+
+                            <ul className="mt-3 space-y-2">
+                              {experience.highlights.map((item) => (
+                                <li
+                                  key={item}
+                                  className="flex items-start gap-2.5 text-sm leading-relaxed text-foreground-muted"
+                                >
+                                  <span
+                                    className="mt-[0.55rem] h-1 w-1 shrink-0 rounded-full bg-gray-400 dark:bg-gray-500"
+                                    aria-hidden="true"
+                                  />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+
+                            <div className="mt-4 flex flex-wrap gap-1.5">
+                              {experience.technologies.map((tech) => {
+                                const color = techColorMap[tech.label] ?? "var(--accent)";
+
+                                return (
+                                  <span
+                                    key={tech.label}
+                                    className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-gray-50/80 px-2.5 py-1 text-[11px] text-foreground-muted dark:border-white/10 dark:bg-white/[0.03]"
+                                  >
+                                    <span
+                                      className="h-1.5 w-1.5 rounded-full"
+                                      style={{ backgroundColor: color }}
+                                      aria-hidden="true"
+                                    />
+                                    {tech.label}
+                                  </span>
+                                );
+                              })}
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  </motion.article>
+                ))}
+              </div>
+            </section>
+
+            <section className="container mx-auto max-w-4xl px-4 pb-16 sm:px-6">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    How I work
+                  </p>
+                  <h2 className="mt-2 text-xl font-semibold text-foreground sm:text-2xl">
+                    What stays the same across roles
+                  </h2>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    transitionTo("/projects", {
+                      transitionName: "nav-projects",
+                    })
+                  }
+                  className="interactive-surface inline-flex items-center gap-2 self-start rounded-sm border border-gray-200 bg-white/85 px-4 py-2.5 text-sm font-medium text-foreground hover:border-gray-300 hover:bg-white dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+                >
+                  <span>See projects</span>
+                  <ArrowUpRight className="h-4 w-4" />
+                </button>
+              </div>
+
+              <div className="mt-5 grid gap-3 md:grid-cols-3">
+                {experiencePrinciples.map((principle) => (
+                  <div
+                    key={principle.title}
+                    className="rounded-sm border border-gray-200/80 bg-white/75 p-4 dark:border-white/10 dark:bg-white/[0.03]"
+                  >
+                    <p className="text-sm font-semibold text-foreground">{principle.title}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
+                      {principle.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </section>
           </main>
         </div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { experiences } from "@/lib/experienceData";
+import { experienceGroups as groups, getTag, logoClassName } from "@/lib/experienceGroups";
 import { techColorMap } from "@/lib/techIcons.jsx";
 import { useViewTransition } from "@/hooks/useViewTransition";
 
@@ -9,56 +9,7 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const TAGS = {
-  current: {
-    label: "Current",
-    pill: "border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-300",
-    dot: "bg-green-500",
-  },
-  internship: {
-    label: "Internship",
-    pill: "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300",
-    dot: "bg-amber-500",
-  },
-  previous: {
-    label: "Previous",
-    pill: "border-sky-500/30 bg-sky-500/10 text-sky-700 dark:text-sky-300",
-    dot: "bg-sky-500",
-  },
-};
-
-const getTag = (experience) => {
-  if (/present/i.test(experience.period)) return TAGS.current;
-  if (/intern/i.test(experience.role)) return TAGS.internship;
-  return TAGS.previous;
-};
-
-const groups = experiences.reduce((list, experience) => {
-  const existing = list.find((group) => group.company === experience.company);
-  if (existing) {
-    existing.roles.push(experience);
-    experience.technologies.forEach((tech) => {
-      if (!existing.technologies.some((item) => item.label === tech.label)) {
-        existing.technologies.push(tech);
-      }
-    });
-    return list;
-  }
-
-  list.push({
-    company: experience.company,
-    link: experience.link,
-    logo: experience.logo,
-    logoAlt: experience.logoAlt,
-    location: experience.location,
-    roles: [experience],
-    technologies: [...experience.technologies],
-  });
-  return list;
-}, []);
-
 const VISIBLE_TECH = 6;
-const LIGHT_LOGO_COMPANIES = ["ADRS Technosoft"];
 
 export default function About() {
   const { transitionTo } = useViewTransition();
@@ -122,18 +73,14 @@ export default function About() {
                 <img
                   src={group.logo}
                   alt={group.logoAlt}
-                  className={`h-11 w-11 shrink-0 rounded-sm border p-1.5 object-contain ${
-                    LIGHT_LOGO_COMPANIES.includes(group.company)
-                      ? "border-white/10 bg-[#0f0f10]"
-                      : "border-gray-200 bg-white dark:border-white/10 dark:bg-white/[0.04]"
-                  }`}
+                  className={`h-11 w-11 shrink-0 rounded-sm border p-1.5 object-contain ${logoClassName(group.company)}`}
                 />
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <a
                     href={group.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-base font-semibold text-foreground transition-colors duration-200 hover:text-accent"
+                    className="inline-flex max-w-full items-center gap-1.5 text-base font-semibold text-foreground transition-colors duration-200 hover:text-accent"
                   >
                     <span className="truncate">{group.company}</span>
                     <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-foreground-muted" />
