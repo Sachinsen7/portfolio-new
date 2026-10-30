@@ -177,7 +177,8 @@ export default function LiquidHero() {
           >
             <a
               className="flex items-center gap-3"
-              href="https://docs.google.com/document/d/182KsVsAotbobSoabH4VqZ-yN2sjkBRCx/edit?usp=sharing&ouid=113667387201002486550&rtpof=true&sd=true"
+              href="/Sachin_Kumar_Sen_Resume.pdf"
+              download="Sachin_Kumar_Sen_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download Sachin's CV"

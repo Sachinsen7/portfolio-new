@@ -83,7 +83,7 @@ export const projectsData = [
       { phase: "Phase 3: HR as a Service, KPI scorecards, non-tech staff features", duration: "Oct 2026", status: "completed" },
       { phase: "Phase 4: Work Proof, surveys, Hindi phone app and Talent Pool", duration: "Oct 2026", status: "completed" },
     ],
-    team: "Innovative Minds",
+    team: "Agumentik Software",
     role: "Full Stack Developer",
     status: "Live",
     duration: "Ongoing",
